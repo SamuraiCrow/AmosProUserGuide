@@ -1,0 +1,2868 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+  "http://www.w3.org/TR/html4/transitional.dtd">
+<html>
+<head>
+
+ <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+ <title>Chapter 5-The Basics</title>
+</head>
+<body>
+<h1>The Basics of AMOS Professional</h1>
+<p>05.01 <a href="#barebones">The Bare Bones</a></p>
+<p>05.02 <a href="#strings">String Functions</a></p>
+<p>05.03 <a href="#maths">Maths</a></p>
+<p>05.04 <a href="#controlstructures">Control Structures</a></p>
+<p>05.05 <a href="#procedures">Procedures</a></p>
+<p>05.06 Text</p>
+<p>05.07 Windows</p>
+<p>05.08 The Joystick and Mouse</p>
+<p>05.09 Memory Banks</p>
+<h1 id="barebones">The Bare Bones</h1>
+<p>This Chapter provides you with the bare bones that support AMOS Professional programming. These bones are used to build program skeletons, and you need to understand what they do and how they work before adding the life-blood, the muscle-power and the brain-control that endow a program with its own life.</p>
+<p>If you are an experienced programmer, you will already be familiar with these bare bones, and you can safely skip through most of this Chapter.</p>
+<p>AMOS Professional is designed to provide you with the easiest and most convenient way ofcontrolling all your programming needs, and even though it provides very powerful programming features, difficult concepts and terms are avoided wherever possible.</p>
+<p>This section begins with one of the simplest concepts in computing, known as “strings”.</p>
+<h2>Strings</h2>
+<p>A “string” is a number of characters strung together. A set of quotation marks is placed at either endof the string to hold it together and keep it separate from the rest of the program. Each string is also identified by its own name, so that it can be called up by that name, and used elsewhere in theprogram. The “dollar” character $ is attached to the end of every string name, to mark the fact thatthis name refers to a string. On UK Keyboards, quote marks are typed in by pressing the [Shift] and [2] keys together, and the $ character is typed with [Shift] plus [4].</p>
+<p>Characters in a string can be letters, numbers, symbols or spaces. The following example creates asimple string named A$, and it is defined by letting the name of the string equal the charactersenclosed in quotes, like this:</p>
+<img src="images/EditPointer.gif"/>
+<blockquote>A$=”AMOS Professional”<br />
+Print A$</blockquote>
+<p>Here is another example, using three different strings:</p>
+<img src="images/EditPointer.gif"/>
+<blockquote>A$=“AMOS”<br />
+B$=“”<br />
+C$=“Professional”<br />
+Print A$+B$+C$</blockquote>
+<p>Strings are extremely useful, and they can act on their own or work together, as that last exampledemonstrated. Try the next example now:</p>
+<img src="images/EditPointer.gif"/>
+<blockquote>A$=“AMOS PROFESSIONAL”-“S”<br />
+Print A$</blockquote>
+The whole of Chapter 5.2 is devoted to how AMOS Professional makes use of strings.</p>
+<p><b>Variables</b></p>
+<p>There are certain elements of a computer program that are set aside to store the results of calculations.The names of these storage locations are known as “variables”.</p>
+<p>Think of a variable as the name of a place where a value resides, and that the value can change as theresult of a calculation made by your computer. Like strings, variables are given their own names, andonce a name has been chosen it can be given a value, like this:</p>
+<img src="images/EditPointer.gif"/>
+<blockquote>SCORE=100<br />
+Print SCORE</blockquote>
+<p>That example creates a variable with the name of SCORE, and loads it with a value of 100.</p>
+<h2>Naming variables</h2>
+<p>The rules for the naming of variables are very simple. Firstly, all variable names must begin with aletter, so the following variable name is fine:</p>
+<img src="images/EditPointer.gif"/>
+<blockquote>AMOS2=1<br />
+Print AMOS2</blockquote>
+<p>But the next name is not allowed:</p>
+<img src="images/CrossedOutPointer.gif"/>
+<blockquote>2AMOS=1</blockquote>
+<p>Secondly, you cannot begin a variable name with the letters that make up one of the AMOSProfessional command words, because this would confuse your Amiga. The following variable nameis acceptable, because the first letters are not used by one of the AMOS Professional commands:</p>
+<img src="images/EditPointer.gif"/>
+<blockquote>FOOTPRINT=1<br />
+Print FOOTPRINT</blockquote>
+<p>But the next name is unacceptable, because the computer recognises the first five letters as thecommand PRINT:</p>
+<img src="images/CrossedOutPointer.gif"/>
+<blockquote>PRINTFOOT=1</blockquote>
+<p>If you try and type in an illegal variable name, AMOS Professional will spot the mistake, and point itout by splitting the illegal characters away from the rest of the name. A full list of the command wordscan be found in the Command Index, in Appendix H of this User Guide.</p>
+<p>Variable names can be as short as one character, and as long as 255 characters, but they can never contain a blank space. So the next name is allowed:</p>
+<img src="images/EditPointer.gif"/>
+<blockquote>AMOSPRO=1<br />
+Print AMOSPRO</blockquote>
+<p>But this is an illegal variable name:</p>
+<img src="images/CrossedOutPointer.gif"/>
+<blockquote>AMOS PRO=1</blockquote>
+<p>To introduce a name, or split it up, use the “underscore” character instead of spaces, by typing [Shift]and [-] together. For example:</p>
+<img src="images/EditPointer.gif"/>
+<blockquote>_IAM A_LONG_LEGAL_VARIABLE_NAME=1<br />
+Print _IAM A_LONG_LEGAL_VARIABLE_NAME</blockquote>
+<h2>Types of variables</h2>
+<p>There are three types of variable that can be used in AMOS Professional programs.</p>
+<h3>Whole Numbers</h3>
+<p>The first of these types is where the variable represents a whole number, like 1 or 9999. Thesevariables are perfect for holding the sort of values used in computer games, for example:</p>
+<img src="images/EditPointer.gif"/>
+<blockquote>HI SCORE=1000000<br />
+Print HI SCORE</blockquote>
+<p>Whole numbers are called “<b>integers</b>”, and integer variables can range from -147,483,648 up to147,483,648.</p>
+<h3>Real number variables</h3>
+<p>Variables can also represent fractional values, such as 1.2 or 99.99 and the results from this sort ofvariable can be extremely accurate. The accuracy of numbers either side of a decimal point (known as“floating point” numbers) is fully explained in Chapter 5.3.</p>
+<p>Real number variables must always have a “hash” symbol added to the end of their names, which istyped by pressing the tit] key. For example:</p>
+<img src="images/EditPointer.gif"/>
+<blockquote>REAL_NUMBER#=3.14<br />
+Print REAL_NUMBER#</blockquote>
+<h3>String variables</h3>
+<p>This type of variable holds text characters, and the length of the text can be anything from zero up to65,500 characters long. String variables are enclosed in quotation marks, and are also distinguishedfrom number variables by a $ character on the end of their names, to tell AMOS Professional that theywill contain text rather than numbers. For example:</p>
+<img src="images/EditPointer.gif"/>
+<blockquote>NAME$=“Name”<br />
+GUITAR$=“Twang”<br />
+Print NAME$,GUITAR$</blockquote>
+<h2>Storing variables</h2>
+<p>All variables are stored in an 8k memory area called a “buffer”. This area can hold about 2000numbers or two pages of normal text, and it has been set as small as possible to allow more space formemory banks and screens of graphics. When there is not enough room left to store all of thevariables in a program, an error message will appear saying “Out of variable space”. The size of the storage space for variables can be increased at any time, and the only limit to the size of arrays and string variables is the amount of memory available in your computer.</p>
+<blockquote><b>SET BUFFER</b><br/>
+<i>instruction: set the size of the variable area</i><br />
+<b>Set Buffer</b> number of kilobytes</blockquote>
+<p>The SET BUFFER command can be used inside a program to set the new size of the variable area. Simply follow the command with the number of kilobytes required, and you are recommended toincrease this value by 5k at a time, until enough space has been reserved in the buffer area. It isimportant to note that the SET BUFFER command must be the very first instruction in your program, apart from any REM messages.</p>
+<h2>Arrays</h2>
+<p>It is often necessary to use a whole set of similar variables for something like a table of football resultsor a catalogue for a record collection. Any set of variables can be grouped together in what is known as an “array”.</p>
+<p>Supposing you have 100 titles in your record collection, and you need to tell AMOS Professional thesize of the table of variables needed for your array. There is a special command for setting up thisdimension.</p>
+<blockquote><b>DIM</b><br />
+<i>instruction: dimension an array</i><br />
+<b>Dim</b> variable name(number,number,number...)</blockquote>
+<p>The DIM command is used to dimension an array, and the variables in your record collection tablecould be set up with a first line like this:</p>
+<img src="images/EditPointer.gif"/>
+<blockquote>Dim ARTIST$(99),TITLE$(99),YEAR(99),PRICE#(99)</blockquote>
+<p>Each dimension in the table is held inside round brackets, and if there is more than one element in a dimension each number must be separated from the next by a comma.</p>
+<p>Element numbers in arrays always start from zero, so your first and last entries might contain these variables:</p>
+<img src="images/EditPointer.gif"/>
+<blockquote>ARTIST$(0)=“Aaron Copeland”<br />
+TITLE$(0)=“Appalachian Spring”<br />
+YEAR(0)=1944<br />
+PRICE#(0)=12.99<br />
+ARTIST$(99)=“ZZ Top”<br />
+TITLE$(99)=“Afterburner”<br />
+YEAR(99)=1985<br/>
+PRICE#(99)=9.95</blockquote>
+<p>To extract elements from your array, you could then add something like this to your example program:</p>
+<img src="images/EditPointer.gif"/>
+<blockquote>Print TITLE$(0),PRICE#(0)<br />
+Print TITLE$(99),YEAR(99),PRICE#(99)</blockquote>
+<p>These tables can have as many dimensions as you like, and each dimension can have up to 65,000(Kbyte)elements. Here are some more modest examples:</p>
+<img src="images/EditPointer.gif"/>
+<blockquote>Dim LIST(5),NUMBER#(5,5,5),WORD$(5,5)</blockquote>
+<h2>Constants</h2>
+<p>Constants are a special type of number or string that can be assigned to a variable, or used in a calculation. They are given this name because their value remains constant, and does not change during the course of the program.</p>
+<p>AMOS Professional will normally treat all constants that are fractional numbers (floating point numbers) as whole numbers (integers), and convert them automatically, before they are used. For example:</p>
+<img src="images/EditPointer.gif"/>
+<blockquote>A=3.141<br />
+Print A</blockquote>
+<p>Any numbers that are typed into an AMOS Professional program are converted into a special format.When programs are listed, these numbers are converted back to their original form, and this can leadto minor discrepancies between the number that was originally typed in and the number that isdisplayed in the listing. There is no need to worry about this, because the value of the number alwaysremains exactly the same.</p>
+<h2>Functions</h2>
+<p>There is a whole set of bare bones in the AMOS Professional skeleton known as “functions”. These arecommand words that have one thing in common: they all work with numbers in order to give a result.</p>
+<blockquote><b>FREE</b><br />
+<i>function: give the amount of free memory in the variable buffer area</i><br />
+memory=<b>Free</b></blockquote>
+<p>For an example of a function in operation, the FREE function checks how many “bytes” of memoryare currently available to hold your variables, and it can be used to make a report, like this:</p>
+<img src="images/EditPointer.gif"/>
+<blockquote>Print “The number of bytes available is:”;Free</blockquote>
+<p>Now use the FREE function with the SET BUFFER command (which is explained earlier in thisChapter) as follows:</p>
+<img src="images/EditPointer.gif"/>
+<blockquote>Set Buffer 13<br />
+Print “The number of bytes now available is:”;Free</blockquote>
+<p>AMOS Professional provides over 200 ready-made functions, but it allows you to create as manydifferent functions as you like! These “user-defined” functions are set up inside your own programs,and they can be used to compute commonly used values very quickly and very simply.</p>
+<blockquote><b>DEF FN</b><br />
+<i>structure: create a user-defined function</i><br />
+<b>Def Fn</b> name (list of variables)=expression</blockquote>
+<p>To create a user-defined function, give it a name and follow the name with a list of variables. Thesevariables must be held inside a pair of round brackets, and separated from one another by commas,like these examples:</p>
+<img src="images/EditPointer.gif"/>
+<blockquote>Def Fn NAME$(A$)=LOWER$(A$)<br />
+Def Fn X(A,B,C)=A*B*C</blockquote>
+<p>When a user-defined function is called up my variables that are entered with it will be substituted inthe appropriate positions, as demonstrated below.</p>
+<blockquote><b>FN</b><br />
+<i>structure: call a user-defined function</i><br />
+<b>Fn</b> name(list of variables)</blockquote>
+<p>The following examples show how DEF FN is first used to define a function, and how FN calls it up:</p>
+<img src="images/EditPointer.gif"/>
+<blockquote>Def Fn NAME$(A$,X,Y)=Mid$(A$,X,Y)<br />
+Print Fn NAME$(“Professional”,4,3)</blockquote>
+<img src="images/EditPointer.gif"/>
+<blockquote>Def Fn X(A,B,C)=A+B+C<br />
+Print Fn X(1,10,100)</blockquote>
+<p>The expression that equals the user-defined function can include any of the standard AMOSProfessional functions, and it is limited to a single line of a program.</p>
+<h2>Parameters</h2>
+<p>The values that are entered into an AMOS Professional instruction are known as “parameters”. Ifthere is more than one parameter, each parameter must be separated from its neighbour by a comma.</p>
+<p>For example, up to three parameters can be used after an INK command, in the form of various numbers which specify which colour is to be used for drawing operations, then the backgroundcolour, and the third parameter setting a border colour. So an INK command could appear like this, with its three parameters ready to draw a shape:</p>
+<img src="images/EditPointer.gif"/>
+<blockquote>Ink 0,1,2<br />
+Bar 10,10 To 100,50</blockquote>
+<p>Any parameter can be left out, as long as its comma remains in place. When this happens, AMOSprofessional will check to see what the current value is, or if there is a default value for this parameter,and automatically assign this value to the parameter that has been omitted. For example:</p>
+<img src="images/EditPointer.gif"/>
+<blockquote>Ink 0,1,2 : Rem Set drawing, background and border colour<br />
+Ink 3,, : Rem Set drawing colour only<br />
+Ink ,4, : Rem Set background, leave drawing and border colours alone</blockquote>
+<h2>Procedures</h2>
+<p>The more complex the skeleton of a program gets, the easier it is to get lost among all of its routes andconnections. Experienced programmers usually split their programs into small units known as “procedures”, which allow one aspect of the program to be tackled at a time, without getting distracted by everything else that is going on.</p>
+<p>AMOS Professional offers all the advantages of using procedures in the most convenient way, andChapter 5.5 is dedicated to a full explanation of how to exploit them. You will learn how each procedure module can be given its own specially defined variables and parameters, and how to takebest advantage of them.</p>
+<h2>Controlling a program skeleton</h2>
+<p>Once a program is running, there are a number of ways to stop it in its tracks, allowing you to controlwhat happens next.</p>
+<blockquote><b>WAIT</b><br />
+instruction: wait before performing the next instruction<br />
+<b>Wait</b> number of 50ths of a second</blockquote>
+<p>The WAIT command tells the computer to stop the program and wait for as long as you want before moving on to the next instruction. The number that follows it is the waiting time, specified in 50ths of a second.</p>
+<p>The following example forces the program to wait for two seconds:</p>
+<img src="images/EditPointer.gif"/>
+<blockquote>Print “I am the first instruction.”<br />
+Wait 100<br />
+Print “I am the next instruction.”</blockquote>
+<blockquote><b>END</b><br />
+<i>instruction: end the current program</i><br />
+<p><b>End</b></blockquote>
+<p>As soon as the END command is recognised, it stops the program. You can either press the [Esc] key to go to Direct Mode, or use the [Spacebar] to get to the Edit Screen. Try this example now:</p>
+<img src="images/EditPointer.gif"/>
+<blockquote>Print “I am the first instruction.”<br />
+Wait 150<br />
+End<br />
+Print “This instruction will never be executed!”</blockquote>
+<blockquote><b>STOP</b><br />
+<i>instruction: interrupt the current program</i><br />
+<b>Stop</b></blockquote>
+<p>To stop the current program. The <b>STOP</b> instruction is used like this:</p>
+<img src="images/EditPointer.gif"/>
+<blockquote>Print “Interrupt in two seconds!”<br />
+Wait 100<br />
+Stop<br />
+Print “I have been abandoned”</blockquote>
+<blockquote><b>EDIT</b><br />
+<i>instruction: leave current program and return to Edit Screen</i><br />
+<b>Edit</b></blockquote>
+<p>Similarly, the EDIT instruction forces the program to be abandoned, and returns you straight to the Edit Screen, like this:</p>
+<img src="images/EditPointer.gif"/>
+<blockquote>Print “Wait four seconds and then EDIT”<br />
+Wait 200<br />
+Edit<br />
+Print “I have been ignored!”</blockquote>
+<blockquote><b>DIRECT</b><br />
+<i>instruction: leave current program and return to Direct Mode</i><br />
+<b>Direct</b></blockquote>
+<p>Use the DIRECT command to jump out of the current program and go straight to Direct Mode for testing out a programming idea.</p>
+<p>Print “Take me to Direct Mode immediately”</p>
+<img src="images/EditPointer.gif"/>
+<blockquote>Direct</blockquote>
+<p>Normally, a program can be interrupted by pressing the [Ctrl] and the [C] keys together, returningyou to the AMOS Professional Edit Screen. This facility can be turned off and on at will, creating acrude sort of program protection.</p>
+<blockquote><b>BREAK OFF</b><br />
+<b>BREAK ON</b><br />
+<i>instructions: toggle the program break keys off and on</i><br />
+<b>Break Off</b><br />
+<b>Break On</b></blockquote>
+<p>The BREAK OFF command can be included in a program to stop a particular routine from beinginterrupted while it is running. To re-start the interrupt feature, use BREAK ON. But <b>be warned</b>!</p>
+<p>Never run a program that is still being edited with BREAK OFF activated, or you will lose your <b>work</b>. Make a back-up copy first. Here are two examples, and if you insist on ignoring this advice, you may be foolhardy enough to try the second one!</p>
+<img src="images/EditPointer.gif"/>
+<blockquote>Break Off<br />
+Print “Try and press the Break keys now”<br />
+Wait 500<br />
+Break On<br />
+Print “Break keys activated”<br />
+Wait 100<br />
+Direct</blockquote>
+
+<img src="images/CrossedOutPointer.gif"/>
+<blockquote>Break Off<br />
+Do<br />
+&nbsp;Print “Get out of that!”<br />
+&nbsp;Wait Key<br />
+Loop</blockquote>
+<blockquote><b>SYSTEM</b><br />
+<i>instruction: go to Workbench</i><br />
+<b>System</b></blockquote>
+<p>To close AMOS Professional altogether, and go to the Workbench, the System command can be givenfrom within a program, or from the Editor. The Direct Mode pre-set icon, is explained in Chapter 4.1,or simply press [Shift]+[F10].</p>
+<img src="images/DirectPointer.gif"/>
+<blockquote>Print “Au revoir AMOS”<br />
+System</blockquote>
+<p><b>Separating commands in a line</b></p>
+<p>So far in this Chapter, individual instructions have been separated from one another by typing themin and pressing the [Return] key to enter them on a new line of the program. In fact, the AMOS Professional programmer will often want to place groups of related commands together on the sameline of the program. This is achieved by separating your instructions with a colon character.</p>
+<p>AMOS Professional makes typing in instructions as simple as possible, and you will not normallyhave to worry about typing in correct spacings, as long as you stick to the rules. When a colon is usedto split up commands, command words are recognised and given a capital letter and a spaceautomatically.</p>
+<p>This can be proved by typing in the next example exactly as it appears below, and hitting the [Return] key:</p>
+<img src="images/EditPointer.gif"/>
+<blockquote>Print“I'm so”:wait key:print“neat!”</blockquote>
+<h2>Marking the bones of a program</h2>
+<p>Imagine that the skeleton of your latest programming masterpiece is so clever and so complex that you cannot remember where everything is or what anything is supposed to do! There is a simple and effective way of marking any part of an AMOS Professional program, by inserting typed messages to remind yourself exactly what this section of program is for. These little comments or messages are known as “Rem statements”.</p>
+<blockquote><b>REM</b><br />
+<i>structure: insert a reminder message into a program</i><br />
+<b>Rem</b> Typed in statement<br />
+' Typed in statement</blockquote>
+<p>The beginning of a Rem statement is marked by REM or by the apostrophe character, which is simplya short-cut recognised by AMOS Professional as a REM. The message or comment is then typed infrom the keyboard, beginning with a capital letter. Here are some examples:</p>
+<img src="images/EditPointer.gif"/>
+<blockquote>'An apostrophe can be used instead of the characters Rem<br />
+Rem The next line will print a greeting<br />
+Print “a greeting”<br />
+'This line is a comment that does nothing at all<br />
+Wait 75: Rem Wait one and a half seconds<br />
+'Return to the Edit Screen<br />
+Edit</blockquote>
+<p>These reminders are for human intelligence only, and when a Rem statement is encountered in a program, it is completely ignored by the computer.</p>
+<p>Rem statements can occupy their own line, or be placed at the end of a line of the program, as long as they are separated from the last instruction by a colon. But the apostrophe character can only be used to mark a Rem statement at the <b>beginning</b> of a line. The first of the next two lines is fine, but the second will create an error:</p>
+<img src="images/CrossedOutPointer.gif"/>
+<blockquote>Print “This example is fine” : Rem Fine example<br />
+Print “Wrong!” : ' This is illegal</blockquote>
+<h1 id="strings">String Functions</h1>
+<p>In this Chapter, you will learn how to handle strings. AMOS Professional Basic has a full range of string manipulation instructions, and experienced Basic programmers should already be familiar withthe standard syntax used.</p>
+<h2>Reading characters in a string</h2>
+<blockquote><b>LEFT$</b><br />
+<i>function: return the leftmost characters of a string</i><br />
+destination$=<b>Left$</b>(source$,number)<br />
+<b>Left$</b>(destination$,number)=source$</blockquote>
+<p>LEFT$ reads the specified number of characters in a source string, starting from the left-hand side,and copies them into a destination string. The first type of usage of this function creates a newdestination string from the chosen number of characters of the source string. For example:</p>
+<img src="images/EditPointer.gif"/>
+<blockquote>Do<br />
+&nbsp;Input “Type in a string:”;S$<br />
+&nbsp;Print “Display how many characters from”<br />
+&nbsp;Input “the left?”;N<br />
+&nbsp;Print Left$(S$,N)<br />
+Loop</blockquote>
+<p>The second type of usage replaces the leftmost number of characters in the destination string with the equivalent number of characters from the source string. For example:</p>
+<img src="images/EditPointer.gif"/>
+<blockquote>A$=“**** Basic”<br />
+Left$(A$,4)=“AMOS”<br />
+Print A$</blockquote>
+<p>Exactly the same processes can be performed with characters from the right-hand side of a string, byusing the equivalent RIGHT$ function.</p>
+<blockquote><b>RIGHT$</b><br />
+<i>function: return the rightmost characters of a string</i><br />
+destination$=<b>Right$</b>(source$,number)<br />
+<b>Right$</b>(destination$,number)=source$</blockquote>
+<p>Here are two examples demonstrating each version of usage:</p>
+<img src="images/EditPointer.gif"/>
+<blockquote>Print Right$(“IGNORED54321”,5)<br />
+A$=Right$(“REJECTED0123456789”,10)<br />
+Print A$<br />
+B$=“AMOS ************”<br />
+Right$(B$,12)=“Professional”<br />
+Print B$</blockquote>
+<blockquote><b>MID$</b><br />
+<i>function: return a number of characters from the middle of a string</i><br />
+destination$=<b>Mid$</b>(source$,offset,number)<br />
+<b>Mid$</b>(destination$,offset,number)=source$</blockquote>
+<p>Similarly, the MID$ function returns characters from the middle of a string, with the first number specified in brackets setting the offset from the start of the string and the second number setting how many characters are to be fetched. If the number of characters to be fetched is omitted from your instruction, then the characters will be read right up to the end of the string being examined. Here are some examples:</p>
+<img src="images/EditPointer.gif"/>
+<blockquote>Print Mid$(“AMOS Professional”,6)<br />
+Print Mid$(“AMOS Professional”,6,4)<br />
+A$=“AMOS Professional ***”<br />
+Mid$(A$,19)=“Basic”<br />
+Print A$<br />
+Mid$(A$,19,3)=“Mag”<br />
+Print A$</blockquote>
+<h2>Finding characters in a string</h2>
+<p>It is often necessary to search through a mass of data for a particular reference, in other words, to search through strings for individual characters or sub-strings. Similarly, you may wish to write an adventure game where lines of text must be broken down into individual commands.</p>
+<blockquote><b>INSTR</b><br />
+<i>function: search for occurrences of one string within another string</i><br />
+x=<b>Instr</b>(host$,guest$)<br />
+x=<b>Instr</b>(host$,guest$,<i>start of search position</i>)</blockquote>
+<p>INSTR allows you to search for all instances of one string inside another. In the following examples, the “host” strings are searched for the first occurrence of the “guest” strings you are seeking. If the relevant string is found, its location will be reported in the form of the number of characters from the left-hand side of the host string. If the search is unsuccessful, a result of ???zero??? will be given.</p>
+<img src="images/EditPointer.gif"/>
+<blockquote>Print Instr(“AMOS Professional”,“AMOS”)<br />
+Print Instr(“AMOS Professional”,“O”)<br />
+Print Instr(“AMOS Professional”,“o”)<br />
+Print Instr(“AMOS Professional”,“Provisional”) </blockquote>
+<img src="images/EditPointer.gif"/>
+<blockquote>Do <br />
+&nbsp;Input “Type in a host string:”;H$ <br />
+&nbsp;Input “Type in a guest string to be found:”;G$ <br />
+&nbsp;X=Instr(H$,G$) <br />
+&nbsp;If X=0 Then Print G$;“ Not found” <br />
+&nbsp;If X&lt;&gt;0 Then Print G$;“ Found at position ”;X <br />
+Loop</blockquote>
+<p>Normally, the search will begin from the first character at the extreme left-hand side of the host string, but you may begin searching from any position by specifying an optional number of characters from the beginning of the host string. The optional start-of-search position can range from zero to the maximum number of characters in the host string to be searched. For example:</p>
+<img src="images/EditPointer.gif"/>
+<blockquote>Print Instr(“AMOS PROFESSIONAL”,“O”,0) <br />
+Print Instr(“AMOS PROFESSIONAL”,“O”,4)</blockquote>
+<h2>Converting strings</b></h2>
+<blockquote><b>UPPER$</b><br />
+<i>function: convert a string of text to upper case</i><br />
+new$=<b>Upper$</b>(old$)</blockquote>
+<p>This function converts the characters in a string into upper case (capital) letters, and places the result into a new string. For example:</p>
+<img src="images/EditPointer.gif"/>
+<blockquote>Print Upper$(“aMoS pRoFeSsIoNaL”)</blockquote>
+<blockquote><b>LOWER$</b><br />
+<i>function: convert a string of text to lower case</i><br />
+new$=<b>Lower$</b>(old$)</blockquote>
+<p>This works in the same way as UPPER$, but translates all the characters in a string into nothing but lower case (small) letters. These sorts of text conversions are particularly useful for interpreting user-input in interactive data programs and adventure games, because input can be converted into a standard format which is understood by your programs. For example:</p>
+<img src="images/EditPointer.gif"/>
+<blockquote>Input “Do you want to continue? (Yes or No)”;ANSWER$ <br />
+ANSWER$=Lower$(ANSWER$) : If ANSWER$=“no” Then Edit <br />
+Print “OK. Continuing with your program”</blockquote>
+<blockquote><b>STR$</b><br />
+<i>function: convert a number into a string</i> <br />
+s$=<b>Str$</b>(number)</blockquote>
+<p>Str$ converts a real number variable into a string. This can be used to overcome limitations posed by functions like CENTRE, which does not accept numbers as parameters, but will work happily with parameters in the form of strings. Here is an example:</p>
+<img src="images/EditPointer.gif"/>
+<blockquote>Centre “Remaining memory is”+Str$(Chip Free)+“ Bytes”</blockquote>
+<b>VAL</b> <br />
+<i>function: convert a string of digits into a number</i> <br />
+v=Val(x$) <br />
+v#=Val(x$)</blockquote>
+<p>To perform the reverse task to STR$, the VAL function converts a list of decimal digits stored in a string, changing them into a number. If this process fails for any reason, a value of zero will be returned. For example:</p>
+<img src="images/EditPointer.gif"/>
+<blockquote>X=Val(“1234”) : Print X</blockquote>
+<blockquote><b>STRING$</b><br />
+<i>function: create a new string from an existing string</i><br />
+new$=<b>String$</b>(existing$, number)</blockquote>
+<p>Do not confuse this with STR$, which converts numbers into a string. The STRING$ function creates a new string filled with the required number of copies of the first character from an existing string. For instance, the following example produces a new string containing ten copies of the character “A”.</p>
+<img src="images/EditPointer.gif"/>
+<blockquote>Print String$(“AMOS Professional is a joy forever”,10)</blockquote>
+<h2>Manipulating strings</h2>
+<p>Sometimes you may want to handle your strings for special purposes. For example, if you wish to pad out a piece of text before it gets printed onto the screen, you will need an accurate method of creating spaces in the string.</p>
+<blockquote><b>SPACE$</b><br />
+<i>function: space out a string</i><br />
+s$=<b>Space$</b>(number of spaces)</blockquote>
+<p>Try the following example:</p>
+<img src="images/EditPointer.gif"/>
+<blockquote>Print “Ten”;Space$(10);“spaces”</blockquote>
+<blockquote><b>FLIP$</b><br />
+<i>function: invert a string</i><br />
+inverted$=<b>Flip$</b>(original$)</blockquote>
+<p>This function simply reverses the order of the characters held in an existing string. For example:</p>
+<img src="images/EditPointer.gif"/>
+<blockquote>Print Flip$(“SOMA gnippilf”)</blockquote>
+<blockquote><b>REPEAT$</b><br />
+<i>function: repeat a string</i><br />
+r$=<b>Repeat$</b>(text$,number)</blockquote>
+<p>To repeat the same string of characters using a single PRINT statement, follow your string of text with the number of times you want the repetition. Allowable values are between 1 and 127. Whenever the string is printed, a sequence of control characters is automatically added to the r$ variable, in the following format:</p>
+<blockquote>Chr$(27)+“RO”+A$+Chr$(27)+“R”+Chr$(48+n)</blockquote>
+<h2>Getting information about strings</h2>
+<p>The next three functions are provided to discover particular properties of strings.</p>
+<p><b>CHR$</b><br />
+<i>function: return the character with a given ASCII code</i><br />
+s$=<b>Chr$</b>(code number)</blockquote>
+<p>The CHR$ function creates a string that contains a single character generated by a given ASCII codenumber. Note that only the characters with ASCII code numbers 32 to 255 are printable on the screen. Others are used internally as control codes. Match characters with their codes using this routine:</p>
+<img src="images/EditPointer.gif"/>
+<blockquote>For S=32 To 255: Print Chr$(S); : Next S</blockquote>
+<blockquote><b>ASC</b><br />
+<i>function: Give the ASCII code of a character</i><br />
+code=<b>Asc</b>(a$)</blockquote>
+<p>To get the internal ASCII code of the first character in a string, use the ASC function like this:<br />
+<img src="images/EditPointer.gif"/>
+<blockquote>Print Asc(“B”)<br />
+Print Asc(“AMOS Professional”)</blockquote>
+<blockquote><b>LEN</b><br />
+<i>function: give the length of a string</i><br />
+length=<b>Len</b>(a$)</blockquote>
+<p>The LEN function returns the number of characters stored in a string. For example:</p>
+<img src="images/EditPointer.gif"/>
+<blockquote>Print Len(“0123456789”)</blockquote>
+<h2>Array operations</h2>
+<p>To end this Chapter, here are a pair of useful instructions for manipulating arrays.</p>
+<blockquote><b>SORT</b><br />
+<i>instruction: sort all elements in an array</i><br />
+<b>Sort</b> a(0)<br />
+<b>Sort</b> a#(0)<br />
+<b>Sort</b> a$(0)</blockquote>
+<p>The SORT instruction arranges the contents of any array into ascending order, and the array may contain integers, floating point numbers or strings.</p>
+<p>The starting point of your table is specified by the a$(0) parameter, and it must always be set to the first item in the array, which is item number zero. For example:</p>
+<img src="images/EditPointer.gif"/>
+<blockquote>N=5 : P=0<br />
+Dim A(N)<br />
+Print “Type in ” ;N,“ numbers, or enter 0”<br />
+Print “to stop entry and begin sort”<br />
+Repeat<br />
+&nbsp;Input A(P)<br />
+&nbsp;If A(P)=0<br />
+&nbsp;&nbsp;Dec P<br />
+&nbsp;&nbsp;Exit<br />
+&nbsp;End If<br />
+&nbsp;If P=N-1 Then Exit<br />
+&nbsp;Inc P<br />
+Until False<br />
+Sort A(0)<br />
+For X=N-P To N<br />
+&nbsp;Print A(X)<br />
+Next X</blockquote>
+<blockquote><b>MATCH</b><br />
+<i>function: search an array for a value</i><br />
+x=<b>Match</b>(array(0),value)<br />
+x=<b>Match</b>(array#(0),value#)<br />
+x=<b>Match</b>(array$(0),value$)</blockquote>
+<p>MATCH searches through an array that has already gone through the SORT process, looking for a given value. If the value is found then x is loaded with the relevant index number. However, if the search is not successful the result will be negative. If you take the absolute value of this result, the item which came closest to your original search parameter is provided. Only arrays with a single dimension can be checked in this way, and they must already be sorted before MATCH can be called.</p>
+<p>For example:</p>
+<img src="images/EditPointer.gif"/>
+<blockquote>Read N : Dim D$(N)<br />
+For X=0 To N-1 : Read D$(X) : Next X<br />
+Sort D$(0)<br />
+Do<br />
+&nbsp;REINPUT:<br />
+&nbsp;Input A$<br />
+&nbsp;If A$=“ ”Then End<br />
+&nbsp;If A$=“print all data”<br />
+&nbsp;&nbsp;For X=1 To N: Print D$(X) : Next X: Goto REINPUT<br />
+&nbsp;End If<br />
+&nbsp;POS=Match(D$(0),A$)<br />
+&nbsp;If POS&lt;-N-1<br />
+&nbsp;&nbsp;If POS&gt;-10<br />
+&nbsp;&nbsp;&nbsp;Print “Not found. Nearest to ”;D$(1) : Goto JMP<br />
+&nbsp;&nbsp;Else<br />
+&nbsp;&nbsp;&nbsp;Print “Not found. Nearest to ”;D$(N) : Goto JMP<br />
+&nbsp;&nbsp;End if<br />
+&nbsp;End If<br />
+&nbsp;If POS&gt;0 Then Print “Found ”,DS(POS);“ in record ”;POS<br />
+&nbsp;If POS&lt;0 Then Inc POS : Print “Not found. Nearest to ”:DS(Abs(POS))<br />
+&nbsp;JMP:<br />
+Loop<br />
+Data 8,“Mercury”,“Venus”,“Earth”,“Mars”,“Saturn”,“Jupiter”,“Neptune”,“Tharg”</blockquote>
+<p>Test that example out by entering various inputs, including the names of planets, single characters inupper and lower case and “print all data”. Obviously MATCH can be used with the INSTR function to set up a powerful parser routine, for interpreting user input in an adventure game.</p>
+<h1 id="maths">Maths</h1>
+<p>This Chapter provides a full explanation of using standard mathematical and trigonometric functions, as well an insight into how AMOS Professional exploits numbers.</p>
+<h2>Arithmetical calculations</h2>
+<p>Nothing could be simpler than asking AMOS Professional to run this sum:</p>
+<img src="images/EditPointer.gif"/>
+<blockquote>Print 2+2</blockquote>
+<p>Arithmetical operations are straightforward, provided the correct symbols are used, as follows:</p>
+<table>
+<tr><td>+</td><td>the plus sign always signals addition</td></tr>
+<tr><td>-</td><td>the minus sign is used for subtraction</td></tr>
+<tr><td>*</td><td>for multiplication, an asterisk character must be used</td></tr>
+<tr><td>/</td><td>divisions are made using the forward-slash symbol</td></tr>
+<tr><td>^</td><td>the circumflex character is used as the exponential symbol, and it means “raise this number to a given power”, which is exactly the same as multiplying a number with itself.</td></tr>
+</table>
+<p>So the following two lines are interchangeable:</p>
+<img src="images/DirectPointer.gif"/>
+<blockquote>Print 3^5<br />
+Print 3*3*3*3*3</blockquote>
+<p>The following logical operations can also be used in calculations:</p>
+<p><b>MOD</b> is the “modulo” operator, which acts as a constant multiplier.</p>
+<p><b>AND</b>, <b>OR</b> and <b>XOR</b> are the three logical operations.</p>
+<h2>Calculation priorities</h2>
+<p>Arithmetical instructions are taken literally, using a set of built-in priorities. So the following linesgive the results 6 and 8 respectively:</p>
+<img src="images/DirectPointer.gif"/>
+<blockquote>Print 2+2*2<br />
+Print (2+2)*2</blockquote>
+<p>AMOS Professional handles a combination of calculations that make up an expression” in the following strict order of priority:</p>
+<ul>
+<li>exponential numbers are always calculated first ( ^ ).</li>
+<li>multiplications and divisions are then calculated in order of appearance, from left to right (*/).Remainders of divisions will be dealt with by any modulo operations (MOD).</li>
+<li>additions and subtractions are calculated last, again in order, from left to right (+-).</li>
+<li>any logical operations will not be taken into account until after all the above calculations havebeen completed (AND, OR, XOR).</li>
+<li>Any calculation placed inside a pair of round brackets is evaluated first, and treated as a singlenumber.</li>
+</ul>
+<p>The next calculation gives a result of 43, because it evaluated in the following order:</p>
+<img src="images/DirectPointer.gif"/>
+<blockquote>Print 10+2*5-8/4+5^2</blockquote>
+<p>5^2 = 25</p>
+<p>2*5 = 10</p>
+<p>8/4 = 2</p>
+<p>10+10 = 20</p>
+<p>20-2 = 18</p>
+<p>18+25 = 43</p>
+<p>By adding two strategic pairs of brackets to the same calculation, the logical interpretation istransformed, resulting in an answer of 768, like this:</p>
+<img src="images/DirectPointer.gif"/>
+<blockquote>Print (10+2)*(5-8/4+5)^2</blockquote>
+<p>10+2 = 12</p>
+<p>5-8/4+5 = 5-2+5</p>
+<p>5-2+5 = 8</p>
+<p>8^2 = 64</p>
+<p>12*64 = 768</p>
+<h2>Fast calculations</h2>
+<p>There are three instructions that can be used to speed up the process of simple calculations.</p>
+<blockquote><b>INC</b><br />
+<i>instruction: increment an integer variable by 1</i><br />
+<b>Inc</b> variable</blockquote>
+<p>This command adds 1 to an integer (whole number) variable, using a single instruction to perform the expression variable=variable+1 very quickly. For example:</p>
+<img src="images/DirectPointer.gif"/>
+<blockquote>V=10 : Inc V : Print V</blockquote>
+<blockquote><b>DEC</b><br />
+<i>instruction: decrement an integer variable by 1</i><br />
+<b>Dec</b> variable</blockquote>
+<p>Similarly to INC, the DEC command performs a rapid subtraction of 1 from an integer variable. For example:</p>
+<img src="images/DirectPointer.gif"/>
+<blockquote>V=10 : Dec V : Print V</blockquote>
+<blockquote><b>ADD</b><br />
+<i>instruction: perform fast integer addition</i><br />
+Add</b> variable,expression<br />
+Add</b> variable,expression,<i>base To top</i></blockquote>
+<p>The ADD command can be used to add the result of an expression to a whole number variable immediately. It is the equivalent to variable=variable+ expression but performs the addition nearly twice as fast.</p>
+<p>There is a more complex version of ADD, which is ideal for handling certain loops much more quickly than the equivalent separate instructions. When Base number and Top number parameters are included, ADD is the equivalent to the following lines:</p>
+<img src="images/EditPointer.gif"/>
+<blockquote>V=V+A<br />
+If V&lt;BASE Then V=TOP<br />
+If V&gt;TOP Then V=BASE</blockquote>
+<p>Here is an example:</p>
+<img src="images/EditPointer.gif"/>
+<blockquote>Dim A(10)<br />
+For X=0 To 10:A(X)=X:Next X<br />
+V=0<br />
+Repeat<br />
+&nbsp;Add V,1,1 To 10<br />
+&nbsp;Print A(V)<br />
+Until V=11 : Rem This loop is infinite as V is always &lt;11</blockquote>
+<h2>Relative values</h2>
+<p>It is obvious that every expression has a value, but expressions are not restricted to whole numbers(integers), or any sort of numbers. Expressions can be created from real numbers or strings of characters. If you need to compare two expressions, the following functions are provided to examine them and establish their relative values.</p>
+<blockquote><b>MAX</b><br />
+<i>function: return the maximum of two values</i><br />
+value=<b>Max</b>(a,b)<br />
+value#=<b>Max</b>(a#,b#)<br />
+value$=<b>Max</b>(a$,b$)</blockquote>
+<p>MAX compares two expressions and returns the largest. Different types of expressions cannot becompared in one instruction, so they must not be mixed.</p>
+<p>Here are some examples:</p>
+<img src="images/DirectPointer.gif"/>
+<blockquote>Print Max(99,1)<br />
+Print Max(“AMOS Professional”,“AMOS”)</blockquote>
+<blockquote><b>MIN</b><br />
+<p><i>function: return the minimum of two values</i><br />
+<p>value=<b>Min</b>(a,b)<br />
+<p>value#=<b>Min</b>(a#,b#)<br />
+<p>value$=<b>Min</b>(a$,b$)</blockquote>
+<p>Similarly, the MIN function returns the smaller value of two expressions. Expressions can consist ofstrings, integers or real numbers, but only compare like with like, as follows:</p>
+<img src="images/DirectPointer.gif"/>
+<blockquote>A=Min(99,1) : Print A<br />
+Print Min(“AMOS Professional”,“AMOS”)</blockquote>
+<h2>Values and signs</h2>
+<p>Any number can have one of three values: negative, positive or zero, and these are represented by the “sign” of a number.</p>
+<blockquote><b>SGN</b><br />
+<i>function: return the sign of a number</i><br />
+sign=<b>Sgn</b>(value)<br />
+sign=<b>Sgn</b>(value#)</blockquote>
+<p>The SGN function returns a value representing the sign of a number. The three possible results are these:</p>
+<p>-1 if the value is negative</p>
+<p> 1 if the value is positive</p>
+<p> 0 if the value is zero</p>
+<blockquote><b>ABS</b><br />
+<i>function: return an absolute value</i><br />
+a=<b>Abs</b>(value)<br />
+a=<b>Abs</b>(value#)</blockquote>
+<p>This function is used to convert arguments into a positive number. ABS returns an absolute value of an integer or fractional number, paying no attention to whether that number is positive or negative, in other words, ignoring its sign.</p>
+<p>For example:</p>
+<img src="images/DirectPointer.gif"/>
+<blockquote>Print Abs(-1),Abs(1)</blockquote>
+<h2>Floating point numbers</h2>
+<p>Numbers that consist of many digits either side of a decimal point can often give very messy results in Basic programming. The movement of the decimal point slows down the processing, and levels of accuracy may be too great for your needs.</p>
+<blockquote><b>INT</b><br />
+<i>function: convert floating point number into an integer</i><br />
+integer=<b>Int</b>(number#)</blockquote>
+<p>The INT function rounds <b>down</b> a floating point number to the nearest whole number (integer), so that the result of the following two example lines is 3 and -2, respectively:</p>
+<img src="images/EditPointer.gif"/>
+<blockquote>Print Int(3.9999)<br />
+Print Int(-1.1)</blockquote>
+<blockquote><b>FIX</b><br />
+<i>instruction: fix precision of floating point</i><br />
+<b>Fix</b>(number)</blockquote>
+<p>The FIX command changes the way floating point numbers are displayed on screen, or output to a printer. The precision of these floating point numbers is determined by a number (n) that is specified in brackets, and there can be four possibilities, as follows:</p>
+<ul>
+<li>If (n) is greater than 0 and less than 16, the number of figures shown after the decimal pointwill be n.</li>
+<li>If (n) equals 16 then the format is returned to normal.</li>
+<li>If (n) is greater than 16, any trailing zeros will be removed and the display will beproportional.</li>
+<li>If (n) is less than 0, the absolute value ABS(n) will determine the number of digits after thedecimal point, and all floating point numbers will be displayed in exponential format.</li>
+</ul>
+<p>Here are some examples:</p>
+<img src="images/EditPointer.gif"/>
+<blockquote>Fix (2) : Print Pi# : Rem Two digits after decimal point<br />
+Fix(-4) : Print Pi# : Rem Exponential with four digits after decimal point<br />
+Fix(16) : Print Pi# : Rem Revert to normal mode</blockquote>
+<h2>Single and double precision</h2>
+<p>Although the standard floating point system is perfect for general use, it may not be accurate enough for genuine scientific applications, or advanced simulations. AMOS Professional offers a choice of two separate calculation systems.</p>
+<h3>Single Precision</h3>
+<p>This is the default mode, and is automatically used whenever an AMOS Professional program is RUN. Single precision is accurate to about seven decimal digits, it is very fast and it is ideal for the vast majority of applications.</p>
+<h3>Double precision</h3>
+<p>Double precision mode offers double the normal degree of accuracy, and is capable of dealing with extremely precise values. Unlike most pocket calculators, AMOS Professional double precision can handle numbers with up to 16 significant digits.</p>
+<p>This extent of accuracy will consume twice as much memory as the standard version, and it will also cause a great slowing down of calculations. It should only be used when extra accuracy is absolutely vital.</p>
+<blockquote><b>SET DOUBLE PRECISION</b><br />
+<i>instruction: engage double precision accuracy</i><br />
+<b>Set Double Precision</b></blockquote>
+<p>Double precision should be set at the <b>start</b> of your program, and all floating point calculations will beperformed using the more accurate mode. Because the two modes are completely separate, single precision and double precision modes <b>cannot</b> be mixed in the same program.</p>
+<p><b>Standard mathematical functions</b></p>
+<blockquote><b>SQR</b><br />
+<i>function: calculate square root</i><br />
+square=<b>Sqr</b>(number)<br />
+square#=<b>Sqr</b>(number#)</blockquote>
+<p>This function calculates the square root of a positive number, that is to say, it returns a number thatmust be multiplied by itself to give the specified value. For example:</p>
+<img src="images/DirectPointer.gif"/>
+<blockquote>Print Sqr(25)<br />
+Print Sqr(11.1111)</blockquote>
+<blockquote><b>EXP</b><br />
+<i>function: calculate exponential</i><br />
+exponential#=<b>Exp</b>(value#)</blockquote>
+<p>Use the EXP function to return the exponential of a specified value. For example:</p>
+<img src="images/DirectPointer.gif"/>
+<blockquote>Print Exp(1)</blockquote>
+<blockquote><b>LOG</b><br />
+<i>function: return logarithm</i><br />
+a=<b>Log</b>(value)<br />
+a#=<b>Log</b>(value#)</blockquote>
+<p>LOG returns the logarithm in base 10 (log 10) of the given value. For example:</p>
+<img src="images/EditPointer.gif"/>
+<blockquote>Print Log(10)<br />
+A#=Log(100)</blockquote>
+<blockquote><b>LN</b><br />
+<i>function: return natural logarithm</i><br />
+a#=<b>Ln</b>(value#)</blockquote>
+<p>The LN Function calculates the natural logarithm (Naperian logarithm) of the given value. For example:</p>
+<img src="images/EditPointer.gif"/>
+<blockquote>Print Ln(10)<br />
+A#=Ln(100) : Print A#</blockquote>
+<h2>Trigonometry</h2>
+<p>The AMOS Professional trigonometric functions are often used for calculating angles, creating graphic design effects, calculating trajectories in gameplay, as well as making intricate musical waveforms.</p>
+<blockquote><b>Pi#</b><br />
+<i>function: return a constant p</i><br />
+p#=<b>Pi#</b></blockquote>
+<p>Pi is the Greek letter &pi; it that is used to summon up a number which begins 3.141592653 and on forever. This number is the ratio of the circumference of a circle to its diameter, and it is used in trigonometry as the tool for calculating aspects of circles and spheres. Note that in order to avoid clashes with your own variable names, a # character is part of the token name. The PI# function gives a constant value of Pi in your calculations.</p>
+<p>In the following diagram of a circle, a point is moved from the right hand side of the x-axis up alongthe perimeter for a distance a, stopping at position <b>b</b>.</p>
+<img src="images/524pi.gif" />
+<p>In conventional trigonometry, a circle is divided into 360 degrees, so <b>a</b> defines the number of degrees in the angle between the x-axis and the line from the centre of the circle to point <b>b</b>. However, your Amiga uses a default by which it expects all angles to be given in “radians” and not degrees.</p>
+<blockquote><b>DEGREE</b><br />
+<i>instruction: use degrees</i><br />
+<b>Degree</b></blockquote>
+<p>If, for any reason, you are unhappy with the complexities of radians, AMOS Professional is happy toaccept your trigonometric instructions in degrees. Once the DEGREE command has been activated, all subsequent calls to the trigonometric functions will expect degrees to be used.</p>
+<img src="images/EditPointer.gif"/>
+<blockquote>Degree<br />
+Print Sin(45)</blockquote>
+<blockquote><b>RADIAN</b><br />
+<i>instruction: use radians</i><br />
+<b>Radian</b></blockquote>
+<p>If DEGREE has already been called, the RADIAN function returns to the default status, where all future angles are expected to be entered in radians.</p>
+<blockquote><b>SIN</b><br />
+<i>function: calculate sine of an angle</i><br />
+s#=<b>Sin</b>(angle)<br />
+s#=<b>Sin</b>(angle#)</blockquote>
+<p>The SIN function calculates how far point <b>b</b> is above the x-axis, known as the sine of the angle a.</p>
+<p>Note that SIN always returns a floating point number. For example:</p>
+<img src="images/EditPointer.gif"/>
+<blockquote>Degree<br />
+For X=0 To 319<br />
+&nbsp;Y#=Sin(X)<br />
+&nbsp;Plot X,Y#*50+100<br />
+Next X</blockquote>
+<blockquote><b>COS</b><br />
+<i>function: calculate cosine of an angle</i><br />
+c#=<b>Cos</b>(angle)<br />
+c#=<b>Cos</b>(angle#)</blockquote>
+<p>In the above diagram, the distance that point <b>b</b> is to the right of the y-axis is known as the cosine. If b goes to the left of the y-axis, its cosine value becomes negative. (Similarly, if it drops below the x-axis, its sine value is negative.) The COS function gives the cosine of a given angle. To demonstrate this, add the following two lines to your last example between the PLOT and NEXT instructions:</p>
+<img src="images/EditPointer.gif"/>
+<blockquote>Y#=Cos(X)<br />
+Plot X,Y#*50+100</blockquote>
+<blockquote><b>TAN</b><br />
+<i>function: calculate tangent of an angle</i><br />
+t#=<b>Tan</b>(angle)<br />
+t#=<b>Tan</b>(angle#)</blockquote>
+<p>For any angle, the tangent is the result of when its sine is divided by its cosine. The TAN function generates the tangent of a given angle. For example:</p>
+<img src="images/EditPointer.gif"/>
+<blockquote>Degree : Print Tan(45)<br />
+Radian : Print Tan(Pi#/8)</blockquote>
+<blockquote><b>ACOS</b><br />
+<i>function: calculate arc cosine</i><br />
+a#=<b>Acos</b>(number#)</blockquote>
+<p>The ACOS function takes a number between -1 and +1, and calculates the angle which would beneeded to generate this value with COS. For example:</p>
+<img src="images/EditPointer.gif"/>
+<blockquote>A#=Cos(45)<br />
+Print Acos(A#)</blockquote>
+<blockquote><b>ASIN</b><br />
+<i>function: calculate arc sine</i><br />
+a#=<b>Asin</b>(number#)</blockquote>
+<p>Similarly to ACOS, the ASIN function calculates the angle needed to generate a value with SIN.</p>
+<blockquote><b>ATAN</b><br />
+<i>function: calculate arc tangent</i><br />
+a#=<b>Atan</b>(number#)</blockquote>
+<p>ATAN returns the arctan of a given number, like this:</p>
+<img src="images/EditPointer.gif"/>
+<blockquote>Degree : Print Tan(2)<br />
+Degree : Print Atan(0.03492082)</blockquote>
+<p>A hyperbola is a conical section, formed by a plane that cuts both bases of a cone. In other words, an asymmetrical curve. Wave forms and trajectories are much more likely to follow this sort of eccentric curve than perfect arcs of circles. The hyperbolic functions express the relationship between various distances of a point on the hyperbolic curve and the coordinate axes.</p>
+<blockquote><b>HSIN</b><br />
+<i>function: calculate hyperbolic sine</i><br />
+h#=<b>Hsin</b>(angle)<br />
+h#=<b>Hsin</b>(angle#)</blockquote>
+<p>The HSIN function calculates the hyperbolic sine of a given angle.</p>
+<blockqute><b>HCOS</b><br />
+<i>function: calculate hyperbolic cosine</i><br />
+h#=<b>Hcos</b>(angle)<br />
+h#=<b>Hcos</b>(angle#)</blockquote>
+<p>Use this function to find the hyperbolic cosine of an angle.</p>
+<blockquote><b>HTAN</b><br />
+<i>function: calculate hyperbolic tangent</i><br />
+h#=<b>Htan</b>(angle)<br />
+h#=<b>Htan</b>(angle#)</blockquote>
+<p>HTAN returns the hyperbolic tangent of the given angle.</p>
+<h2>Random numbers</h2>
+<p>The easiest way to introduce an element of chance or surprise into a program is to throw some numbered options into an electronic pot and allow AMOS Professional to pull one out at random. After a number has been selected and used, it is thrown back into the pot once again. It then has the same chance as any other number offered for selection, when the next random choice is made.</p>
+<blockquote><b>RND</b><br />
+<i>function: generate a random number</i><br />
+value=<b>Rnd</b>(number)</blockquote>
+<p>The RND function generates integers at random, between zero and any number specified in brackets.If your specified number is greater than zero, random numbers will be generated up to that maximum number. However, if you specify 0, then RND will return the last random value it generated. This is useful for debugging programs. Here is an example:</p>
+<img src="images/EditPointer.gif"/>
+<blockquote>Do<br />
+&nbsp;C=Rnd(15) : X=Rnd(320) : Y=Rnd(200)<br />
+&nbsp;Ink C : Text X,Y,“AMOS Professional at RANDOM”<br />
+<p>Loop</blockquote>
+<blockquote><b>RANDOMIZE</b><br />
+<i>instruction: set the seed for a random number</i><br />
+<b>Randomize</b> seed</blockquote>
+<p>In practice, the numbers produced by the RND function are not genuinely random at all. They are computed by an internal mathematical formula, whose starting point is taken from a number known as a “seed”. This seed is set to a standard value whenever AMOS Professional is loaded into your Amiga, and that means that the sequence of numbers generated by the RND function will be exactly the same each time your program is run.</p>
+<p>This may well be acceptable for arcade games, where pre-set random patterns generated by RND can be used to advantage, but it is a useless system for more serious applications.</p>
+<p>The RANDOMIZE command solves this problem by setting the value of the seed directly. This seed can be any value you choose, and each seed will generate an individual sequence of numbers. RANDOMIZE can also be used in conjunction with the TIMER variable, to generate genuine random numbers.</p>
+<blockquote><b>TIMER</b><br />
+<i>reserved variable: count in 50ths of a second</i><br />
+v=<b>Timer</b><br />
+<b>Timer</b>=v</blockquote>
+<p>The TIMER reserved variable is incremented by 1 unit every 50th of a second, in other words, it returns the amount of time that has elapsed since your Amiga was last switched on. As explained above, this makes it a perfect “seed” to be used with the RANDOMIZE function, as follows:</p>
+<img src="images/EditPointer.gif"/>
+<blockquote>Randomize Timer</blockquote>
+<p>The best place to use this technique is immediately after the user has entered some data into thecomputer. Even a simple key-press to start a game will work perfectly, and generate truly random numbers.</p>
+<h1 id="controlstructures">Control Structures</h1>
+<p>There is a traditional group of instructions that allow computer programs to make decisions. They areusually known as control structures. This Chapter explains how AMOS Professional takes (lie best ofthese traditions and uses them to give your Amiga a logical brain.</p>
+<blockquote><b>GOTO</b><br />
+<i>structure: jump to a specified place in the program</i><br />
+<b>Goto</b> label<br />
+<b>Goto</b> line number<br />
+<b>Goto</b> expression</blockquote>
+<p>A computer program that can only obey a list of instructions one after the other is a very limited computer program indeed. One way of forcing programs to jump to specified locations is to use the old fashioned GOTO structure, followed by a target destination. In AMOS Professional, these destinations can be a label, a line number or a variable. These are explained in Chapter 5.1.</p>
+<p><b>Label</b> markers can consist of names that use any string of letters or numbers, as well as theunderscore character “_”, and they must be ended with the colon character “:” as follows:</p>
+<img src="images/EditPointer.gif"/>
+<blockquote>Print “Jump in two seconds” : Wait 100<br />
+Goto LABEL_MARKER<br />
+Wait 180000 : Rem Wait one hour<br />
+LABEL_MARKER:<br />
+Print “Now is the time to jump!”</blockquote>
+<p>Numbers may be used to identify specific lines, and the program can be commanded to GOTO one ofthese optional markers, like this:</p>
+<img src="images/EditPointer.gif"/>
+<blockquote>Goto 5<br />
+Print “I am being ignored”<br />
+5 Print “I am line 5”</blockquote>
+<p>It should be obvious that these identification numbers have nothing to do with the number of lines in a program, but they may still lead to confusion. Labels are much easier to remember and to locate.</p>
+<p><b>Expressions</b> can also be used for this purpose, and the expression may be any string or integer. Strings hold the name of a label, and integers return a line identification number. Here is an example:</p>
+<img src="images/EditPointer.gif"/>
+<blockquote>BEGIN:<br />
+Goto “BED”+“2”<br />
+End<br />
+BED1:<br />
+Print “This Bed will never be used”<br />
+Bed2:<br />
+Print “Welcome to Bed Two!”<br />
+Wait 20<br />
+Goto BEGIN</blockquote>
+<blockquote><b>GOSUB</b><br />
+<i>structure: jump to a sub-routine</i><br />
+<b>Gosub</b> label<br />
+<b>Gosub</b> number<br />
+<b>Gosub</b> expression</blockquote>
+<p>Packages of program instructions that perform a specific task can be thought of as “routines”. When such routines are split into smaller packages of instructions, they can be thought of as “sub-routines”. GOSUB is another antiquated command, and is used to perform a jump to a sub-routine. In fact, GOSUB is made redundant by the AMOS Professional procedure system, but it can be useful for STOS users who want to convert programs.</p>
+<p>As with GOTO, there are three alternative targets for a GOSUB instruction: labels, line numbers or expressions.</p>
+<p>To make sub-routines easier to spot in your program listings, it is good practice to place them at the end of the main program. A statement such as EDIT or DIRECT should also be used to end the main program, which prevents AMOS Professional from executing any GOSUBs after the main program has finished.</p>
+<blockquote><b>RETURN</b><br />
+<i>instruction: return from a sub-routine called by GOSUB</i><br />
+<b>Return</b></blockquote>
+<p>When a program obeys a GOSUB instruction, it must be instructed to RETURN to the main programafter the sub-routine has been executed. It should be noted that a single GOSUB statement can be linked to several RETURN commands, allowing exits from any number of different points in theroutine, depending on the circumstances. After the RETURN, a jump is made back to the instructionimmediately after the original GOSUB. For example:</p>
+<img src="images/EditPointer.gif"/>
+<blockquote>Print “I am the main program”<br />
+For N=1 To 3<br />
+&nbsp;Gosub TEST<br />
+Next N<br />
+End<br />
+TEST:<br />
+Print “Here we go GOSUB” : Wait 50<br />
+Print “Number =”;N<br />
+Return</blockquote>
+<blockquote><b>POP</b><br />
+<i>instruction: remove RETURN information</i><br />
+<b>Pop</b></blockquote>
+<p>Normally you cannot exit from a GOSUB statement using a standard GOTO, and this may be inconvenient. For example, there could be an error that makes it unacceptable to return to the program exactly where you left it. In such circumstances, the POP command can be used to remove the return address generated by a GOSUB, allowing you to leave the sub-routine without the final RETURN statement being executed. For example:</p>
+<img src="images/EditPointer.gif"/>
+<blockquote>Do<br />
+&nbsp;Gosub THERE<br />
+Loop<br />
+HERE:<br />
+Print “I've just popped out!”<br />
+Direct : Rem No risk of accidental subroutine<br />
+THERE:<br />
+Print “Hello There!”<br />
+If Mouse Key Then Pop : Goto HERE<br />
+Return</blockquote>
+<h2>Decision making</h2>
+<p>The command words used in the decision making process have very similar meanings in AMOSProfessional as they do in normal English.</p>
+<blockquote><b>IF</b><br />
+<b>THEN</b><br />
+<i>structure: choose between alternative actions</i><br />
+<b>If</b> conditions <b>Then</b> statements</blockquote>
+<p>The IF ... THEN structure allows simple decisions to be made within a program, so IF a condition is true THEN the computer decides to take a particular course of action. If the condition is not true, the machine does something else. For example:</p>
+<img src="images/EditPointer.gif"/>
+<blockquote>NIGHT=12<br />
+DAY=12<br />
+Print “What time is it now?” : Wait 150<br />
+If NIGHT=DAY Then Goto BED<br />
+Print “Time I bought a watch”<br />
+Goto WATCHMAKER<br />
+BED:<br />
+Print “I think it is bed time”<br />
+WATCHMAKER:</blockquote>
+<p><b>AND</b><br />
+<b>OR</b><br />
+<i>structures: qualify a condition</i><br />
+<b>If</b> condition <b>And</b> condition <b>Then</b> statement<br />
+<b>If</b> condition <b>Or</b> condition <b>Then</b> statement</blockquote>
+<p>The list of condition; in an IF ... THEN structure can be any list of tests, including AND and OR. Try changing the conditions of the last example with either of the following lines:</p>
+<img src="images/EditPointer.gif"/>
+<blockquote>If NIGHT=DAY And NIGHT&lt;&gt;12 Then Goto BED</blockquote>
+<img src="images/EditPointer.gif"/>
+<blockquote>If NIGHT&lt;DAY Or NIGHT=12 Then Edit</blockquote>
+<blockquote><b>ELSE</b><br />
+<i>structure: qualify a condition</i><br />
+<b>If</b> condition <b>Then</b> statement1 <b>Else</b> statement2</blockquote>
+<p>ELSE is also understood when making decisions, as to what action should be taken, depending onconditions. So the last example could be changed to something like this:</p>
+<img src="images/EditPointer.gif"/>
+<blockquote>If NIGHT+1=DAY Then Goto BED Else Shoot</blockquote>
+<p>The alternative choice of statements in this sort of structure must be a list of one or more AMOS Professional instructions. Also remember to include a separate GOTO command if you want to jump to a label or a numbered line, otherwise the label will be treated as a procedure name and it could possibly generate an error. For example:</p>
+<img src="images/EditPointer.gif"/>
+<blockquote>If NIGHT=1 Then Goto BED: Rem This is perfect</blockquote>
+<img src="images/CrossedOutPointer.gif"/>
+<blockquote>If NIGHT=1 Then BED: Rem This looks for a BED procedure</blockquote>
+<p>An IF ... THEN statement is limited to a <b>single line</b>, of a listing, which is not very satisfactory to an AMOS Professional programmer. This technique has been superseded by a “structured test”, where IF is used to trigger off a whole range of instructions, depending on the outcome of a single decision.</p>
+<h2>Structured tests</h2>
+<blockquote><b>END IF</b><br />
+<i>structure: terminate a structured test</i><br />
+<b>If</b> structured test <b>End If</b></blockquote>
+<p>In a structured test, each test is set up with an IF and ended with a matching END IF, but under no circumstances can a THEN be used anywhere inside such a test! The statements in a structured test are separated by colons on any particular line, as usual, but can extend over any number of lines in your listing, as required. Look at this old fashioned schematic line:</p>
+<img src="images/CrossedOutPointer.gif"/>
+<blockquote>If condition=true Then Goto Label1 Else Label2</blockquote>
+<p>This may now be replaced by the alternative structured test format:</p>
+<img src="images/EditPointer.gif"/>
+<blockquote>If condition=true : Goto Label1 : Else Goto Label2 : End If</blockquote>
+<p>Here is a working example:</p>
+<img src="images/EditPointer.gif"/>
+<blockquote>Input “Type values A,B and C: ”;A,B,C<br />
+If A=B<br />
+&nbsp;Print “A equals B”;<br />
+Else<br />
+&nbsp;Print “A is not equal to B”;<br />
+&nbsp;If A&lt;&gt;B And A&lt;&gt;C<br />
+&nbsp;&nbsp;Print “or to C”<br />
+&nbsp;End If<br />
+End If</blockquote>
+<p>Note how each IF statement must be paired with a single END IF to inform AMOS Professionalexactly which group of instructions is to be executed inside the test.</p>
+<blockquote><b>ELSE IF</b><br />
+<i>structure: allow multiple structured tests</i><br />
+<b>If</b> condition <b>Else If</b> multiple conditions ... <b>Else</b> statement <b>End If</b></blockquote>
+<p>This allows multiple tests to be performed. ELSE IF must be used within a normal IF ... END IF statement, and the only rule to remember is that there must be one ELSE just before the END IF. This sort of test waits for an expression, and if the expression is True, then what comes after it is executed. Here is an example:</p>
+<img src="images/EditPointer.gif"/>
+<blockquote>If A=1<br />
+&nbsp;Print “A=1”<br />
+Else If A=2<br />
+&nbsp;Print “A=2”<br />
+Else If A=3<br />
+&nbsp;Print “A=3”<br />
+Else<br />
+&nbsp;Print “Something Else”<br />
+End If</blockquote>
+<p>If necessary, an entire test can be placed in a single line, as follows:</p>
+<img src="images/EditPointer.gif"/>
+<blockquote>If A=1 : Print “A=1” : Else If A=2 : Print “A=2” : Else : Print “Something Else” : End If</blockquote>
+<p>When taking logical decisions, your Amiga understands the following character symbols, which are used as a form of short-hand:</p>
+<table>
+<tr><th>Symbol</th><th>Meaning</th></tr>
+<tr><td>=</td><td>equal to</td></tr>
+<tr><td>&lt;&gt;</td><td>not equal to</td></tr>
+<tr><td>&gt;</td><td>greater than</td></tr>
+<tr><td>&gt;</td><td>less than</td></tr>
+<tr><td>&gt;=</td><td>greater than or equal to</td></tr>
+<tr><td>&lt;=</td><td>less than or equal to</td></tr>
+</table>
+<p>There are also three functions that can be called during the decision making process.</p>
+<blockquote><b>TRUE</b><br />
+<b>FALSE</b><br />
+<i>functions: hold value of -1 (True) and zero (False)</i><br />
+value=<b>True</b><br />
+value=<b>False</b></blockquote>
+<p>In all the conditional operations such as IF ... THEN and REPEAT ... UNTIL, the value of -1 is used to represent TRUE, and the value of 0 is used to represent FALSE. A value of either -1 (True) or 0 (False) is produced every time a test is made to satisfy a condition.</p>
+<blockquote><b>NOT</b><br />
+<i>structure: toggle binary digits</i><br />
+value=<b>Not</b> digits</blockquote>
+<p>NOT is used to swap over every digit in a binary number from a 0 to a 1, and vice versa. For example:</p>
+<img src="images/EditPointer.gif"/>
+<blockquote>Print Bin$(Not%11110000,8)</blockquote>
+<p>Since -1 (True) can be expressed in binary as %1111111111111111, then NOT TRUE must be equal to FALSE, and a logical NOT operation is achieved.</p>
+<blockquote><b>SWAP</b><br />
+<i>structure: swap the contents of two variables</i><br />
+<b>Swap</b> a,b<br />
+<b>Swap</b> a#,b#<br />
+<b>Swap</b> a$,b$</blockquote>
+<p>Use the SWAP command to swap over the data between any two variables of the same type. For example:</p>
+<img src="images/EditPointer.gif"/>
+<blockquote>A=10 : B=99: Print A,B<br />
+Swap A,B : Print A,B</blockquote>
+<h2>Using loops</h2>
+<p>To write a separate routine for dozens of logical choices, and to end up with dozens of END IFs is not only messy, but also extremely tedious. AMOS Professional offers all of the expected programming short-cuts to allow sections of code to be repeated as often as necessary. These repeated parts of programs are known as “loops”.</p>
+<blockquote><b>DO</b><br />
+<b>LOOP</b><br />
+<i>structure: keep repeating a list of statements</i><br />
+<b>Do</b><br />
+list of statements<br />
+<b>Loop</b></blockquote>
+<p>This pair of commands will loop a list of AMOS Professional statements forever, with DO acting as the marker position for the LOOP to return to. Both the DO and LOOP should occupy their own lines, as follows:</p>
+<img src="images/EditPointer.gif"/>
+<blockquote>Do<br />
+&nbsp;Print “FOREVER AND”: Wait 25<br />
+Loop</blockquote>
+<blockquote><b>EXIT</b><br />
+<i>structure: break out of a loop</i><br />
+<b>Exit</b><br />
+<b>Exit</b> <i>number</i></blockquote>
+<p>EXIT forces the program to leave a loop immediately, and it can be used to escape from all the types of loops employed in AMOS Professional, such as FOR ... NEXT, REPEAT ... UNTIL, WHILE ... WEND and DO ... LOOP. Any number of loops may be nested inside of one another, and when used on its own, EXIT will short-circuit the innermost loop only. By including an optional number after EXIT, that number of nested loops will be taken into account before the EXIT is made, and the program will jump directly to the instruction immediately after the relevant loop.</p>
+<p>For example:</p>
+<img src="images/EditPointer.gif"/>
+<blockquote>Do<br />
+&nbsp;Do<br />
+&nbsp;&nbsp;Input “Type in a number”;X<br />
+&nbsp;&nbsp;Print “I am the inner loop”<br />
+&nbsp;&nbsp;If X=1 Then Exit<br />
+&nbsp;&nbsp;If X=2 Then Exit 2<br />
+&nbsp;Loop<br />
+&nbsp;Print “I am the outer loop”<br />
+Loop<br />
+Print “And I am outside both loops!”</blockquote>
+<blockquote><b>EXIT IF</b><br />
+<i>structure: exit from a loop depending on a test</i><br />
+<b>Exit</b> If expression<br />
+<b>Exit</b> If expression,<i>number</i></blockquote>
+<p>It is often necessary to leave a loop as a result of a specific set of conditions, and this can be simplified by using the EXIT IF instruction. As explained above, in conditional operations, the value -1 represents True, whereas a zero represents False. After using EXIT IF, an expression is given which consists of one or more tests in standard AMOS Professional format. The EXIT will only be performed IF the result is found to be -1 (True).</p>
+<p>As before, an optional number can be given to specify the number of loops to be jumped from, otherwise only the current loop will be aborted. For example:</p>
+<img src="images/EditPointer.gif"/>
+<blockquote>While L=0<br />
+&nbsp;A=0<br />
+&nbsp;Do<br />
+&nbsp;&nbsp;A=A+1<br />
+&nbsp;&nbsp;For X=0 To 100<br />
+&nbsp;&nbsp;&nbsp;Exit If A=10,2 : Rem Exit from DO and FOR loops<br />
+&nbsp;&nbsp;Next X<br />
+&nbsp;Loop<br />
+&nbsp;Exit 1: Rem Exit from WHILE loop<br />
+Wend</blockquote>
+<h2>Conditional loops</h2>
+<blockquote><b>WHILE</b><br />
+<b>WEND</b><br />
+<i>structure: repeat loop while condition is true</i><br />
+<b>While</b> condition<br />
+list of statements<br />
+<b>Wend</b></blockquote>
+<p>This pair of commands provides a convenient way of making the program repeat a group ofinstructions all the time a particular condition is true. WHILE marks the start of this loop, and thecondition is checked for a value of -1 (True) from this starting position through to the end position,which is marked by a WEND. The condition is then checked again at every turn of the loop, until it isno longer true. For example:</p>
+<img src="images/EditPointer.gif"/>
+<blockquote>BLAZES:<br />
+Print “Please type in the number 9”<br />
+Input X<br />
+While X=9<br />
+&nbsp;Cls : Print X : Wait 50 : Goto BLAZES<br />
+Wend<br />
+Print “That is not a 9!”</blockquote>
+<p>You are free to use AND, OR and NOT to qualify the conditions to be checked.</p>
+<blockquote><b>REPEAT</b><br />
+<b>UNTIL</b><br />
+<i>structure: repeat loop until a condition is satisfied</i><br />
+<b>Repeat</b><br />
+list of statements<br />
+<b>Until</b> condition</blockquote>
+<p>Unlike that last example, instead of checking if a condition is true or false at the start of a loop, the pair of commands makes its check at the end of a loop. REPEAT marks the start and UNTIL the end ofthe loop to be checked. This means that if a condition is false at the beginning of a WHILE...WEND structure, that loop will never be performed at all, but if it is true at the beginning of a REPEAT...UNTIL structure, the loop will be performed at least once. Here is an example that waits for you to press a mouse button:</p>
+<img src="images/EditPointer.gif"/>
+<blockquote>Repeat<br />
+&nbsp;Print “I can go on forever” : Wait 25<br />
+Until Mouse Key&lt;&gt;0</blockquote>
+<h2>Controlled loops</h2>
+<p>When deciding how many times a loop is to be repeated, control can be made much more definitethan relying on whether conditions are true or false.</p>
+<blockquote><b>FOR</b><br />
+<b>TO</b><br />
+<b>NEXT</b><br />
+<i>structure: repeat loop a specific number of times</i><br />
+<b>For</b> index=first number <b>To</b> last number<br />
+<p>list of statements<br />
+<b>Next</b> <i>index</i></blockquote>
+<p>This control structure is one of the programmer's classic devices. Each FOR statement must be matched by a single NEXT, and pairs of FOR ... NEXT loops can be nested inside one another. Each loop repeats a list of instructions for a specific number of times, governed by an index which counts the number of times the loop is repeated. Once inside the loop, this index can be read by the program as if it is a normal variable. Here is a simple example:</p>
+<img src="images/EditPointer.gif"/>
+<blockquote>For X=1 To 7<br />
+&nbsp;Print “SEVEN DEADLY SINS”<br />
+Next X</blockquote>
+<blockquote><b>STEP</b><br />
+<i>structure: control increment of index in a loop</i><br />
+<b>For</b> index=first number <b>To</b> last number <b>Step</b> size</blockquote>
+<p>Normally, the index counter is increased by 1 unit at every turn of a FOR ... NEXT loop. When the current value exceeds that of the last number specified, the loop is terminated. For example:</p>
+<img src="images/EditPointer.gif"/>
+<blockquote>For DAY=1 To 365<br />
+&nbsp;Print DAY<br />
+Next DAY</blockquote>
+<p>STEP is used to change the size of increase in the index value, like this:</p>
+<img src="images/EditPointer.gif"/>
+<blockquote>For DAY=1 To 365 Step 7<br />
+&nbsp;Print DAY<br />
+Next DAY</blockquote>
+<h2>Forced jumps</h2>
+<p>So far, it has been explained how certain jumps are made to another part of a program by logical decisions based on whether a situation is true or false. Similar jumps can be made whenever aparticular variable is recognised, in other words, regardless of any other conditions. GOTO and GOSUB are examples of a “forced” jump.</p>
+<blockquote><b>ON</b><br />
+<i>structure: jump on recognising a variable</i><br />
+<b>On</b> variable <b>Proc</b> list of procedures<br />
+<b>On</b> variable <b>Goto</b> list of numbered lines or labels<br />
+<b>On</b> variable <b>Gosub</b> list of numbered lines or labels</blockquote>
+<p>ON can be used to force the program to jump to a pre-defined position when it recognises a specified variable. Furthermore, jumps can be made to a choice of several positions, depending on what valueis held by the variable at the time it is spotted. ON can force a jump to any of the following structures.</p>
+<p>Procedures. When using an ON ... PROC structure, one or more named procedures is used as the target destination for a jump, depending on the contents currently held by a variable. Look at thefollowing line:</p>
+<img src="images/EditPointer.gif"/>
+<blockquote>On X Proc PROCEDURE1,PROCEDURE2</blockquote>
+<p>That is exactly the same as saying:</p>
+<img src="images/CrossedOutPointer.gif"/>
+<blockquote>If X=1 Then PROCEDURE1<br />
+If X=2 Then PROCEDURE2</blockquote>
+<p>It is important to note that procedures used in this way cannot include any parameters. If information is to be transferred to the procedure, it should be placed in a global variable, as explained in Chapter5.5.</p>
+<p><b>Goto</b> is used to jump to one of a list of numbered lines, or a label, depending on the result of an expression. For example:</p>
+<img src="images/EditPointer.gif"/>
+<blockquote>Print “Type in a value from 1 to 3”<br />
+Input X<br />
+On X Goto LABEL1,LABEL2,LABEL3<br />
+LABEL1:<br />
+Print “Ready”<br />
+LABEL2:<br />
+Print “Steady”<br />
+LABEL3:<br />
+Print “Go!”</blockquote>
+<p>For that to work properly, X must have a value from 1 up to the number of the highest possible destination. Any other values would cause problems. In fact the third line of that example is a very economical way of writing the following lines:</p>
+<img src="images/CrossedOutPointer.gif"/>
+<blockquote>If X=1 Then Goto LABEL1<br />
+If X=2 Then Goto LABEL2<br />
+If X=3 Then Goto LABEL3</blockquote>
+<p>Now change the third line of the last example to this:</p>
+<img src="images/EditPointer.gif"/>
+<blockquote>On X Goto LABEL3,LABEL2,LABEL1</blockquote>
+<p><b>Gosub</b>. The use of an ON GOSUB structure is identical to ON ... GOTO, except that it must employ a RETURN to jump back to the instruction immediately after the ON ... GOSUB statement. Destinationsmay be given as the name of a label, or the identification number of a line between 1 and the maximum number of possible destinations.</p>
+<p>ON is also used with the ON BREAK PROC structure, as well as ON ERROR GOTO, which are explained in the relevant sections of the Procedures and Error Handling Chapters of this User Guide.</p>
+<blockquote><b>EVERY</b><br />
+<i>instruction: call subroutine or procedure at regular intervals</i><br />
+<b>Every</b> time <b>Gosub</b> label<br />
+<b>Every</b> time <b>Proc</b> name</blockquote>
+<p>The EVERY statement is used to call up a sub-routine or a procedure at regular intervals, with outinterfering with the main program. Simply specify the length of time between every call, measured in 50ths of a second. Obviously the time taken for a sub-routine or a procedure to be completed must be less than the interval time, or an error will be generated.</p>
+<p>After a sub-routine has been entered, the EVERY system is automatically disabled. This means that in order to call this feature continuously, an EVERY ON command must be inserted into a sub-routine before the final RETURN statement. Similarly, EVERY ON must be included in a procedure beforereturning to the main program with an END PROC. For example:</p>
+<img src="images/EditPointer.gif"/>
+<blockquote>Every 50 Proc TEST<br />
+Do<br />
+&nbsp;Print At(0,0); “Main Loop”<br />
+Loop<br />
+Procedure TEST<br />
+&nbsp;Shared A<br />
+&nbsp;Inc A: Print “This is call number ”;A<br />
+&nbsp;Every On<br />
+End Proc</blockquote>
+<blockquote><b>EVERY ON</b><br />
+<b>EVERY OFF</b><br />
+<i>instruction: toggle regular EVERY calls</i><br />
+<b>Every On</b><br />
+<b>Every Off</b></blockquote>
+<p>As explained, EVERY ON should be used before the relevant sub-routine or procedure has finished executing. EVERY OFF is the default condition, and is used to disable the automatic calling process altogether.</p>
+<h2>Handling data</h2>
+<blockquote><b>DATA</b><br />
+<i>structure: place a list of data items in a program</i><br />
+<b>Data</b> list</blockquote>
+<p>A DATA statement lets you include whole lists of useful information in your programs. Each item inthe list must be separated by a comma, like this:</p>
+<img src="images/EditPointer.gif"/>
+<blockquote>Data 1,2,3,4</blockquote>
+<p>Also each DATA instruction must be the only statement on the current line, because anything that follows it will be ignored! Prove that with the following line:</p>
+<img src="images/CrossedOutPointer.gif"/>
+<blockquote>Read A$: Print A$<br />
+Data “I am legal” : Print ”But I am not!”</blockquote>
+<p>Data can be “read” into one or more variables, and unlike many Basic languages, AMOS Professional allows you to include expressions as part of your data. So the following lines of code are all equally acceptable:</p>
+<img src="images/EditPointer.gif"/>
+<blockquote>Data $FF50,$890<br />
+Data %11111111,%110011010110<br />
+Data A<br />
+Label: Data A+3/2.0-Sin(B)<br />
+Data “AMOS”+“Professional”</blockquote>
+<p>Examine those lines, and note that the A at Label will be input as the contents of variable A, and not the character A. The expression will be evaluated using the latest value of A.</p>
+<p>Data statements may be placed at any position in your program, but any data stored inside an AMOS Professional procedure will not be accessible from the main program. Each procedure can have its own individual set of data statements, which are completely independent from the rest of the program.</p>
+<p>For example:</p>
+<img src="images/EditPointer.gif"/>
+<blockquote>EXAMPLE<br />
+Read A$: Print A$<br />
+Data “I am Main Program Data”<br />
+Procedure EXAMPLE<br />
+&nbsp;Read B$: Print B$<br />
+&nbsp;Data “I am Procedure Data only”<br />
+End Proc</blockquote>
+<blockquote><b>READ</b><br />
+<i>structure: read data into a variable</i><br />
+<b>Read</b> list</blockquote>
+<p>When READ loads items of information that have been stored in a DATA statement into a list of variables, it uses a special marker to jump to the first item in the first DATA statement of your listing. As soon as that item of data has been read, the marker moves on to the next item in the list.</p>
+<p>It must be remembered that the variables to be read must be of exactly the same type as the data held at the current position. If you match up one type of stored data with a different type of variable after a READ command, the appropriate error message will be given. Here is an example of correct matching:</p>
+<img src="images/EditPointer.gif"/>
+<blockquote>N=Rnd(100)<br />
+Read A$,B,C,D$<br />
+Print A$,B,C,D$<br />
+Data “Text string”,100,N,“AMOS”+“Professional”</blockquote>
+<blockquote><b>RESTORE</b><br />
+<i>structure: set the current READ pointer</i><br />
+<b>Restore</b> Label<br />
+<b>Restore</b> LABEL$<br />
+<b>Restore</b> Line<br />
+<b>Restore</b> number</blockquote>
+<p>To change the order in which your data is read from the order in which it was originally stored, youcan alter the point where a READ operation expects to find the next DATA statement. The RESTORE command sets the position of this pointer by referring to a particular label or line number, and bothlabels and numbers may be calculated as part of an expression.</p>
+<p>For example:</p>
+<img src="images/EditPointer.gif"/>
+<blockquote>Restore LAST<br />
+Read A$<br />
+Print A$<br />
+Data “First”<br />
+Data “Middle”<br />
+LAST:<br />
+Data “Last”</blockquote>
+<p>Each Amos Professional procedure has its own individual data pointer, so any calls to the command will apply to the current procedure only.</p>
+<p>RESTORE is one of the AMOS Professional programmer's most useful devices to force the computer to select information, depending on the actions of the user. It can be used for educational and business routines as well as adventure and role-playing games.</p>
+<h1 id="procedures">Procedures</h1>
+<p>A procedure is a component of a computer program that allows the AMOS Professional programmerto tackle one aspect of the program at a time, without becoming distracted or side-tracked by otherprogramming considerations. Procedures can be thought of as programming modules, each with aspecific purpose and sphere of operation. This Chapter explains how procedures are created and fullyexploited.</p>
+<p><b>Creating a procedure</b></p>
+<p><b>PROCEDURE</b></p>
+<p><i>structure: create a procedure</i></p>
+<p><b>Procedure</b> NAME [list of optional parameters]</p>
+<p><b>END PROC</b></p>
+<p><i>structure: end a procedure</i></p>
+<p><b>End Proc</b></p>
+<p>A procedure is created in exactly the same way as a normal variable, by giving it a name. The name isthen followed by a list of parameters and the procedure must be ended with an END PROC command. PROCEDURE and END PROC commands must be placed on their own individual lines.For example:</p>
+<p>Procedure HELLO</p>
+<p>Print “Hello, I am a procedure!”</p>
+<p>End Proc</p>
+<p>If you try and run that program, nothing will happen. This is because a procedure must be called upby name from inside your program before it can do anything. Now add the following line at the startof that last example, and then [Run] it.</p>
+<p>HELLO</p>
+<p>There is nothing preventing a procedure from calling itself, but this recursion is limited by the area ofstorage allocated for local variables. If this local variable space is full, it can be increased using the SETBUFFER command. Programs can also be held up if there is no more stack space available, and this problem is cured by the following command.</p>
+<p><b>SET STACK</b></p>
+<p><i>instruction: set stack space</i></p>
+<p><b>Set Stack</b> number</p>
+<p>When AMOS Professional procedures call themselves, an “Out of stack space” error message will begenerated after about fifty loops. Use the SET STACK instruction by specifying the new number ofprocedure calls that can be made.</p>
+<p><b>Keeping track of procedures</b></p>
+<p>To help you find the starting positions of procedures in a very long program, there is a simple short-</p>
+<p>cut that uses just two keys.</p>
+<p>05.05.01</p>
+<p>P</p>
+<p>R</p>
+<p>O</p>
+<p>C</p>
+<p>E</p>
+<p>D</p>
+<p>U</p>
+<p>R</p>
+<p>E</p>
+<p>S</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Procedures</p>
+<p>By pressing [Alt] and [Down Arrow] together, the edit cursor automatically jumps to the nextprocedure definition in your program. To jump to the previous procedure, press [Alt] and [Up Arrow]together. This shortcut works equally well with labels and line numbers!</p>
+<p>If you are using several procedures on the same line, you can avoid the risk of a procedure beingconfused with a label by adding an extra space at the end of each statement. For example:</p>
+<p>HEY: HEY: HEY: Rem Perform HEY procedure three times</p>
+<p>HEY: HEY: HEY: Rem Define label HEY and perform HEY procedure twice</p>
+<p><b>PROC</b></p>
+<p><i>structure: flag a procedure</i></p>
+<p><b>Proc</b> NAME</p>
+<p>Another way to identify a procedure is to precede it with a PROC statement. Run the followingexample:</p>
+<p>Rem Demonstrate that a procedure is being called not simply a command</p>
+<p>Proc HELLO</p>
+<p>Rem The same can be achieved without the Proc</p>
+<p>HELLO</p>
+<p>Procedure HELLO</p>
+<p>Print “Hey!”</p>
+<p>End Proc</p>
+<p>It is possible to place the procedure definition anywhere in your program. When AMOS Professionalencounters a procedure statement, the procedure is recognised and a jump is made to the final EndProc. In this way, there is no risk of executing your procedure by accident.</p>
+<p><b>Opening and closing procedures</b></p>
+<p>If a great many procedures are used, your listings may appear cluttered and confused by all of their definitions. Because of this problem, there is a simple method of “closing” a procedure. Self-containedprocedures can be neatly hidden away inside your main program if you need to reduce the size andcomplexity of your listings.</p>
+<p>Type in the following procedure on your editing screen:</p>
+<p>MAIN_TITLE</p>
+<p>Procedure MAIN TITLE</p>
+<p>Curs Off</p>
+<p>Centre “Main Title”</p>
+<p>Say “Amos Professional presents.”</p>
+<p>Fade 5</p>
+<p>End Proc</p>
+<p>Run that if you like, and then return to the Edit screen.</p>
+<p>05.05.02</p>
+<p>P</p>
+<p>R</p>
+<p>O</p>
+<p>C</p>
+<p>E</p>
+<p>D</p>
+<p>U</p>
+<p>R</p>
+<p>E</p>
+<p>S</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Procedures</p>
+<p>Make sure that the edit cursor is over the procedure statement, select the [Procedures] option rom the [Editor] menu and trigger the [Open/Close] option, or hit [F9] as a short-cut. The procedure definitionis neatly folded away from view, and in normal practice you would be allowed to concentrate on yourmain program without the distraction of chunks of procedures getting in the way. In other words, youcan achieve greater programming clarity in your listings by closing procedures from view. The lastexample should now look like this:</p>
+<p>MAIN TITLE</p>
+<p>Procedure MAIN_TITLE</p>
+<p>To reveal the procedure at any time, simply move the cursor back to the procedure line and reveal its definitions with [F9] or [Open/Close].</p>
+<p>Closed procedures can be executed as normal, and saved or loaded along with an AMOS Professionalprogram listing. But a closed procedure <b>cannot</b> be deleted using the program cursor, and a deletioncan only be made if the procedure is opened again or by means of the [Cut] option.</p>
+<p>To open and close all of the procedures in the current program, the [Open All] and [Close All] optionsare provided. Alternatively, you can use the keyboard short-cuts [Amiga]+[Shift] +[0] and [Amiga]+</p>
+<p>[Shift]+[C], as already explained under the full list of Editor options in Chapter 4.1.</p>
+<p><b>Jumping in and out of a procedure</b></p>
+<p>You should be familiar with the use of ON for jumping to a GOSUB routine. It is just as simple to usethis structure with procedures.</p>
+<p><b>ON ... PROC</b></p>
+<p><i>structure: trigger a jump to a procedure</i></p>
+<p><b>On</b> variable value <b>Proc</b> NAME</p>
+<p>In this case, if a variable holds a particular value, a system is automatically triggered that forces ajump to a named procedure. Of course you can have as many values triggering off as many jumps todifferent procedures as you want. For example:</p>
+<p>On X Proc PROCEDURE1,PROCEDURE2</p>
+<p>Which is exactly the same as saying:</p>
+<p>If X=1 Then PROCEDURE1</p>
+<p>If X=2 Then PROCEDURE2</p>
+<p>Normally, procedures will only return to the main program when the END PROC instruction isreached. But supposing you need to jump out of a procedure instantly.</p>
+<p><b>POP PROC</b></p>
+<p><i>structure: leave a procedure immediately</i></p>
+<p><b>Pop Proc</b></p>
+<p>05.05.03</p>
+<p>P</p>
+<p>R</p>
+<p>O</p>
+<p>C</p>
+<p>E</p>
+<p>D</p>
+<p>U</p>
+<p>R</p>
+<p>E</p>
+<p>S</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Procedures</p>
+<p>The POP PROC instruction provides you with a fast getaway, if you ever find yourself in need of escape. Try this:</p>
+<p>ESCAPE</p>
+<p>Procedure ESCAPE</p>
+<p>For PRISON=1 To 1000000000</p>
+<p>If PRISON=10 Then Pop Proc</p>
+<p>Print “I am abandoned.”</p>
+<p>Next PRISON</p>
+<p>End Proc</p>
+<p>Print “I'm free!”</p>
+<p><b>ON BREAK PROC</b></p>
+<p><i>structure: jump to a procedure when break in program</i></p>
+<p><b>On Break Proc</b> NAME</p>
+<p>A jump can also be made to a specified procedure when the program is interrupted. For example:</p>
+<p>On Break Proc BROKEN</p>
+<p>Do</p>
+<p>Print “Unbroken” : Wait 50</p>
+<p>Loop</p>
+<p>Procedure BROKEN</p>
+<p>Print “I am the procedure”</p>
+<p>End Proc</p>
+<p><b>Local and global variables</b></p>
+<p>All of the variables that are defined inside a procedure work completely separately from any othervariables in your programs. We call these variables “local” to the procedure. All local variables areautomatically discarded after the procedure has finished executing, so that in the following examplethe same value of 1 will always be printed, no matter how many times it is called:</p>
+<p>Procedure PLUS</p>
+<p>A=A+1 : Print A</p>
+<p>End Proc</p>
+<p>All the variables OUTSIDE of procedures are known as “global” variables, and they are not affectedby any instructions inside a procedure. So it is perfectly possible to have the same variable namereferring to different variables, depending on whether or not they are local or global.</p>
+<p>When the next example is run, it can be seen that the values given to the global variables are differentto those of the local variables, even though they have the same name.</p>
+<p>05.05.04</p>
+<p>P</p>
+<p>R</p>
+<p>O</p>
+<p>C</p>
+<p>E</p>
+<p>D</p>
+<p>U</p>
+<p>R</p>
+<p>E</p>
+<p>S</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Procedures</p>
+<p>Because the global variables cannot be accessed from inside the procedure, the procedure assigns avalue of zero to them no mater what value they are given globally.</p>
+<p>A=666 : B=999</p>
+<p>EXAMPLE</p>
+<p>Print A,B</p>
+<p>Procedure EXAMPLE</p>
+<p>Print A,B</p>
+<p>End Proc</p>
+<p>To avoid errors, you must treat procedures as separate programs with their own sets of variables andinstructions. So it is very bad practice for the AMOS Professional programmer to use the samevariable names inside and outside a procedure, because you might well be confused into believingthat completely different variables were the same, and tracking down mistakes would become anightmare. To make life easy, there are simple methods to overcome such problems.</p>
+<p>One method is to define a list of parameters in a procedure. This creates a group of local variables thatcan be loaded directly from the main program. For example:</p>
+<p>Procedure HELLO[NAME$]</p>
+<p>Print “Hello ”;NAME$</p>
+<p>End Proc</p>
+<p>Rem Load N$ into NAME$ and enter procedure</p>
+<p>Input “What is your name?”,N$</p>
+<p>HELLO[N$]</p>
+<p>Rem Load string into NAME$ and call HELLO</p>
+<p>HELLO[“nice to meet you!]</p>
+<p>Note that the values to be loaded into NAME$ are entered between square brackets as part of theprocedure call. This system works equally well with constants as well as variables, but although youare allowed to transfer integer, real or string variables, you may not transfer arrays by this method. Ifyou need to enter more than one parameter, the variables must be separated by commas, like this:</p>
+<p>Procedure TWINS[A,B]</p>
+<p>Procedure TRIPLETS[X$,Y$,Z$]</p>
+<p>Those procedures could be called like this:</p>
+<p>TWINS[6,9]</p>
+<p>TRIPLETS[“Xenon”,“Yak”,“Zygote”]</p>
+<p><b>SHARED</b></p>
+<p><i>structure: define a list of global variables</i></p>
+<p><b>Shared</b> list of variables</p>
+<p>05.05.05</p>
+<p>P</p>
+<p>R</p>
+<p>O</p>
+<p>C</p>
+<p>E</p>
+<p>D</p>
+<p>U</p>
+<p>R</p>
+<p>E</p>
+<p>S</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Procedures</p>
+<p>There is an alternative method of passing data between a procedure and the main program. WhenSHARED is placed inside a procedure definition, it takes a list of local variables separated by commasand transforms them into global variables, which can be directly accessed from the main program. Ofcourse, if you declare any arrays as global using this technique, they must already have beendimensioned in the main program. Here is an example:</p>
+<p>A=666: B=999</p>
+<p>EXAMPLE</p>
+<p>Print A,B</p>
+<p>Procedure EXAMPLE</p>
+<p>Shared A,B</p>
+<p>A=B-A: B=B+1</p>
+<p>End Proc</p>
+<p>EXAMPLE can now read and write information to the global variables A and B. If you need to sharean array, it should be defined as follows:</p>
+<p>Shared A(),B#(),C$()</p>
+<p>In a very large program, it is often convenient for different procedures to share the same set of global variables. This offers an easy way of transferring large amounts of information between yourprocedures.</p>
+<p><b>GLOBAL</b></p>
+<p><i>structure: declare a list of global variables for procedures</i></p>
+<p><b>Global</b> list of variables</p>
+<p>GLOBAL sets up a list of variables that can be accessed from absolutely anywhere in your program.This is a simplified single command, designed to be used without the need for an explicit SHAREDstatement in your procedure definitions. Here is an example:</p>
+<p>A=6 : B=9</p>
+<p>Global A,B</p>
+<p>TEST1</p>
+<p>TEST2</p>
+<p>Print A,B</p>
+<p>Procedure TESTI</p>
+<p>A=A+1 : B=B+1</p>
+<p>End Proc</p>
+<p>Procedure TEST2</p>
+<p>A=A+B : B=B+A</p>
+<p>End Proc</p>
+<p>AMOS Professional programmers who are familiar with earlier versions of the AMOS system are nowable to employ the new facility of using strings in procedure definitions. As with disc names, the“wild card” characters * and ? can also be included. In this case, the * character is used to mean“match this with any list of characters in the variable name, until the next control character isreached”, and the ? character means “match this with any single character in the variable name”. Sothe next line would define every variable as global:</p>
+<p>05.05.06</p>
+<p>P</p>
+<p>R</p>
+<p>O</p>
+<p>C</p>
+<p>E</p>
+<p>D</p>
+<p>U</p>
+<p>R</p>
+<p>E</p>
+<p>S</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Procedures</p>
+<p>Global “*”</p>
+<p>Now look at the following example:</p>
+<p>Shared A,“V*”,“VAR*END”,“A?0S*”</p>
+<p>That line would declare the following variables as shared:</p>
+<p>•</p>
+<p>A, as usual.</p>
+<p>•</p>
+<p>Any variable beginning with the character V, followed by any other characters, or on its own.</p>
+<p>•</p>
+<p>Any variable beginning with the letters VAR, followed by any other characters, and endingwith the characters END.</p>
+<p>•</p>
+<p>Any variable beginning with A, followed by any single letter, followed by OS, followed by anyother characters.</p>
+<p>GLOBAL or SHARED should be employed before the first use of the variable, otherwise it will haveno effect on an interpreted program, although it will affect programs compiled with the AMOSProfessional Compiler.</p>
+<p>Only strings may be used for this technique. Global and shared arrays cannot be defined using wild cards. These must be defined individually, using brackets. Also, if you try to use an expression in thisway, an error will be generated.</p>
+<p>For example:</p>
+<p>A$=“AM*”</p>
+<p>Global A$</p>
+<p>In that case, the A$ variable would be regarded as global, and it would not be taken as a wild card for subsequent use.</p>
+<p>With AMOS Professional, you are able to define global arrays from a procedure, even if the array isnot created at root level, as follows:</p>
+<p>Procedure VARIABLES</p>
+<p>Dim ARRAY(100,100)</p>
+<p>Global ARRAY()</p>
+<p>End Proc</p>
+<p><b>Returning values from a procedure</b></p>
+<p>If you want to return a parameter from inside a procedure, that is to say, if you need to send back avalue from a local parameter, you need a way of telling your main program where to find this localvariable.</p>
+<p>05.05.07</p>
+<p>P</p>
+<p>R</p>
+<p>O</p>
+<p>C</p>
+<p>E</p>
+<p>D</p>
+<p>U</p>
+<p>R</p>
+<p>E</p>
+<p>S</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Procedures</p>
+<p><b>PARAM</b></p>
+<p><i>function: return a parameter from a procedure</i></p>
+<p><b>Param</b></p>
+<p><b>Param#</b></p>
+<p><b>Param$</b></p>
+<p>The PARAM function takes the result of an expression in an END PROC statement, and returns it tothe PARAM variable. If the variable you are interested in is a string variable, the $ character is used.Also note how the pairs of square brackets are used in the next two examples:</p>
+<p>JOIN_STRINGS[“one”,“two”,“three”]</p>
+<p>Print Param$</p>
+<p>Procedure JOIN_STRINGS[A$,B$,C$]</p>
+<p>Print A$,B$,C$</p>
+<p>End Proc[A$+B$+C$]</p>
+<p>For real number variables, the # character must be used as in the following example:</p>
+<p>JOIN_NUMBERS[1.5,2.25]</p>
+<p>Print Param#</p>
+<p>Procedure JOIN_NUMBERS[A#,B#]</p>
+<p>Print A#,B#</p>
+<p>End Proc[A#+B#]</p>
+<p><b>Local data statements</b></p>
+<p>Any data statements defined inside your procedures are held completely separately from those in themain program. This means that each procedure can have its own individual areas of data. Let us endthis Chapter with a modest example that calls the same procedure using different parameters, andthen sets up additional data in variables.</p>
+<p>Curs Off : Paper 0</p>
+<p>RECORD[“Francois”,“Lionet”,29,“Genius”]</p>
+<p>RECORD[“Mel”,“Croucher”,44,“Unemployed”]</p>
+<p>A$=“Richard” : B$=“Vanner” : AGE=25 : OCC$=“Slave Driver”</p>
+<p>RECORD[A$,B$,AGE,OCC$]</p>
+<p>Procedure RECORD[NAME$,SURNAME$,AGE,OCC$]</p>
+<p>Cls 0: Locate 0,3</p>
+<p>A$=NAME$+“ ”+SURNAME$</p>
+<p>Centre A$: Locate 0,6</p>
+<p>A$=“Age: ”+Str$(AGE)</p>
+<p>Centre A$: Locate 0,9</p>
+<p>A$=“Occupation: ”+OCC$</p>
+<p>Centre A$: Locate 0,16</p>
+<p>Centre “Press a key” : Wait Key</p>
+<p>End Proc</p>
+<p>05.05.08</p>
+<p>P</p>
+<p>R</p>
+<p>O</p>
+<p>C</p>
+<p>E</p>
+<p>D</p>
+<p>U</p>
+<p>R</p>
+<p>E</p>
+<p>S</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Text</p>
+<p>This Chapter explains how to use the advantages of AMOS Professional for handling written text. Youmay want to remind yourself of the visible character set by running this simple routine:</p>
+<p>For 0=32 To 255</p>
+<p>Print Chr$(C);” =ASCII Code”;</p>
+<p>Print Asc(Chr$(C)) : Wait 10</p>
+<p>Next C</p>
+<p><b>Printing on the screen</b></p>
+<p>The PRINT instruction is one of the most familiar command words in most Basic languages.</p>
+<p><b>PRINT</b></p>
+<p><i>instruction: print items on screen</i></p>
+<p><b>Print</b> items</p>
+<p>Items are printed on the screen, starting from the current cursor position, and they may include thecharacters in any group of variables or constants, up to the maximum line length of 255 characters.The PRINT command is also used to display graphics and information on screen, as is demonstratedthroughout this User Guide. This Chapter will deal with printing text only.</p>
+<p>Print statements can occupy their own lines, but if more than one element to be printed is written as asingle line of your program, each element must be separated from the next by either a semi-coloncharacter or a comma. An element to be printed can be a string, a variable or a constant, and is placed inside a pair of quotation marks.</p>
+<p>A semi-colon is used to print elements immediately after one another, like this:</p>
+<p>Print “Follow”;“on”</p>
+<p>A comma moves the cursor to the next “Tab” position on the screen, as follows:</p>
+<p>Print “Next”,“Tab”</p>
+<p>A Tab is an automatic marker that sets up a location for printing, and is often used to lay out columnsof figures, or to make indentations in text, and setting Tab positions is explained later. Normally, thecursor is advanced downwards by one line after every PRINT command, but by using the semi-colonor comma, the rule can be changed. Here is an example:</p>
+<p>Print “AMOS”</p>
+<p>Print “Professional”</p>
+<p>Print “AM”;</p>
+<p>Print “OS”,</p>
+<p>Print “Professional”</p>
+<p>05.06.01</p>
+<p>T</p>
+<p>E</p>
+<p>X</p>
+<p>T</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Text</p>
+<p><b>Setting text options</b></p>
+<p><b>PEN</b></p>
+<p><i>instruction: set the colour of text</i></p>
+<p><b>Pen</b> index number</p>
+<p>This command sets the colour of the text displayed in the current window, when followed by thecolour index number of your choice. The default setting of the pen colour is index number 2, which iswhite, and alternative colours may be selected from one of up to 64 choices, depending on the currentgraphics mode. For example:</p>
+<p>For INDEX=0 To 15</p>
+<p>Pen INDEX</p>
+<p>Print “Pen number ”;INDEX</p>
+<p>Next INDEX</p>
+<p><b>PEN$</b></p>
+<p><i>function: return a control index number to set the pen colour</i></p>
+<p>p$=<b>Pen$</b>(index number)</p>
+<p>This function returns a special control sequence that changes the pen colour inside a string. Thismeans that whenever the string is printed on the screen, the pre-set pen colour is automaticallyassigned to it. The format of the string returned by PEN$ is: Chr$(27)+“Pen”+Chr$(48+number).</p>
+<p>Here is an example:</p>
+<p>P$=Pen$(2)+“Well all WHITE, ” +Pen$(6)+ “ I still got the BLUES”</p>
+<p>Print P$</p>
+<p>Pen 4</p>
+<p>Print “In the RED”</p>
+<p><b>PAPER</b></p>
+<p><i>instruction: set colour of text background</i></p>
+<p><b>Paper</b> index number</p>
+<p>To select a background colour on which your text is to be printed, the PAPER command is followed by a colour index number between 0 and 63, depending on the graphics mode in use, in exactly thesame way as PEN. The normal default colour index number is 1, giving an orange background colour,with other possibilities listed under the SCREEN OPEN command in this User Guide. Run thefollowing simple example:</p>
+<p>Pen 2: For INDEX=0 To 15</p>
+<p>Paper INDEX: Print “Paper number ”;INDEX;Space$(23)</p>
+<p>Next INDEX</p>
+<p>05.06.02</p>
+<p>T</p>
+<p>E</p>
+<p>X</p>
+<p>T</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Text</p>
+<p><b>PAPER$</b></p>
+<p><i>function: return a control index number to set background colour</i></p>
+<p>b$=<b>PAPER$</b>(index number)</p>
+<p>Similarly to the PEN$ function, PAPER$ returns a character string that automatically sets thebackground colour when the string is printed on the screen. For example:</p>
+<p>Pen 1</p>
+<p>B$=Paper$(3)+“Flash Harry”+Paper$(1)+“The Invisible Man”</p>
+<p>Print B$</p>
+<p><b>Changing text options</b></p>
+<p><b>INVERSE ON/OFF</b></p>
+<p><i>instructions: toggle inverse mode of subsequent text</i></p>
+<p><b>Inverse On</b></p>
+<p><b>Inverse Off</b></p>
+<p>The INVERSE instruction swaps over the text and background colours already selected by the PENand PAPER commands, and so sets up an inverse mode for printing. For example:</p>
+<p>Pen 2 : Paper 4: Print “I appear normal”</p>
+<p>Inverse On : Print “Poetry inverse”</p>
+<p>Inverse Off : Print “Don't be so negative”</p>
+<p><b>SHADE ON/OFF</b></p>
+<p><i>instructions: toggle shading of subsequent text</i></p>
+<p><b>Shade On</b></p>
+<p><b>Shade Off</b></p>
+<p>The appearance of your text can be changed more subtly by introducing a mask pattern that reducesthe brightness of the characters when printed. To make use of this shading facility, simply turn it onand off like this:</p>
+<p>Shade On :Print “Shady Lady”</p>
+<p>Shade Off:Print “Norman Normal”</p>
+<p><b>Setting text styles</b></p>
+<p>As well as customising the appearance of your text by changing the text options, you can also use thestandard type-face techniques available to printers and word processors.</p>
+<p><b>UNDER ON/OFF</b></p>
+<p><i>instructions: toggle underline mode of subsequent text</i></p>
+<p><b>Under On</b></p>
+<p><b>Under Off</b></p>
+<p>05.06.03</p>
+<p>T</p>
+<p>E</p>
+<p>X</p>
+<p>T</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Text</p>
+<p>To underline text when printed on screen like this, use the UNDER instructions, as follows:</p>
+<p>Under On : Print “This is where we draw the line”</p>
+<p>Under Off: “That is groundless”</p>
+<p>In Section 11.1 there is a full explanation of how to take advantage of any number of different typefaces or fonts, by making use of what is known as “graphic text”. For the time being, try the nextexample:</p>
+<p>Cls: For S=0 To 7: Set Text S</p>
+<p>Text 100,S*20+20,“AMOS Professional” : Next S</p>
+<p><b>SET TEXT</b></p>
+<p><i>instruction: set the style of a text font</i></p>
+<p><b>Set Text</b> style number</p>
+<p>The SET TEXT command allows you to change the style of a font by selecting one of eight differentstyles that are produced by mixing the following three elements</p>
+<p>Bit 0</p>
+<p>Underline</p>
+<p>Bit 1</p>
+<p><b>Bold</b></p>
+<p>Bit 2</p>
+<p><i>Italic</i></p>
+<p>Set the appropriate bits in the form of a style number from 0 to 7, as in the last example.</p>
+<p><b>TEXT STYLES</b></p>
+<p><i>function: return current text style</i></p>
+<p>s=<b>Text Styles</b></p>
+<p>This function returns the index reference of the text style you last selected using SET TEXT. The resultis a bit-map in the same format as explained above:</p>
+<p>Set Text 2: Print “Style Two”</p>
+<p>Print Text Styles</p>
+<p><b>Changing the text mode</b></p>
+<p>For even more flexibility in presenting your text on screen, you can select the way it is combined withother screen data.</p>
+<p><b>WRITING</b></p>
+<p><i>instruction: select text writing mode of subsequent text</i></p>
+<p><b>Writing</b> value1</p>
+<p><b>Writing</b> value1,<i>optional value2</i></p>
+<p>The WRITING command is used to control how the subsequent text interacts with what is already onthe screen, and it can be followed by either one or two values.</p>
+<p>05.06.04</p>
+<p>T</p>
+<p>E</p>
+<p>X</p>
+<p>T</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Text</p>
+<p>The first value selects one of five writing modes:</p>
+<p><b>Value</b></p>
+<p><b>Mode</b></p>
+<p><b>Effect</b></p>
+<p>0</p>
+<p>REPLACE</p>
+<p>New text replaces any existing screen data</p>
+<p>1</p>
+<p>OR</p>
+<p>Merge new text with screen data, using logical OR</p>
+<p>2</p>
+<p>XOR</p>
+<p>Combine new text with screen data, using OR</p>
+<p>3</p>
+<p>AND</p>
+<p>Combine new text and screen data, using logical AND</p>
+<p>4</p>
+<p>IGNORE</p>
+<p>Ignore all subsequent printing instructions</p>
+<p>A number set as the optional second value selects which parts of the text are to be printed on the screen, as follows:</p>
+<p><b>Value</b></p>
+<p><b>Mode</b></p>
+<p><b>Effect</b></p>
+<p>0</p>
+<p>Normal</p>
+<p>Print text and background together</p>
+<p>1</p>
+<p>Paper</p>
+<p>Only the background to be drawn on screen</p>
+<p>2</p>
+<p>Pen</p>
+<p>Ignore paper colour and print text on background colour zero</p>
+<p>The default value for both of the WRITING parameters is zero, giving normal printed output.</p>
+<p><b>Positioning the text cursor</b></p>
+<p>Characters are always printed at the current position of the text cursor, and the AMOS Professionalprogrammer is offered several methods of controlling the cursor in order to make text look more orderly, attractive or eye-catching.</p>
+<p><b>LOCATE</b></p>
+<p><i>instruction: position the text cursor</i></p>
+<p><b>Locate</b> x,</p>
+<p><b>Locate</b> ,y</p>
+<p><b>Locate</b> x,y</p>
+<p>This command moves the text cursor to the coordinates of your choice, and this new location sets thestart position for all subsequent text printing until you command otherwise. All screen positions aremeasured in “text coordinates”, which are measured in units of one printed character on screen, withthe x-coordinate controlling the horizontal position and the y- coordinate referring to the vertical. So,the top left-hand corner of the screen has coordinates of 0,0 whereas text coordinates of 15,10 refer to a position 15 characters from the left-hand edge of the screen and 10 characters from the top.</p>
+<p>The range of these coordinates will depend on the size of your character set and the dimensions of thedisplay area allocated, known as a “window”. All coordinate measurements are taken using textcoordinates relative to the current window. If you try and print something outside of these limits, anerror will be generated. Windows are dealt with in the next Section, but the current screen is automatically treated as a window, so there is no need to “open” one to test the following examples:</p>
+<p>Print “0,0”: Locate 10, : Print “Stay on current line”</p>
+<p>Locate ,5 : Print “Six from the top.”</p>
+<p>Locate 10,10 : Print “Ten down and ten across”</p>
+<p>05.06.05</p>
+<p>T</p>
+<p>E</p>
+<p>X</p>
+<p>T</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Text</p>
+<p><b>HOME</b></p>
+<p><i>instruction: force text cursor home</i></p>
+<p><b>Home</b></p>
+<p>Whenever you need to move the text cursor back to the top left-hand corner of the screen in a hurry,simply tell it to go HOME and it will automatically be relocated to coordinates 0,0 like this:</p>
+<p>Cls: Locate 10,10: Print “I am going”</p>
+<p>Wait 100: Home : Print “Home!”</p>
+<p><b>CMOVE</b></p>
+<p><i>instruction: move text cursor</i></p>
+<p><b>Cmove</b> width</p>
+<p><b>Cmove</b> height</p>
+<p><b>Cmove</b> width,height</p>
+<p>It is also possible to move the text cursor a pre-set distance away from its current position, which cancome in useful if you need to show speech bubbles or shunt your text to one side temporarily. TheCMOVE command is followed by a pair of variables that represent the width and height of therequired offset, and these values are added to the current cursor coordinates. Like LOCATE, either ofthe coordinates can be omitted, as long as the comma is positioned correctly. An additional techniqueis to use negative values as well as positive offsets. For example:</p>
+<p>Cls : Print “Iceland”</p>
+<p>Cmove 5,5: Print “Scotland”;</p>
+<p>Cmove ,-3 : Print “Norway”</p>
+<p>Cmove 10,14: Print “France”</p>
+<p><b>CMOVE$</b></p>
+<p><i>function: return control string to move text cursor</i></p>
+<p>a$=<b>Cmove$</b>(x,y)</p>
+<p>Characters can be printed relative to the current cursor position by setting up a string using theCMOVE$ function. The following example prints a string at coordinates 10,10 from the current textcursor:</p>
+<p>A$=Cmove$(10,10)</p>
+<p>A$=A$+“AMOS Professional”</p>
+<p>Print A$</p>
+<p><b>AT</b></p>
+<p><i>function: return a string to position the text cursor</i></p>
+<p>a$=<b>At</b>(x,y)</p>
+<p>05.06.06</p>
+<p>T</p>
+<p>E</p>
+<p>X</p>
+<p>T</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Text</p>
+<p>You may also change the position of the text cursor directly from inside a character string. This is ideal for positioning text once and for all on screen, no matter what happens in the program, because the text cursor can be set during the program's initialisation phase. The string that is returned takesthe following format:</p>
+<p>Chr$(27)+“X”+Chr$(48+X)+Chr$(27)+“Y”+Chr$(48+Y)</p>
+<p>So whenever this string is printed, the text cursor will be moved to the text coordinates held by X andY. For example:</p>
+<p>A$=“A”+At(10,10)+“Of”+At(2,4)+“String”+At(20,20)+“Pearls”</p>
+<p>Print A$</p>
+<p>Imagine a Hi-Score table positioned like this:</p>
+<p>SCORE=999</p>
+<p>Locate 12,10: Print “Hi Score ”;SCORE</p>
+<p>By using the AT function, the same table can be moved by editing a single string, no matter howmany times it is used in the program, like this:</p>
+<p>HI_SCORES=At(12,10)+“Hi Score”</p>
+<p>SCORE=999</p>
+<p>Print HI_SCORE$;SCORE</p>
+<p><b>CENTRE</b></p>
+<p><i>instruction: print text centrally on current line</i></p>
+<p><b>Centre</b> a$</p>
+<p>Programmers often need to position text in the centre of the screen, and to save you the effort ofcalculating the text coordinates in order to achieve this, the CENTRE command takes a string of characters and prints it in the middle of the line currently occupied by the cursor. For example:</p>
+<p>Locate 0,1</p>
+<p>Centre “ABOVE”</p>
+<p>Cmove ,3</p>
+<p>Centre “suspicion”</p>
+<p><b>TAB$</b></p>
+<p><i>function: move text cursor to next Tab</i></p>
+<p>t$=<b>Tab$</b></p>
+<p>The TAB$ function returns a special control character called TAB, which carries the ASCII code of 9.When this character is printed, the text cursor is automatically moved to the next tabulated columnsetting (Tab) to the right.</p>
+<p>05.06.07</p>
+<p>T</p>
+<p>E</p>
+<p>X</p>
+<p>T</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Text</p>
+<p>The default setting for this is four characters, which can be changed as follows:</p>
+<p><b>SET TAB</b></p>
+<p><i>instruction: change Tab setting</i></p>
+<p><b>Set Tab</b> number</p>
+<p>This simple command specifies the number of characters that the text cursor will move to the rightwhen the next TAB$ is printed. For example:</p>
+<p>Cls : Print “Home”</p>
+<p>Print Tab$;“And”</p>
+<p>Set Tab 10 : Print Tab$;“Away”</p>
+<p><b>CDOWN</b></p>
+<p><i>instruction: move text cursor down</i></p>
+<p><b>Cdown</b></p>
+<p>Use this command to force the text cursor down a single line, like this:</p>
+<p>Cls: Print “Over” : Cdown : Print “the Moon”</p>
+<p><b>CDOWN$</b></p>
+<p><i>function: return control character to move text cursor down</i></p>
+<p>c$=<b>Cdown$</b></p>
+<p>The effect of summoning up the special control character (ASCII 31) is exactly the same as printingafter a CDOWN command. The advantage of this alternative is that several text cursor movementscan be combined in a single string, using CDOWN$. For example:</p>
+<p>C$=“Going Down”+Cdown$</p>
+<p>For A=0 To 20</p>
+<p>Print C$</p>
+<p>Next A</p>
+<p><b>CUP</b></p>
+<p><i>instruction: move text cursor one line up</i></p>
+<p><b>Cup</b></p>
+<p><b>CLEFT</b></p>
+<p><i>instruction: move text cursor one character left</i></p>
+<p><b>Cleft</b></p>
+<p><b>CRIGHT</b></p>
+<p><i>instruction: move text cursor one character right</i></p>
+<p><b>Cright</b></p>
+<p>05.06.08</p>
+<p>T</p>
+<p>E</p>
+<p>X</p>
+<p>T</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Text</p>
+<p>These three commands are self-explanatory, and work in exactly the same way as CDOWN. Their equivalent functions are listed below, and work in the same way as CDOWN$:</p>
+<p><b>CUP$</b></p>
+<p><i>function: return control character (30) to move cursor up one line</i></p>
+<p>x$=Cup$</p>
+<p><b>CLEFT$</b></p>
+<p><i>function: return control character (29) to move cursor left one character</i></p>
+<p>x$=Cleft$</p>
+<p><b>CRIGHT$</b></p>
+<p><i>function: return control character (28) to move cursor right one character</i></p>
+<p>x$=Cright$</p>
+<p><b>CLINE</b></p>
+<p><i>instruction: clear some or all text on current cursor line</i></p>
+<p><b>Cline</b></p>
+<p><b>Cline</b> number</p>
+<p>This command is used to clear the line currently occupied by the text cursor. If CLINE is qualified bya number, then that number of characters get cleared, starting from the current cursor position andleaving the cursor exactly where it is. For example:</p>
+<p>Print “Testing Testing Testing”;</p>
+<p>Cmove -7,</p>
+<p>Cline 7</p>
+<p>Wait Key</p>
+<p>Cline</p>
+<p><b>Tracking the text cursor</b></p>
+<p>To track down the exact position of the text cursor, the following pair of functions may be used</p>
+<p><b>XCURS</b></p>
+<p><i>function: return the x-coordinate of the text cursor</i></p>
+<p>x=<b>Xcurs</b></p>
+<p><b>YCURS</b></p>
+<p><i>function: return the y-coordinate of the text cursor</i></p>
+<p>y=<b>Ycurs</b></p>
+<p>In this way, a variable is created that holds the relevant coordinate of the cursor, in text format, and these two functions may be used independently or together. For example:</p>
+<p>Locate 5,10: Print Xcurs; : Print Ycurs</p>
+<p><b>MEMORIZE X/Y</b></p>
+<p><i>instructions: save the x or y text cursor coordinates</i></p>
+<p><b>Memorize X</b></p>
+<p><b>Memorize Y</b></p>
+<p>05.06.09</p>
+<p>T</p>
+<p>E</p>
+<p>X</p>
+<p>T</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Text</p>
+<p>The MEMORIZE commands store the current position of the x or y text cursor, so that you can print any text on the screen without destroying the original cursor coordinates. These may be reloadedusing the REMEMBER commands, as follows:</p>
+<p><b>REMEMBER X/Y</b></p>
+<p><i>instructions: restore the x or y text cursor coordinates</i></p>
+<p><b>Remember X</b></p>
+<p><b>Remember Y</b></p>
+<p>Use REMEMBER to position the text cursor at the coordinates saved by a previous MEMORIZEcommand. If MEMORIZE has not been used, the relevant coordinate will automatically be set to zero.There is a ready-made example demonstrating these commands to be found under the SET CURScommand, which is below.</p>
+<p><b>Changing the text cursor</b></p>
+<p><b>CURS PEN</b></p>
+<p><i>instruction: select colour of text cursor</i></p>
+<p><b>Curs Pen</b> index number</p>
+<p>As a default, whenever your screen mode provides four or more colours the text cursor is set to indexnumber 3, which is endowed with a built-in flash. The flashing can be turned off and back on again atany time using the FLASH OFF and FLASH commands, but as soon as you select another colour foryour text cursor, the automatic flash will not apply. To change colours, use the CURS PEN command,followed by the index number of your choice. For example:</p>
+<p>Curs Pen 2</p>
+<p>Note that the new colour only effects the text cursor in the current open window, and has no influenceover other cursors used by any other windows. If you want to introduce a flash to that last example,you could add this line before the CURS PEN command:</p>
+<p>Flash 2,“(FFF,15)(000,15)”</p>
+<p><b>SET CURS</b></p>
+<p><i>instruction: set the shape of the text cursor</i></p>
+<p><b>Set Curs</b> L1,L2,L3,L4,L5,L6,L7,L8</p>
+<p>To customise the text cursor into something a little more personalised, you can change its shape into anything you like, providing you limit yourself to the eight lines of eight bits each that represent itsappearance. Lines are numbered one to eight from top to bottom, and every bit set to 1 results in apixel drawn in the current cursor pen colour, whereas a zero displays the current paper colour. To familiarise yourself with the technique, try the next example, which changes the text cursor into aHalloween mask:</p>
+<p>05.06.10</p>
+<p>T</p>
+<p>E</p>
+<p>X</p>
+<p>T</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Text</p>
+<p>L1=%00111100</p>
+<p>L2=%01111110</p>
+<p>L3=%01011010</p>
+<p>L4=%11100111</p>
+<p>L5=%10111101</p>
+<p>L6=%01011010</p>
+<p>L7=%00100100</p>
+<p>L8=%00011000</p>
+<p>Set Curs L1 L2 , L3 L4 L5, L6 , L7, L8</p>
+<p>Your routine will appear slightly different from that, because the system automatically strips awayany leading zeros in binary listings.</p>
+<p><b>CURS ON/OFF</b></p>
+<p><i>instructions: toggle text cursor</i></p>
+<p><b>Curs On</b></p>
+<p><b>Curs Off</b></p>
+<p>This pair of commands is use to hide and reveal the text cursor in the current window. It has no effectat all on any cursors used in other windows.</p>
+<p><b>Advanced text commands</b></p>
+<p><b>ZONE$</b></p>
+<p><i>function: create a zone around text</i></p>
+<p>z$=<b>ZONE$</b>(text$,zone number)</p>
+<p>The AMOS Professional programmer is allowed to create powerful dialogue boxes and on- screencontrol panels without the need to employ complex programming. The ZONES function surrounds asection of text with its own screen zone, so that the presence of the mouse pointer can be detectedusing the ZONE function. Simply supply the two parameters in brackets, which are the string of textfor one of your control “buttons”, followed by the number of the screen zone to be defined.</p>
+<p>The maximum number of zones will be limited by the value specified in a previous RESERVE ZONEcommand. The format for the control string is as follows:</p>
+<p>Chr$(27)+“ZO”+A$+Chr$(27)+“R”+Chr$(48+n)</p>
+<p><b>BORDER$</b></p>
+<p><i>function: create a border around text</i></p>
+<p>b$=<b>Border$</b>(text$, border number)</p>
+<p>This works in much the same way as ZONES, by returning a string of characters that create a borderaround the required string of text. The AMOS Professional programmer can use it with ZONES to setup special “buttons” for alert windows and control consoles.</p>
+<p>05.06.11</p>
+<p>T</p>
+<p>E</p>
+<p>X</p>
+<p>T</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Text</p>
+<p>In this case, the text held in the string will start at the current text cursor position. Border numbers canrange from 1 to 16, for example:</p>
+<p>Locate 1,1: Print Border$(“AMOS Professional”,2)</p>
+<p>The control sequence returned by BORDER has the following format:</p>
+<p>Chr$(27)+“E0”+A$+Chr$(27)+“R”+Chr$(48+n)</p>
+<p><b>HSCROLL</b></p>
+<p><i>instruction: scroll text horizontally</i></p>
+<p><b>Hscroll</b> number</p>
+<p>This command scrolls all text in the current open window horizontally, by a single character position.The following numbers can be used:</p>
+<p><b>Number</b></p>
+<p><b>Effect</b></p>
+<p>1</p>
+<p>Scroll current line to the left</p>
+<p>2</p>
+<p>Scroll entire screen to the left</p>
+<p>3</p>
+<p>Scroll current line to the right</p>
+<p>4</p>
+<p>Scroll entire screen to the right</p>
+<p><b>VSCROLL</b></p>
+<p><i>instruction: scroll text vertical</i></p>
+<p><b>Vscroll</b> number</p>
+<p>Similarly to HSCROLL, the values given to this command result in different vertical scrolling effects,one character at a time.</p>
+<p><b>Number</b></p>
+<p><b>Effect</b></p>
+<p>1</p>
+<p>Scroll down text on and below current cursor Line</p>
+<p>2</p>
+<p>Scroll down text from top of screen to current cursor line only</p>
+<p>3</p>
+<p>Scroll up text from top of screen to current cursor line only</p>
+<p>4</p>
+<p>Scroll up text on or below current cursor line</p>
+<p>Note that blank lines are inserted to fill any gaps left by these scrolling operations.</p>
+<p><b>Advanced printing</b></p>
+<p>The AMOS Professional programmer is not restricted to the standard PRINT command for displayinginformation.</p>
+<p><b>?</b></p>
+<p><i>instruction: print</i></p>
+<p><b>Print</b></p>
+<p>The question mark character (?) can be used instead of PRINT as a keyboard short-cut.</p>
+<p>05.06.12</p>
+<p>T</p>
+<p>E</p>
+<p>X</p>
+<p>T</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Text</p>
+<p>When used in this way, it is automatically displayed as PRINT as soon as the line has been enteredinto your listing.</p>
+<p>? “AMOS Professional”</p>
+<p><b>USING</b></p>
+<p><i>instruction: format printed output</i></p>
+<p><b>Print Using</b> format$;variable list</p>
+<p>USING is always employed with the PRINT command to allow subtle changes in the way output isprinted from a list of variables. The format string contains special characters, and each one has adifferent effect, as explained below.</p>
+<p><b>~</b></p>
+<p><i>tilde character [Shift]+[#]</i></p>
+<p>Every ~ in the string variable is replaced by a single character from left to right, taken from an outputstring. For example:</p>
+<p>Print Using “This is a ~~~~~~ example”;“simple”</p>
+<p><b>#</b></p>
+<p><i>hash character</i></p>
+<p>Each # specifies one digit at a time, to be printed out from a given variable, with any unused digitsbeing replaced by spaces. For example:</p>
+<p>Print Using “###”;123456</p>
+<p><b>+</b></p>
+<p><i>plus character</i></p>
+<p>This adds a plus sign to a positive number or a minus sign if the number is negative. For example:</p>
+<p>Print Using “+##”;10 : Print Using “+##”;-10</p>
+<p><b>-</b></p>
+<p><i>minus character</i></p>
+<p>This gives a minus sign to negative numbers only. Positive numbers will be preceded by a space. For example:</p>
+<p>Print Using “-##”;10:Print Using “-##”;-10</p>
+<p>05.06.13</p>
+<p>T</p>
+<p>E</p>
+<p>X</p>
+<p>T</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Text</p>
+<p><b>.</b></p>
+<p><i>full stop character</i></p>
+<p>When used with PRINT USING, the full stop (period) character places a decimal point in a number,and automatically centres it on screen. For example:</p>
+<p>Print Using “.###”;Pi#</p>
+<p><b>;</b></p>
+<p><i>semi-colon character</i></p>
+<p>This centres a number, but will not output a decimal point. For example:</p>
+<p>Print Using “PI is #;###”;Pi#</p>
+<p><b>^</b></p>
+<p><i>exponential (circumflex) character [Shift]+[6]</i></p>
+<p>This causes a number to be printed out in exponential format. For example:</p>
+<p>Print Using “This is an exponential number^”;10000*10000.5</p>
+<p><b>Sending text to a printer</b></p>
+<p>Chapter 10.3 is devoted to the exploitation of the printer device by AMOS Professional. The followingcommand offers easy access to a printer from inside an AMOS Professional program or via Directmode.</p>
+<p><b>LPRINT</b></p>
+<p><i>instruction: output a list of variables to a printer</i></p>
+<p><b>Lprint</b> variable list</p>
+<p>The LPRINT command is exactly the same as a PRINT command, but it sends data to a printerinstead of the screen, like this:</p>
+<p>Lprint “Greetings from AMOS Professional!”</p>
+<p>05.06.14</p>
+<p>T</p>
+<p>E</p>
+<p>X</p>
+<p>T</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Windows</p>
+<p>The AMOS Professional programmer expects to be able to produce file selectors, warning boxes andon-screen control panels with a few simple lines of code. The range of windowing command featuredin this Chapter allow you to create interactive dialogue boxes by restricting text and graphicsoperations to selected areas of the current screen.</p>
+<p>A “window” is simply a rectangular display area, which must first be opened before electronic lifecan course through it. Your current screen is treated as a window, and opened automatically by theAMOS Professional system as window number zero. All other windows have to be opened by you,and you are advised not to re-open window zero or change its size or position.</p>
+<p><b>Creating windows</b></p>
+<p><b>WIND OPEN</b></p>
+<p><i>instruction: create a window</i></p>
+<p><b>Wind Open</b> number,x,y,width,height</p>
+<p><b>Wind Open</b> number,x,y,width,height,<i>border</i></p>
+<p>The window opened by this instruction will be displayed on screen and used for all subsequent text operation until you command otherwise. WIND OPEN must be qualified by a window number (don'tforget that zero has already been allocated to the current screen), followed by the x,y graphiccoordinates setting the top left-hand corner of the new window, followed by the width and height ofthe new window in the number of characters needed. You may also specify an optional border style,with values ranging from 1 to 16.</p>
+<p>Because the Amiga employs its blitter to draw windows, they must always lie on a 16-pixel boundary.AMOS Professional automatically rounds your x-coordinates to the nearest multiple of 16.Additionally, if you have specified a border for your window, the x and y-coordinates will beincremented by an additional 8 pixels. In this way, you can be sure that your windows always start at the correct screen boundary. There are no boundary restrictions on the y- coordinates. Titles can alsobe included in window borders, which will be dealt with a little later. Try this example:</p>
+<p>For W=1 To 3</p>
+<p>Wind Open W,(W-1)*96,50,10,15,W</p>
+<p>Paper W+3 : Pen W+6 : Clw</p>
+<p>Print “Window”;W</p>
+<p>Next W</p>
+<p><b>WINDOW</b></p>
+<p><i>instruction: change the current window</i></p>
+<p><b>Window</b> number</p>
+<p>This command sets the window number specified as the active window, to be used for all future textoperations. There is an automatic saving system for re-drawing the contents of windows, which isexplained below.</p>
+<p>05.07.01</p>
+<p>W</p>
+<p>I</p>
+<p>N</p>
+<p>D</p>
+<p>O</p>
+<p>W</p>
+<p>S</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Windows</p>
+<p>For now, run the last example from Direct mode and enter the following statements:</p>
+<p>Window 1: Print “AMOS”</p>
+<p>Window 3: Print “open windows on the world”</p>
+<p>Window 2: “lets me”</p>
+<p>The active window is host to the flashing text cursor, unless it has been made invisible with a CURSOFF command.</p>
+<p><b>BORDER</b></p>
+<p><i>instruction: change window border</i></p>
+<p><b>Border</b> <i>number,paper, pen</i></p>
+<p>This command allows you to change the style and colour of the current window border. Border stylenumbers range from 1 to 16, and the paper and pen colours can be selected from any available colourindex numbers. Any of these parameters can be omitted from the BORDER instruction as long as the commas are included for any missing values: If the last example is still on screen, enter these linesfrom direct mode:</p>
+<p>Border 3,2,3</p>
+<p>Border 2,,</p>
+<p><b>TITLE TOP</b></p>
+<p><i>instruction: set title at top of current window</i></p>
+<p><b>Title Top</b> title$</p>
+<p>Use this command to set a border title at the top of the current window to your chosen title string.This facility will only operate with bordered windows, as follows:</p>
+<p>Cls: Wind Open 4,1,1,20,10,1</p>
+<p>Title Top “Top of the morning”</p>
+<p><b>TITLE BOTTOM</b></p>
+<p><i>instruction: set title at bottom of current window</i></p>
+<p><b>Title Bottom</b> title$</p>
+<p>Similarly, this instruction assigns a string to the bottom title of the current window, like this:</p>
+<p>Cls : Wind Open 5,75,50,24,15</p>
+<p>Border 5,6,</p>
+<p>Title Bottom “Bottom of the barrel”</p>
+<p>05.07.02</p>
+<p>W</p>
+<p>I</p>
+<p>N</p>
+<p>D</p>
+<p>O</p>
+<p>W</p>
+<p>S</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Windows</p>
+<p><b>Manipulating windows</b></p>
+<p><b>WINDON</b></p>
+<p><i>function: return the value of the current window</i></p>
+<p>w=<b>Windon</b></p>
+<p>Before using windows in your programs, you will need to refer to their identification numbers. Thisfunction returns the value of the current window. For example:</p>
+<p>Do</p>
+<p>Cls : Wind Open Rnd(99)+1,1,1,25,5,1</p>
+<p>Print “Window number ”;Windon : Wait Key</p>
+<p>Loop</p>
+<p><b>WIND SAVE</b></p>
+<p><i>instruction: save the contents of the current window</i></p>
+<p><b>Wind Save</b></p>
+<p>This command is extremely valuable for the AMOS Professional programmer. Once activated, theWIND SAVE feature allows you to move your windows anywhere on screen without corrupting theexisting display, by the following method. The contents of the current window is saved as soon as thecommand is used, and then every time a new window is opened, the contents of the windowsunderneath get saved automatically. The screen is then re-drawn whenever a window is moved to anew position or closed.</p>
+<p>As you begin a new program, the current window (the default screen) consumes 32k of valuablememory, and this would be wasted if you were to save it as background beneath a small dialogue box.To solve this problem, create a dummy window of the size you need, and place it over the zone youwant to save. Now execute your WIND SAVE command and continue with your program. When thisdialogue box is called up, the area beneath it will be saved as part of your dummy window, so it willautomatically be restored after your box has been removed.</p>
+<p><b>WIND CLOSE</b></p>
+<p><i>instruction: close the current window</i></p>
+<p><b>Wind Close</b></p>
+<p>The WIND CLOSE command deletes the current window. If the WIND SAVE command has beenactivated, the deleted window will be replaced by the saved graphics, otherwise the area will betotally erased from the screen. Here is an example:</p>
+<p>Wind Open 1,1,8,35,18,1 : Print “Press a key to close this window”</p>
+<p>Wait Key</p>
+<p>Wind Close</p>
+<p><b>WIND MOVE</b></p>
+<p><i>instruction: move the current window</i></p>
+<p><b>Wind Move</b> x,y</p>
+<p>05.07.03</p>
+<p>W</p>
+<p>I</p>
+<p>N</p>
+<p>D</p>
+<p>O</p>
+<p>W</p>
+<p>S</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Windows</p>
+<p>The current window can 'be moved to any acceptable graphic coordinates. Give the new x,y-coordinates after the WIND MOVE command, and the x-coordinate will be rounded to the nearest 16-</p>
+<p>pixel boundary automatically. Here is an example:</p>
+<p>Wind Save : Wind Open 1,0,2,30,10,1 : Wind Save</p>
+<p>For M=1 To 100</p>
+<p>Pen Rnd(15) : Paper Rnd(15) : Print : Centre “Making Movies”</p>
+<p>Wind Move Rnd(30)+1,Rnd(100)+1</p>
+<p>Wait VbI</p>
+<p>Next M</p>
+<p><b>SCROLL ON/OFF</b></p>
+<p><i>instructions: toggle window scrolling on and off</i></p>
+<p><b>Scroll On</b></p>
+<p><b>Scroll Off</b></p>
+<p>The SCROLL commands are used to control the scrolling of the current window. SCROLL OFF turnsoff the scrolling, and whenever the cursor passes beyond the bottom of the window it will reappearfrom the top. SCROLLON starts the scrolling process again, so that a new line is inserted when the cursor tries to pass beyond the bottom of the window.</p>
+<p><b>WIND SIZE</b></p>
+<p><i>instruction: change the size of the current window</i></p>
+<p><b>Wind Size</b> width, height</p>
+<p>To change the size of the current window, specify the new width and new height in terms of the number of characters. If WIND SAVE has been activated, the original contents of the window will bere-drawn by this instruction. If the new window size is smaller than the original, any parts of theoriginal image that lie outside of the new window boundaries will be lost. Alternatively, if the newwindow is larger, the space around the saved area will be filled with the current paper colour. Pleasenote that the text cursor is always re-set to coordinates 0,0. For example:</p>
+<p>Wind Open 1,16,16,22,10,2</p>
+<p>Print “I want to be wider!”</p>
+<p>Wind Save</p>
+<p>Wait 50</p>
+<p>Wind Size 30,10</p>
+<p><b>CLW</b></p>
+<p><i>instruction: clear the current window</i></p>
+<p><b>Clw</b></p>
+<p>This simple command erases the contents of the current window and replaces it with a block of thecurrent PAPER colour.</p>
+<p>05.07.04</p>
+<p>W</p>
+<p>I</p>
+<p>N</p>
+<p>D</p>
+<p>O</p>
+<p>W</p>
+<p>S</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Windows</p>
+<p>Like this:</p>
+<p>Cls: Paper 4 : Wind Open 1,1,1,12,5,1</p>
+<p>Window 1: Print “Clear Off” : Wait 75</p>
+<p>Paper 9 : Clw</p>
+<p><b>Creating slider bars</b></p>
+<p>One of the standard uses of windows is to create interactive slider bars, like the one at the right- handside of your AMOS Professional Edit Screen.</p>
+<p><b>HSLIDER</b></p>
+<p><i>instruction: draw a horizontal slider bar</i></p>
+<p><b>Hslider</b> x1 ,y1 To x2,y2, units, position, length</p>
+<p>Horizontal slider bars are set up by giving the HSLIDER command, qualified by the followingparameters: the x,y-coordinates of the top left-hand corner of the bar in pixels followed by the x,y-</p>
+<p>coordinates of the bottom right-hand corner, then the number of individual units that the slider is divided into. Next, you must specify the position of the active slider box or control button from theleft-hand end of the slider, measured in the same sized units as the slider divisions. Finally, give the length of the slider control box in these units. The size of each unit is calculated with this formula:</p>
+<p>(x2-x1)/number of units</p>
+<p>Here is an example:</p>
+<p>Hslider 10,10 To 100,20,100,20,5</p>
+<p>Hslider 10,50 To 150,100,25,10,10</p>
+<p><b>VSLIDER</b></p>
+<p><i>instruction: draw a vertical slider</i></p>
+<p><b>Vslider</b> x1 ,y1 To x2,y2,units,position,length</p>
+<p>This works in the same way as Hslider, and sets up vertical slider bars. For a working demonstration,examine the vertical slider in the Editor window, where the number of units into which the slider isdivided is set to the number of lines in the current program.</p>
+<p>Here is a simpler example:</p>
+<p>Vslider 10,10 To 20,100,100,20,5</p>
+<p>Vslider 250,0 To 319,199,10,2,6</p>
+<p><b>SET SLIDER</b></p>
+<p><i>instruction: set fill pattern for slider bar</i></p>
+<p><b>Set Slider</b> ink1,paper1,outline1,pattern1,ink2,paper2,outline2,pattern2</p>
+<p>SET SLIDER is used to set up the colours and patterns used for your slider bars and their controlboxes.</p>
+<p>05.07.05</p>
+<p>W</p>
+<p>I</p>
+<p>N</p>
+<p>D</p>
+<p>O</p>
+<p>W</p>
+<p>S</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Windows</p>
+<p>Simply give the index numbers of the ink, paper, outline and pattern to be used for the slider bar,followed by the ink paper, outline and pattern to be used by the slider control box. If negative valuesare used for either pattern, a sprite image will be commandeered from the sprite bank, allowing evenmore spectacular effects. Try this example:</p>
+<p>Centre “&lt;Press a key&gt;” : Curs Off</p>
+<p>Do</p>
+<p>A1=Rnd(15) : B1=Rnd(15) : C1=Rnd(15) : D1=Rnd(24)</p>
+<p>A2=Rnd(15) : B2=Rnd(15) : C2=Rnd(15) : D2=Rnd(24)</p>
+<p>Set Slider Al ,B1,C1,D1,A2,B2,C2,D2</p>
+<p>Hslider 10,10 To 300,60,100,20,25</p>
+<p>Vslider 10,60 To 20,190,100,20,25</p>
+<p>Wait Key</p>
+<p>Loop</p>
+<p>Having set up your slider bars, you will want to activate them using the mouse. A simple routine tocreate working slider bars needs to be included in your main program. As always, remember to testout the ready-made example programs, for a working guide.</p>
+<p><b>Displaying a text window</b></p>
+<p>To end this Chapter, here is an extremely useful AMOS Professional feature that allows the display ofa text file directly on screen. Text can be displayed in its own independent screen, it may be scrolledthrough at will, the display window can be dragged around the screen and there is even a facility toinclude a title line.</p>
+<p><b>READ TEXT$</b></p>
+<p><i>instruction: display a text window on screen</i></p>
+<p><b>Read Text$</b> name$</p>
+<p><b>Read Text$</b> name$,<i>address, length</i></p>
+<p>In its simplest form, the READ TEXT$ command reads the text held in a specified filename on disc,for example:</p>
+<p>Read Text$ Fsel$(“**”)</p>
+<p>You can move through the displayed text using scroll bars, the arrow icons or via the following keycombinations:</p>
+<p><b>Key Press</b></p>
+<p><b>Effect</b></p>
+<p>[Up Arrow]/[Down Arrow]</p>
+<p>Move up/down by one line</p>
+<p>[Shift]+[Up Arrow]/[Down Arrow]</p>
+<p>Scroll up/down by one page</p>
+<p>[Ctrl]+[Up Arrow]/[Down Arrow]</p>
+<p>Jump directly to top/bottom of text</p>
+<p>[Esc] or [Return]</p>
+<p>Exit</p>
+<p>To read some text from an address in memory, there is an alternative version of the READ TEXT$ command. In this case the name$ parameter refers to a title line that will be printed at the top of theviewing window. Address holds the address of the first line of the text to be read. Length specifies the length of the text to be read, in bytes.</p>
+<p>05.07.06</p>
+<p>W</p>
+<p>I</p>
+<p>N</p>
+<p>D</p>
+<p>O</p>
+<p>W</p>
+<p>S</p>
+<h1 style="page-break-before:always; "></h1>
+<p>The Joystick and Mouse</p>
+<p>This Chapter clarifies all aspects of controlling and exploiting the joystick and mouse in yourprograms.</p>
+<p><b>Joysticks</b></p>
+<p>A joystick can be used to control movement around the screen by pushing its handle in the desireddirection, and to trigger all sorts of actions by pressing one or more buttons built in to its mechanism.Either of the two joystick sockets at the back or side of your Amiga will happily accept a joystick plug.If two users want to control one joystick each for specially written programs, both ports can be used. To make a joystick interact with your programs, the computer !Weds to be able to read its movementsand actions. AMOS Professional offers a number of useful functions to do just that.</p>
+<p><b>JOY</b></p>
+<p><i>function: read status of joystick</i></p>
+<p><b>status</b>=Joy(port number)</p>
+<p>This inspects what is happening with the joystick and makes a report. If the joystick you areinterested in is plugged into the joystick port, the computer must be told to look at port number (1). Ifyou are using the mouse port call that port number (0). For example:</p>
+<p>Do</p>
+<p>J=Joy(1)</p>
+<p>Print Bin$(J,5),J</p>
+<p>Loop</p>
+<p>When you run that routine, reports are given about the movements of the joystick and the status of the fire-button in the form of binary numbers. The pattern of ones and zeros in the report can then beinspected. Binary bits shown as zero indicate that nothing is happening, whereas if any of the bits inthe report is shown as a one, it means that the joystick has been moved in the direction that relates tothat bit. Here is a list of those bits along with their meanings.</p>
+<p><b>Bit number</b></p>
+<p><b>Meaning</b></p>
+<p>0</p>
+<p>Joystick has been moved Up</p>
+<p>1</p>
+<p>Joystick has been moved Down</p>
+<p>2</p>
+<p>Joystick has been moved Left</p>
+<p>3</p>
+<p>Joystick has been moved Right</p>
+<p>4</p>
+<p>Fire-button has been pressed</p>
+<p>Each of those aspects of the joystick status can be accessed individually, using the following functions:</p>
+<p><b>JLEFT</b></p>
+<p><i>function: test for joystick movement towards the left</i></p>
+<p>x=<b>Jleft</b>(port number)</p>
+<p>This returns a value of -1 (meaning True) if the joystick connected to the given port number has been pushed to the left, otherwise a value of 0 is returned (meaning False).</p>
+<p>05.08.01</p>
+<p>J</p>
+<p>O</p>
+<p>Y</p>
+<p>/</p>
+<p>M</p>
+<p>O</p>
+<p>U</p>
+<p>S</p>
+<p>E</p>
+<h1 style="page-break-before:always; "></h1>
+<p>The Joystick and Mouse</p>
+<p>The three other function in this family are self-evident, as follows:</p>
+<p><b>JRIGHT</b></p>
+<p><i>function: test for joystick movement towards the right</i></p>
+<p>x=<b>Jright</b>(port number)</p>
+<p><b>JUP</b></p>
+<p><i>function: test for joystick movement upwards</i></p>
+<p>x=<b>Jup</b>(port number)</p>
+<p><b>JDOWN</b></p>
+<p><i>function: test for joystick movement downwards</i></p>
+<p>x=<b>Jdown</b>(port number)</p>
+<p>These functions can be demonstrated by the following example:</p>
+<p>Do</p>
+<p>If Jleft(1) Then Print “WEST”</p>
+<p>If Jright(1) Then Print “EAST”</p>
+<p>If Jup(1) Then Print “NORTH”</p>
+<p>If Jdown(1) Then Print “SOUTH”</p>
+<p>Loop</p>
+<p><b>FIRE</b></p>
+<p><i>function: test status of fire-button</i></p>
+<p>x=<b>Fire</b>(port number)</p>
+<p>To set up a routine for testing to see if the fire-button has been pressed, use the FIRE functionfollowed by the joystick port number. A value of -1 will be given only if the fire-button on the relevantjoystick has been pressed.</p>
+<p>Do</p>
+<p>F=Fire(1)</p>
+<p>If F=-1 Then Centre “BANG!”: Shoot</p>
+<p>Print</p>
+<p>Loop</p>
+<p><b>The mouse pointer</b></p>
+<p>The mouse is often used in practical programming whereas joysticks have become associated withplaying computer games, but they both do much the same thing. They can both control movingobjects on screen and be used to select from a range of on-screen options, using a cursor.</p>
+<p>The mouse cursor has been pre-programmed to look like a pointer arrow, along with two additionalstandard shapes that can be selected at any time. The standard shapes have been assigned thenumbers one to three, as follows:</p>
+<p>05.08.02</p>
+<p>J</p>
+<p>O</p>
+<p>Y</p>
+<p>/</p>
+<p>M</p>
+<p>O</p>
+<p>U</p>
+<p>S</p>
+<p>E</p>
+<h1 style="page-break-before:always; "></h1>
+<p>The Joystick and Mouse</p>
+<p>Number</p>
+<p>Shape of mouse cursor</p>
+<p>1</p>
+<p>Arrow pointer (default shape)</p>
+<p>2</p>
+<p>Cross-hair</p>
+<p>3</p>
+<p>Clock</p>
+<p><b>CHANGE MOUSE</b></p>
+<p><i>instruction: change the shape of the mouse pointer</i></p>
+<p><b>Change Mouse</b> number</p>
+<p>To change the shape of the pointer arrow, use this command followed by the number of the requiredshape listed above. For example:</p>
+<p>Do</p>
+<p>For N=1 To 3</p>
+<p>Change Mouse N</p>
+<p>Wait 25</p>
+<p>Next N</p>
+<p>Loop</p>
+<p>There is no need to restrict your choice to these three shapes. If you select an image number greater than three, AMOS Professional will look at an image stored in the sprite bank, and install it as themouse pointer. The first image in the bank may be called up by using Change Mouse 4, the second byspecifying number 5, and so on. To make use of this option, sprites can feature no more than fourcolours, and they must be exactly 16 pixels wide, although any height is allowed. For such oversized sprites, the SET SPRITE BUFFER command should be used, which is explained in Chapter 7.1.</p>
+<p><b>HIDE</b></p>
+<p><i>instruction: remove the mouse pointer from the screen</i></p>
+<p><b>Hide</b></p>
+<p><b>Hide</b> <i>On</i></p>
+<p>This instruction hides the mouse pointer by making it invisible. Although it cannot be seen, it is stillactive and sending back reports, and the position of the mouse pointer co-ordinates can still be read.AMOS Professional will automatically count the number of times that the HIDE instruction is used,and employ this number to SHOW the mouse pointer once again at your command. If you prefer tokeep the mouse pointer invisible all the time and ignore the counting system, use the special ONversion of the instruction, like this:</p>
+<p>Hide On</p>
+<p><b>SHOW</b></p>
+<p><i>instruction: reveal the mouse pointer back on screen</i></p>
+<p><b>Show</b></p>
+<p><b>Show</b> <i>On</i></p>
+<p>This makes the mouse pointer visible again after a HIDE instruction.</p>
+<p>05.08.03</p>
+<p>J</p>
+<p>O</p>
+<p>Y</p>
+<p>/</p>
+<p>M</p>
+<p>O</p>
+<p>U</p>
+<p>S</p>
+<p>E</p>
+<h1 style="page-break-before:always; "></h1>
+<p>The Joystick and Mouse</p>
+<p>As a default, the system counts the number of times that the HIDE command has been used, then reveals the pointer on screen when the number of SHOWs equals the number of HIDEs. To bypass this counting system and reveal the mouse pointer immediately, use SHOW ON.</p>
+<p>Do</p>
+<p>For N=1 To 10</p>
+<p>Hide : Wait N : Show</p>
+<p>Next N</p>
+<p>Loop</p>
+<p><b>Reading the status of the mouse</b></p>
+<p>Whether or not the mouse pointer is visible, the computer must know two things in order to make any use of the mouse. It needs to recognise where the mouse pointer is as well as if any of the mousebuttons have been pressed.</p>
+<p><b>X MOUSE</b></p>
+<p><i>reserved variable: report or set the x-co-ordinate of the mouse pointer</i></p>
+<p><b>X Mouse</b></p>
+<p>x=<b>X Mouse</b></p>
+<p>X MOUSE reports the current location of the x-coordinate of the mouse pointer. Because movement iscontrolled by the mouse rather than by software, coordinates are given in hardware notation, which isdemonstrated by the following example:</p>
+<p>Do</p>
+<p>Print X Mouse</p>
+<p>Loop</p>
+<p>This can also be used to set a new coordinate position for the mouse pointer and move it to a specificposition on the screen. This is done by assigning a value to X MOUSE as if it was a Basic variable. Forexample:</p>
+<p>For N=200 To 350</p>
+<p>X Mouse=N</p>
+<p>Print X Mouse</p>
+<p>Next N</p>
+<p><b>Y MOUSE</b></p>
+<p><i>reserved variable: report or set the y-coordinate of the mouse pointer</i></p>
+<p><b>Y Mouse</b></p>
+<p>y=<b>Y Mouse</b></p>
+<p>Y MOUSE is used to give the y-coordinate of the mouse pointer in hardware co-ordinates, or toreposition the mouse pointer on screen, and it is employed in exactly the same way as X MOUSE.</p>
+<p>05.08.04</p>
+<p>J</p>
+<p>O</p>
+<p>Y</p>
+<p>/</p>
+<p>M</p>
+<p>O</p>
+<p>U</p>
+<p>S</p>
+<p>E</p>
+<h1 style="page-break-before:always; "></h1>
+<p>The Joystick and Mouse</p>
+<p>For N=150 To 300</p>
+<p>X Mouse=N : Y Mouse=N/2</p>
+<p>Print X Mouse : Print Y Mouse</p>
+<p>Next N</p>
+<p><b>MOUSE KEY</b></p>
+<p><i>function: read status of mouse buttons</i></p>
+<p>k=<b>Mouse Key</b></p>
+<p>The MOUSE KEY function checks whether one of the mouse buttons has been pressed and makes areport in the form of a binary pattern made up of these elements:</p>
+<p><b>Pattern</b></p>
+<p><b>Report</b></p>
+<p>Bit 0</p>
+<p>Left mouse button</p>
+<p>Bit 1</p>
+<p>Right mouse button</p>
+<p>Bit 2</p>
+<p>Third mouse button if it exists</p>
+<p>As usual, the numbers zero and one make up the report, with a one displayed when the relevant button is held down, otherwise a zero is shown. Try this routine:</p>
+<p>Curs Off</p>
+<p>Do</p>
+<p>Locate 0,0</p>
+<p>M= Mouse Key : Print “Bit Pattern ”;Bin$(M,8);” Number ”;M</p>
+<p>Loop</p>
+<p><b>MOUSE CLICK</b></p>
+<p><i>function: check for click of mouse button</i></p>
+<p>c=<b>Mouse Click</b></p>
+<p>This is similar to MOUSE KEY, but instead of checking to see whether or not a mouse button is helddown, MOUSE CLICK is only interested in whether the user has just made a single click on a mouse button. It returns the familiar bit pattern of these elements:</p>
+<p><b>Pattern</b></p>
+<p><b>Report</b></p>
+<p>Bit 1</p>
+<p>Single test for left mouse button</p>
+<p>Bit 2</p>
+<p>Single test for right mouse button</p>
+<p>Bit 3</p>
+<p>Single test for third mouse button if available</p>
+<p>These bits are automatically re-set to zero after one test has been made, so they will only check for asingle key press at a time. Here is an example:</p>
+<p>Curs Off</p>
+<p>Do</p>
+<p>M=Mouse Click</p>
+<p>If M&lt;&gt;0 Then Print “Bit Pattern ”;Bin$(M,8);“ Number”;M</p>
+<p>Loop</p>
+<p>05.08.05</p>
+<p>J</p>
+<p>O</p>
+<p>Y</p>
+<p>/</p>
+<p>M</p>
+<p>O</p>
+<p>U</p>
+<p>S</p>
+<p>E</p>
+<h1 style="page-break-before:always; "></h1>
+<p>The Joystick and Mouse</p>
+<p><b>Limiting the mouse pointer</b></p>
+<p>One of the commonest screen conventions for both leisure and serious programs is the use of controlpanels. AMOS Professional relies on them extensively for ease of use and clarity. Supposing you needto set up a control panel on your screen, but you want to prevent the mouse pointer from wanderingoutside the area of that panel.</p>
+<p><b>LIMIT MOUSE</b></p>
+<p><i>instruction: limit mouse pointer to part of the screen</i></p>
+<p><b>Limit Mouse</b> x1 ,y1 To x2,y2</p>
+<p><b>Limit Mouse</b></p>
+<p>This command sets up a rectangular area for the mouse pointer to move around, and traps it insidethe boundaries set by hardware coordinates, from the rectangle's top-left TO bottom right-handcorner. For example:</p>
+<p>Limit Mouse 300,100 To 350,150</p>
+<p>If you need to restore freedom to the mouse pointer and allow it to move around the entire screen,use the LIMIT MOUSE instruction on its own, without any coordinates after it. Note that SCREENOPEN must be followed by a WAIT VBL command before LIMIT MOUSE can be used, otherwise noscreen will be set up for screen limits to be set.</p>
+<p><b>Finding the mouse pointer</b></p>
+<p>If you already understand the concept of different screens and screen zone numbers, you willappreciate that it is not difficult to lose track of the mouse pointer.</p>
+<p>You may need to keep a check on various screens and screen zones in order to keep in control of the mouse pointer. If you do not already understand the concept of different screens and screen zonenumbers, you will need to become familiar with the various SCREEN commands and ZONEfunctions.</p>
+<p><b>MOUSE ZONE</b></p>
+<p><i>function: check if the mouse pointer is in a zone</i></p>
+<p>zone number=<b>Mouse Zone</b></p>
+<p>The MOUSE ZONE function checks to see where the mouse pointer is currently located, and if it hasentered a screen zone, the number of that zone is returned. It is equivalent to the following line:</p>
+<p>X=Hzone(X Mouse,Y Mouse)</p>
+<p><b>MOUSE SCREEN</b></p>
+<p><i>function: check which screen the mouse pointer is occupying</i></p>
+<p>screen number=<b>Mouse Screen</b></p>
+<p>05.08.06</p>
+<p>J</p>
+<p>O</p>
+<p>Y</p>
+<p>/</p>
+<p>M</p>
+<p>O</p>
+<p>U</p>
+<p>S</p>
+<p>E</p>
+<h1 style="page-break-before:always; "></h1>
+<p>The Joystick and Mouse</p>
+<p>Use MOUSE SCREEN to return the number of the screen where the mouse pointer is currentlylocated, like this:</p>
+<p>X=Mouse Screen</p>
+<p>Print X</p>
+<p><b>Displaying menus with the mouse pointer</b></p>
+<p>Finally, as an AMOS Professional programmer, you will want to make use of the automatic facility fordisplaying all the menus whose root starts from the current position of the mouse pointer.</p>
+<p><b>MENU MOUSE</b></p>
+<p><i>instruction: display menu under current mouse pointer location</i></p>
+<p><b>Menu Mouse</b> On</p>
+<p><b>Menu Mouse</b> Off</p>
+<p>When this facility is turned ON, any menus that have been set up at the current location of the mousepointer are instantly displayed on screen. The mouse coordinates are added to the MENU BASE inorder to calculate the position where the menus are displayed, so you are able to place a menu at apre-set distance away from the mouse pointer if you like. To stop this automatic process, simply use MENU MOUSE OFF.</p>
+<p>Please see Chapter 6.5 which deals with all aspects of AMOS Professional menus, if you are notexperienced in their use.</p>
+<p>05.08.07</p>
+<p>J</p>
+<p>O</p>
+<p>Y</p>
+<p>/</p>
+<p>M</p>
+<p>O</p>
+<p>U</p>
+<p>S</p>
+<p>E</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Memory Banks</p>
+<p>This Chapter explains what memory banks are, the sort of information they can hold and how theyare used.</p>
+<p>Any AMOS Professional program can include optional lists of images, audio samples or musicthemes. These items are managed by the AMOS Professional system automatically, and they can bepermanently installed as part of your programs. This means that once these items have been set up,they may be exploited instantly.</p>
+<p>AMOS Professional stores this information in special areas of accommodation known as “memorybanks”, and these banks can be created by certain accessories such as the Object Editor, or directlyinside a program with the RESERVE command. Memory banks are also generated as a direct result ofcertain instructions, such as GET SPRITE and FRAME LOAD.</p>
+<p><b>Memory bank numbers, names and types</b></p>
+<p>Every memory bank is assigned its own unique number, ranging from 1 up to 65535. Bank numbers 1to 4 are normally reserved for Objects, icons, music and AMAL programs, and the remaining bankscan be used for any information you choose.</p>
+<p>As well as their identification number, most memory banks also have a name, indicating the type ofinformation that they are holding. Here are some typical names:</p>
+<p>“Sprites” can contain Objects used for Sprite and Bob images.</p>
+<p>“Samples” can hold sound samples.</p>
+<p>“Music” can store melodies and background music.</p>
+<p>“Resource” can store definitions for control buttons and boxes.</p>
+<p>There are two main types of memory bank, “data banks” and “work banks”.</p>
+<p>A <b>data</b> bank is used to hold vital information which must be permanently available for your programsto use. Data banks are saved along with the program's Basic listings automatically. This means thatonce they have been installed, there is no need to worry about them any further.</p>
+<p>A <b>work</b> bank is temporary, and is freshly defined every time that a program is run. Work banks aretotally discarded when programs are saved onto disc.</p>
+<p>Memory banks are also organised according to the type of memory that they make use of.</p>
+<p><b>Fast banks</b> are stored in fast memory, if this type of memory is available. Fast memory cannot be usedfor items that need to be accessed by the Amiga's hardware chips, such as Sprites or samples, but theyare fine for AMAL programs or menu definitions.</p>
+<p><b>Chip banks</b> are reserved using the Amiga's chip memory, and they can be used directly with theAmiga's own sound and graphics chips. Depending on the model of Amiga in use, there can beanything between 512k and 2024k of chip Ram at your disposal.</p>
+<p>05.09.01</p>
+<p>B</p>
+<p>A</p>
+<p>N</p>
+<p>K</p>
+<p>S</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Memory Banks</p>
+<p>Here is a list of the most common types of memory bank that will be used with AMOS Pro programs:</p>
+<p><b>Bank Name</b></p>
+<p><b>Items Stored</b></p>
+<p><b>Bank Type</b></p>
+<p><b>Memory</b></p>
+<p><b>Notes</b></p>
+<p>Sprites</p>
+<p>Sprite or Bob images</p>
+<p>Permanent</p>
+<p>Chip</p>
+<p>Bank 1 only</p>
+<p>Icons</p>
+<p>Icon images</p>
+<p>Permanent</p>
+<p>Chip</p>
+<p>Bank 2 only</p>
+<p>Music</p>
+<p>Melodies</p>
+<p>Permanent</p>
+<p>Chip</p>
+<p>Bank 3 only</p>
+<p>AMAL</p>
+<p>AMAL progs. and PL table</p>
+<p>Permanent</p>
+<p>Fast</p>
+<p>Bank 4 only</p>
+<p>Samples</p>
+<p>audio samples</p>
+<p>Permanent</p>
+<p>Chip</p>
+<p>Bank 5 default</p>
+<p>Menumenu definitions</p>
+<p>Permanent</p>
+<p>Fastany bank</p>
+<p>Pic.Pac</p>
+<p>compressed pictures</p>
+<p>Permanent</p>
+<p>Fast</p>
+<p>any bank</p>
+<p>Resource</p>
+<p>buttons and dialogues</p>
+<p>Permanent</p>
+<p>Fast</p>
+<p>any bank</p>
+<p>Tracker</p>
+<p>Noisetracker music</p>
+<p>Permanent</p>
+<p>Chip</p>
+<p>any bank</p>
+<p>Chip Work</p>
+<p>temporary chip workspace</p>
+<p>Temporary</p>
+<p>Chip</p>
+<p>any bank</p>
+<p>Fast Work</p>
+<p>temporary fast workspace</p>
+<p>Temporary</p>
+<p>Fast</p>
+<p>any bank</p>
+<p>Chip Data</p>
+<p>long-term chip data</p>
+<p>Permanent</p>
+<p>Chip</p>
+<p>any bank</p>
+<p>Fast Data</p>
+<p>constant fast data</p>
+<p>Permanent</p>
+<p>Fast</p>
+<p>any bank</p>
+<p><b>Reserving a bank</b></p>
+<p>It has already been explained that AMOS Professional allocates certain types of bank automatically.To create any other required memory bank, they must first be “reserved”. The RESERVE AScommand is followed by the type of bank that you want to create, a comma, then the number of bytesneeded for the length of this bank.</p>
+<p>If a selected bank already exists, it will be erased to make room for the new definition.</p>
+<p>Allowable <b>bank numbers</b> range from 1 to 65535, but because bank numbers 1 to 4 are already used internally by the AMOS Professional system, new banks should be reserved using the bank numbers5 and above. For users who have upgraded from earlier versions of the AMOS system, you will havenoted the increase in the range of available bank numbers from the original 15. There are fouralternative types of bank that can be reserved, and these will now be explained.</p>
+<p><b>RESERVE AS DATA</b></p>
+<p><i>instruction: reserve a new data bank</i></p>
+<p><b>Reserve As Data</b> bank number,length</p>
+<p>This reserves the selected bank number with the number of bytes specified as its length. Data banksare <b>permanent</b>, and wherever possible, their memory will be allocated from fast memory, so this typeof bank should <b>not</b> be used for information such as Objects and samples which need to be accesseddirectly by the Amiga's hardware chips.</p>
+<p><b>RESERVE AS WORK</b></p>
+<p><i>instruction: reserve a new work bank</i></p>
+<p><b>Reserve as Work</b> bank number,length</p>
+<p>This allocates a temporary workspace of the requested length from fast memory, if it is available.</p>
+<p>05.09.02</p>
+<p>B</p>
+<p>A</p>
+<p>N</p>
+<p>K</p>
+<p>S</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Memory Banks</p>
+<p>The work data will be erased every time the program is run from the Editor, and it will be discardedwhen the listing is saved onto disc. A quick check can be made to see if the data area has been successfully assigned to fast memory, using the FAST FREE function, like this:</p>
+<p>M=Fast Free : Rem Give the amount of available FAST memory</p>
+<p>Reserve As Work 10,1000</p>
+<p>If M&lt;&gt;Fast Free</p>
+<p>Print “The Data has been stored in FAST Ram”</p>
+<p>Else</p>
+<p>Print “Sorry, there is only CHIP Ram available”</p>
+<p>End If</p>
+<p><b>RESERVE AS CHIP DATA</b></p>
+<p><i>instruction: reserve a new chip data bank</i></p>
+<p><b>Reserve As Chip Data</b> bank number,length</p>
+<p>Use this variation of the RESERVE AS instruction to allocate a <b>permanent</b> area of memory using ChipRam. If there is none available, an “Out of Memory” error will be reported. You can obtain an instantread-out of the remaining chip memory by calling the CHIP FREE function, as follows:</p>
+<p>CF=Chip Free</p>
+<p>Print “Remaining Chip memory = ”;CF;“ bytes.”</p>
+<p>Once a bank has been defined by this command, it will be saved automatically, along with yourAMOS Professional Basic program.</p>
+<p><b>RESERVE AS CHIP WORK</b></p>
+<p><i>instruction: reserve a new chip work bank</i></p>
+<p><b>Reserve As Chip Work</b> bank number,length</p>
+<p>This command allocates the selected block of <b>temporary</b> memory using Chip Ram, and it is oftenused with the DOUBLE BUFFERED sampling system, to play samples directly from hard disc. Hereare some typical examples of the different RESERVE AS commands:</p>
+<p>Reserve As Chip Work 10,10000: Rem 10000 bytes of chip workspace to bank 10</p>
+<p>Reserve As Work 11,5000: Rem 5000 bytes of fast workspace to bank 11</p>
+<p>Reserve As Chip Data 12,2000 : Rem 2000 bytes of permanent chip data to bank 12</p>
+<p>Reserve as Data 13,1000 : Rem 1000 bytes of fast data to bank 13</p>
+<p><b>Saving memory banks</b></p>
+<p>AMOS Professional provides the simplest of instructions for saving memory banks.</p>
+<p><b>SAVE</b></p>
+<p><i>instruction: save one or more memory banks onto disc</i></p>
+<p><b>Save</b> “filename.abk”</p>
+<p><b>Save</b> “filename.abk”,bank number</p>
+<p>05.09.03</p>
+<p>B</p>
+<p>A</p>
+<p>N</p>
+<p>K</p>
+<p>S</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Memory Banks</p>
+<p>If a bank has been created using RESERVE, or some screen Objects have been defined with acommand such as GET BOB, the new data can be saved onto a suitable disc in one of two ways.</p>
+<p>When the SAVE command is followed by a string containing a filename, <b>all</b> current memory bankswill be saved into a single large file, bearing that name. The filename can be anything at all, but it is common practice to add the “.Abk” extension at the end, to remind yourself that this is an AMOSProfessional memory bank. Similarly, an “.Abs” extension is used to indicate a file containing a groupof several memory banks.</p>
+<p>By adding an optional bank number after the filename, only that selected bank will be stored in thenamed file onto disc.</p>
+<p>Here is an example of an instant image-bank generator:</p>
+<p> N=1 : Rem Set number of first new image to create</p>
+<p>S=1 : Rem Set size of image*16</p>
+<p>Rem Create images in bank one</p>
+<p>For G=0 To 4</p>
+<p>Rem Draw the images</p>
+<p>Ink G+1 : Circle S*7,S*7,S*7 : Paint S*8,S*8</p>
+<p>Ink 0: Ellipse S*4,S*5,S*1,5*2 : Paint S*4,S*5</p>
+<p>Ellipse S*1 0,S*5,S,S*2 : Paint S*10,S*5</p>
+<p>Ellipse S*7,S*10,S*5,S*3 : Ellipse S*7,S*9,S*4,S : Paint S*1 1,S*1</p>
+<p>Ink G+1 : Bar S*3,S*7 To S*13,S*9</p>
+<p>Rem Now grab them as Objects</p>
+<p>Get Bob G+N,0,0 To S*16-1 ,S*16-1</p>
+<p>Rem Clear them from the screen</p>
+<p>Cls 0,0,0 To S*16,S*16</p>
+<p>Next G</p>
+<p>F$=Fsel$(“*.Abk”,“ ”,“Save your images”)</p>
+<p>Rem Save Objects in bank 1</p>
+<p>If F$&lt;&gt;0</p>
+<p>Save F$,1</p>
+<p>End If</p>
+<p><b>Loading memory banks</b></p>
+<p>Once saved, memory banks need to be retrieved and loaded, ready for use. AMOS Professional makesthis process very easy too.</p>
+<p><b>LOAD</b></p>
+<p><i>instruction: load one or more banks into memory</i></p>
+<p><b>Load</b> “filename”</p>
+<p><b>Load</b> “filename”,<i>bank number</i></p>
+<p>Remember it has been suggested that memory bank filenames should have the following extensions,acting as reminders for human eyes, and identification flags for computer searches:</p>
+<p>05.09.04</p>
+<p>B</p>
+<p>A</p>
+<p>N</p>
+<p>K</p>
+<p>S</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Memory Banks</p>
+<p>“filename.Abk” to indicate a single AMOS Professional memory bank</p>
+<p>“filename.Abs” for a file containing a group of several memory banks.</p>
+<p>These identifiers can be very useful when employed with certain instructions, as follows:</p>
+<p>Rem Load an Object bank from current disc</p>
+<p>Load Fsel$(“*.Abk”,“ ”,“Load an Object bank”)</p>
+<p>List Bank : Rem List bank details on screen</p>
+<p>As can be seen, the LOAD command will load the selected memory bank directly from theappropriate disc file. An optional destination bank number can be added after the filename to beloaded, but if it is omitted, or given the number zero, data will be re-loaded into the <b>same</b> banknumbers from which it was originally saved. Any current information in these existing banks will becompletely lost!</p>
+<p>Object and Icon files are treated slightly differently. If the bank number is greater than zero, anyadditional images will be added to the end of the existing bank of images.</p>
+<p><b>Saving and loading memory blocks</b></p>
+<p><b>BSAVE</b></p>
+<p><i>instruction: save an unformatted memory block</i></p>
+<p><b>Bsave</b> file$,start To end</p>
+<p>A block of memory between a specified start and end location can be saved into a specified file ondisc. For example:</p>
+<p>Bsave “Test”,Start(5) To Start(5)+Length(5) : Rem Save memory bank 5</p>
+<p>The above example would save the data in memory bank number 5 to a suitable disc. The difference between this file and a file saved as a normal memory bank is that while SAVE causes a special bankheader to be written, containing information about the bank, this header is not written for a file whenBSAVE is used. This means that LOAD cannot be used for this type of file. It is also not suitable forObject banks.</p>
+<p><b>BLOAD</b></p>
+<p><i>instruction: load block of binary data into bank or address</i></p>
+<p><b>Bload</b> file$,bank number</p>
+<p><b>Bload</b> file$, address</p>
+<p>The BLOAD instruction loads a file of binary data into memory. It does not alter the data in any way.To load this data into a memory bank, the bank must first be reserved, otherwise an error will begenerated. Also note that files to be loaded must not be any larger than the reserved bank, or other areas of memory will be corrupted.</p>
+<p>The file of data can also be loaded from disc into a specified address, using BLOAD.</p>
+<p>05.09.05</p>
+<p>B</p>
+<p>A</p>
+<p>N</p>
+<p>K</p>
+<p>S</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Memory Banks</p>
+<p><b>Deleting memory banks</b></p>
+<p>During the course of a program, it may be necessary to define temporary memory banks for specificpurposes. For instance, a title screen may need to be enhanced by an animation sequence or somebackground music. Since this data would only be needed at the beginning of the program, it wouldserve very little purpose to hold it in memory permanently, and the extra memory space could bebetter used for additional graphics and sound in the actual program. AMOS Professional allows youto delete memory banks directly from inside your programs.</p>
+<p>The Amiga's memory system is notoriously wasteful, so care should be taken not to overuse thistechnique, otherwise although the CHIP FREE and FAST FREE functions may insist that there isplenty of memory available, you can still run out! If this should happen, it would be necessary to quitthe program and re-start the Amiga, but providing you are aware of the potential problem andprovided that memory banks are kept as small as is practical, all should be well.</p>
+<p><b>ERASE</b></p>
+<p><i>instruction: clear a single memory bank</i></p>
+<p><b>Erase</b> bank number</p>
+<p>The ERASE command clears the memory space used by the specified bank number, and returns thismemory to the main program, for future use. For example:</p>
+<p>Reserve as Chip Work 5,1000: Rem Reserve temporary work bank 5</p>
+<p>Print “Free Chip Memory = ”;Chip Free</p>
+<p>Wait Key</p>
+<p>Erase 5</p>
+<p>Print “There is now ”;Chip Free; “available bytes.”</p>
+<p><b>ERASE ALL</b></p>
+<p><i>instruction: clear all current memory banks</i></p>
+<p><b>Erase All</b></p>
+<p>This command is used to erase all memory banks that are assigned to the current program, quicklyand completely!</p>
+<p>Memory banks allocated to certain types of computer games can often become much larger than theactual program listings. In this case, it is sensible to store all Objects in separate files on disc, and onlyload them into memory when they are specifically needed in the game. This dramatically reduces thesize of program files and makes it very easy to change the Objects independently of the mainroutines. It also allows the same Objects to be used for several different programs.</p>
+<p>In order to exploit this system, all the memory banks used by the program need to be carefully erasedbefore the program is saved to disc, otherwise masses of useless data could be stored as part of the program listing. Use the ERASE ALL command carefully to save large amounts of valuable discspace.</p>
+<p>05.09.06</p>
+<p>B</p>
+<p>A</p>
+<p>N</p>
+<p>K</p>
+<p>S</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Memory Banks</p>
+<p><b>ERASE TEMP</b></p>
+<p><i>instruction: clear temporary memory banks</i></p>
+<p><b>Erase Temp</b></p>
+<p>This instruction is used to erase all of the temporary work banks from the current program. Anypermanent data banks used for holding Sprites, music or samples will be completely unaffected. Forexample:</p>
+<p>Reserve As Data 5,1000: Rem Reserve 1000 bytes of permanent data</p>
+<p>Reserve As Work 6,1000: Rem Reserve 1000 bytes of temporary workspace</p>
+<p>Reserve As Chip Work 7,2000: Rem Reserve 2000 bytes of chip memory</p>
+<p>Erase Temp</p>
+<p>List Bank</p>
+<p><b>BANK SHRINK</b></p>
+<p><i>instruction: reduce the size of a bank to new length</i></p>
+<p><b>Bank Shrink</b> bank number <b>To</b> length</p>
+<p>This instruction does not erase a bank at all, but shrinks it! BANK SHRINK will not work with Objector Icon banks, but it is used to reduce the length of a previously reserved memory bank to thespecified smaller length. The excess memory will be returned for use by the main program withoutcomplications.</p>
+<p>This feature is very useful if you create a bank by poking it into memory, and wish to save it with amore suitable size. For example:</p>
+<p>Reserve As Data 10,1000000: Rem Very large bank</p>
+<p>Poke$ Start(10)-8“My Bank” : Rem Rename bank 8 bytes</p>
+<p>Poke$ Start(10),“This is a small bank!” : Rem Poke some data</p>
+<p>Bank Shrink 10 To 100: Rem Shrink bank to 100 bytes</p>
+<p>Save “My_Bank.Abk”,10</p>
+<p><b>Swapping banks</b></p>
+<p><b>BANK SWAP</b></p>
+<p><i>instruction: swap over two memory banks</i></p>
+<p><b>Bank Swap</b> first bank number, second bank number</p>
+<p>The BANK SWAP command switches over the memory pointers assigned to a pair of selected banks,so that the first bank is assigned to the second bank's memory block and the second bank grabs thelocations used by the first.</p>
+<p>Note that the items held in these banks are completely unaffected by this operation, and the onlything that changes is the number and type of the memory bank to which the items are assigned.</p>
+<p>05.09.07</p>
+<p>B</p>
+<p>A</p>
+<p>N</p>
+<p>K</p>
+<p>S</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Memory Banks</p>
+<p>BANK SWAP is commonly used in conjunction with Objects, Icons and music banks. For example, itcan be used to instantly flick between the images in an Icon bank and an Object bank, like this:</p>
+<p>Load “Objects.Abk” : Rem Please use your own filename</p>
+<p>Load “Icons.Abk” : Rem Select appropriate filename</p>
+<p>Bank Swap 1,2 : Rem Banks 1 and 2 normally used for Sprites and Icons</p>
+<p>Another possibility is to store several different music banks in memory, and swap them as required.</p>
+<p><b>Listing banks on the screen</b></p>
+<p><b>LIST BANK</b></p>
+<p><i>instruction: list all current banks in memory</i></p>
+<p><b>List Bank</b></p>
+<p>The LIST BANK instruction is used to provide a complete list of all the banks that are available fromthe current program. Information about the banks is listed in the following order:</p>
+<p>•</p>
+<p>The bank number, ranging from 1 to 65536</p>
+<p>•</p>
+<p>A single letter indicating the type of bank, with “F” for Fast or “C” indicating Chip Ram.</p>
+<p>•</p>
+<p>The name of the bank, held in a string of eight characters. Please note that Object banks areidentified with the letters “Sprite”, even though the same images can be used equally well forSprites or Bobs.</p>
+<p>•</p>
+<p>The address of the start of the bank in memory, using hexadecimal notation.</p>
+<p>•</p>
+<p>The length of the bank in normal decimal format. In the case of “Sprite” or “Icon” banks, thenumber of images in the bank will be given instead.</p>
+<p>LIST BANK will result in the following sort of report appearing on the screen:</p>
+<p>1-C-</p>
+<p>Sprites S:C61298</p>
+<p>L:0000005</p>
+<p>3-C-</p>
+<p>Music S:C60E80</p>
+<p>L:0001000</p>
+<p>6-F-</p>
+<p>Work S:100000</p>
+<p>L:0010000</p>
+<p><b>Memory bank functions</b></p>
+<p>AMOS Professional provides a full range of memory bank functions, which are used to provideinformation about the status of available banks.</p>
+<p><b>LENGTH</b></p>
+<p><i>function: return the length of a memory bank</i></p>
+<p>length=<b>Length</b>(bank number)</p>
+<p>The LENGTH function is used to find the size of the bank whose number is specified in brackets. Normally, this is measured in bytes, but if the bank contains Objects or Icon data, the number ofimages in that bank will be given.</p>
+<p>05.09.08</p>
+<p>B</p>
+<p>A</p>
+<p>N</p>
+<p>K</p>
+<p>S</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Memory Banks</p>
+<p>A value of zero is returned for any bank that has not been defined. For example:</p>
+<p>Load Fsel$(“*.Abk”,“ ”,“Load an Object bank”) : Rem Bank 1</p>
+<p>Print “There are ”;Length(1);“ images available.”</p>
+<p><b>START</b></p>
+<p><i>function: return the address of a memory bank</i></p>
+<p>address=<b>Start</b>(bank number)</p>
+<p>Use the START function to reveal the address of the memory area allocated to a bank, whose numberis specified in brackets. The address will usually remain fixed for the duration of a program, but it canbe changed by a BANK SWAP command.</p>
+<p>If the specified bank number does not exist, AMOS Professional will give a “Bank not reserved” errorreport. This can be avoided by checking the status of a bank with the LENGTH function, like this:</p>
+<p>If Length(N)&gt;0: Rem give N a suitable bank number</p>
+<p>Print “Address of the bank is ”;Start(N)</p>
+<p>Else</p>
+<p>Print “This bank does not exist!”</p>
+<p>End If</p>
+<p>The FAST FREE and CHIP FREE functions that are used to find the amount of relevant free memoryhave already been explained. These should not be confused with the FREE function, which reportsthe amount of free memory in the variable area.</p>
+<p><b>Grabbing accessory program memory banks</b></p>
+<p>Any memory banks that are used by an accessory are independent from the main program. ExistingAMOS users will find that the system for grabbing memory banks has been greatly enhanced forAMOS Professional programmers.</p>
+<p>The PRG UNDER command is used to check whether a program is accessible “under” the currentprogram, and if all is well, its memory banks can be grabbed for the current program. As manydifferent programs as memory allows can be run using the PRUN command, and full details of thesecommands as well as communication between programs is explained in Chapter 11.4. Here are theavailable bank-grabbing instructions and functions:</p>
+<p><b>BLENGTH</b></p>
+<p><i>function: return the length of a memory bank from a previous program</i></p>
+<p>length=<b>Blength</b>(bank number)</p>
+<p>This function is used to get the length of the specified bank number from a previous AMOSProfessional program, if this is possible. A value of zero will be returned if the specified bank has notbeen defined in the previous program, or if there is no previous program accessible at all (PRGUNDER= 0).</p>
+<p>05.09.09</p>
+<p>B</p>
+<p>A</p>
+<p>N</p>
+<p>K</p>
+<p>S</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Memory Banks</p>
+<p><b>BSTART</b></p>
+<p><i>function: return the address of a memory bank from a previous program</i></p>
+<p>address=<b>BSTART</b>(bank number)</p>
+<p>Similarly, the BSTART function will give the address of the specified memory bank from a previousprogram, if possible. An error will be returned if no such bank has been reserved.</p>
+<p><b>BGRAB</b></p>
+<p><i>instruction: grab a memory bank used by the previous program</i></p>
+<p><b>Bgrab</b> bank number</p>
+<p>This command is used to grab a memory bank from the previous program. The selected bank is<b>erased</b> from its former program and appropriated to the current program's list of memory banks. If aselected bank number already exists in the current program, then it will be erased before beingreplaced by the grabbed bank. However, a grabbed bank is not automatically replaced at its originallocation. This must be achieved using a BSEND instruction, which is explained next.</p>
+<p>If the bank which is specified to be grabbed does not exist a “Bank not reserved” message will be generated.</p>
+<p><b>BSEND</b></p>
+<p><i>instruction: transfer a memory bank from the current program to the previous program</i></p>
+<p><b>Bsend</b> bank number</p>
+<p>This command is the exact opposite of the BGRAB instruction. The specified bank is erased from the current program list of banks, and appears in the list of banks belonging to the previous program. If abank already occupies this position in the previous program, it will be erased. Both the BGRAB andBSEND commands are very fast, and blocks of data are not reserved first.</p>
+<p>Here is an example of how to grab memory banks safely. The example lists all of the banks of theprevious program before they are grabbed, and it should be noted that the name of the bank islocated eight bytes before the BSTART address:</p>
+<p>If Prg Under : Rem Check availability of a previous program</p>
+<p>For B=1 To 1000: Rem Check the first 1000 banks!</p>
+<p>If Blength(B)</p>
+<p>Print “Bank number:”;B;“ found. Name: ”;Peek$(Bstart(B)-8,8)</p>
+<p>Bgrab B: Rem Grab the bank</p>
+<p>End If</p>
+<p>Next</p>
+<p>End If</p>
+<p><b>Automatic bank grabbing</b></p>
+<p>This feature is a unique bonus! It allows memory banks to be passed between programs completelyautomatically. You could be in the middle of writing an arcade game, call up the Object Editor, changethe Bobs in the game, and return to the creation of your program routines bringing the new Bobs withyou!</p>
+<p>05.09.10</p>
+<p>B</p>
+<p>A</p>
+<p>N</p>
+<p>K</p>
+<p>S</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Memory Banks</p>
+<p>No loading and saving are necessary, everything is handled by AMOS Professional, and your workinglife is made that much easier! An example of this technique is featured in Chapter 13.7.</p>
+<p><b>Creating your own utilities</b></p>
+<p>The following functions are provided in order to provide developers with full access to the innerworkings of the AMOS Professional system. They are definitely not intended for the casualprogrammer, but they do allow advanced users to create customised AMOS Professional utilities.</p>
+<p><b>SCREEN BASE</b></p>
+<p><i>function: get screen table</i></p>
+<p>address=<b>Screen Base</b></p>
+<p>This function returns the base address of the internal table that is used to hold the number andposition of AMOS Professional screens.</p>
+<p><b>ICON BASE</b></p>
+<p><i>function: get Icon base</i></p>
+<p>address=<b>Icon Base</b>(number)</p>
+<p>ICON BASE returns the address of the Icon whose number is specified in brackets. The format of thisinformation is exactly the same as for the SPRITE BASE function, explained below.</p>
+<p><b>SPRITE BASE</b></p>
+<p><i>function: get Sprite table</i></p>
+<p>n=<b>Sprite Base</b>(number)</p>
+<p>SPRITE BASE provides the address of the internal data list for whichever Sprite number is specifiedin brackets. If the Sprite does not exist, then the address of the table is returned as zero. Negativevalues for the Sprite number will return the address of the optional mask associated with that Sprite,and the number that is returned can contain one of three possible values, as follows:</p>
+<p>•</p>
+<p>A <b>negative</b> number indicates that there is no mask for this Sprite.</p>
+<p>•</p>
+<p><b>Zero</b> indicates that the specified Sprite does have a mask, but it is yet to be generated by the system.</p>
+<p>•</p>
+<p>A <b>positive</b> number indicates the address of the mask in memory. The first “long word” of thisarea holds the length of the mask, and the next gives the actual definition.</p>
+<p>05.09.11</p>
+<p>B</p>
+<p>A</p>
+<p>N</p>
+<p>K</p>
+<p>S</p>
+</body>
+</html>

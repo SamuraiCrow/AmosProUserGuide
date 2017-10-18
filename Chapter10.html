@@ -1,0 +1,2027 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+     "http://www.w3.org/TR/html4/transitional.dtd">
+<html>
+<head>
+
+  <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  <title></title>
+  <meta name="generator" content="LibreOffice 5.2.7.2 (Linux)"/>
+  <meta name="created" content="2017-10-03T07:55:59.599196850"/>
+  <meta name="changed" content="2017-10-04T06:11:50.588886749"/>
+</head>
+<body>
+<h1></h1>
+<p>Input/Output</p>
+<p>10.01</p>
+<p>Using the keyboard</p>
+<p>10.02</p>
+<p>Disc Access</p>
+<p>10.03</p>
+<p>Accessing a Printer</p>
+<p>10.04</p>
+<p>Accessing the Serial Port</p>
+<p>10.05</p>
+<p>The Parallel Port</p>
+<p>10.06</p>
+<p>AREXX</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Using the Keyboard</p>
+<p>This Chapter reveals how AMOS Professional exploits the potential of your keyboard.</p>
+<p><b>Checking for a key-press</b></p>
+<p>The keyboard can be used to interact with your routines once they are running. This is vital for any  </p>
+<p>sort of arcade game, adventure gaming or for more practical items such as word processing.</p>
+<p><b>INKEY$</b></p>
+<p><i>function: check for a key-press</i></p>
+<p>k$=<b>Inkeys$</b></p>
+<p>This function checks to see if a key has been pressed, and reports back its value in a string. For  </p>
+<p>example:</p>
+<p>Do</p>
+<p>K$=Inkey$</p>
+<p>If K$&lt;&gt;““Then Print ”You pressed a key!”</p>
+<p>Loop</p>
+<p>Now use the INKEY$ function to move your cursor around the screen, like this:</p>
+<p>Print “Use your cursor keys”</p>
+<p>Do</p>
+<p>K$=Inkey$</p>
+<p>If K$&lt;&gt;“”Then Print K$;</p>
+<p>Loop</p>
+<p>The INKEY$ function does not wait for you to input anything from the keyboard, so if a character is </p>
+<p>not entered an empty string is returned.</p>
+<p>INKEY$ can only register a key-press from one of the keys that carries its own ASCII code, and the </p>
+<p>ASCII code numbers that represent the characters which can be printed on the screen are explained in </p>
+<p>Chapter5.2.</p>
+<p>It has also been explained that certain keys like [Help] and the function keys [F1] to [F10] do not carry </p>
+<p>as ASCII code at all, and if INKEY$ detects that this type of key has been pressed, a character with a  </p>
+<p>value of zero will be returned. When this happens, the internal “scan codes” of these keys can be </p>
+<p>found.</p>
+<p><b>SCANCODE</b></p>
+<p><i>function: return the scancode of a key entered with INKEY$</i></p>
+<p>s=<b>Scancode</b></p>
+<p>SCANCODE returns the internal scan code of a key that has already been entered using the INKEY$ </p>
+<p>function.   The   next   example   may   be   tested   by   pressing   the   function   keys,   [Del]   and   [Help].   To </p>
+<p>interrupt the example, press [Ctrl]+[C].</p>
+<p>10.01.01</p>
+<p>K</p>
+<p>E</p>
+<p>Y</p>
+<p>B</p>
+<p>O</p>
+<p>A</p>
+<p>R</p>
+<p>D</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Using the Keyboard</p>
+<p>Do</p>
+<p>While K$=“”</p>
+<p>K$=Inkey$</p>
+<p>Wend</p>
+<p>If Asc(K$)=0 Then Print “No ASCII Code”</p>
+<p>Print “The Scan Code is ”;Scancode</p>
+<p>K$=“”</p>
+<p>Loop</p>
+<p><b>SCANSHIFT</b></p>
+<p><i>function: return shift status of key entered with INKEY$</i></p>
+<p>s=<b>Scanshift</b></p>
+<p>To determine if keys are pressed at the same time as either or both of the [Shift] keys, the Scanshift </p>
+<p>function returns the following values:</p>
+<p><b>Value</b></p>
+<p><b>Meaning</b></p>
+<p>0</p>
+<p>no [Shift] key pressed</p>
+<p>1</p>
+<p>[Left Shift] pressed</p>
+<p>2</p>
+<p>[Right Shift] pressed</p>
+<p>3</p>
+<p>both [Shift] keys pressed</p>
+<p>Try out the following example by pressing various keys, in combination with the [Shift] keys:</p>
+<p>Do</p>
+<p>A$=Inkey$</p>
+<p>S=Scanshift</p>
+<p>If S&lt;&gt;0</p>
+<p>Print S</p>
+<p>End If</p>
+<p>Loop</p>
+<p><b>KEY STATE</b></p>
+<p><i>function: test for a specific key press</i></p>
+<p>k=<b>Key State</b>(scan code)</p>
+<p>Use this function to check whether or not a specific key has been pressed. The relevant scan code </p>
+<p>should be enclosed in brackets, and when the associated key is being pressed KEY STATE will return </p>
+<p>a value of TRUE (-1), otherwise the result will be given as FALSE (0). For example:</p>
+<p>Do</p>
+<p>If Key State(69)=True Then Print “ESCAPE!” : Rem Esc key pressed</p>
+<p>If Key State(95)=True Then Print “HELP!”: Rem Help key pressed</p>
+<p>Loop</p>
+<p>10.01.02</p>
+<p>K</p>
+<p>E</p>
+<p>Y</p>
+<p>B</p>
+<p>O</p>
+<p>A</p>
+<p>R</p>
+<p>D</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Using the Keyboard</p>
+<p><b>KEY SHIFT</b></p>
+<p><i>function: test the status of control keys</i></p>
+<p>bitmap=<b>Key Shift</b></p>
+<p>KEY SHIFT is used to report the current status of those keys which cannot be detected by either </p>
+<p>INKEY$ or SCANCODE because they do not carry the relevant codes. These “control” keys can kb </p>
+<p>tested individually, or a test can be set up for any combination of such keys pressed together. A single </p>
+<p>call to the KEY SHIFT function can test for all eventualities, by examining a bit map in the following </p>
+<p>format:</p>
+<p><b>Bit</b></p>
+<p><b>Key Tested</b></p>
+<p><b>Notes</b></p>
+<p>0</p>
+<p>left [Shift]</p>
+<p>Only one [Shift] key can be tested at a time</p>
+<p>1</p>
+<p>right [Shift]</p>
+<p>Only one [Shift] key can be tested at a time</p>
+<p>2</p>
+<p>[Caps Lock]</p>
+<p>Either ON or OFF</p>
+<p>3</p>
+<p>[Ctrl]</p>
+<p>4</p>
+<p>left [Alt]</p>
+<p>5</p>
+<p>right [Alt]</p>
+<p>6</p>
+<p>left [Amiga]</p>
+<p>This is the [Commodore] key on some keyboards</p>
+<p>7</p>
+<p>right [Amiga]</p>
+<p>If the report reveals that a bit is set to 1, then the associated key has been held down by the user,  </p>
+<p>otherwise a 0 is given. Here is a practical example:</p>
+<p>Centre “Please press some Control keys”</p>
+<p>Curs Off</p>
+<p>Do</p>
+<p>Locate 14,4: Print Bin$(Key Shift,8)</p>
+<p>Loop</p>
+<p>These   keys   can   also   be   used   when   setting   up   macro   definitions,   using   the   SCAN$   and   KEY$ </p>
+<p>functions, and this is explained below.</p>
+<p><b>CLEAR KEY</b></p>
+<p><i>instruction: re-set the keyboard buffer</i></p>
+<p><b>Clear Key</b></p>
+<p>When an appropriate character is entered from the keyboard, its ASCII code is placed in an area of  </p>
+<p>memory called the keyboard buffer. This buffer is then examined by the INKEY$ function in order to </p>
+<p>report on key presses. CLEAR KEY completely erases this buffer and re-sets the keyboard, making it a </p>
+<p>very useful command at the beginning of a program when the keyboard buffer may be filled with </p>
+<p>unwanted information. CLEAR KEY can also be called immediately before a WAIT KEY command, to </p>
+<p>make sure that the program waits for a fresh key-press before proceeding.</p>
+<p>10.01.03</p>
+<p>K</p>
+<p>E</p>
+<p>Y</p>
+<p>B</p>
+<p>O</p>
+<p>A</p>
+<p>R</p>
+<p>D</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Using the Keyboard</p>
+<p><b>Keyboard inputs</b></p>
+<p><b>WAIT KEY</b></p>
+<p><i>instruction: wait for a key-press</i></p>
+<p><b>Wait Key</b></p>
+<p>This simple command waits for a single key-press before acting on the next instruction. For example:</p>
+<p>Print “Please press a key” : Wait key : Print “Thank you!”</p>
+<p><b>INPUT$</b></p>
+<p><i>function: anticipate a number of characters to input into a string</i></p>
+<p>v$=<b>Input$</b>(number)</p>
+<p>This function loads a given number of characters into a string variable, waiting for the user to enter  </p>
+<p>each character in turn. Although characters will not appear on the screen, similar to INKEY$, the two </p>
+<p>instructions are totally different. Here is an example:</p>
+<p>Clear Key : Print “Please type in ten characters”</p>
+<p>V$=Input$(10) : Print “You typed: ”;V$</p>
+<p>There is another version of INPUT$ which operates with a number of characters from a disc. Please  </p>
+<p>see Chapter 10.2 for details.</p>
+<p><b>INPUT</b></p>
+<p><i>instruction: load a value into a variable</i></p>
+<p><b>Input</b> variables;</p>
+<p><b>Input</b> “Prompt string”;variables;</p>
+<p>The INPUT command is used to enter information into one or more variables. Any variable may be </p>
+<p>used, as well as any set of variables, providing they are separated by commas. A question mark will </p>
+<p>automatically appear at the current cursor position as a prompt for your input.</p>
+<p>If your own “Prompt string” is included, it will be printed out before your information is entered.  </p>
+<p>Please note that a semi-colon must be used between your prompt text and the variable list, a comma is </p>
+<p>not allowed for this purpose.</p>
+<p>You may also use an optional semi-colon at the end of your variable list, to specify that the text cursor  </p>
+<p>is not to be affected by the INPUT command, and will retain its original position after your data has </p>
+<p>been entered.</p>
+<p>When INPUT is executed, the program will wait for the required information to be entered via the </p>
+<p>keyboard, and each variable in the list must be matched by a single value entered by the user. These </p>
+<p>values must be of exactly the same type as the original variables, and should be separated by commas.</p>
+<p>10.01.04</p>
+<p>K</p>
+<p>E</p>
+<p>Y</p>
+<p>B</p>
+<p>O</p>
+<p>A</p>
+<p>R</p>
+<p>D</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Using the Keyboard</p>
+<p>For example:</p>
+<p>Print “Type in a number”</p>
+<p>Input A</p>
+<p>Print “Your number was ”;A</p>
+<p>Input “Type in a floating point number”;N#</p>
+<p>Print “Your number was ”;N#</p>
+<p>Input “What's your name?”;Name$</p>
+<p>Locate 23, : Print “Hello ”;Name$</p>
+<p><b>LINE INPUT</b></p>
+<p><i>instruction: input a list of variables separated by [Return]</i></p>
+<p><b>Line Input</b> variables;</p>
+<p><b>Line Input</b> “Prompt string”;variables;</p>
+<p>LINE INPUT is identical in usage to INPUT, except that is uses a press of the [Return] key to separate </p>
+<p>each value you enter via the keyboard instead of a comma. Try this:</p>
+<p>Line Input “Type in three numbers”;A,B,C</p>
+<p>Print A,B,C</p>
+<p><b>PUT KEY</b></p>
+<p><i>instruction:load a string into the keyboard buffer</i></p>
+<p><b>Put Key</b> a$</p>
+<p>This command loads a string of characters directly into the keyboard buffer, and it is most commonly </p>
+<p>used to set up defaults for your INPUT routines. Note that end of line returns can be included using a </p>
+<p>CHR$(13) character. In the next example, “NO” is assigned to the default INPUT string.</p>
+<p>Do</p>
+<p>Put Key “NO”</p>
+<p>Input “Do you love me, Yes or No: ”;A$</p>
+<p>B$=Upper$(A$)</p>
+<p>If B$=“NO” Then Boom : Wait 50: Exit</p>
+<p>Loop</p>
+<p><b>Keyboard Macros</b></p>
+<p>AMOS Professional allows the creation of keyboard macros from the [Macros] option of the main </p>
+<p>[Editor] Menu, as detailed in Chapter 4.1. A macro is simply a command string assigned to one of the </p>
+<p>function keys, which is called up by pressing the appropriate function key and one of the [Amiga] </p>
+<p>keys together. Once a macro has been defined, it can be used anywhere within the AMOS Professional </p>
+<p>system, and will have exactly the same effect as if the assigned commands had been entered from the </p>
+<p>keyboard. The same macro can be called from the Editor window, from Direct mode, or from inside </p>
+<p>an AMOS Professional program.</p>
+<p>As well as assigning macro definitions by means of the [Macro] option in the Editor, they can also be </p>
+<p>defined directly from an AMOS Professional program using the powerful KEY$ reserved variable.</p>
+<p>10.01.05</p>
+<p>K</p>
+<p>E</p>
+<p>Y</p>
+<p>B</p>
+<p>O</p>
+<p>A</p>
+<p>R</p>
+<p>D</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Using the Keyboard</p>
+<p><b>KEY$</b></p>
+<p><i>reserved variable: define a keyboard macro</i></p>
+<p><b>Key$</b>(number)=command$</p>
+<p>command$=<b>Key$</b>(number)</p>
+<p>KEY$ assigns the contents of the specified command$ to a function key number from 1 to 20. Keys 1 </p>
+<p>to 10 are accessed by pressing the appropriate function key at the same time as the [left Amiga] key. </p>
+<p>Similarly, numbers 11 to 20 are accessed in conjunction with the [right Amiga] key. If these keys are  </p>
+<p>not pressed simultaneously, they will be misinterpreted as two separate key presses!</p>
+<p>Single quotes can be used to enclose a comment, which will only be displayed in your key definition </p>
+<p>list and will be completely ignored by the macro routine. For example:</p>
+<p>Key$(3)=“'Comment Print'”</p>
+<p>Also note that by pressing [Alt]+[Quote] together, a special return code is generated.</p>
+<p>If   you   need   to   generate   a   key   press   that   has   no  ASCII   equivalent,   such   as   an   [up   arrow],   the  </p>
+<p>appropriate scan-code can be included in a macro definition. This is achieved by using the SCAN$  </p>
+<p>function, explained next.</p>
+<p><b>SCAN$</b></p>
+<p><i>function: return a scan-code for use with Key$</i></p>
+<p>x$=<b>Scan$</b>(scan-code)</p>
+<p>x$=<b>Scan$</b>(scan-code,mask)</p>
+<p>The scan-code parameter refers to the scan-code of a key that is to be used in one of your macro </p>
+<p>definitions. There is also an optional mask parameter, which sets special keys such as [Ctrl] and [Alt], </p>
+<p>and the format is the same as for KEY SHIFT, explained earlier.</p>
+<p><b>Improving your typing skills</b></p>
+<p>The AMOS Professional programmer is offered as much help as possible to enter listings quickly and </p>
+<p>correctly. As many structures as possible are automatically recognised and correctly formatted, even if </p>
+<p>upper and lower case is sometimes confused and spacings are not quite perfect. But even the most </p>
+<p>experienced programmer can be fumble-fingered at times.</p>
+<p><b>KEY SPEED</b></p>
+<p><i>instruction: change key repeat speed.</i></p>
+<p><b>Key Speed</b> time-lag,delay-speed</p>
+<p>During editing, a character or cursor movement is repeated for as long as its key is held down. This  </p>
+<p>can be frustrating if it causes unwanted characters or cursor movements. KEY SPEED lets you change </p>
+<p>the repeat rate while a key is held down, to your own particular preference. State the time-lag you  </p>
+<p>want to use between pressing a key and the start of the repeat sequence, measured in 50ths of a </p>
+<p>second.</p>
+<p>10.01.06</p>
+<p>K</p>
+<p>E</p>
+<p>Y</p>
+<p>B</p>
+<p>O</p>
+<p>A</p>
+<p>R</p>
+<p>D</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Using the Keyboard</p>
+<p>Follow this by the delay-speed between each character you type, also in 50ths of a second. This line </p>
+<p>will slow everything down:</p>
+<p>Key Speed 50,50: Rem One second delay</p>
+<p>The following setting may well prevent you from editing at all!</p>
+<p>Key Speed 1,1: Rem Ridiculously fast</p>
+<p>10.01.07</p>
+<p>K</p>
+<p>E</p>
+<p>Y</p>
+<p>B</p>
+<p>O</p>
+<p>A</p>
+<p>R</p>
+<p>D</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Disc Access</p>
+<p><b>Disc drive names</b></p>
+<p>Each disc drive used by your Amiga is identified by a simple three-character code, followed by the </p>
+<p>colon character to distinguish the name of the drive from a file name. The internal floppy disc drive is  </p>
+<p>referred to like this:</p>
+<p>Df0:</p>
+<p>If you have installed additional floppy drives, they will be named Df1: then Df2: and so on. I lard </p>
+<p>drives are identified by a similar code, with the first hard disc drive carrying a zero, the second a one, </p>
+<p>and so on, like this:</p>
+<p>Dh0:</p>
+<p><b>Volume names</b></p>
+<p>The Amiga is happy to refer to an individual disc by name instead of looking for the disc drive code, </p>
+<p>as long as the string of characters that make up the name of the disc carries the colon character, as  </p>
+<p>follows:</p>
+<p>AMOS_PROFESSIONAL:</p>
+<p>The titles of discs are known as “volume” names, which is the equivalent of the title of a written </p>
+<p>volume in a library. AMOS Professional automatically checks each available drive for the required </p>
+<p>disc, and if it cannot be found, the “Device not available” error will be given.</p>
+<p>Whenever a new disc is prepared for use via the Workbench, it is automatically given the name </p>
+<p>“Empty”, waiting for you to re-name it with a suitable volume title, after clicking on the I Rename] </p>
+<p>option. It is very bad practice to give the same name to more than one disc, as both the Amiga and its  </p>
+<p>operator can get confused by sloppy naming. If different discs do have the same volume name for any </p>
+<p>reason, you will have to refer to the appropriate drive name to tell AMOS Professional precisely </p>
+<p>which of these discs you are interested in. For example:</p>
+<p>Dir “Df0:”</p>
+<p>The DIR command is used to print out a directory index of a disc, and is explained below.</p>
+<p><b>Files and directories</b></p>
+<p>If you think  of  a  disc  as a self-contained “volume”,  then that volume  can contain one or  more </p>
+<p>“folders” of information, and each folder can hold all sorts of “files”. Before any file can be accessed  </p>
+<p>and used, it has to be found in the file directory of its disc. The next section of this Chapter explains  </p>
+<p>how files are managed with AMOS Professional, but first you should be aware of the set of objects </p>
+<p>known as “logical devices”.</p>
+<p>Logical   devices   are   used   by   the  Amiga's   operating   routines   to   work   out   the   exact   position   of </p>
+<p>important system files, such as the fonts used for text characters and the device handlers used for </p>
+<p>peripherals. Each device is normally assigned to a specific directory on the current start-</p>
+<p>up disc.</p>
+<p>10.02.01</p>
+<p>D</p>
+<p>I</p>
+<p>S</p>
+<p>C</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Disk Access</p>
+<p>For example, the directory containing the current fonts used by AMOS Professional is called FONTS: </p>
+<p>whereas the SAY command uses a library file that can be examined by typing the following line from </p>
+<p>Direct Mode:</p>
+<p>Dir “Libs:”</p>
+<p><b>DIR</b></p>
+<p><i>instruction: print directory of the current disc</i></p>
+<p><b>Dir</b> <i>path$</i></p>
+<p>The DIR command is used to examine the directory of the current disc and list all of its files on screen, </p>
+<p>like this:</p>
+<p>Dir</p>
+<p>Any folders in the listing will be distinguished by a leading asterisk character *. The listing can be </p>
+<p>stopped at any time by pressing the [Space-bar] and then started again in the same way. Note that if </p>
+<p>you change discs without informing AMOS Professional and then try to get a directory listing, you </p>
+<p>may be presented with a system requester. The simple solution is to re-insert the requested disc and </p>
+<p>try again.</p>
+<p><b>DIR/W</b></p>
+<p><i>instruction: print out directory in two columns</i></p>
+<p><b>Dir/W</b></p>
+<p><b>Dir</b> <i>paths$ <b></i>/W</b></p>
+<p>This command performs exactly the same task as DIR, but displays the list of files in two separate  </p>
+<p>columns across the screen. So by using this double width, twice as many filenames can appear on </p>
+<p>screen at any one time. There is no need for DIR or DIR/W to list every file on the disc. Certain files or </p>
+<p>groups of files can be extracted by specifying optional “pathways”, so that only files which satisfy a </p>
+<p>certain set of conditions are listed. The broadest of these paths gives the name of the disc or the drive </p>
+<p>to be examined. A colon must be added to the disc name, like this:</p>
+<p>Dir “FONTS:”</p>
+<p>Dir “Dh0:”</p>
+<p>The next selective category that can be defined is a single folder of filenames to be listed. For example:</p>
+<p>Dir “Objects/”</p>
+<p>Dir “AMOSPro_Examples:Objects/”</p>
+<p>10.02.02</p>
+<p>D</p>
+<p>I</p>
+<p>S</p>
+<p>C</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Disc Access</p>
+<p>The pathway for a listing can be further narrowed by requesting that only the filenames that satisfy </p>
+<p>certain conditions will be printed, and that each character in the filename must match the characters </p>
+<p>in your request exactly. If you wish to make a more general search, you can use the asterisk character </p>
+<p>“*” to be regarded as a substitute for any list of characters in a filename, up to the next control </p>
+<p>character. For example, a file named “Music” will be searched for if you command this:</p>
+<p>Dir “Music”</p>
+<p>But the use of an asterisk would broaden the search:</p>
+<p>Rem List all files starting with M</p>
+<p>Dir “M*”</p>
+<p>That could give the following directory listing:</p>
+<p>Music</p>
+<p>Megalomania</p>
+<p>Milk</p>
+<p>As a default, this option ignores any files that include extensions of the type used by MS-DOS, such as </p>
+<p>“Mad.Asc”.</p>
+<p>The full stop character “.” is used to match a filename extension, and is often used with the asterisk  </p>
+<p>character to list all the files in a directory with a particular extension, like this:</p>
+<p>Dir “Music.*”</p>
+<p>Dir “*.Megalomania”</p>
+<p>Dir “*.*”</p>
+<p>The final narrowing of a search path is to use the question-mark character “?” to match up with any </p>
+<p>single character in a filename. For example:</p>
+<p>Dir “EUROP????”</p>
+<p>That would list the following filenames, if they were in the current directory:</p>
+<p>EUROPRESS</p>
+<p>EUROPEANS</p>
+<p>But it would ignore the following filenames, either because the first five characters do not match, or </p>
+<p>the length of the name is different from the specified total of nine characters:</p>
+<p>EUROPRESSES</p>
+<p>EUROPE</p>
+<p>EURIPIDES</p>
+<p>Because certain filenames are too long to fit neatly in a display listing, particularly if the </p>
+<p>DIR/W   option   is   in   use,   there   is   a   simple   way   of   setting   the   style   of   directory </p>
+<p>commands.</p>
+<p>10.02.03</p>
+<p>D</p>
+<p>I</p>
+<p>S</p>
+<p>C</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Disk Access</p>
+<p><b>LDIR</b></p>
+<p><b>LDIR/W</b></p>
+<p><i>instructions: output directory of current disc to printer</i></p>
+<p><b>Ldir</b></p>
+<p><b>Ldir</b> <i>path$</i></p>
+<p><b>Ldir</b>/W</p>
+<p><b>Ldir</b> <i>path$</i> /W</p>
+<p>These two commands are used in exactly the same way as DIR and DIR/W, as explained above, and </p>
+<p>they list the directory of the current disc to a printer.</p>
+<p><b>SET DIR</b></p>
+<p><i>instruction: set directory style</i></p>
+<p><b>Set Dir</b> number</p>
+<p><b>Set Dir</b> number,<i>filter$</i></p>
+<p>This command must be followed by a number ranging from 1 to 100, which sets the number of </p>
+<p>characters to be displayed from each filename. There is no effect on the names themselves, only on the </p>
+<p>way they are displayed. For example:</p>
+<p>Set Dir 6</p>
+<p>Dir</p>
+<p>An optional string may be added to a SET DIR command, which has the effect of filtering out </p>
+<p>pathnames from the directory search. All filenames that match up with this filer will be completely </p>
+<p>ignored. Supposing a directory began like this:</p>
+<p>AMO.IFF</p>
+<p>AMAL</p>
+<p>AMAT.IFF</p>
+<p>AMINIBUS</p>
+<p>AMINOACID</p>
+<p>AMENSROOM.IFF</p>
+<p>AMULET</p>
+<p>SET DIR may now be used to restrict the display to three characters, as well as filtering out any IFF </p>
+<p>files, as follows:</p>
+<p>Set Dir 5,“.IFF”</p>
+<p>The first two characters displayed are folder markers, this is why the value five is used instead of </p>
+<p>three.</p>
+<p>10.02.04</p>
+<p>D</p>
+<p>I</p>
+<p>S</p>
+<p>C</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Disc Access</p>
+<p>That line would result in this amended display:</p>
+<p>AMA</p>
+<p>AMI</p>
+<p>AMU</p>
+<p>It is possible to ignore several file-paths at once, as long as each name is terminated with a single </p>
+<p>oblique character “/”. For example:</p>
+<p>Set Dir 8,“*.AMOS/*.IFF/*.Abk”</p>
+<p><b>DIR$</b></p>
+<p><i>function: change the current directory</i></p>
+<p>s$=<b>Dir$</b></p>
+<p><b>Dir$</b>=s$</p>
+<p>The DIR$ function is used to contain the directory that will be used as the starting point for all future </p>
+<p>disc operations, such as loading and saving.</p>
+<p>Print Dir$ : Rem Print out current directory</p>
+<p>Rem Set directory to folder</p>
+<p>Dir$=“AMOSPro_Examples:IFF/”</p>
+<p>DIR$ is similar to the CD command from the CLI, with the advantage of allowing you to read the </p>
+<p>directory as well as change it. All directories are assumed to be relative to the directory in current use,  </p>
+<p>and AMOS Professional will only search the current directory for a folder. To avoid this problem, </p>
+<p>include the name of your disc as in the above example, or use the drive name as follows:</p>
+<p>Dir$=“Df0:IFF/”</p>
+<p><b>PARENT</b></p>
+<p><i>instruction: negotiate a path through current directory</i></p>
+<p><b>Parent</b></p>
+<p>Because directories can be “nested” inside one another, files can be organised according to a range of </p>
+<p>categories. Although this is very convenient, it is not difficult to get lost in a maze of nested files. In </p>
+<p>the   following  example,   the   folder   named   FOLDERA  is  stored  in  the  main  directory  (the   “root” </p>
+<p>directory) and can be regarded as the “parent” of FOLDERB and FOLDERD. Similarly, FOLDERB is </p>
+<p>the parent of FOLDERC:</p>
+<p>FOLDERA/</p>
+<p>FOLDER B/</p>
+<p>FOLDERC/</p>
+<p>FOLDERD/</p>
+<p>10.02.05</p>
+<p>D</p>
+<p>I</p>
+<p>S</p>
+<p>C</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Disk Access</p>
+<p>The effect of the PARENT command is to load the current directory with the parent of the present </p>
+<p>folder you are using. By using this command repeatedly, you are able to get back to the original root </p>
+<p>directory simply and quickly. For example:</p>
+<p>Dir$=“AMOSPro_Examples:Objects/”</p>
+<p>Dir</p>
+<p>Parent</p>
+<p>Dir</p>
+<p><b>ASSIGN</b></p>
+<p><i>instruction: assign a name to a file or device</i></p>
+<p><b>Assign</b> “Name:” <b>To</b> “New_Pathname”</p>
+<p><b>Assign</b> “Name:” <b>To</b> “Device”</p>
+<p>In the original AMOS system, you were obliged to go back to AmigaDOS every time that particular </p>
+<p>directories needed changing, for example, when changing the font directories. The ASSIGN command </p>
+<p>has been provided to solve this problem, and is fully explained in Chapter 11.1.</p>
+<p><b>Checking for the existence of a file</b></p>
+<p>It is possible to keep a tidy mind and a tidy desk, and maintain up to date records on discs. On the  </p>
+<p>other hand, you may be normal. AMOS Professional provides three, ways to check for elusive files.</p>
+<p><b>EXIST</b></p>
+<p><i>function: check if specified file exists</i></p>
+<p>value=<b>Exist</b>(“filename”)</p>
+<p>EXIST looks through the current directory of filenames and checks it against the filename in your </p>
+<p>given string. If the names match, then the file does exist and a value of -1 (true) will be reported, </p>
+<p>otherwise 0 (false) will be returned.</p>
+<p>As well as checking for individual filenames, even if an idiotic name is given, EXIST will search for </p>
+<p>discs and devices as well. For example:</p>
+<p>Print Exist(“An idiotic name”)</p>
+<p>Print Exist(“DEMO:”) : Rem Is a disc named DEMO available</p>
+<p>Print Exist(“Df1:”) : Rem Is the second floppy drive connected</p>
+<p>It is advisable to test for empty strings (“”) separately, like this:</p>
+<p>F$=Fsel$(“*.IFF”,“ ”,“Load an IFF file”)</p>
+<p>If F$=“” Then Edit : Rem return to editor if no file chosen</p>
+<p>If Exist(F$) Then Load Iff F$,0</p>
+<p>10.02.06</p>
+<p>D</p>
+<p>I</p>
+<p>S</p>
+<p>C</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Disc Access</p>
+<p><b>DIR FIRST$</b></p>
+<p><i>function: get first file that satisfies current path name</i></p>
+<p>file$=<b>Dir First$</b>(path$)</p>
+<p>This function returns a string containing the name and the length of the first file on the current disc  </p>
+<p>that matches up with your chosen search path. For example, the next routine reports the first file or </p>
+<p>folder in the current directory, followed by the first IFF file in the directory. Obviously, this could be </p>
+<p>the same file.</p>
+<p>Print Dir First$(“*.*”)</p>
+<p>Print Dir First$(“*.IFF”)</p>
+<p>When DIR FIRST$ is used, the whole directory listing is loaded into memory, so you can continue to </p>
+<p>discover the name of the next file in the current directory with the following function.</p>
+<p><b>DIR NEXT$</b></p>
+<p><i>function: get next file that satisfies current path</i></p>
+<p>file$=<b>Dir Next$</b></p>
+<p>Use this to return the filename that comes after the file or folder found by the previous DIR FIRST$ </p>
+<p>search. If there are no more files to come, an empty string will be returned, “”. Once the last filename  </p>
+<p>has been found, AMOS Professional will automatically grab back the memory used by the directory </p>
+<p>array, and release it for the rest of your program to use. The next example prints every file in the  </p>
+<p>current directory.</p>
+<p>F$=Dir First$(“*.*”)</p>
+<p>While F$&lt;&gt;“”</p>
+<p>Print F$ : Wait 50</p>
+<p>F$=Dir Next$</p>
+<p>Wend</p>
+<p><b>Selecting a file</b></p>
+<p><b>FSEL$</b></p>
+<p><i>function: select a file</i></p>
+<p>f$=<b>Fsel$</b>(path$)</p>
+<p>f$=<b>Fsel$</b>(path$,<i>default$,title1$,title2$</i>)</p>
+<p>This file selection function allows you to choose the files you need directly from a disc, using the </p>
+<p>standard AMOS Professional file selector. In its simplest form, it operates like this:</p>
+<p>Print Fsel$(“*.IFF”)</p>
+<p>The string held within the brackets is a path that sets the searching pattern, in that case an IFF file.  </p>
+<p>The following optional parameters may also be included:</p>
+<p>The optional default string is used to choose a filename that will be automatically selected if you press </p>
+<p>[Return] and abort the process.</p>
+<p>10.02.07</p>
+<p>D</p>
+<p>I</p>
+<p>S</p>
+<p>C</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Disk Access</p>
+<p>Title$ and title2$ are optional text strings that set up a title to be displayed at the top of your file  </p>
+<p>selector. For example:</p>
+<p>F$=Fsel$(“AMOSPro_Examples:Objects/*.Abk”)</p>
+<p>If F$=“” Then Edit : Rem Return to editor if no file selected</p>
+<p>Load F$: Rem Load file and display first Bob</p>
+<p>Flash Off : Bob 1,100,100,1 : Get Bob Palette : Wait Vbl</p>
+<p><b>Naming files</b></p>
+<p>To create a new folder that can be used to hold files of data, a suitable disc should be ready in the  </p>
+<p>appropriate drive.</p>
+<p><b>MKDIR</b></p>
+<p><i>instruction: create a folder</i></p>
+<p><b>Mkdir</b> filename$</p>
+<p>This makes a new folder on the current disc, and gives it the filename of your choice. For example:</p>
+<p>Mkdir “Df0:MARATHONMAN”</p>
+<p>Dir</p>
+<p><b>RENAME</b></p>
+<p><i>instruction: rename a file</i></p>
+<p><b>Rename</b> oldname$ To newname$</p>
+<p>This command is used to change the name of an existing file. If your choice of new filename is already </p>
+<p>in use by another file, the appropriate error message will be given.</p>
+<p>Rename “Ancient” To “Modern”</p>
+<p><b>Running programs from disc</b></p>
+<p><b>RUN</b></p>
+<p><i>instruction: execute an AMOS Professional program</i></p>
+<p><b>Run</b></p>
+<p><b>Run</b> <i>file$</i></p>
+<p>As well as the [Run] or [F1] facility for executing programs from the Edit Screen, the RUN command </p>
+<p>may be used on its own from Direct Mode.</p>
+<p>When followed by a filename and used inside a program, the RUN command is extremely useful. </p>
+<p>Authors of vast computer games, involving many levels of play, need not be restricted by the storage </p>
+<p>space of a single disc or the memory available in your Amiga. Each level of play can be written as a </p>
+<p>separate program and then saved as a different filename. This means that at the end of one level of </p>
+<p>play, the next stage can be loaded from disc automatically.</p>
+<p>10.02.08</p>
+<p>D</p>
+<p>I</p>
+<p>S</p>
+<p>C</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Disc Access</p>
+<p>For example:</p>
+<p>Run “Next level.AMOS”</p>
+<p>This method is known as “chaining” programs together. When programs run like this, data screens </p>
+<p>and banks will be kept, allowing you to pass data and display a screen of graphics while the next </p>
+<p>level is loading. But the redundant last program will be erased to make room for the new program, so </p>
+<p>you should remember the fact that any variables will be lost in the process.</p>
+<p>In fact, AMOS Professional does allow you to pass variable data from one program to another, by </p>
+<p>making use of “Command Lines”.</p>
+<p><b>COMMAND LINE$</b></p>
+<p><i>reserved variable: transfer parameters between programs</i></p>
+<p>c$=<b>Command Lines$</b></p>
+<p>Data for hi-scores, messages, names and so on can be carried through to the next level of computer  </p>
+<p>game by the following method.</p>
+<p>Type in the next example program:</p>
+<p>Rem Program 1</p>
+<p>Screen Open 0,640,200,4.Hires</p>
+<p>Rem greetings sent by previous program</p>
+<p>Print “Greetings from Program 2:”;Command Line$</p>
+<p>Input “Please type in a greeting!”;A$</p>
+<p>Command Line$=A$</p>
+<p>Print “Running Program 2!” : Wait 100</p>
+<p>Run “Program2.AMOS”</p>
+<p>Now   save   that   example   on   a   suitable   disc,   and   name   it   “Program1.AMOS”.   Next,   change   that </p>
+<p>example program as follows:</p>
+<p>Rem Program 2</p>
+<p>Screen Open 0.320,200,4,Lowres</p>
+<p>Rem Greetings sent by previous program</p>
+<p>Print “Greetings from Program 1:”;Command Line$</p>
+<p>Input “Please type in a greeting!”;A$</p>
+<p>Command Line$=A$</p>
+<p>Print “Running Program 1!”</p>
+<p>Wait 100</p>
+<p>Run “Program1.AMOS”</p>
+<p>Save Program 2, and call it “Program2.AMOS”. Now run Program 2, which should still be in memory. </p>
+<p>After the first blank communication, the two programs will greet one another until you break into </p>
+<p>their conversation with [Ctrl]+[C].</p>
+<p>10.02.09</p>
+<p>D</p>
+<p>I</p>
+<p>S</p>
+<p>C</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Disc Access</p>
+<p><b>Disc space</b></p>
+<p><b>DFREE</b></p>
+<p><i>function: report free space on disc</i></p>
+<p>f=<b>Dfree</b></p>
+<p>This simple function returns the amount of free space remaining on the current disc, measured in </p>
+<p>bytes.</p>
+<p><b>DISC INFO$</b></p>
+<p><i>function: report free space of a named device</i></p>
+<p>information$=<b>Disc Info$</b>(“Name”)</p>
+<p>This function is used to return the amount of free space in the specified device. The string that is </p>
+<p>returned contains the name of the disc, followed by the amount of free space. Here is an example </p>
+<p>which splits the string:</p>
+<p>A$=Disc Info$(“Df0:”)</p>
+<p>C=Instr(A$,“:”)</p>
+<p>N$=Left$(A$,C)</p>
+<p>A$=A$-N$</p>
+<p>D=Val(A$)</p>
+<p>Print “Name of the disc=”;N$</p>
+<p>Print “Free space=”;D</p>
+<p><b>KILL</b></p>
+<p><i>instruction: erase a file from current disc</i></p>
+<p><b>Kill</b> filename$</p>
+<p>Be extremely careful with this command. It obliterates the named file from the current disc, once and  </p>
+<p>for all. The file that is erased with this command cannot be retrieved.</p>
+<p>Kill “Permanently”</p>
+<p><b>Disc files</b></p>
+<p>Files are simply packages of information stored together at a particular location on disc. Each file is  </p>
+<p>assigned its own name, which may contain anything from 1 to 255 characters.</p>
+<p>Before   a   file   can   be   used,   it   must   be   initialised   using   the   OPEN   IN,   OPEN   OUT   or  APPEND </p>
+<p>commands, which are explained below. When a file is opened, it must be assigned a channel number, </p>
+<p>ranging from 1 to 10. This number will be used in all subsequent disc operations to identify the file </p>
+<p>you are currently working with.</p>
+<p>Your Amiga uses two types of disc files: “sequential” files and “random access” files. Here is how </p>
+<p>AMOS Professional exploits them fully.</p>
+<p>10.02.10</p>
+<p>D</p>
+<p>I</p>
+<p>S</p>
+<p>C</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Disc Access</p>
+<p><b>Sequential files</b></p>
+<p>A sequential file is one that allows you to read your information <b>only</b> in the sequence in which it was </p>
+<p>originally created. Normally with an Amiga, if you need to change a single item of data in t lie middle </p>
+<p>of a sequential file, you must call up that file from disc, read the whole file up to and including the </p>
+<p>item of data you want to alter, change the data and then write the whole file back of the disc.</p>
+<p>AMOS Professional lets you have access to sequential files either for reading data, or for writing it, </p>
+<p>but never for both at the same time. Before the theory is explained, here is some practice. Type in this </p>
+<p>example, which opens a file called “sequential.one”, allows you to input some data, then closes the </p>
+<p>file:</p>
+<p>Open Out 1,“sequential.one”</p>
+<p>Input “Please tell me your name ”;N$</p>
+<p>Print #1,N$</p>
+<p>Close 1</p>
+<p>Now the information stored in that file can be read back, as follows:</p>
+<p>Open In 1,“sequential.one”</p>
+<p>Input #1,N$</p>
+<p>Print “I remember you! Hello ”;N$</p>
+<p>Close 1</p>
+<p>Every time you want to access a sequential file, it must be opened, then the information can be </p>
+<p>accessed, then the file must be closed. Those three steps must be done in exactly that order. Here is </p>
+<p>the list of commands you can use for handling sequential files.</p>
+<p><b>OPEN OUT</b></p>
+<p><i>instruction: open a file for output</i></p>
+<p><b>Open Out</b> channel,filename$</p>
+<p>Use this command to open a sequential file, ready for data to be added to its end. Give the channel </p>
+<p>number and filename, as explained above. If the file already exists, it will be erased.</p>
+<p><b>APPEND</b></p>
+<p><i>instruction: add data to an existing file</i></p>
+<p><b>Append</b> channel,filename$</p>
+<p>This works like OPEN OUT, but it allows you to add to your files at any time after they have been </p>
+<p>defined. If the filename already exists, your new data will be appended to it, in other words it will be </p>
+<p>added to the end of that file.</p>
+<p><b>OPEN IN</b></p>
+<p><i>instruction: open a file for input</i></p>
+<p><b>Open In</b> channel,filename$</p>
+<p>Use this command to prepare a file so that data may be read from it. If the filename does not already </p>
+<p>exist, AMOS Professional will report a “File not found” error.</p>
+<p>10.02.11</p>
+<p>D</p>
+<p>I</p>
+<p>S</p>
+<p>C</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Disc Access</p>
+<p><b>CLOSE</b></p>
+<p><i>instruction: close a file</i></p>
+<p><b>Close</b> file number</p>
+<p>You must remember to always CLOSE a file after you have finished with it. If you forget to do this,  </p>
+<p>any changes that have been made to the file will be lost.</p>
+<p><b>PRINT #</b></p>
+<p><i>structure: print variables to a file or device</i></p>
+<p><b>Print #</b>channel,variable list</p>
+<p>This command is used in the same way as a normal PRINT instruction, but instead of printing </p>
+<p>information on screen it puts that information into one of your files. Simply specify the channel </p>
+<p>number to be used, then the variables you want to print out to the file. Remember to close the file's </p>
+<p>channel number afterwards, like this:</p>
+<p>Open Out 2,“sequential.two”</p>
+<p>Print #2,“Just testing”</p>
+<p>Close 2</p>
+<p>As with PRINT, the PRINT # command can be abbreviated to ? #.</p>
+<p><b>INPUT #</b></p>
+<p><i>structure: input variables from a file or device</i></p>
+<p><b>Input #</b>channel,variable list</p>
+<p>INPUT # reads information from either a sequential file or a device such as the serial port (see OPEN </p>
+<p>PORT in Chapter 10.4), and loads these values into a set of variables. As with the normal INPUT </p>
+<p>command, each value in the list must be separated by a comma. Additionally, every line of data needs </p>
+<p>to be ended by its own line feed character, which is the equivalent of the [Return] pressed when a line </p>
+<p>is entered from the keyboard. For example:</p>
+<p>Open In 2,“sequential.two” : Rem Open file created by previous </p>
+<p>example</p>
+<p>Input #2,A$</p>
+<p>Print A$</p>
+<p>Close 2</p>
+<p><b>LINE INPUT #</b></p>
+<p><i>structure: input variables not separated by a comma</i></p>
+<p><b>Line Input #</b>channel,variable list</p>
+<p>This function is identical to INPUT #, except that it allows you to separate your list of data using a </p>
+<p>carriage return sequence, instead of the standard comma.</p>
+<p>When reading text documents, LINE INPUT # is always recommended, because the commas used in </p>
+<p>normal written English will be treated as separators by the INPUT # structure.</p>
+<p>10.02.12</p>
+<p>D</p>
+<p>I</p>
+<p>S</p>
+<p>C</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Disc Access</p>
+<p><b>SET INPUT</b></p>
+<p><i>instruction: set end-of-line characters</i></p>
+<p><b>Set Input</b> code1,code2</p>
+<p>SET INPUT is used to set which characters you want to input to end a line of data. Many computers </p>
+<p>need both a [Return] and [line feed] character at the end of each line, but the Amiga only needs a [line </p>
+<p>feed]. This means that if you wanted to import files from an ST via the serial cable, for example, </p>
+<p>unwanted [Return] characters would litter your input.</p>
+<p>SET INPUT solves this problem by allowing you to select two ASCII values as your end-of-line </p>
+<p>characters. If you prefer to use a single character only, make the second value a negative number. For </p>
+<p>example:</p>
+<p>Set Input 10,-1 : Rem Standard Amiga format</p>
+<p>Set Input 13,10: Rem ST compatible format</p>
+<p><b>INPUT$</b></p>
+<p><i>function: input a fixed number of characters from a device</i></p>
+<p>i$=<b>Input$</b>(file,count)</p>
+<p>Use this function to input a set number of characters from a device or file. The parameters in brackets </p>
+<p>refer to the filename or device, followed by the count of characters to be input.</p>
+<p><b>EOF</b></p>
+<p><i>function: test for end of file</i></p>
+<p>flag=<b>Eof</b>(channel)</p>
+<p>This tests to see if the end of a file has been reached at the current reading position, returning -1 for  </p>
+<p>yes and 0 if this has not happened.</p>
+<p><b>LOF</b></p>
+<p><i>function: give length of an open file</i></p>
+<p>length=<b>Lof</b>(channel)</p>
+<p>LOF returns the length of an open file, and it would be pointless to use this function with devices </p>
+<p>other than the current disc.</p>
+<p><b>POF</b></p>
+<p><i>reserved variable: hold current position of file pointer</i></p>
+<p>position=<b>Pof</b>(channel)</p>
+<p>This changes the current reading or writing position of an open file. For example, the following line </p>
+<p>sets the read/write position to 1,000 characters past the start of the file:</p>
+<p>Pof(1)=1000</p>
+<p>Because disc drives are inherently random, this may be used to provide a crude form of random </p>
+<p>access with sequential files.</p>
+<p>10.02.13</p>
+<p>D</p>
+<p>I</p>
+<p>S</p>
+<p>C</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Disc Access</p>
+<p><b>Random access files</b></p>
+<p>AMOS Professional takes full advantage of the second type of file used by the Amiga. Random access </p>
+<p>files are extremely useful, because they allow the programmer to access data stored on a disc in any </p>
+<p>random order. A random access file is made up of units of data called “records”, and each record has </p>
+<p>its own identification number. Every record can be split up into as many smaller sections as required, </p>
+<p>with every section becoming a “field”. Each field is used to hold a single item of data.</p>
+<p>The main difference between sequential files and random access files is that you must tell AMOS </p>
+<p>Professional the maximum size of a field in advance, before you can make use of it.</p>
+<p>A field can hold many forms of data, like a password, an invoice number or even a literary quotation. </p>
+<p>Supposing you want to create an electronic phone book. You could choose the following fields, with </p>
+<p>the following maximum number of characters in each:</p>
+<p><b>Field</b></p>
+<p><b>Max. length</b></p>
+<p>SURNAME$</p>
+<p>20</p>
+<p>F1RSTNAME$</p>
+<p>15</p>
+<p>TEL$</p>
+<p>10</p>
+<p>Once the fields have been planned, the structure for your electronic database can be set up using the  </p>
+<p>following commands.</p>
+<p><b>OPEN RANDOM</b></p>
+<p><i>instruction: open a channel to a random access file</i></p>
+<p><b>Open Random</b> channel,filename$</p>
+<p>This command is used to open a channel to a random access file, like this:</p>
+<p>Open Random 1,“ADDRESS”</p>
+<p><b>FIELD</b></p>
+<p><i>instruction: define a record structure</i></p>
+<p><b>Field</b> channel,length1 <b>As</b> field1$,length2 <b>As</b> field2$ ...</p>
+<p>FIELD$ should be used immediately after OPEN RANDOM to define a record that will be used for a </p>
+<p>random access file. This record can be up to 65535 bytes long. After selecting the channel number, </p>
+<p>give the maximum number of characters you will cater for in a field, followed by its name, then repeat </p>
+<p>the process as necessary. For example:</p>
+<p>Field 1,20 As SURNAME$,15 As F1RSTNAME$,10 As TEL$</p>
+<p>10.02.14</p>
+<p>D</p>
+<p>I</p>
+<p>S</p>
+<p>C</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Disc Access</p>
+<p>You can now place some records in the strings that have been set up by the FIELD command, like this:</p>
+<p>SURNAME$=“Professional”</p>
+<p>FIRSTNAME$=“AMOS”</p>
+<p>TEL$=“0625859333”</p>
+<p><b>PUT</b></p>
+<p><i>instruction: output a record to a random access file</i></p>
+<p><b>Put</b> channel,record number</p>
+<p>Once a record has been placed in a string, it can be moved from the computer's memory into a record </p>
+<p>number of your random access file. If you were still using channel 1, your first record would be put </p>
+<p>into the random access file like this:</p>
+<p>Put 1,1</p>
+<p>The next record will become number 2, and so on until you fill up your telephone book. Here is a </p>
+<p>simple working example. When you have created enough records, type in “exit” when prompted to </p>
+<p>enter another name.</p>
+<p>Open Random 1,“ADDRESS”</p>
+<p>Field 1,25 As NAME$,12 As TEL$</p>
+<p>INDEX=1</p>
+<p>Do</p>
+<p>Input “Enter a name:”;NAME$</p>
+<p>If NAME$=“exit” Then Exit</p>
+<p>Input “Enter the phone number:”;TEL$</p>
+<p>Put 1,INDEX</p>
+<p>Inc INDEX</p>
+<p>Loop</p>
+<p>Close 1</p>
+<p>Having created your phone book, you will want to use it.</p>
+<p><b>GET</b></p>
+<p><i>instruction: read a record from a random access file</i></p>
+<p><b>Get</b> channel,record number</p>
+<p>This instruction reads a record stored in a random access file, after being told which channel to use </p>
+<p>and the number of the record to read. To read the first record you would use this:</p>
+<p>Get 1,1</p>
+<p>GET then loads this record into your field strings, and these strings may be manipulated as you like. </p>
+<p>Obviously you can only GET record numbers that have been PUT onto the disc.</p>
+<p>10.02.15</p>
+<p>D</p>
+<p>I</p>
+<p>S</p>
+<p>C</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Disc Access</p>
+<p>Now try this example:</p>
+<p>Open Random 1,“ADDRESS”</p>
+<p>Field 1,25 As NAME$,12 As TEL$</p>
+<p>Do</p>
+<p>Input “Enter Record Number: ”;INDEX</p>
+<p>If INDEX=0 Then Exit</p>
+<p>Get 1,INDEX</p>
+<p>Print NAME$ : Print TEL$</p>
+<p>Loop</p>
+<p>Close 1</p>
+<p><b>Included files</b></p>
+<p>The AMOS Professional Editor cannot rationalise your source code around the entire memory of the </p>
+<p>Amiga. This means that if you are editing an extremely long program, the insertion of a line can be </p>
+<p>tedious. It can take a few seconds to move the memory around before allowing the next line to be  </p>
+<p>inserted.</p>
+<p>To assist the editing of lengthy programs in assembly language or C, an Include facility is provided. </p>
+<p>AMOS Professional programmers can enjoy exactly the same benefit!</p>
+<p><b>INCLUDE</b></p>
+<p><i>instruction: specify a file for inclusion when testing a program</i></p>
+<p><b>Include</b> “File_To_Include.AMOS”</p>
+<p>The INCLUDE command must occupy a line on its own, otherwise the specified file will not be </p>
+<p>detected, and so it will not be included. The effect of INCLUDE on a file is as follows:</p>
+<p>•</p>
+<p>Immediately  before  a  program  is  tested,  AMOS   Professional  scans   the   beginning  of  each </p>
+<p>program line for an INCLUDE instruction.</p>
+<p>•</p>
+<p>If an INCLUDE is encountered, AMOS Professional opens the specified file, reads its length </p>
+<p>and checks its validity.</p>
+<p>•</p>
+<p>This process takes place for each INCLUDE that is found, in order.</p>
+<p>•</p>
+<p>A memory buffer is reserved for the total length of the re-created program.</p>
+<p>•</p>
+<p>AMOS Professional now copies sections of the source program, without the Includes, and </p>
+<p>loads the files from disc.</p>
+<p>•</p>
+<p>All files are now closed, and with the memory buffer holding the re-created program, the </p>
+<p>testing process begins as normal.</p>
+<p>You will need enough memory to hold the original buffer space and the included files at the same </p>
+<p>time for this process to operate, but if your program is large enough to slow down the Editor it is </p>
+<p>obvious that you have access to a reasonable amount of memory.</p>
+<p>Please note that included files are only supported in the original source, and an INCLUDE in an </p>
+<p>included file will generate an error when the program is run. The re-created buffer is erased as soon </p>
+<p>as the program is left, so the specified files must be loaded every time the program is tested. If </p>
+<p>programs are included which have memory banks, these banks will be left out.</p>
+<p>10.02.16</p>
+<p>D</p>
+<p>I</p>
+<p>S</p>
+<p>C</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Disc Access</p>
+<p><b>IBM and ST users</b></p>
+<p>The commercially available Cross Dos package allows AMOS Professional to access discs in IBM- </p>
+<p>clone format or Atari-ST format. Discs that are in either of these formats are identified by a three- </p>
+<p>character code of the two letters “Di” followed by the number of your drive. So an ST format disc in  </p>
+<p>the Amiga's internal drive would be named as follows:</p>
+<p>Di0:</p>
+<p>Because AMOS Basic evolved from STOS (Atari) Basic, every effort has been made to help STOS users </p>
+<p>convert their programs to AMOS Professional. STOS programs should be saved to disc in ASCII </p>
+<p>format using the [FSAVE] “*.ASC” option. This disc should be inserted into an Amiga floppy disc  </p>
+<p>drive that has been mounted by Cross Dos as an IBM drive.</p>
+<p>Certain STOS programs will need modification before they will run under AMOS Professional, but </p>
+<p>you will be rewarded by the fact that the Amiga's superior power over the ST can transform your </p>
+<p>programs for the better!</p>
+<p>10.02.17</p>
+<p>D</p>
+<p>I</p>
+<p>S</p>
+<p>C</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Accessing a Printer</p>
+<p>AMOS Professional offers total access to the Amiga's printer driver. The printer configuration is taken </p>
+<p>directly   from   your   Preferences   settings,   allowing   printer   control   with   a  standard   set   of  “escape </p>
+<p>codes”.</p>
+<p>Any AMOS Professional screen can also be dumped directly onto paper via your printer.</p>
+<p><b>The printer device</b></p>
+<p>Details   of   your   printer   are   taken   from   the   settings   that   have   been   previously   entered   from   the </p>
+<p>Workbench Preferences utility. A printer can be connected to the Serial Port or the Parallel Port, mid </p>
+<p>AMOS Professional will choose the appropriate device for all printing operations automatically.</p>
+<p>The first time that a printer is used, the printer drivers are loaded into memory from your start- up  </p>
+<p>disc. If this is not available, a requester will be displayed enabling you to insert the relevant disc.</p>
+<p>The printer driver consumes a great deal Of memory, and can require up to 50k in order to operate. If </p>
+<p>available   memory   is   running   short,   it   may   be   easier   to   access   the   printer   with   the   SERIAL  or </p>
+<p>PARALLEL commands instead. Additionally, if multi-tasking is being used, it is important to realise </p>
+<p>that only <b>one</b> program is allowed to access the printer device at any one time. If a previous program </p>
+<p>has already grabbed the printer, an error message will be generated when an attempt is made to </p>
+<p>access the printer from an AMOS Professional program.</p>
+<p>Such errors can be trapped using a command like this:</p>
+<p>Trap Printer Open</p>
+<p>If ERRTRAP : Print “Cannot open Printer Device!” : Endif</p>
+<p><b>PRINTER OPEN</b></p>
+<p><i>instruction: open the standard printer device for use</i></p>
+<p><b>Printer Open</b></p>
+<p>This command opens the printer device using your current preferences.</p>
+<p><b>PRINTER CLOSE</b></p>
+<p><i>instruction: close printer port</i></p>
+<p><b>Printer Close</b></p>
+<p>Use this instruction to close the printer port that has been previously set with a PRINTER OPEN  </p>
+<p>command.   Note   that   the   memory   is   not   freed   for   use   by   your   AMOS   Professional   program </p>
+<p>immediately.  Memory  is only  returned if the following  conditions  are met:  firstly,  that  no other </p>
+<p>program has requested the printer device during multi-tasking, as explained above. Secondly, if the </p>
+<p>system becomes short of memory and requires more.</p>
+<p><b>PRINTER SEND</b></p>
+<p><i>instruction: send a string to the printer</i></p>
+<p><b>Printer Send</b> text$</p>
+<p>The PRINTER SEND command sends a string of text to the printer, using multi-tasking.</p>
+<p>10.03.01</p>
+<p>P</p>
+<p>R</p>
+<p>I</p>
+<p>N</p>
+<p>T</p>
+<p>E</p>
+<p>R</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Accessing a Printer</p>
+<p>The command does not wait for the text to be printed, and returns immediately to the program. All </p>
+<p>printing operations are performed “invisibly” in the background. Obviously, if the printer is not </p>
+<p>ready, the appropriate requester will appear.</p>
+<p><b>Embedded commands</b></p>
+<p>The text string to be printed can contain embedded commands, and these will be converted into the </p>
+<p>appropriate control sequences for the current printer automatically. This means that all the effects </p>
+<p>such as underline, bold, italic and subscript can be included in your programs.</p>
+<p>Most   embedded  commands   begin   with   an   “Escape”   character,   or   Chr$(27),   and  they   will   work </p>
+<p>equally   well   on  <b>any</b>  printer.   Provided   that   your   particular   printer   has   been   installed   using   the </p>
+<p>Preferences utility, the entire system will be completely transparent. Here are the rules of successful </p>
+<p>printing:</p>
+<p>•</p>
+<p>Each line of text should be terminated by a single Line Feed. Normally this will be Chr$(10), </p>
+<p>but an embedded command can also be used like this:</p>
+<p>LF$=Chr$(27)+“E”</p>
+<p>Printer Send “Greetings” +LF$</p>
+<p>•</p>
+<p>The LF +CR settings found in the AMOS_Interpreter configuration menus are ignored!</p>
+<p>•</p>
+<p>Zeros are printed as normal characters.</p>
+<p>•</p>
+<p>The PRINTER SEND command should not be used to output raw data. Such data may contain </p>
+<p>embedded commands that can be misinterpreted by the printer device.</p>
+<p>•</p>
+<p>Because PRINTER SEND uses multi--tasking, there may be a slight delay while the text string </p>
+<p>is being printed.</p>
+<p>•</p>
+<p>If any changes are made to a string while it is being output, the final print-out may become </p>
+<p>corrupted.</p>
+<p>•</p>
+<p>To avoid unwanted “garbage collection”, such an operation can be forced before transmission </p>
+<p>begins of data to be printed, with a line such as X =Free.</p>
+<p>•</p>
+<p>Here is a list of the most useful embedded commands. Note that ESC is simply a standard </p>
+<p>name for the CHR$(27) character.</p>
+<p><b>Name</b></p>
+<p><b>Code</b></p>
+<p><b>Effect</b></p>
+<p>aRIS</p>
+<p>ESCc</p>
+<p>hard re-set</p>
+<p>aRIN</p>
+<p>ESC#1</p>
+<p>initialise to defaults</p>
+<p>aIND</p>
+<p>ESCD</p>
+<p>true line-feed</p>
+<p>aNEL</p>
+<p>ESCE</p>
+<p>line-feed. This is to be added after every line!</p>
+<p>aRI</p>
+<p>ESCM</p>
+<p>reverse line-feed</p>
+<p>aSGRO</p>
+<p>ESC[Om</p>
+<p>normal character set</p>
+<p>aSGR3</p>
+<p>ESC[3m</p>
+<p>Italics on</p>
+<p>aSGR23</p>
+<p>ESC[23m</p>
+<p>Italics off</p>
+<p>aSGR4</p>
+<p>ESC[4m</p>
+<p>underline on</p>
+<p>aSGR24</p>
+<p>ESC[24m</p>
+<p>underline off</p>
+<p>10.03.02</p>
+<p>P</p>
+<p>R</p>
+<p>I</p>
+<p>N</p>
+<p>T</p>
+<p>E</p>
+<p>R</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Accessing a Printer</p>
+<p>aSGR1</p>
+<p>ESC[1m</p>
+<p>boldface on</p>
+<p>aSGR22</p>
+<p>ESC[22m</p>
+<p>normal pitch</p>
+<p>aSHORP2</p>
+<p>ESC[2w</p>
+<p>Elite on</p>
+<p>aSHORP1</p>
+<p>ESC[1w</p>
+<p>Elite off</p>
+<p>aSHORP4</p>
+<p>ESC[4w</p>
+<p>condensed on</p>
+<p>aSHORP3</p>
+<p>ESC[3w</p>
+<p>condensed off</p>
+<p>aSHORP6</p>
+<p>ESC[6w</p>
+<p>enlarged on</p>
+<p>aSHORP5</p>
+<p>ESC[5w</p>
+<p>enlarged off</p>
+<p>aDEN6</p>
+<p>ESC[6”z</p>
+<p>shadow print on</p>
+<p>aDEN5</p>
+<p>ESC[5”z</p>
+<p>shadow print off</p>
+<p>aDEN4</p>
+<p>ESC[4”z</p>
+<p>double-strike on</p>
+<p>aDEN3</p>
+<p>ESC[3”z</p>
+<p>double-strike off</p>
+<p>aDEN2</p>
+<p>ESC[2”z</p>
+<p>near-letter-quality on</p>
+<p>aDEN1</p>
+<p>ESC[1”z</p>
+<p>near-letter-quality off</p>
+<p>aSUS2</p>
+<p>ESC[2v</p>
+<p>superscript on</p>
+<p>aSUS1</p>
+<p>ESC[1v</p>
+<p>superscript off</p>
+<p>aSUS </p>
+<p>ESC[4v</p>
+<p>subscript on</p>
+<p>aSUS3</p>
+<p>ESC3v</p>
+<p>subscript off</p>
+<p>In order to print a text string in Italics and underlined, for example, the following routine could be </p>
+<p>used:</p>
+<p>ESC$=Chr$(27)</p>
+<p>LF$=ESC$+“E”</p>
+<p>Printer Open</p>
+<p>Printer Send ESC$+“[3m”+ESC$+[4m”+“Greetings!”+LF$</p>
+<p>Printer Close</p>
+<p>The   state   of   printer   output   can   be   monitored   by   the   PRINTER  CHECK   and   PRINTER  ERROR </p>
+<p>functions,   and   printing   can   be   abandoned   completely   using   PRINTER   ABORT,   which   are   all </p>
+<p>explained later.</p>
+<p><b>Screen dumps</b></p>
+<p>There are three alternative ways of using the PRINTER DUMP command to perform a screen dump.</p>
+<p><b>PRINTER DUMP</b></p>
+<p><i>instruction: print the contents of an AMOS Professional screen</i></p>
+<p><b>Printer Dump</b></p>
+<p><b>Printer Dump</b> x1,y1 <b>To</b> x2,y2</p>
+<p><b>Printer Dump</b> x1,y1 <b>To</b> x2,y2,<i>px,py,setting</i></p>
+<p>Used without any parameters, PRINTER DUMP will perform an entire screen dump in a single </p>
+<p>operation.   If   the   screen   contains   complex   graphics,   this   may   well   take   a   considerable   time   to </p>
+<p>complete.</p>
+<p>A selected area of the screen can be transmitted to the printer, retaining the current aspect </p>
+<p>ratio and screen size. In other words, if only half of the current display is to be </p>
+<p>printed, it will take up exactly half of the space of a complete print-out.</p>
+<p>10.03.03</p>
+<p>P</p>
+<p>R</p>
+<p>I</p>
+<p>N</p>
+<p>T</p>
+<p>E</p>
+<p>R</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Accessing a Printer</p>
+<p>The section of screen to be dumped is set by giving the top left-hand coordinates followed by the </p>
+<p>coordinates of the corner diagonally opposite.</p>
+<p>The third option allows you to change the size parameters and aspect ratio of the original screen </p>
+<p>image. This is achieved by including additional parameters after x1,y1 and x2,y2, as follows:</p>
+<p>Px and py specify the dimensions of the final print-out, and these values are measured in  <b>printer </b></p>
+<p><b>pixels</b>  rather than normal screen pixels. Printer pixels vary in size, depending on the command </p>
+<p>options that are given by the following settings:</p>
+<p>Settings refers to a special command parameter, that is used to tell the printer precisely how to draw </p>
+<p>the current screen image on paper. Here is a list of these settings, which can be combined using AND  </p>
+<p>as well as OR operations from AMOS Professional.</p>
+<p><b>Value</b></p>
+<p><b>Name</b></p>
+<p><b>Description</b></p>
+<p>$0001</p>
+<p>MILCOLS</p>
+<p>px is in 1/1000” (see Note 1)</p>
+<p>$0002</p>
+<p>MILROWS</p>
+<p>py is in 1/1000”</p>
+<p>$0004</p>
+<p>FULLCOLS</p>
+<p>use maximum print width (see Note 2)</p>
+<p>$0008</p>
+<p>FULLROWS</p>
+<p>use maximum print height</p>
+<p>$0010</p>
+<p>FRACCOLS</p>
+<p>px is a fraction of FULLCOLS (see Note 3)</p>
+<p>$0020</p>
+<p>FRACROWS</p>
+<p>py is a fraction of FULLROWS</p>
+<p>$0040</p>
+<p>CENTRE</p>
+<p>centre the image on the page</p>
+<p>$0080</p>
+<p>ASPECT</p>
+<p>retain the original aspect ratio</p>
+<p>$0100</p>
+<p>DENSITY1</p>
+<p>set resolution (dots per inch)</p>
+<p>$0200</p>
+<p>DENSITY2</p>
+<p>next resolution</p>
+<p>$0300</p>
+<p>DENSITY3</p>
+<p>next resolution</p>
+<p>$0400</p>
+<p>DENSITY4</p>
+<p>next resolution</p>
+<p>$0500</p>
+<p>DENSITY5</p>
+<p>next resolution</p>
+<p>$0600</p>
+<p>DENSITY6</p>
+<p>next resolution</p>
+<p>$0700</p>
+<p>DENSITY7</p>
+<p>set resolution</p>
+<p>$0800</p>
+<p>NOFORMFEED</p>
+<p>do not eject paper</p>
+<p>$1000</p>
+<p>TRUSTME</p>
+<p>do not re-set</p>
+<p>$2000</p>
+<p>NOPRINT</p>
+<p>do not print</p>
+<p>Note 1. MILCOLS and MILROWS measure the px and py parameters in units of 1/1000th of an inch. </p>
+<p>So if px=10000, the print-out will measure ten inches wide.</p>
+<p>Note 2. FULLCOLS and FULLROWS make use of the maximum available width and height of the </p>
+<p>paper.</p>
+<p>Note 3. FRACCOLS and FRACROWS specify the width and height of the print-out as a fraction of the </p>
+<p>current paper size.</p>
+<p>10.03.04</p>
+<p>P</p>
+<p>R</p>
+<p>I</p>
+<p>N</p>
+<p>T</p>
+<p>E</p>
+<p>R</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Accessing a Printer</p>
+<p>Px,py are assumed to be between $0000 and $FFFF, and the print width is calculated using the </p>
+<p>formula  </p>
+<p>width=FULLCOLS*px/$FFFF  </p>
+<p>whereas</p>
+<p> </p>
+<p>height</p>
+<p> </p>
+<p>is</p>
+<p> </p>
+<p>calculated  </p>
+<p>by  </p>
+<p>the  </p>
+<p>formula </p>
+<p>height=FULLROWS*py/$FFFF. This means that if px =$8000 the print width will be $8000/$FFF, which </p>
+<p>equals half of FULLCOLS. So the pint-out will take up half the width of the paper.</p>
+<p>For example, to dump a 100x100 section of the current screen onto a full page, retaining the correct  </p>
+<p>aspect ratio, the following line would be used:</p>
+<p>Printer Dump 0,0 To 100,100,0,0,$80 Or $8 Or $4</p>
+<p>The next example could be used for printing a low resolution screen to an eight by six inch area:</p>
+<p>Printer Dump 0,0 To 320,200,8000,6000,$1 Or $2</p>
+<p>Alternatively, part of the current screen could be dumped utilising the maximum available height, but </p>
+<p>with the width reduced by one third, as follows:</p>
+<p>Printer Dump 0,0 To 200,200,$5555,0,$8 Or $10</p>
+<p>You   are   warned   not   to   attempt   to   change   the   current   screen   during   a   screen   dump   operation, </p>
+<p>otherwise the resultant print-out will become scrambled.</p>
+<p><b>Other printer commands</b></p>
+<p><b>PRINTER OUT</b></p>
+<p><i>instruction: print data from an address</i></p>
+<p><b>Printer Out</b> address,length</p>
+<p>This command is used to print some data directly from the memory location starting at a specified </p>
+<p>address. The data is not processed in any way, so embedded control sequences will be completely </p>
+<p>ignored. The PRINTER OUT instruction should be used to send simple text and graphics only.</p>
+<p>The address parameter refers to the first character which is to be output, and length specifies the </p>
+<p>number of characters to be printed. To send a string, the following type of line would be used:</p>
+<p>Printer Out Varptr(A$),Len(A$)</p>
+<p>Similarly to PRINTER SEND, it must be ensured that data remains unchanged during the printing </p>
+<p>process, otherwise the resultant print-out will become corrupted.</p>
+<p><b>PRINTER ABORT</b></p>
+<p><i>instruction: stop a printer operation</i></p>
+<p><b>Printer Abort</b></p>
+<p>This command halts the current printing operation. If your printer device has a large memory buffer, </p>
+<p>there may be a delay before the printing ceases.</p>
+<p><b>PRINTER CHECK</b></p>
+<p><i>function: return the status of the printer</i></p>
+<p>status=<b>Printer Check</b></p>
+<p>Use the PRINTER CHECK function to return a value of -1 (True) if the printer is available </p>
+<p>for use, or zero (False) if it is in active mid-operation.</p>
+<p>10.03.05</p>
+<p>P</p>
+<p>R</p>
+<p>I</p>
+<p>N</p>
+<p>T</p>
+<p>E</p>
+<p>R</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Accessing a Printer</p>
+<p><b>PRINTER ONLINE</b></p>
+<p><i>function: report if printer is on-line</i></p>
+<p>status=<b>Printer Online</b></p>
+<p>This useful function provides a simple method of checking if the printer is connected and ready for </p>
+<p>use. It returns a value of -1 (True) if the printer is on-line, otherwise zero (False) will be given. This </p>
+<p>function only works with <b>parallel</b> printer devices.</p>
+<p><b>PRINTER ERROR</b></p>
+<p><i>function: check for an error in printing operation</i></p>
+<p>status=<b>Printer Error</b></p>
+<p>Use this function to check if the current printing operation is proceeding normally. A value of zero  </p>
+<p>suggests that all is well, but any other value indicates an error.</p>
+<p><b>PRINTER BASE</b></p>
+<p><i>function: get the address of printer base</i></p>
+<p>address=<b>Printer Base</b></p>
+<p>The PRINTER BASE function is used to return the address of the i/o structure used to control the  </p>
+<p>printer. It is intended for use by skilled operators only! Poking around the internal device structures is </p>
+<p>a very dangerous operation indeed!</p>
+<p><b>Other ports and devices</b></p>
+<p>The serial Port is examined in the next Chapter, and it is also possible to access the  <b> parallel</b>  port </p>
+<p>directly, which provides a number of advantages over the printer device. Please refer to Chapter 10.5 </p>
+<p>for full details.</p>
+<p>The complete control and exploitation of other devices that control hardware as well as internal </p>
+<p>features of the Amiga is dealt with in Chapter 11.5. This Chapter ends with a general instruction and </p>
+<p>function for dealing with ports.</p>
+<p><b>OPEN PORT</b></p>
+<p><i>instruction: open a channel to an 10 port</i></p>
+<p><b>Open Port</b> channel number,“PAR:”</p>
+<p><b>Open Port</b> channel number,“SER:”</p>
+<p><b>Open Port</b> channel number,“PRT:”</p>
+<p>The three versions of the OPEN PORT command are shown above, and they are used to open a </p>
+<p>channel to the Parallel Interface, or the RS232 Port, or the printer chosen in your preferences settings.  </p>
+<p>All standard sequential file commands can be performed as usual, except for commands that are </p>
+<p>specific to disc operations, such as LOF and POF.</p>
+<p>10.03.06</p>
+<p>P</p>
+<p>R</p>
+<p>I</p>
+<p>N</p>
+<p>T</p>
+<p>E</p>
+<p>R</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Accessing a Printer</p>
+<p>This example would print out ten lines via the device connected to the Amiga's RS232 port:</p>
+<p>Open Port 1,“SER:”</p>
+<p>For X=0 To 10</p>
+<p>Print #1,“Greetings from AMOS Professional!”</p>
+<p>Next X</p>
+<p>Close 1</p>
+<p><b>PORT</b></p>
+<p><i>function: test readiness of device</i></p>
+<p>value=<b>Port</b>(channel number)</p>
+<p>The PORT function is used to test the status of readiness of the specified channel. If the device is </p>
+<p>waiting to be read a value of -1 (True) is returned, otherwise zero (False) is given.</p>
+<p>10.03.07</p>
+<p>P</p>
+<p>R</p>
+<p>I</p>
+<p>N</p>
+<p>T</p>
+<p>E</p>
+<p>R</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Accessing a Serial Port</p>
+<p>Here is the Chapter which explains how AMOS Professional is used as the gateway to the world of </p>
+<p>computerised communications.</p>
+<p>The I/O Extension provides you with all the commands needed to exploit the Amiga's serial port for </p>
+<p>the following purposes:</p>
+<p>•</p>
+<p>Long-distance multi-user games played between any number of Amiga users.</p>
+<p>•</p>
+<p>Network communications between desks, offices, classrooms and continents!</p>
+<p>•</p>
+<p>MIDI interfacing for musicians, between the Amiga and synthesizers, drum machines and </p>
+<p>sequencers.</p>
+<p><b>Opening the Serial Port</b></p>
+<p>A serial device refers to any machine that can communicate with the Amiga via its Serial Port. These </p>
+<p>devices include modems, MIDI systems and of course, other Amigas.</p>
+<p><b>SERIAL OPEN</b></p>
+<p><i>instruction: open a channel for Serial Input/Output</i></p>
+<p><b>Serial Open</b> Channel number,Port number</p>
+<p><b>Serial Open</b> Channel number, Port number,<i>Shared,Xmode,7wires</i></p>
+<p>The SERIAL OPEN command is used to open a communication channel between the Amiga and a </p>
+<p>serial device. The following parameters can be given with this instruction:</p>
+<p>The Channel number is an identification number that will be used for <b>all</b> subsequent communication </p>
+<p>commands. The values for this number range from zero to 3.</p>
+<p>The Port number is normally set to zero, and it specifies the logical device number of the Serial Port. </p>
+<p>For Amigas equipped with a Multi-Serial card that offers additional Serial Ports, these extra ports can </p>
+<p>be accessed by specifying a Port number from 1 upwards.</p>
+<p>There are three optional parameters that can also be given, as follows:</p>
+<p>The Shared parameter refers to a value which acts as a flag, telling AMOS Professional that the serial </p>
+<p>device can be shared with other tasks that are currently running on the computer. In other words, this </p>
+<p>parameter is used for multi-tasking. A value of zero (False) will grab the specified channel for AMOS </p>
+<p>Professional programs, and will deny access to any other programs. A value of -1 (True) will allow the </p>
+<p>Serial Port to be shared between several programs in memory. You are warned to use this system with </p>
+<p>great care, to avoid crashing your Amiga.</p>
+<p>The Xmode is a value which is used to toggle the checking system known as XON/XOFF. This system </p>
+<p>makes checks during the transmission of data over a serial line. It is essential to set this flag when the  </p>
+<p>device is first opened, even if the device will not be required until later. The default value is zero </p>
+<p>(False), and this means that the system is normally disabled. To enable the checking system, a value of </p>
+<p>-1 (True) must be set. Once the port has been opened, the XON and XOFF characters must be set using </p>
+<p>a SERIAL X command, which is explained later.</p>
+<p>The last of the three optional parameters concerns the “7 wires system” of communication. The </p>
+<p>default value for this parameter is set to zero (False), and a value of -1 (True) tells the device to use </p>
+<p>this system.</p>
+<p>10.04.01</p>
+<p>S</p>
+<p>E</p>
+<p>R I</p>
+<p>A</p>
+<p>L</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Accessing a Serial Port</p>
+<p>When the SERIAL OPEN command is called for the first time, the Serial Device library is loaded from </p>
+<p>the System disc automatically, so make sure that this disc is available in the current drive.</p>
+<p><b>SERIAL CLOSE</b></p>
+<p><i>instruction: close one or more Serial channels</i></p>
+<p><b>Serial Close</b></p>
+<p><b>Serial Close</b> <i>Channel number</i></p>
+<p>The use of this instruction closes all currently opened serial channels with no check for any errors. If  </p>
+<p>an optional channel number is given, the specified channel will be closed using all normal error </p>
+<p>checks.</p>
+<p>Whenever   a   program   is   run   from   AMOS   Professional,   any   opened   channels   will   be   closed </p>
+<p>automatically.</p>
+<p><b>Setting the serial parameters</b></p>
+<p>The default settings for Serial Channels correspond to the standard Minitel protocol used in France, </p>
+<p>as follows:</p>
+<p>1200 Baud</p>
+<p>7 bits</p>
+<p>1 stop bit</p>
+<p>Even parity.</p>
+<p>These settings can be changed using the instructions that are explained next.</p>
+<p><b>SERIAL SPEED</b></p>
+<p><i>instruction: set transfer rate for a serial channel</i></p>
+<p><b>Serial Speed</b> Channel number,Baud rate</p>
+<p>This sets the current data transfer rate (the Baud rate) of the given channel, for both the sending and  </p>
+<p>receiving operations. A Baud rate cannot be split for a. single channel. If the specified transfer rate is </p>
+<p>not supported by the current serial device, it may be rejected by the system.</p>
+<p><b>SERIAL BITS</b></p>
+<p><i>instruction: set the number of bits for transmission of characters</i></p>
+<p><b>Serial Bits</b> Channel number,number of bits,number of Stop bits</p>
+<p>This command is used to assign the number of bits that are to be used for each character that is </p>
+<p>transmitted. After the channel number is specified, give the number of bits followed by the number of </p>
+<p>Stop bits to be used.</p>
+<p><b>SERIAL PARITY</b></p>
+<p><i>instruction: set parity checking for a serial channel</i></p>
+<p><b>Serial Parity</b> Channel number, Parity</p>
+<p>The SERIAL PARITY instruction sets the parity checking to be used for the specified serial channel.</p>
+<p>10.04.02</p>
+<p>S</p>
+<p>E</p>
+<p>R I</p>
+<p>A</p>
+<p>L</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Accessing a Serial Port</p>
+<p>Here is a list of the available settings for the Parity parameter:</p>
+<p>-1</p>
+<p>No parity</p>
+<p>0</p>
+<p>Even parity</p>
+<p>1</p>
+<p>Odd parity</p>
+<p>2</p>
+<p>Space parity</p>
+<p>3</p>
+<p>Mark parity</p>
+<p>This Parity bit may be set using the BSET or BCLR instructions, as follows:</p>
+<p>P=0 : Bset 0,P: Rem Odd parity</p>
+<p>Bclr 1,P : Rem Normal parity</p>
+<p>Serial Parity 1,P : Rem Set parity using the value in P</p>
+<p><b>SERIAL X</b></p>
+<p><i>instruction: set handshaking system of serial channel</i></p>
+<p><b>Serial X</b> Channel number,Xmode</p>
+<p>This command is used to enable or disable the XON/XOFF handshaking system, which checks data </p>
+<p>transmission. A value of -1 (True) will disable the system, whereas any other value will turn it on. The </p>
+<p>Xmode parameter should be loaded with the correct control characters, which must be specified in  </p>
+<p>the following format:</p>
+<p>Xmode=XON110000000+XOFF*$1000</p>
+<p><b>Sending and receiving Serial information</b></p>
+<p><b>SERIAL SEND</b></p>
+<p><i>instruction: output a string via a serial channel</i></p>
+<p><b>Serial Send</b> Channel number,string</p>
+<p>This is used to send the given string directly to the selected serial channel, without waiting for the </p>
+<p>data to be transmitted through the actual port. This means that the SERIAL CHECK function must be  </p>
+<p>used to detect when the transmission of data has been completed, and this is explained below.</p>
+<p><b>SERIAL OUT</b></p>
+<p><i>instruction: output a block of raw data via a serial channel</i></p>
+<p><b>Serial Out</b> Channel number,address,length</p>
+<p>This command is identical to SERIAL SEND, except for the fact that it works with raw data, instead of </p>
+<p>a string. Specify the channel number as usual, followed by the address in memory of the data to be </p>
+<p>transmitted, and the length of the data given in the number of bytes to be sent.</p>
+<p><b>SERIAL GET</b></p>
+<p><i>function: get a byte from a serial device</i></p>
+<p>value=<b>Serial Get</b>(Channel number)</p>
+<p>To read a single byte from a serial device, use the SERIAL GET function and specify which </p>
+<p>channel is to be examined. If no data is available, a value of -1 will be returned.</p>
+<p>10.04.03</p>
+<p>S</p>
+<p>E</p>
+<p>R I</p>
+<p>A</p>
+<p>L</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Accessing a Serial Port</p>
+<p><b>SERIAL INPUT$</b></p>
+<p><i>function: get a string from the Serial Port</i></p>
+<p>string=<b>Serial Input$</b>(Channel number)</p>
+<p>This function is used to read an entire string of characters from the Serial Port. If no data is available </p>
+<p>an empty string will be returned, otherwise the string will contain all the bytes that have been </p>
+<p>transmitted via the serial line up to the present moment.</p>
+<p>Care should be taken when using this function with high speed transfers, such as those from MIDI </p>
+<p>devices. If the waiting time between each receive is too long, the system may overload and generate </p>
+<p>errors such as “string too long” or “serial device buffer overrun”.</p>
+<p>Transmitting a very large string can take a long time, especially at low Baud rates. With AMOS </p>
+<p>Professional multi-tasking, a program will only continue <b>after</b> a SERIAL SEND instruction. To avoid </p>
+<p>corrupting data, the following system should be employed:</p>
+<p>•</p>
+<p>Use the SERIAL CHECK function before using lengthy strings.</p>
+<p>•</p>
+<p>Perform a “garbage collection” using X =FREE, to ensure that the program will not provoke </p>
+<p>such an operation spontaneously.</p>
+<p>•</p>
+<p>Use the SERIAL OUT command and set the address parameter to contain the location of a </p>
+<p>memory bank that has been previously reserved.</p>
+<p><b>Other Serial commands</b></p>
+<p><b>SERIAL BUF</b></p>
+<p><i>instruction: set the size of the serial buffer</i></p>
+<p><b>Serial Buffer</b> Channel number,length</p>
+<p>This allocates the length of the buffer space for the required channel, specified in the number of bytes </p>
+<p>to be allocated. The minimum allocation is 64 bytes, and the default setting is 512 bytes. You are  </p>
+<p>recommended to increase the buffer size for high speed transfers of data.</p>
+<p><b>SERIAL FAST</b></p>
+<p><i>instruction: engage fast mode for data transfer</i></p>
+<p><b>Serial Fast</b> Channel number</p>
+<p>Use this command to set a special “fast” flag in the current serial device, which disables much of the </p>
+<p>internal checking process that can slow down the communication process. This is recommended for </p>
+<p>high speed transfers. Please note that when SERIAL FAST is called, the protocol is changed to: even </p>
+<p>parity, no XON/XOFF and 8 bits.</p>
+<p><b>SERIAL SLOW</b></p>
+<p><i>instruction: re-set slow mode for data transfer</i></p>
+<p><b>Serial Slow</b> Channel number</p>
+<p>This instruction slows the serial device transmission back to normal speed, and all of the internal </p>
+<p>error checks are enabled once more.</p>
+<p>10.04.04</p>
+<p>S</p>
+<p>E</p>
+<p>R I</p>
+<p>A</p>
+<p>L</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Accessing a Serial Port</p>
+<p><b>SERIAL CHECK</b></p>
+<p><i>function: report current serial device activity</i></p>
+<p>status=<b>Serial Check</b>(Channel number)</p>
+<p>This function obtains a report on the status of the current serial device. It can be used to check </p>
+<p>whether all of the information to be transmitted by a previous SERIAL SEND command has been </p>
+<p>sent. If a value of zero (False) is returned, the last Serial command is still being executed. If the value </p>
+<p>is -1 (True) the transmission has been completed.</p>
+<p><b>SERIAL STATUS</b></p>
+<p><i>function: report status of the serial port</i></p>
+<p>bit-map=<b>Serial Status</b>(channel number)</p>
+<p>The SERIAL STATUS function provides detailed information concerning the current status of the </p>
+<p>serial   port.   The   channel   number   parameter   refers   to   an   open   channel   that   has   been   previously </p>
+<p>assigned to the serial port with a SERIAL OPEN command. The report is returned in the form of a bit-</p>
+<p>map holding the status of fifteen different parameters. Here is a table of the various possibilities. If the </p>
+<p>relevant bit is set to the value under the “Active” column, the associated status has been successfully </p>
+<p>detected. Any other value indicates that the option is currently idle.</p>
+<p><b>Bit</b></p>
+<p><b>Active</b></p>
+<p><b>Status</b></p>
+<p>0</p>
+<p>-</p>
+<p>Reserved</p>
+<p>1</p>
+<p>-</p>
+<p>Reserved</p>
+<p>2</p>
+<p>1</p>
+<p>Parallel</p>
+<p> </p>
+<p>“select”  </p>
+<p>for  </p>
+<p>A1000  </p>
+<p>machines.</p>
+<p> </p>
+<p>For  </p>
+<p>the  </p>
+<p>A500  </p>
+<p>and </p>
+<p>A2000,“select” is also connected to the serial port “Ring Indicator”.</p>
+<p>3</p>
+<p>0</p>
+<p>DSR (Data Set Ready)</p>
+<p>4</p>
+<p>0</p>
+<p>CTS (Clear To Send)</p>
+<p>5</p>
+<p>0</p>
+<p>Carrier Detect</p>
+<p>6</p>
+<p>0</p>
+<p>RTS (Ready To Send)</p>
+<p>7</p>
+<p>0</p>
+<p>DTR (Data terminal Ready)</p>
+<p>8</p>
+<p>1</p>
+<p>Hardware overrun</p>
+<p>9</p>
+<p>1</p>
+<p>Break sent (most recent output)</p>
+<p>10</p>
+<p>1</p>
+<p>Break received (as latest input)</p>
+<p>11</p>
+<p>1</p>
+<p>Transmit x-OFF</p>
+<p>12</p>
+<p>1</p>
+<p>Receive x-Off</p>
+<p>13</p>
+<p>-</p>
+<p>Reserved</p>
+<p>14</p>
+<p>-</p>
+<p>Reserved</p>
+<p>15</p>
+<p>-</p>
+<p>Reserved</p>
+<p><b>SERIAL ERROR</b></p>
+<p><i>function: report success of the last data transfer</i></p>
+<p>status=<b>Serial Error</b>(Channel number)</p>
+<p>The SERIAL ERROR function is used to look for the Error byte in the serial device. A value of zero </p>
+<p>(False) confirms that all is well, whereas 4 (True) indicates that there was an error in the last </p>
+<p>transmission.</p>
+<p>10.04.05</p>
+<p>S</p>
+<p>E</p>
+<p>R I</p>
+<p>A</p>
+<p>L</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Accessing a Serial Port</p>
+<p><b>SERIAL ABORT</b></p>
+<p><i>instruction: stop current data transfer</i></p>
+<p><b>Serial Abort</b>(channel number)</p>
+<p>This command halts any serial operations that have been commenced by a SERIAL SEND or SERIAL </p>
+<p>OUT command, and leaves the channel clear. It allows an instant quit from a transfer, without the </p>
+<p>need to wait for current activities to be completed.</p>
+<p><b>SERIAL BASE</b></p>
+<p><i>function: get the address of the serial base</i></p>
+<p>address=<b>Serial Base</b></p>
+<p>The SERIAL BASE function is especially useful for systems programmers. It returns the base address </p>
+<p>of the i/o structure of the current serial channel, allowing system functions to be called directly from </p>
+<p>an AMOS Professional program with EXEC. You are warned not to use this function unless you know </p>
+<p>precisely what you are doing, otherwise any mistakes can crash your computer.</p>
+<p>10.04.06</p>
+<p>S</p>
+<p>E</p>
+<p>R I</p>
+<p>A</p>
+<p>L</p>
+<h1 style="page-break-before:always; "></h1>
+<p>The Parallel Port</p>
+<p>This Chapter provides the bridge between the Amiga's Parallel Port and AMOS Professional. </p>
+<p>One parallel channel may be opened at a time, so if a printer is already attached to the Parallel Port, </p>
+<p>the Parallel device may <b>not</b> be opened at the same time as the Printer device.</p>
+<p>In fact, accessing the Parallel device has three main advantages over the Printer device:</p>
+<p>•</p>
+<p>It only uses 5k of memory space, compared to the 50k that can be required for the printer </p>
+<p>driver.</p>
+<p>•</p>
+<p>It needs comparatively few system resources.</p>
+<p>•</p>
+<p>It can also be used for input as well as output.</p>
+<p>There are few disadvantages, although control over sequence conversion is not possible, and screen </p>
+<p>dumps cannot be made via the Parallel Port.</p>
+<p><b>PARALLEL OPEN</b></p>
+<p><i>instruction: open the Parallel Port for reading or writing</i></p>
+<p><b>Parallel Open</b></p>
+<p>This instruction initialises the Parallel Port for use by an AMOS Professional program. The first time </p>
+<p>that this command is used in any programming session, the “Parallel.device” driver will be loaded </p>
+<p>into memory. If it is not available, you will be prompted to insert the relevant disc automatically.</p>
+<p><b>PARALLEL CLOSE</b></p>
+<p><i>instruction: close the parallel port</i></p>
+<p><b>Parallel Close</b></p>
+<p>This command simply closes the Parallel port.</p>
+<p><b>PARALLEL SEND</b></p>
+<p><i>instruction: send a string of characters to the Parallel Port</i></p>
+<p><b>Parallel Send</b> text$</p>
+<p>This is very similar to the PRINTER SEND command, which is explained in Chapter 10.3, except that </p>
+<p>text data is transmitted exactly as it appears in the original source string. There is no translation of </p>
+<p>code, so that any Escape codes will be interpreted directly by a printer. Please check your printer </p>
+<p>documentation for details of allowable control codes.</p>
+<p>If data is output to a printer via the Parallel Port, each line should be terminated by a single line- feed, </p>
+<p>which is Chr$(10). This tells the printer to print a new line onto paper, starting at the current position. </p>
+<p>If the line-feed is omitted, nothing will appear to happen!</p>
+<p>Characters are transmitted using multi-tasking, so your main program will not wait for printing to be </p>
+<p>completed, but will continue immediately from the next instruction.</p>
+<p>10.05.01</p>
+<p>P</p>
+<p>A</p>
+<p>R</p>
+<p>A</p>
+<p>L</p>
+<p>L</p>
+<p>E</p>
+<p>L</p>
+<h1 style="page-break-before:always; "></h1>
+<p>The Parallel Port</p>
+<p><b>PARALLEL OUT</b></p>
+<p><i>instruction: send data from memory to the Parallel Port</i></p>
+<p><b>Parallel Out</b> address,length</p>
+<p>This instruction is similar to the PRINTER OUT command, and transmits the specified number of </p>
+<p>characters defined by the length parameter, starting from a given address.</p>
+<p><b>PARALLEL INPUT$</b></p>
+<p><i>function: read a string from the Parallel Port</i></p>
+<p>text$=<b>Parallel Input$</b>(length<i>[,stop]</i>)</p>
+<p>The PARALLEL INPUTS function waits for a specific number of characters from the Parallel Port. </p>
+<p>Because this port does not have an internal buffer area, the AMOS Professional program will halt </p>
+<p>completely until all characters have been successfully received. If the requested bytes have not arrived </p>
+<p>after a reasonable amount of time, a time-out error will be generated. This may be detected using the </p>
+<p>TRAP instruction, explained in Chapter 12.2.</p>
+<p>The PARALLEL INPUTS parameters are as follows: length holds the number of characters to be </p>
+<p>received. The square brackets can hold an optional stop character, which will end the transmission as </p>
+<p>soon as it is encountered anywhere in an input string.</p>
+<p>If you intend to devise a communications' protocol using the Parallel Port, then the first item to send </p>
+<p>should be the total number of bytes to be transmitted!</p>
+<p><b>PARALLEL ABORT</b></p>
+<p><i>instruction: stop a parallel operation</i></p>
+<p><b>Parallel Abort</b></p>
+<p>This command is used to stop a PARALLEL SEND or PARALLEL OUT instruction from transmitting </p>
+<p>any additional information via the Parallel Port. Any characters that are currently in transit will be </p>
+<p>completely lost.</p>
+<p><b>PARALLEL CHECK</b></p>
+<p><i>function: report the availability of the Parallel Port</i></p>
+<p>value=<b>Parallel Check</b></p>
+<p>The PARALLEL CHECK function is used to return the readiness of the Parallel Port. The status is </p>
+<p>returned by either a value of zero (False) if it is not available, or -1 (True) if the port is ready for use.</p>
+<p><b>PARALLEL ERROR</b></p>
+<p><i>function: check for an error in transmission via the Parallel Port</i></p>
+<p>value=<b>Parallel Error</b></p>
+<p>To check for errors during the current transmission via the Parallel Port, use this function.</p>
+<p>10.05.02</p>
+<p>P</p>
+<p>A</p>
+<p>R</p>
+<p>A</p>
+<p>L</p>
+<p>L</p>
+<p>E</p>
+<p>L</p>
+<h1 style="page-break-before:always; "></h1>
+<p>The Parallel Port</p>
+<p>A value of zero is returned all the time that everything is proceeding normally, but any other value </p>
+<p>indicates a problem in the current transmission operation.</p>
+<p><b>PARALLEL STATUS</b></p>
+<p><i>function: return the current status of the Parallel Port</i></p>
+<p>status=<b>Parallel Status</b></p>
+<p>This function is used to give information concerning the current status of the Parallel Port. Each </p>
+<p>possibility is represented by a single bit in the status report. Here is a table of the relevant bits:</p>
+<p><b>Bit</b></p>
+<p><b>Status</b></p>
+<p>0</p>
+<p>Printer selected</p>
+<p>1</p>
+<p>Paper out</p>
+<p>2</p>
+<p>Printer busy</p>
+<p>3</p>
+<p>Direction of transmission (0=read, 1=write)</p>
+<p><b>PARALLEL BASE</b></p>
+<p><i>function: get the base address of the Parallel Port</i></p>
+<p>address=<b>Parallel Base</b></p>
+<p>This function returns the address of the internal memory area that is used to handle the Parallel Port. </p>
+<p>Experienced programmers will be able to read and change various settings, but careless use of the </p>
+<p>PARALLEL BASE function can easily result in problems.</p>
+<p>10.05.03</p>
+<p>P</p>
+<p>A</p>
+<p>R</p>
+<p>A</p>
+<p>L</p>
+<p>L</p>
+<p>E</p>
+<p>L</p>
+<h1 style="page-break-before:always; "></h1>
+<p>AREXX</p>
+<p>AREXX  is   a   separate   programming   language   which   is   included   with   Workbench   2.   It   has   been </p>
+<p>carefully designed to make efficient use of the Amiga's powerful multi-tasking system. Please consult </p>
+<p>your AREXX documentation from Commodore concerning the intricacies of this language, this User </p>
+<p>Guide concerns AMOS Professional programming!. It will now be explained how AMOS Professional </p>
+<p>supports the AREXX system.</p>
+<p>The Amiga is capable of running several different programs simultaneously. Each application can </p>
+<p>have its own memory area and separate screen window, so AMOS Professional is able to occupy your </p>
+<p>screen while a word-processor or communications package is working diligently in the background. </p>
+<p>If there is enough memory available, you may run as many programs as you like, and flick between </p>
+<p>them instantly.</p>
+<p>AREXX allows you to achieve much more! It provides a standard communication facility between the </p>
+<p>various programs running on an Amiga, so if an event like an E-mail message happens, it can be </p>
+<p>displayed directly from AMOS Professional.</p>
+<p>It is also possible to run one program from another by remote control. For example, a specialist word-</p>
+<p>processor could be called from AMOS Professional, and the current program listing could be passed </p>
+<p>over for immediate editing. The edited listing could then be re-loaded into AMOS Professional and </p>
+<p>tested on screen, in one operation.</p>
+<p>In order to fully exploit these features, a lot of memory and a fast hard disc is required. Unexpanded  </p>
+<p>machines will be unable to make use of these features.</p>
+<p><b>Using AREXX</b></p>
+<p>AMOS   Professional   has   an   advanced   internal   control   system,   and   a   small  AMOS   Professional </p>
+<p>program   is   needed   to   serve   as   an   intermediary   to   an   AREXX-compatible   editor.   The   AMOS </p>
+<p>Professional   program   can   now   be   run   as   an   Editor  Accessory,   and   external   commands   can   be </p>
+<p>translated into the appropriate ASK EDITOR and CALL EDITOR instructions.</p>
+<p>AREXX can be called in several ways. To install it from AMOS Professional, an EXEC command can </p>
+<p>be used, as follows:</p>
+<p>Exec “RexxMast”</p>
+<p>The EXEC instruction calls up the resident MASTER process, and loads it into memory permanently. </p>
+<p>Naturally, this can only work if AREXX has been installed onto the appropriate hard disc system. </p>
+<p>Please check your Workbench 2 manual for the required procedure.</p>
+<p>Alternatively, AREXX can be run from the CLI prompt with a REXXMAST command. This command </p>
+<p>can be inserted into your start-up sequence, so that it is run automatically whenever your Amiga is </p>
+<p>used. AREXX will now be available from your applications.</p>
+<p>It is important to realise that not all programs can make use of the AREXX interface, and the relevant  </p>
+<p>documentation should be checked before proceeding. Here is the general procedure.</p>
+<p>10.06.01</p>
+<p>A</p>
+<p>R</p>
+<p>E</p>
+<p>X</p>
+<p>X</p>
+<h1 style="page-break-before:always; "></h1>
+<p>AREXX</p>
+<p>Firstly, open a CLI and type:</p>
+<p>A  welcome   message   should   appear.   Now   enter   the  AMOS   Professional   environment   and   run   a </p>
+<p>program containing some AREXX-compatible commands. Finally, press[Amiga] + [A] and run the </p>
+<p>program from the CLI prompt. This program could be an external application such as CED, or a </p>
+<p>purpose-built routine written in the AREXX programming language.</p>
+<p>This example would run an AREXX program called Arexxdemo.REX:</p>
+<p>When you return to AMOS Professional, you will be able to communicate with the external program </p>
+<p>using the commands that are, detailed below.</p>
+<p><b>AREXX-Compatible Instructions</b></p>
+<p><b>AREXX OPEN</b></p>
+<p><i>instruction: open an AREXX communication port</i></p>
+<p><b>Arexx Open</b> “PORT_NAME”</p>
+<p>The AREXX OPEN instruction sets up an AREXX communication port, ready for immediate use. </p>
+<p>Before opening this channel, AREXX <b>must</b> be installed in memory using the REXXMAST command. If </p>
+<p>you are in any doubt as to the current availability of AREXX, its status can be checked by the AREXX  </p>
+<p>EXIST function, explained below.</p>
+<p>“PORT NAME” refers to the name of the communications port to be opened, and it should be in  </p>
+<p><b>upper</b> case. The name should be less than 32 characters long, and AMOS Professional will ignore any </p>
+<p>characters with an ASCII code below 32.</p>
+<p>10.06.02</p>
+<p>A</p>
+<p>R</p>
+<p>E</p>
+<p>X</p>
+<p>X</p>
+<h1 style="page-break-before:always; "></h1>
+<p>AREXX</p>
+<p>Before the port is opened, AMOS Professional opens the “rexxsyslib.library” file from the libs: folder, </p>
+<p>which should be installed on your hard disc. The selected port is then checked for possible problems, </p>
+<p>and if it is already opened, an error will be generated and the program aborted.</p>
+<p><b>AREXX CLOSE</b></p>
+<p><i>instruction: close a communications port</i></p>
+<p><b>Arexx Close</b></p>
+<p>Use this command to close an open AREXX communications port. If a message has been received via </p>
+<p>the port, but is waiting for a response, a “Message not answered” error will be generated. If you then </p>
+<p>leave the AMOS Professional program without responding, the port will be closed with an error code </p>
+<p>of 20, which is fatal! Please see below, for a further explanation of these error code values.</p>
+<p><b>AREXX EXIST</b></p>
+<p><i>function: check availability of a communications port</i></p>
+<p>value=<b>Arexx Exist</b>(“PORT_NAME”)</p>
+<p>This function checks for the presence of the named communications port in the Amiga's memory.</p>
+<p>A value of -1 (True) means that it is available, whereas zero (False) indicates that there is a problem.</p>
+<p>AREXX EXIST can also be used to check if the AREXX system has been installed. Whenever AREXX is </p>
+<p>activated, it opens up two communications ports “AREXX” and “REXX”, so the following example </p>
+<p>can be used for a test:</p>
+<p>If Arexx Exist(“REXX”)=0</p>
+<p>Trap Exec “RexxMast” : Rem Load AREXX and trap an error</p>
+<p>If Arexx Exist (“REXX”)=0</p>
+<p>Print “Sorry, AREXX cannot be opened!”</p>
+<p>Endif</p>
+<p>Endif</p>
+<p><b>AREXX WAIT</b></p>
+<p><i>instruction: wait for a message from an AREXX program</i></p>
+<p><b>Arexx Wait</b></p>
+<p>This   command   halts   an  AMOS   Professional   program   until   a   message   arrives   from   an  AREXX </p>
+<p>program. This operation can be aborted at any time as usual, by pressing [Ctrl]+[C] to return to the </p>
+<p>AMOS Professional Editor.</p>
+<p><b>AREXX</b></p>
+<p><i>function: check for a message from an AREXX program</i></p>
+<p>status=<b>Arexx</b></p>
+<p>The AREXX function performs a GET MESSAGE command from the Amiga's operating system.</p>
+<p>10.06.03</p>
+<p>A</p>
+<p>R</p>
+<p>E</p>
+<p>X</p>
+<p>X</p>
+<h1 style="page-break-before:always; "></h1>
+<p>AREXX</p>
+<p>There are three possible values that can be returned, depending on the message status, as follows:</p>
+<p>Zero indicates that there is no message, so try again later. A value of 1 means that a message has just  </p>
+<p>arrived, but does not need a response. 2 indicates that a message has been received which must be </p>
+<p>answered immediately with an appropriate return string. This function can be used in a loop, as an </p>
+<p>alternative to the AREXX WAIT command. For example:</p>
+<p>Do</p>
+<p>If Arexx</p>
+<p>Print “A message is waiting!”</p>
+<p>Endif</p>
+<p>Multi Wait</p>
+<p>Loop</p>
+<p><b>AREXX$</b></p>
+<p><i>function: get a message from an AREXX program</i></p>
+<p>message$=<b>Arexx$</b>(message number)</p>
+<p>After a message has been successfully received from an AREXX compatible program, this function </p>
+<p>can be used to read its contents.</p>
+<p>The number refers to the number of the message you wish to read, ranging from zero to 15. If it is not </p>
+<p>included, an empty string will be returned.</p>
+<p><b>AREXX ANSWER</b></p>
+<p><i>instruction: answer a message from an AREXX program</i></p>
+<p><b>Arexx Answer</b> error value</p>
+<p><b>Arexx Answer</b> error value,<i>return$</i></p>
+<p>Normally, when a message arrives from an AREXX program, it must be answered without delay. This </p>
+<p>command sends back a response to the calling program, with the special result fields set to the  </p>
+<p>appropriate values. Typical values are:</p>
+<p>0</p>
+<p>No error</p>
+<p>5</p>
+<p>Warning</p>
+<p>10</p>
+<p>Severe error</p>
+<p>20</p>
+<p>Fatal error</p>
+<p>If the AREXX program requests a return string, one <b>must</b> be sent back, otherwise the calling program </p>
+<p>will be left in limbo awaiting a response. This situation should be checked with the AREXX function,  </p>
+<p>as explained above, and a return value of 2 means that a reply must be given immediately.</p>
+<p>The AMOS Professional message system is intelligent, so if you attempt to return a string to an </p>
+<p>AREXX program which does not specifically request one, it will not be transmitted. Similarly, if the </p>
+<p>AREXX program is waiting for a string, but it is accidentally omitted from the instruction, an empty </p>
+<p>string will be sent by AMOS Professional automatically.</p>
+<p>10.06.04</p>
+<p>A</p>
+<p>R</p>
+<p>E</p>
+<p>X</p>
+<p>X</p>
+</body>
+</html>

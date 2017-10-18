@@ -1,0 +1,2334 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+     "http://www.w3.org/TR/html4/transitional.dtd">
+<html>
+<head>
+
+  <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  <title></title>
+  <meta name="generator" content="LibreOffice 5.2.7.2 (Linux)"/>
+  <meta name="created" content="2017-10-03T08:01:00.648136882"/>
+  <meta name="changed" content="2017-10-04T06:18:30.511270741"/>
+</head>
+<body>
+<h1></h1>
+<p>Accessories</p>
+<p>13.01</p>
+<p>Configuration</p>
+<p>13.02</p>
+<p>The Object Editor</p>
+<p>13.03</p>
+<p>The Menu Editor</p>
+<p>13.04</p>
+<p>Disc Manager</p>
+<p>13.05</p>
+<p>The AMAL Editor</p>
+<p>13.06</p>
+<p>The Sample Bank Maker</p>
+<p>13.07</p>
+<p>The Resource Creator</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Configuration</p>
+<p>Section 13 of this User Guide is devoted to AMOS Professional Accessories. This Chapter explains </p>
+<p>how to manipulate the Configuration files to change the default settings of AMOS Professional itself. </p>
+<p>The other Chapters in this Section each deal with a specific accessory program, allowing the editing, </p>
+<p>creation or management of various AMOS Professional features.</p>
+<p>Accessories are special utility programs that can be called up “over” another program that is being </p>
+<p>edited or tested, without disrupting anything that is “underneath”. Any memory banks that are </p>
+<p>employed by the accessory program are totally independent of the main program. Existing data can </p>
+<p>be loaded from memory, disc or “grabbed” directly from other programs. Please see the BGRAB </p>
+<p>command, and the associated techniques as explained in Chapter 5.9.</p>
+<p>When accessory programs are displayed over the current program screen, any music is suspended, </p>
+<p>and Objects are automatically removed from the screen. Your accessory program should check the </p>
+<p>suitability of the current screen during its initialisation, using the various SCREEN functions, or use </p>
+<p>the DEFAULT command to erase the existing screens altogether.</p>
+<p>The IFF Picture Compactor accessory is detailed in Chapter 6.2, the Font Editor accessory is examined </p>
+<p>in Chapter  11.1,  and the  following Chapters  cover  the  Object  Editor,  the  Menu  Editor,  the  Disc </p>
+<p>Manager, the AMAL Editor, the Sample Bank Maker and the Resource Creator, in that order.</p>
+<p>The use of the [AMOS] main menu, regarding loaded accessory programs is explained in Chapter 4.1.</p>
+<p><b>Defining a new accessory</b></p>
+<p>Additional Editor accessory programs can be defined, provided that the program to be defined as an </p>
+<p>accessory is a hidden program (with no window from the Editor), and that the program is called from </p>
+<p>the Editor via the [AMOS] main menu or via a “Program to Menu” operation.</p>
+<p><b>SET ACCESSORY</b></p>
+<p><i>instruction: define an accessory program</i></p>
+<p><b>Set Accessory</b></p>
+<p>A program becomes an accessory by the simple inclusion of a SET ACCESSORY command in its </p>
+<p>listing, preferably immediately after a SET BUFFER instruction. The new accessory has the ability to </p>
+<p>communicate with the Editor, using the following two instructions.</p>
+<p><b>CALL EDITOR</b></p>
+<p><i>instruction: send instructions to the Editor from an accessory program</i></p>
+<p><b>Call Editor</b> function</p>
+<p><b>Call Editor</b> function,<i>parameter,parameter$</i></p>
+<p>Use this command to send instructions to the Editor. The function parameter  refers to a special </p>
+<p>number, which is understood by the Editor to refer to a particular function. A list of all available </p>
+<p>functions, along with their code numbers, is featured in the [Editor] Help menu.</p>
+<p>13.01.01</p>
+<p>C</p>
+<p>O N</p>
+<p>F</p>
+<p>I</p>
+<p>G</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Configuration</p>
+<p><b>ASK EDITOR</b></p>
+<p><i>instruction: return parameters from the Editor to an accessory program</i></p>
+<p><b>Ask Editor</b> function</p>
+<p><b>Ask Editor</b> function,<i>parameter,parameter$</i></p>
+<p>ASK EDITOR returns parameters from the Editor, including actual lines from the program listing! </p>
+<p>This means that source code that is currently being edited can be examined. Please refer to the </p>
+<p>Procedure List example on Productivity disc 2 for more details.</p>
+<p><b>AMOS Professional Configuration Files</b></p>
+<p>AMOS   Professional   can   be   tailored   to   suit   your   own   needs   and   preferences.   There   are   two </p>
+<p>configuration files which make this possible:</p>
+<p><b>AMOSPro.Interpreter_Config</b></p>
+<p>The Interpreter configuration file relates to a large selection of features, such as the maximum number </p>
+<p>of Bobs, copper lists, the File Selector, and so on. Hard disc and floppy disc users must ensure that it  </p>
+<p>is located in the S: folder, ensuring that the main configuration file can be found anywhere in the </p>
+<p>system.</p>
+<p><b>AMOSPro.Editor_Config</b></p>
+<p>The Editor configuration file concerns the appearance and contents of screens, menus and messages.</p>
+<p>There  </p>
+<p>are  </p>
+<p>two  </p>
+<p>programs  </p>
+<p>available  </p>
+<p>to  </p>
+<p>set</p>
+<p> </p>
+<p>these  </p>
+<p>configurations,</p>
+<p> </p>
+<p>appropriately  </p>
+<p>named </p>
+<p>“Interpreter_Config.AMOS” and “Editor_Config.AMOS”. The Interpreter configuration program is </p>
+<p>stand-alone,   and   can   be   loaded   and   run   independently,   or   called   automatically   via   the   [Set </p>
+<p>Interpreter] option in the [Config] menu. The Editor configuration program can only be called from </p>
+<p>the [Config] sub-menu.</p>
+<p>Before continuing, be <b>warned</b> that making random changes to the AMOS Professional configurations </p>
+<p>can be a dangerous pass-time. Be sure you fully understand the implications of changing the default </p>
+<p>settings   before   experimenting.   In   actual   fact,   changing   the   configuration   is   quite   simple   and </p>
+<p>straightforward.</p>
+<p>The options in the [Config] menu were outlined in Chapter 4.1. All of the configuration settings </p>
+<p>available via the [Set Editor] and [Set Interpreter] options will now be examined in detail.</p>
+<p><b>Setting the Editor configuration</b></p>
+<p>From the main [Config] menu, select the [Set Editor] option. The Editor_Config.AMOS program can </p>
+<p>only be called from this sub-menu option, and a requester will be displayed if you attempt to run it  </p>
+<p>independently.</p>
+<p>All loading and saving of the Editor configuration must be performed under the control of the Editor, </p>
+<p>because the Editor configuration program only affects the configuration within the Editor's data zone.</p>
+<p>13.01.02</p>
+<p>C</p>
+<p>O N</p>
+<p>F</p>
+<p>I</p>
+<p>G</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Configuration</p>
+<p>When the Editor configuration program is called, you can perform any required changes. The results </p>
+<p>of the new configuration can be seen as soon as you return to the Editor.</p>
+<p>When the [Set Editor] option is touched by the mouse pointer, a sub-menu is displayed, offering the </p>
+<p>following selection:</p>
+<p><b>[Editor Set-up]</b></p>
+<p>When this heading is selected, a simple full-screen dialogue box appears, allowing a range of default </p>
+<p>settings to be changed. These are listed next.</p>
+<p>[Make backups of AMOS Programs?] If set to [Yes], AMOS Professional will rename the disc file from </p>
+<p>“name.AMOS” to “name.bak”, and then save out the file as “name.AMOS”</p>
+<p>[Editor Screen Interlaced?] Similarly, you can toggle the default setting from [No] to [Yes] and engage </p>
+<p>the interlace function, which gives double-height resolution.</p>
+<p>[Set Editor Screen] A new working screen is displayed, allowing you to set the position and size of the </p>
+<p>Edit Window. Position and size buttons are available at the top of the screen, and when one of these is </p>
+<p>triggered,   the   active   grid   can   be   manipulated   by   the   mouse.   Screen   coordinates   are   displayed </p>
+<p>automatically.</p>
+<p>Click on [Pos] to activate screen positioning, and then click somewhere in the screen grid to set the </p>
+<p>new position.Similarly, click the [Size] button before setting the size of the screen in the grid.</p>
+<p>An opening speed slider is also available, at the top of the screen. [Op. Speed] is used to set the </p>
+<p>number of pixels per Vbl. For example, an opening speed screen setting of 2 pixels for a screen height </p>
+<p>of 200 will take two seconds to open.</p>
+<p>After the new settings have been made, simply click on the [Exit] button.</p>
+<p>[Maximum   number   of   UNDO   movements]   AMOS   Professional   will   only   remember   (store)   the </p>
+<p>number of Undo events that are specified here.</p>
+<p>[Undo buffer maximum length (K.bytes)] Drag the slider or click for single increments or decrements, </p>
+<p>one kilobyte at a time, ranging from zero to 256k. If your Undo events reach this buffer limit, the first </p>
+<p>stored events will be lost.</p>
+<p>Block Undo procedures may need big chunks of memory, so don't reduce this buffer too low if you </p>
+<p>want a decent block editing facility.</p>
+<p>[Direct Mode History, number of commands saved] The default setting of being able to recall 20 </p>
+<p>previous Direct Mode commands can be changed to a number from zero to 128, using the slider bar.</p>
+<p>13.01.03</p>
+<p>C</p>
+<p>O N</p>
+<p>F</p>
+<p>I</p>
+<p>G</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Configuration</p>
+<p>[Set Editor Files] This option allows you to rename system files that AMOS Professional is seeking, </p>
+<p>and should be used with caution.</p>
+<p><b>[Colour Palette]</b></p>
+<p>This option allows the default colours used by the Edit window, Direct Mode window, and so on, to </p>
+<p>be changed. After choosing which window colours are to be affected, select the current colour to be </p>
+<p>changed using the mouse,and use the RGB sliders to adjust colours to your own preferences.</p>
+<p><b>[Menu Messages]</b></p>
+<p>Any string can be changed for any of the existing menu messages. This may be necessary if you wish </p>
+<p>to translate the English wordings into another language, or adapt the existing menus to your own </p>
+<p>preferences. Simply use the slider to display the range of default messages, click on the one that is to </p>
+<p>be changed, and type in your new string of characters. The string will be set to the correct length  </p>
+<p>automatically, or spaces will be added to pad the string to fit the existing size of the menu item.</p>
+<p><b>[Dialog messages]</b></p>
+<p>Similarly,   this   option   summons   up   every   one   of   the   system's   dialogue   messages,   ready   for </p>
+<p>modification. Please see Chapter 13.7 for a comprehensive guide to the Interface Resource Editor.</p>
+<p><b>[Test-Time Messages]</b></p>
+<p><b>[Run-Time Messages]</b></p>
+<p>The last two options in the [Editor set-up] menu operate in exactly the same way as the [Menu </p>
+<p>Messages] option. Error messages are examined in Chapter 12.3.</p>
+<p><b>Setting the Interpreter Configuration</b></p>
+<p>The stand-alone Interpreter_Config.AMOS program can be called from the [Config] main menu, by </p>
+<p>selecting the [Set Interpreter] option. This program is an accessory, so the Edit Screen is not erased, </p>
+<p>but remains underneath.</p>
+<p>Here   is   a   list   of   the   options   available   in   the   Interpreter   Configuration   menu,   called   by   [Set </p>
+<p>Interpreter].</p>
+<p><b>[Load Default Configuration]</b></p>
+<p>This loads the existing configuration file from the APSystem folder, found on the AMOSPro_System </p>
+<p>disc.</p>
+<p><b>[Load Other Configuration]</b></p>
+<p>A File Selector is displayed, inviting you to choose an Interpreter_Config file. It is perfectly acceptable </p>
+<p>to have several such files on your start-up disc. All configurations should be kept in the APSystem </p>
+<p>folder, and assigned individual names.</p>
+<p>13.01.04</p>
+<p>C</p>
+<p>O N</p>
+<p>F</p>
+<p>I</p>
+<p>G</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Configuration</p>
+<p><b>[Save Configuration]</b></p>
+<p>This saves the current configuration settings onto the program disc. These settings will be installed in </p>
+<p>memory whenever AMOS Professional is loaded.  <b>Never</b>  change the configuration of your original </p>
+<p>AMOSPro_System disc!</p>
+<p><b>[Save Configuration As]</b></p>
+<p>Use   this   option   to   store   the   new   configuration   settings   as   a   separate   file,   leaving   the   current </p>
+<p>configuration unchanged.</p>
+<p><b>[Set Loaded Extensions]</b></p>
+<p>Whenever a new extension file is added to the system, AMOS Professional must be informed of its </p>
+<p>exact location on the disc. This is achieved via the extension list, and you should move the cursor over </p>
+<p>the appropriate position, and click on the left mouse button. Enter the path and file names of the </p>
+<p>extension from the keyboard, and press [Return].</p>
+<p><b>[Set System Configuration Page 1]</b></p>
+<p>When this option or the following [Set System Configuration Page 2] option is selected, a selection of </p>
+<p>configuration features is presented, ready to be set to your own preferences.</p>
+<p>[Printer]</p>
+<p>This offers a simple toggle to disable the default setting of a carriage return with a line feed.</p>
+<p>[Close Workbench on loading]</p>
+<p>This option tells AMOS Professional to attempt to close the Workbench after it is loaded. Please see </p>
+<p>CLOSE WORKBENCH and CLOSE EDITOR below.</p>
+<p>[Allow “Close Workbench” to work]</p>
+<p>If this setting is toggled to [No], then the CLOSE WORKBENCH command will have no effect in a </p>
+<p>program.  If  there is sufficient  available  memory,  you  can prevent programs from affecting your </p>
+<p>Workbench in this way.</p>
+<p>[Allow “Close Editor” to work]</p>
+<p>Similarly, the CLOSE EDITOR command can be permitted or made ineffective. CLOSE EDITOR will </p>
+<p>only close the main Editor screens and remove the immediate editing buffers, gaining about 64k of </p>
+<p>memory.</p>
+<p>[Allow “Kill Editor” to work]</p>
+<p>The KILL EDITOR command is explained at the beginning of Appendix B, and it is used to remove </p>
+<p>the entire Editor. This frees up the whole of the memory space allocated to the Editor, which is re-</p>
+<p>loaded when the program is over.</p>
+<p>[Save Icons]</p>
+<p>If set to [Yes], “info” files will be saved along with any program saved via the [Project] menu.</p>
+<p>[File Selector: Sort, Files?]</p>
+<p>If set to [Yes], files will be sorted as they are read from the current path name.</p>
+<p>[File Selector: Display File Size?]</p>
+<p>The size of files can be removed from the File Selector display, revealing</p>
+<p>13.01.05</p>
+<p>C</p>
+<p>O N</p>
+<p>F</p>
+<p>I</p>
+<p>G</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Configuration</p>
+<p>[File Selector: Store Directories?]</p>
+<p>You can choose if the File Selector is to remember (store) the five most recent directories that you </p>
+<p>viewed, when using it.</p>
+<p>[Set Text Reader screen]</p>
+<p>A working screen is summoned as for the [Set Editor Screen] option. Please refer above for details.</p>
+<p>[Set File Selector screen]</p>
+<p>Similarly, you are able to change the default settings for the File Selector screen, using this option. You </p>
+<p>are warned that bigger screens consume more memory!</p>
+<p><b>[Set System Configuration Page 2]</b></p>
+<p>Here is a list of the options called up when this item is selected. The first five of these options are all  </p>
+<p>operated by slider bars.</p>
+<p>[Maximum number of Bobs]</p>
+<p>This number can be set from a maximum of 256, down to eight. Please refer to Chapter 7.2 for a full  </p>
+<p>discussion of Blitter Objects.</p>
+<p>[Maximum Height of Sprites]</p>
+<p>The maximum height of Sprites can be set from 16 Raster lines up to 312. Please see Chapter 7.1 for </p>
+<p>details.</p>
+<p>[Copper List Buffer size (K.Bytes)]</p>
+<p>The   available   allocation   ranges   from   2k   up   to   32k.   Full   details   of   the   Copper   list   are   given   in </p>
+<p>Appendix F.</p>
+<p>[Variable Name Buffer size (K.Bytes)]</p>
+<p>This can be set in the range from 1k up to 32k.</p>
+<p>[Default Text Buffer size (K.Bytes)]</p>
+<p>The allocation for the text buffer may be set from 1k, all the way up to 512k. There is also a [Set Text  </p>
+<p>buffer] option available from the [Editor] main menu.</p>
+<p>[Default printer port]</p>
+<p>[Default serial port]</p>
+<p>Click on the [Prt:] or [Aux:] panel, and type in your preferences from the keyboard, then press </p>
+<p>[Return].</p>
+<p>When you have selected your new preferences, and quit these menus, a dialogue box will appear </p>
+<p>regarding saving and re-booting.</p>
+<p><b>Saving memory</b></p>
+<p>If your system uses an external 3.5-inch disc drive, approximately 30k of memory can be saved by </p>
+<p>deactivating it <b>before</b> switching on and loading AMOS Professional.</p>
+<p>13.01.06</p>
+<p>C</p>
+<p>O N</p>
+<p>F</p>
+<p>I</p>
+<p>G</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Configuration</p>
+<p>Turning off this drive while the Amiga is operating will have no effect at all, because the memory is </p>
+<p>allocated to the external drive as part of the start-up sequence.</p>
+<p>Two powerful instructions are provided that allow you to maximise the available memory for your </p>
+<p>programs.</p>
+<p><b>CLOSE WORKBENCH</b></p>
+<p><i>instruction: close the Workbench</i></p>
+<p><b>Close Workbench</b></p>
+<p>This command closes the Workbench screen, saving about 40k of memory, and freeing it for your own </p>
+<p>programs!Prove this now, as follows:</p>
+<p>Print Chip Free, Fast free</p>
+<p>Close Workbench</p>
+<p>Print Chip Free, Fast Free</p>
+<p>CLOSE WORKBENCH can be executed from inside an AMOS Professional program, or from Direct </p>
+<p>Mode, but it will not work if there is a CLI window opened. To solve this problem, ensure that AMOS </p>
+<p>Professional loads using the following CLI instruction:</p>
+<p><b>CLOSE EDITOR</b></p>
+<p><i>instruction: close the AMOS Professional Editor Window</i></p>
+<p><b>Close Editor</b></p>
+<p>To save more than 28k of memory, use the CLOSE EDITOR command in an AMOS Professional </p>
+<p>program. The program listing will be completely unaffected. If there is insufficient memory to re-</p>
+<p>open the Editor Window after the program has finished, AMOS Professional will automatically erase </p>
+<p>the current display and revert to the standard default screen. Simply press [Esc] to summon up the </p>
+<p>Editor as usual!</p>
+<p>13.01.07</p>
+<p>C</p>
+<p>O N</p>
+<p>F</p>
+<p>I</p>
+<p>G</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Object Editor</p>
+<p>The Object Editor is a utility that enables the AMOS Professional programmer to create and edit </p>
+<p>screen Objects such as Bobs, Hardware Sprites, Computed Sprites, Icons and Blocks. The Object </p>
+<p>Editor allows you to change the appearance of Objects in an almost limitless way and it even includes </p>
+<p>your own animation suite!</p>
+<p><b>Loading the Object Editor</b></p>
+<p>The best way to understand the Object Editor is to go ahead and use it. It can be selected from the </p>
+<p>User Menu by triggering the [Object Editor] option.</p>
+<p>Alternatively, make sure that the Accessories disc is loaded and select the following program from the </p>
+<p>File Selector:</p>
+<p>Object_Editor.AMOS</p>
+<p>The Object Editor is crammed full of data. In fact it contains so many features that they cannot all be </p>
+<p>accommodated in the amount of memory reserved for the editing buffer, if the Object Editor is loaded </p>
+<p>using the File Selector. A message will appear in the Information Line asking if you want to change </p>
+<p>the buffer size, and you should respond by pressing [Y] before you can run the Object Editor.</p>
+<p>When the Object Editor has loaded, a Main Menu Screen appears. Before you go any further, load </p>
+<p>some Object images into the Object Editor to provide something practical to work on. Please follow </p>
+<p>these steps:</p>
+<p>•</p>
+<p>Look at the line of boxed images at the top of the screen. In the top left-hand corner is a panel </p>
+<p>that says “Object Editor”. Next to that is a panel displaying an icon of a disc drive. Click on </p>
+<p>this disc drive icon with the <b>left</b> mouse button, and leave the mouse cursor exactly where it is.</p>
+<p>•</p>
+<p>A new range of images should now be displayed at the top of the screen. Using the <b>left</b> mouse </p>
+<p>button, please click on the box that shows a floppy disc with an arrow pointing to the right </p>
+<p>towards a “storage bank” building.</p>
+<p>•</p>
+<p>A file selector should now appear, headed “Choose an Object bank”. From the Tutorial disc, </p>
+<p>select the folder marked “*Objects”, then load the “Bobs.Abk” file.</p>
+<p>•</p>
+<p>The Main Menu Screen will now fill with various Object images. When this happens, move </p>
+<p>your mouse pointer to anywhere in the top line of images, and click on the  <b>right</b>  mouse </p>
+<p>button. You are now ready to experience the wonders of the AMOS Professional Object Editor.</p>
+<p>13.02.01</p>
+<p>O</p>
+<p>B</p>
+<p>J</p>
+<p>E</p>
+<p>C</p>
+<p>T</p>
+<p> </p>
+<p>E</p>
+<p>D</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Object Editor</p>
+<p><b>The Main Menu Screen</b></p>
+<p>Here is an illustration of the Main Menu Screen, with a typical Object image ready to be worked on. </p>
+<p>Please identify each of the areas of this screen, as they are described.</p>
+<p><b>MAJOR OPTIONS</b></p>
+<p>At the very top of the Main Menu Screen there is a horizontal line of large icons. These represent all </p>
+<p>the major options for importing, handling and exporting Object images. At the far left is the Object </p>
+<p>Editor identification logo, and then from left to right the icons are used to call up menus for the </p>
+<p>following   options:   disc   operations,   image   bank   operations,   grabbing   images,   hot   spots,   palette </p>
+<p>colours, screen resolutions and animations. At the right-hand side of these icons, is the [Quit] icon.</p>
+<p><b>INFORMATION LINE</b></p>
+<p>Immediately below the line of Major Options is the Information Line. This line provides a running </p>
+<p>commentary on what is happening. It tells you how much memory is available, reminds you of what </p>
+<p>operation is taking place and provides prompts to help create graphic wonders.</p>
+<p><b>DRAWING TOOLS</b></p>
+<p>The third horizontal section from the top of the screen shows a line of smaller icons. Each of these is </p>
+<p>used to provide one of the special drawing tools for creating and changing the appearance of Object </p>
+<p>images, and they are explained in detail, later in this Chapter.</p>
+<p><b>MOUSE COLOURS</b></p>
+<p>At the left-hand edge of the screen is a stack of small coloured blocks.</p>
+<p>13.02.02</p>
+<p>O</p>
+<p>B</p>
+<p>J</p>
+<p>E</p>
+<p>C</p>
+<p>T</p>
+<p> </p>
+<p>E</p>
+<p>D</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Object Editor</p>
+<p>At the top of this stack are three double-height coloured blocks. The first two colour blocks show the </p>
+<p>colours currently under the control of the left and right mouse buttons, when used for drawing. The </p>
+<p>third double-height colour block shows the colour currently used when  <b>both</b>  mouse buttons are </p>
+<p>pressed at once, when drawing.</p>
+<p><b>COLOUR PALETTE</b></p>
+<p>The vertical display of all the colours in the current palette can be seen below the mouse colours. The </p>
+<p>total umber of the palette colours depends on what sort of “resolution” is being used, and if 64 </p>
+<p>colours are available, then colours numbered from 32 to 63 will appear in order, side by side of </p>
+<p>colours zero to 31. To select a colour, place the mouse pointer over your choice, and click either the  </p>
+<p>left or right mouse button to allocate that colour to that button. A third colour can be selected by </p>
+<p>pressing both buttons, and it is used when both buttons are depressed. Obviously, if you have a three-</p>
+<p>button mouse, choosing and using the third colour is easier. Select a pair of contrasting colours now, </p>
+<p>such as white and bright red.</p>
+<p><b>CURRENT DISPLAY</b></p>
+<p>Now look at the vertical stack of zones at the right-hand side of the screen. At the top of this stack, </p>
+<p>immediately below the [UNDO] icon, there is a square box which displays the “fill pattern” currently </p>
+<p>available for use. Place the mouse pointer inside it now, and run through all the available fill patterns,  </p>
+<p>using the left button to move forwards and the right button to go backwards through the list. This box </p>
+<p>is also used to display a read-out of the coordinates of the mouse pointer when images are edited.</p>
+<p><b>BANK DISPLAY</b></p>
+<p>Beneath the Current Display box, the images in the current bank are displayed one on top of the </p>
+<p>other, and the number of each image appears <b>above</b> it. Each image is shrunk in size so that all of it </p>
+<p>may be viewed in its own rectangular display box. To select an image for attention, click the mouse </p>
+<p>pointer on it, and you will see that its number becomes  <b>highlighted</b>. Any image that is currently </p>
+<p>being edited is marked with an asterisk star (*) in front of its number.</p>
+<p><b>BANK SLIDER</b></p>
+<p>To the right of the stack where the bank of images will appear, there is a vertical slider bar. Because  </p>
+<p>there can be hundreds of images in any one bank, and there can only be enough space to view a few  </p>
+<p>of them at a time, this slider is pulled up and down with the mouse pointer to display other images in  </p>
+<p>the bank. Use it now to view all the images currently loaded.</p>
+<p><b>SCREEN SIZER</b></p>
+<p>To the right-of-centre of the screen is a narrow vertical bar, which can be dragged to the left or right  </p>
+<p>using the mouse pointer, if you need to change the proportions of the Edit Screen. The right-hand  </p>
+<p>zone is the EDIT WINDOW, where images that are being edited are viewed in actual size. The left-</p>
+<p>hand zone is the ZOOM WINDOW area, where you can view your work in close- up, as it progresses.</p>
+<p><b>ZOOM WINDOW</b></p>
+<p>The Zoom Window displays a blow-up version of the image, allowing greater accuracy and ease of </p>
+<p>use while editing. The zoom is normally set to double the size of the original graphics, and there is an </p>
+<p>option to make this four times the size, which is explained later.</p>
+<p>13.02.03</p>
+<p>O</p>
+<p>B</p>
+<p>J</p>
+<p>E</p>
+<p>C</p>
+<p>T</p>
+<p> </p>
+<p>E</p>
+<p>D</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Object Editor</p>
+<p><b>EDIT WINDOW</b></p>
+<p>Like the Zoom Window, this is a work area. The mouse pointer changes to a cross when inside either  </p>
+<p>the Zoom or the Edit Window, and drawing operations will have the same result in both windows no </p>
+<p>matter which one is being used.</p>
+<p><b>VERTICAL ZOOM</b></p>
+<p>On the right-hand edge of the Edit Window is a vertical slider bar. This indicates other available areas </p>
+<p>of the image when the Zoom Window is unable to show the whole of what is inside the Edit Window. </p>
+<p>By moving this slider up and down, the hidden areas may be displayed in the Zoom Window.</p>
+<p><b>HORIZONTAL ZOOM</b></p>
+<p>This has the same function and operation as the Vertical Zoom, and moves the display horizontally. </p>
+<p>The Horizontal Zoom slider is to be found at the bottom of the Edit Window.</p>
+<p><b>OBJECT SIZER</b></p>
+<p>The last feature of the Edit Screen takes up the smallest space on the screen, and it can be found in the </p>
+<p>bottom right-hand corner of the Edit Window, where the vertical and horizontal sliders meet. If you </p>
+<p>look at the Information Line, the size of the current image will be displayed there. To change the size </p>
+<p>of an image, lock the mouse pointer on the small square Sizer gadget, and drag it to a new position.  </p>
+<p>The maximum sizes of Sprites, Bobs, Blocks and Icons are all detailed in their appropriate Chapters, </p>
+<p>but boundaries should generally be kept as tight as possible, to save memory.</p>
+<p><b>Major Options</b></p>
+<p>Here is a guided tour of all the Major Options featured in the Object Editor, as they appear from left </p>
+<p>to right along the top line of the Main Menu. Please try out each option as it is explained, by clicking  </p>
+<p>the <b>left</b> mouse button on the appropriate icon. This will take you to the option's Sub Menu.</p>
+<p>You can return to the Main Menu at any time, by clicking the <b>left</b> mouse button on the menu title </p>
+<p>icon, at the top left-hand corner of the screen, or by clicking the <b>right</b> mouse button anywhere along </p>
+<p>the top line of icons. For most other operations please use the <b>left</b> button, unless instructed otherwise.</p>
+<p><b>Disc Operations</b></p>
+<p>As soon as you click on this Disc Operation icon, it reappears at the top left-hand </p>
+<p>corner of the screen, and five new icons are revealed along the top of the screen. From </p>
+<p>left to right, they perform the following wonders:</p>
+<p><b>Load New Bank from Disc</b></p>
+<p>This prepares the Object Editor for loading a new range of images into the </p>
+<p>Object bank. A series of messages is provided in the Information Line, to assist </p>
+<p>you   in   making   the   right   decisions.   If   the   “Bobs.Abk”   file   is   ready   to   be </p>
+<p>accessed, click on this icon and then trigger the [YES] option.</p>
+<p>13.02.04</p>
+<p>O</p>
+<p>B</p>
+<p>J</p>
+<p>E</p>
+<p>C</p>
+<p>T</p>
+<p> </p>
+<p>E</p>
+<p>D</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Object Editor</p>
+<p>A file listing will appear Automatically, with the request:</p>
+<p>Choose an Object bank</p>
+<p>You will normally make your choice by clicking on the Objects folder, selecting the file of Objects that </p>
+<p>takes your fancy, and then confirming your choice by clicking on the [OK] option. The Object images </p>
+<p>will load automatically, and you will be returned to the main Edit Screen. If you have already loaded </p>
+<p>“Bobs.Abk”, simply click on [Quit] to return to the Object Editor. Please try to resist the temptation of </p>
+<p>exploring icons at random, and take a little time to follow this guided tour step by step. You will learn </p>
+<p>much faster in this way, and it will be more entertaining.</p>
+<p><b>Merge New Bank</b></p>
+<p>This is used to insert a completely new bank of Object images at the position of the </p>
+<p>selected Object in the current bank. Experiment with this option, and merge a new </p>
+<p>bank of images with your existing Object images.</p>
+<p>Use exactly the same method that was employed to load your original choice, but select a different file </p>
+<p>of Object images. When you return to the Edit Screen, click on the slider bar to the right of the vertical </p>
+<p>block of Objects on screen, and run it up and down to display the current Object images in memory. </p>
+<p>You can see where the new bank has been merged with the original bank, and the colour palette will </p>
+<p>have changed to the palette used by the newly merged bank of Object images.</p>
+<p><b>Save Bank</b></p>
+<p>To save edited Objects, have a suitable disc ready in the disc drive, and click on this </p>
+<p>icon.  A  file  selector   will  be  displayed  if  your   Object   bank  has   no  name,   and  all </p>
+<p>instructions are prompted on screen.</p>
+<p>Please do not use any of your AMOS Professional discs for this purpose, but format a work disc, </p>
+<p>using the [FORMAT] option in the Disc Manager.</p>
+<p><b>Save As</b></p>
+<p>Similarly, only use a formatted work disc for this purpose. Unlike the [Save Bank] </p>
+<p>option, when this [Save As] icon is chosen, a file selector will always be displayed </p>
+<p>before the current Object bank is saved.</p>
+<p>After   naming   the   bank,   instructions   are   given   on   screen.  As   with   all   of   these   options,  AMOS </p>
+<p>Professional allows you to change your mind or [Quit] at any time during the current process.</p>
+<p><b>Grab Palette</b></p>
+<p>When this icon is selected, nothing is seen immediately, but the colour palette is automatically </p>
+<p>updated to the colours of the new Object bank, whenever that bank is loaded or merged.</p>
+<p>If you do not select this option, the original palette will remain for the loading or merging process. To </p>
+<p>de-select this option, simply click on the icon once more.</p>
+<p>13.02.05</p>
+<p>O</p>
+<p>B</p>
+<p>J</p>
+<p>E</p>
+<p>C</p>
+<p>T</p>
+<p> </p>
+<p>E</p>
+<p>D</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Object Editor</p>
+<p>After experimenting with those options, the colours on your screen may be looking messy, and if this </p>
+<p>is so you should re-load the Objects in the following file:</p>
+<p>“AMOSPro_Tutorial:Objects/Bobs.Abk”</p>
+<p>We now move on to the second Major Option, so return to the Main Menu Screen by using the right </p>
+<p>mouse button to click the mouse pointer in the top line of icons, and select the Bank Operations icon.</p>
+<p><b>Bank Operations</b></p>
+<p>When this Major Option is selected, you take control of all aspects of the Object bank. </p>
+<p>The Bank icon moves to the top left corner of the screen, and the Major Options top </p>
+<p>line is replaced by a series of eight new Bank icons, as follows:</p>
+<p><b>Get Object</b></p>
+<p>First, <b>highlight</b> the Object you are interested in, by clicking the mouse pointer over </p>
+<p>the appropriate image on the right-hand side of the screen. Now click on this [Get </p>
+<p>Object] option, and the highlighted Object appears in the large Zoom Window and </p>
+<p>the smaller Edit Window, ready to be worked on.</p>
+<p>It is highly probable that you are impatient to change the appearance of whatever image you have </p>
+<p>selected, and there is no harm in experimenting. Please be patient and work through this Chapter step </p>
+<p>by step, because there is much more enjoyment to be had in knowing what you are doing. For the </p>
+<p>time being, try clicking on the small icon that shows a pair of arrows pointing up and down, in the </p>
+<p>line of drawing tools. This will turn the current Object upside down. Leave it like that, and continue </p>
+<p>with the next option.</p>
+<p><b>Put Object</b></p>
+<p>Once the appearance of the edited Object has been changed by flipping it on its head, </p>
+<p>this option is used to put the Object back into its memory bank. It will go back to its </p>
+<p><b>original</b> location in the bank, if that location has been defined.</p>
+<p>You can see this original location by looking for the Object with the highlighted identification number, </p>
+<p>marked with an asterisk (*).</p>
+<p><b>Put Object To</b></p>
+<p>You can select a new Object to highlight simply by clicking on its image. Use this option if </p>
+<p>you want to force the edited Object into the location that is currently highlighted in the bank, </p>
+<p>and replace whatever is there. You will be asked to confirm your actions, just to make sure.</p>
+<p><b>Insert Object</b></p>
+<p>This is a fast method of inserting an Object from the editing windows straight into the </p>
+<p>highlighted position in the bank, without replacing the Object that is already sitting in that </p>
+<p>position. The other Objects in the bank will then shunt along to make room for it.</p>
+<p>13.02.06</p>
+<p>O</p>
+<p>B</p>
+<p>J</p>
+<p>E</p>
+<p>C</p>
+<p>T</p>
+<p> </p>
+<p>E</p>
+<p>D</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Object Editor</p>
+<p>Try using this option now.</p>
+<p><b>Delete Object</b></p>
+<p>This will erase the highlighted Object completely, so take care when using it. As a safety </p>
+<p>measure,   AMOS   Professional   will   not   be   happy   about   deleting   any   Object   that   is  <b>not </b></p>
+<p>currently displayed on screen, and even then it will ask you to confirm your wishes. Use it </p>
+<p>now, and delete an Object.</p>
+<p><b>New</b></p>
+<p>This is an even more dramatic option than [Delete Object], because it erases all the Object </p>
+<p>images in the entire memory bank. As usual, you will be asked to make sure of your actions </p>
+<p>before you commit them. If you use the [New] option now, you will have to load another </p>
+<p>bank before you can continue experimenting with Object images.</p>
+<p><b>Auto</b></p>
+<p>This option is enabled and disabled by clicking the mouse pointer over it, toggling it in and </p>
+<p>out like a radio button. It affects the [AUTO-GET] feature, which automatically places data </p>
+<p>into the memory bank by clicking twice on a stored Object image. You may want to use this </p>
+<p>option to avoid accidentally grabbing hold of some garbage, preventing it being automatically placed </p>
+<p>amongst your Objects.</p>
+<p><b>Confirm</b></p>
+<p>While editing Object images, there are times when AMOS Professional tries to be helpful by </p>
+<p>asking you to confirm your actions. For example, when you try to [ERASE] an Object or use </p>
+<p>the [PUT TO] option. If these reminders cause any annoyance, you can click on this icon to </p>
+<p>disable the Confirmation feature. To reactivate it, simply click on the icon again.</p>
+<p><b>The Grabber</b></p>
+<p>Once you are familiar with all of the Bank Operations, you can move on to the next Major  </p>
+<p>Option. The Grabber is used to grab images from IFF pictures, which are graphic screen </p>
+<p>images saved in the special “Interchangeable File Format”, as used by commercial graphics </p>
+<p>packages like Deluxe Paint.</p>
+<p><b>Grab Object</b></p>
+<p>When this option is selected, you will be reminded to load an IFF file only, and a </p>
+<p>suitable ready-made picture is provided for loading in the following file:</p>
+<p>“AmosPro_Examples:Iff/Logo.Iff”</p>
+<p>The file requester will only appear if there is no picture currently selected. When you have confirmed </p>
+<p>your choice with an [OK], the selected IFF picture is displayed on screen. As you move the mouse, </p>
+<p>coordinate lines will follow your movements. Position the mouse pointer at the top left-hand corner </p>
+<p>of the part of the picture you want to use as an Object image, then using the left button, keep it held </p>
+<p>down until you have chosen the bottom right-hand corner of the image. If you make a mistake, click </p>
+<p>on the right button.</p>
+<p>13.02.07</p>
+<p>O</p>
+<p>B</p>
+<p>J</p>
+<p>E</p>
+<p>C</p>
+<p>T</p>
+<p> </p>
+<p>E</p>
+<p>D</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Object Editor</p>
+<p>When you are happy with the rectangle of graphics to be grabbed, click on the left button again. The  </p>
+<p>Edit Screen now holds your new image. There is an auto-resolution mode that is explained later, </p>
+<p>which will ensure that the best graphics mode is used.</p>
+<p><b>Put Object</b></p>
+<p>This works in the same way as the [Put Object To] option in the Bank menu. It allows  </p>
+<p>you to grab an image and put it into memory instantly, without having to wander </p>
+<p>from one menu to another.</p>
+<p><b>Load Picture</b></p>
+<p>This time, when the file selector appears, you will be reminded to save any current </p>
+<p>image in the editing area that has not been saved to the Object bank. Then the name </p>
+<p>of a new picture to load may be selected.</p>
+<p><b>Grab Palette</b></p>
+<p>This is an on/off option that is toggled by a mouse click. If it is on, the current palette will  </p>
+<p>automatically change to the palette used by the current picture. If it is off, no change to the </p>
+<p>palette will be made.</p>
+<p><b>Re-load Picture</b></p>
+<p>This icon is linked to the next two icons, and the three of them act like radio station selectors. </p>
+<p>In other words, only one can be pushed in at a time, and when any one is activated, the other </p>
+<p>two will click off. With [Re-load Picture], the graphic image is completely erased when you </p>
+<p>return to the Main Menu, allowing you to create more Objects.</p>
+<p>This is useful if you do not have much memory available, and a large IFF screen may be using a vast </p>
+<p>amount of it.</p>
+<p><b>Pack Picture</b></p>
+<p>This is also a memory saver. It takes the current screen picture, and packs it into a memory </p>
+<p>bank using “fast RAM”, which does not consume display memory. When you leave the </p>
+<p>Grabber menu for the first time, this will take a little while to perform, as AMOS professional </p>
+<p>searches for the most efficient way to save memory.</p>
+<p><b>Keep Screen</b></p>
+<p>This option keeps the entire screen exactly as it is, providing you have enough memory </p>
+<p>available in “chip RAM”.</p>
+<p><b>The Hot Spot</b></p>
+<p>The next menu concerns setting up any hot spots for Objects. In most computer games and in </p>
+<p>several   types   of   practical   programs,   hot   spots   can   be   set   up   inside   moving   images   as </p>
+<p>coordinate reference points. When these coordinates are recognised, they are used to trigger </p>
+<p>pre-set reactions. Because Objects can vary greatly in size, it is very useful to be able to place a hot  </p>
+<p>spot precisely. Once inside the Hot Spot menu, you can go straight into the Zoom or Edit Window </p>
+<p>and use the mouse to place and set the coordinates.</p>
+<p>13.02.08</p>
+<p>O</p>
+<p>B</p>
+<p>J</p>
+<p>E</p>
+<p>C</p>
+<p>T</p>
+<p> </p>
+<p>E</p>
+<p>D</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Object Editor</p>
+<p>Otherwise use one of the automatic settings, as explained next.</p>
+<p><b>Auto Off</b></p>
+<p>If you click on this icon, so it looks as if it has been pushed <b>in</b>, any of the hot spot pre- sets </p>
+<p>can be used to position a hot spot for the current image. If it is not used, you will be in an </p>
+<p>automatic mode, which means that every image summoned by [GET OBJECT] into the Edit </p>
+<p>Window will have a hot spot automatically set to the <b>last pre-set</b> position.</p>
+<p>This is very useful if you want a whole range of Objects to have their hot spots in the same place.</p>
+<p><b>Hot Spot Pre-sets</b></p>
+<p>There are nine icon boxes, each showing the position of a pre-set hot spot. If the Auto option </p>
+<p>is off, you may select the hot spot of the current Object by clicking on any one of these pre-</p>
+<p>sets. They are, in order of appearance, Top Left, Top Centre, Top Right, Centre Left, Dead </p>
+<p>Centre, Centre Right, Bottom Left, Bottom Centre and Bottom Right.</p>
+<p>Select a pre-set now, and check its setting by moving your cursor into the Zoom or Edit Window. </p>
+<p>When you want to get back to the Main Menu, click the right mouse button in the top line of icons, as </p>
+<p>usual.</p>
+<p><b>Palette Colours</b></p>
+<p>This Major Option is used to mix new colours for your Object images to use. As soon as this </p>
+<p>icon is selected, a large colour requester display appears over the Edit Screen, alongside the </p>
+<p>vertical display of all the colours in the current palette. The colour requester looks like this:</p>
+<p>13.02.09</p>
+<p>O</p>
+<p>B</p>
+<p>J</p>
+<p>E</p>
+<p>C</p>
+<p>T</p>
+<p> </p>
+<p>E</p>
+<p>D</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Object Editor</p>
+<p>The colour requester acts like a colour mixing box. If the box obscures the images on display in the </p>
+<p>Edit or Zoom Windows, it can be moved around the screen by clicking on the top bar and dragging, </p>
+<p>to reveal the images beneath. Look at the colour requester box now.</p>
+<p>On the left there is a stack of sixteen values for colour saturation, given in hexadecimals from zero up </p>
+<p>to   F.   To  the   right   of   this   are   three   vertical   sliding   bars,   one   each   for   the   Red,   Green   and   Blue </p>
+<p>components of each colour. On the right of the panel is a stack of four boxes, as follows:</p>
+<p>[OK] is triggered when you are happy with any colour changes, and want to keep them.</p>
+<p>[UNDO] will ignore any of your current colour changes, and return the palette to whatever values </p>
+<p>were held before your latest changes.</p>
+<p>[QUIT] leaves the colour requester, and ignores any changes you may have made.</p>
+<p>Below this, there is a Colour Code Box, showing the value of the RGB components of the current </p>
+<p>colour, in hexadecimals.</p>
+<p>The Colour Panel at the bottom right of the panel displays the colour that is currently receiving your  </p>
+<p>attention.</p>
+<p><b>Mixing new colours</b></p>
+<p>To change colours in the current palette, first select one colour by moving the mouse pointer over any </p>
+<p>of the colours in the vertical palette display at the left-hand side of the screen. Now click inside any of </p>
+<p>the RGB slider bars and move them up and down until you are satisfied with the new colour mix. You </p>
+<p>can then change one of the other colours in the palette, or use [OK], [UNDO] or [QUIT], as described </p>
+<p>above.</p>
+<p>If you alter the colour that is currently used for the 'framework' outlines used within the Edit Screen, </p>
+<p>be careful not to merge this with the background colour, and cause confusion on screen. If this does </p>
+<p>happen, and the Edit Screen becomes difficult to view, AMOS Professional will get you out of trouble. </p>
+<p>Although you use the left mouse button on colours of your choice, you may go directly to the vertical </p>
+<p>palette display and use the right mouse button, and change the colours of the Edit Screen directly.</p>
+<p>The vertical palette display may show 64 colours instead of 32 in certain modes, but only colours </p>
+<p>ranging from zero to 31 may be changed. This is because colours 32 to 63, which are used in Extra </p>
+<p>Half Bright Mode, automatically take the first 32 colours to create versions which are exactly half as  </p>
+<p>bright as the originals. These new colours will only change when their “original” neighbours are </p>
+<p>changed.</p>
+<p><b>Screen Resolution</b></p>
+<p>This is the menu which controls the screen colour resolutions. It defines the number of </p>
+<p>colours used by Object images, which may have to be adjusted to suit various screen formats. </p>
+<p>To   see   how   powerful   it   is,   have   some   high-definition   IFF   images   displayed   in   the   Edit </p>
+<p>Window, before you start experimenting.</p>
+<p>13.02.10</p>
+<p>O</p>
+<p>B</p>
+<p>J</p>
+<p>E</p>
+<p>C</p>
+<p>T</p>
+<p> </p>
+<p>E</p>
+<p>D</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Object Editor</p>
+<p><b>Adjust</b></p>
+<p>This is a very powerful option. If it is <b>on</b>, any Object taken from the bank will change </p>
+<p>the current palette to its own resolution preference. If the option is <b>off</b>, the number of </p>
+<p>colours remains unchanged.</p>
+<p>This can have one of two effects. Either the Object has  <b>less</b>  colours than your current screen, and </p>
+<p>nothing is lost. Alternatively, if the Object has <b>more</b> colours than the current screen, then the higher </p>
+<p>value colours are lost. The bank will remain unchanged until the Object is deposited into it again. This </p>
+<p>[ADJUST] option is normally <b>on</b>.</p>
+<p><b>Hi-Res</b></p>
+<p>This   is   also   an   on/off   switch,   which   selects   the   current   screen   mode,   with   the </p>
+<p>maximum  number  of  colours  in  high  resolution being  16.  Everything  else in  the </p>
+<p>program remains unchanged, except for these colour resolutions.</p>
+<p><b>Number of Colours</b></p>
+<p>A choice of six options is available, instantly selecting the number of colours displayed on the </p>
+<p>Edit Screen, as follows: 2, 4, 8, 16, 32 or 64.</p>
+<p><b>Animation</b></p>
+<p>AMOS Professional allows you to test an animated movie sequence of the Object images </p>
+<p>which are currently loaded. This is extremely useful, as well as very entertaining.</p>
+<p>You can test the system now, using the Objects in this file:</p>
+<p>“AMOSPro_Tutorial:Objects/Play_Bobs.Abk”</p>
+<p>When the [Animation] icon is selected, the Edit Screen gives way to your own animation suite! A </p>
+<p>diagram of this facility is shown below.</p>
+<p>13.02.11</p>
+<p>O</p>
+<p>B</p>
+<p>J</p>
+<p>E</p>
+<p>C</p>
+<p>T</p>
+<p> </p>
+<p>E</p>
+<p>D</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Object Editor</p>
+<p>If   you   are   using   the   PAL  or   SECAM   television   display   systems,   there   are   16   individual   movie </p>
+<p><b>“frames”</b> displayed in the top half of the screen, that can take one image each. If you are using the </p>
+<p>NTSC system, there will be eight frames available. These alternative systems are fully discussed in </p>
+<p>Appendix C of this User Guide.</p>
+<p>Below these frames is your <b>“movie screen”</b>, where the individual frames will be shown, animated one </p>
+<p>after the other.</p>
+<p>Next to that is a horizontal slider bar for adjusting the <b>speed</b> of animation, from zero for “still video” </p>
+<p>up to 100 for a “turbo” speed of 50 frames per second in PAL mode, or 60 frames per second in NTSC.</p>
+<p>The <b>Quit</b> box is down near the bottom right-hand corner.</p>
+<p>To the right of the screen is a vertical stack where the current Object bank can be examined as usual, </p>
+<p>by running up and down its slider bar.</p>
+<p><b>Using the Animation feature</b></p>
+<p>To put any Object image into an animation sequence, all you have to do is click on it to make it appear </p>
+<p>in a movie frame. As soon as more than one image has been transferred in this way, the animation </p>
+<p>sequence begins to move, in the same order that the images were transferred.</p>
+<p>To remove any individual image from the animation sequence, click on its movie frame image in the </p>
+<p>horizontal strip of frames, and it will disappear. This will cause all the following frames to shunt </p>
+<p>backwards towards the beginning of the sequence, and fill the gap.</p>
+<p>The position of the Object animations on the “movie screen” is changed using the mouse pointer, and </p>
+<p>hot spots are automatically positioned beneath the mouse cursor when the mouse button in clicked.</p>
+<p>After you [Quit] the animation suite, the movie sequence is held in memory, and the next time the  </p>
+<p>[Animation] icon is triggered, the last recorded sequence will greet you.</p>
+<p>To delete a sequence from memory, one of three things must happen:</p>
+<p>•</p>
+<p>One of the animation images is deleted from the memory bank.</p>
+<p>•</p>
+<p>A new Object image bank is selected.</p>
+<p>•</p>
+<p>The original bank is erased.</p>
+<p><b>Quit</b></p>
+<p>As you might expect, the white flag icon gives up the Object editing process and surrenders </p>
+<p>to your next bout of programming. In case you forget to save anything to be used in the </p>
+<p>future, AMOS Professional will offer a timely reminder.</p>
+<p><b>The Object Editor Drawing Tools</b></p>
+<p>Beneath the line of Major Options icons, there is a whole line of smaller icons to explore.</p>
+<p>13.02.12</p>
+<p>O</p>
+<p>B</p>
+<p>J</p>
+<p>E</p>
+<p>C</p>
+<p>T</p>
+<p> </p>
+<p>E</p>
+<p>D</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Object Editor</p>
+<p>This menu line is completely independent from the Major Options, and contains all of the d rowing </p>
+<p>tools which can be used at any suitable time. These drawing operations only effect the <b>visible</b> part of </p>
+<p>the Object image that is being edited. You are invited to tackle them now, from left to right.</p>
+<p><b>DOT PLOT</b></p>
+<p>Click on this icon now, and experiment by clicking the mouse button in the editing window, to </p>
+<p>plot single pixels. Then keep the button held down, and move the mouse around at different </p>
+<p>speeds to see the different effects that can be achieved.</p>
+<p>Now try the other mouse buttons, then both buttons together to remind yourself that the top three </p>
+<p>colours in the vertical palette refer to the left, right and combined mouse buttons. If you have a three-</p>
+<p>button mouse, the third button will make use of the third colour automatically.</p>
+<p><b>LINE PLOT</b></p>
+<p>This offers a continuous solid line plot. The speed of mouse movement makes no difference at </p>
+<p>all to its usage.</p>
+<p><b>DRAW</b></p>
+<p>Before this drawing tool can be used effectively, you should design it for yourself! First of all, set </p>
+<p>the size and positioning of your own “line” by clicking anywhere in the Edit Window, holding </p>
+<p>down the mouse button, dragging it and then letting go.</p>
+<p>Now use your own shape to paint and draw with. Further along the line of drawing icons, you will </p>
+<p>see how the [MODE] button changes certain drawing operations. If it is selected and used with </p>
+<p>[DRAW], then lines are drawn as soon as the mouse button is released.</p>
+<p><b>BOX</b></p>
+<p>This is an extremely simple option. Click the mouse button to set any corner of a box, keep the </p>
+<p>button held down while the diagonally opposite corner is located, then let go. One box appears, </p>
+<p>ready to be used as a brush, or pasted again as many times as you like, by moving the mouse and </p>
+<p>clicking a button.</p>
+<p>Remember that a third colour is available for drawing operations, by pressing both mouse buttons </p>
+<p>together.</p>
+<p><b>ELLIPSE</b></p>
+<p>This works in exactly the same way as [BOX], except that ellipses do not have corners. Set the </p>
+<p>boundary points of your ellipse as described above, or create circles by making the two radii of </p>
+<p>the ellipse equal.</p>
+<p><b>AIR-BRUSH</b></p>
+<p>To set different spray effects, click the <b>right</b> mouse button on this icon. This will reveal a selector </p>
+<p>menu for customising the air-brush spray can. Both the “power” of the jet and the width of the </p>
+<p>spray nozzle can be adjusted from 1 up to 100, and the [OK] button is used to exit from the selector to </p>
+<p>commence spraying.</p>
+<p>Experiment to see the various effects, or if you prefer to spray without customising </p>
+<p>your own air-brush, click on the icon with the <b>left</b> mouse button.</p>
+<p>13.02.13</p>
+<p>O</p>
+<p>B</p>
+<p>J</p>
+<p>E</p>
+<p>C</p>
+<p>T</p>
+<p> </p>
+<p>E</p>
+<p>D</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Object Editor</p>
+<p><b>BAR</b></p>
+<p>Set up diagonally opposite corners of a bar in the usual way, and then release the button to fill it </p>
+<p>with the current colour, or selected pattern. The outline of the bar can be toggled off and on by </p>
+<p>clicking on the border section of the current Pattern Display window.</p>
+<p><b>PAINT ROLLER or FILL</b></p>
+<p>This is a dramatic drawing tool! Position your paint roller cursor anywhere inside an enclosed </p>
+<p>shape, and it will be filled with instant colour or pattern. New patterns can be selected from the </p>
+<p>Pattern Display window.</p>
+<p><b>TEXT CAPTIONS</b></p>
+<p>Select this icon, then click the mouse button in a likely position inside the Edit Window, and </p>
+<p>start typing one line of characters. Of course, not much text can be squeezed inside an Object, </p>
+<p>unless it happens to be extremely wide!</p>
+<p>Now reposition the text by dragging and clicking the mouse, and pasting multiple copies of the text if </p>
+<p>you wish. Outline and shadow effects may be created, using different colours.</p>
+<p><b>COPY BLOCK</b></p>
+<p>This is used to copy a block of graphics from one Object to another. Click on, hold, move and </p>
+<p>click off to open the box in your picture, ready for pasting.</p>
+<p><b>PASTE BLOCK</b></p>
+<p>Use this option to grab the previous block that has already been copied, and restore it to any </p>
+<p>position within the editing area. Try cutting and pasting a few blocks now.</p>
+<p><b>OPAQUE</b></p>
+<p>All the time this option is off, colour zero of the block which is being edited will be transparent. </p>
+<p>If you click the [OPAQUE] button <b>on</b>, colour zero is filled by the colour under the control of the </p>
+<p>right mouse button.</p>
+<p><b>CLEAR</b></p>
+<p>Everyone makes mistakes, and this option is the one that clears all of your current efforts away, </p>
+<p>leaving   a   blank   Edit   Window.   Everyone   makes   several   mistakes,   and   the   [UNDO]   icon   is </p>
+<p>provided to bring it all back again!</p>
+<p>The next block of five drawing icons affects the entire image with dramatic results.</p>
+<p><b>SCROLL 1</b></p>
+<p>After selecting this option, grab the image in the Edit Window with your mouse and scroll it </p>
+<p>anywhere you want. Release the mouse button to leave the image at its new position.</p>
+<p><b>SCROLL 2</b></p>
+<p>This not only scrolls the image, but also wraps it back around itself when you hit the borders of </p>
+<p>the Edit Window.</p>
+<p>13.02.14</p>
+<p>O</p>
+<p>B</p>
+<p>J</p>
+<p>E</p>
+<p>C</p>
+<p>T</p>
+<p> </p>
+<p>E</p>
+<p>D</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Object Editor</p>
+<p><b>VERTICAL FLIP</b></p>
+<p>One click will cause an instant flip over the vertical axis of the Object image, and another click </p>
+<p>will flip it again. This technique works equally well on graphic blocks.</p>
+<p><b>HORIZONTAL FLIP</b></p>
+<p>This is very similar to the last option, and reverses the image around its own horizontal axis.</p>
+<p><b>ROTATE</b></p>
+<p>This is used to rotate the entire Object image through ninety degrees clockwise. It takes a few </p>
+<p>seconds to compute the new image, and can be used again to keep the rotation going, all the </p>
+<p>way back to the original image.</p>
+<p>The next pair of options is provided to help you get a better view of your work.</p>
+<p><b>GRAB</b></p>
+<p>If an image is too large to fit inside the Edit Window, select this icon and then use the mouse to </p>
+<p>drag the image into view.</p>
+<p><b>ZOOM</b></p>
+<p>Click on this icon to double the size of the graphics in the Zoom Window to four times the size </p>
+<p>of   the   original   image.   Click   it   again   to   return   to   an   image   twice   the   size   of   the   original.  </p>
+<p>Remember that the relative sizes of the Zoom and Edit Screens can be adjusted by dragging the </p>
+<p>central Screen Sizer bar to suit your needs.</p>
+<p>The final group of three options each perform general tasks.</p>
+<p><b>BACKGROUND FRAMEWORK</b></p>
+<p>Every click on this icon selects the next colour in the palette for use with the framework graphics </p>
+<p>of the Edit Screen.</p>
+<p><b>MODE</b></p>
+<p>This up/down toggle sets the mode for certain drawing operations. <b>Up</b> gives Mode I, where an </p>
+<p>Object is drawn as soon as you release a mouse button. <b>Down</b> selects Mode 2, where you set the </p>
+<p>shape of a brush before using it for drawing.</p>
+<p><b>UNDO</b></p>
+<p>This is the fail-safe icon, allowing you to scrap the last drawing procedure, or cancel a </p>
+<p>[CLEAR] operation.</p>
+<p>Pressing  the  [Spacebar]  key  will  select  the  <b>last</b>  drawing  tool  that  was used.   This  is  a  short-cut, </p>
+<p>allowing you to re-use an item without the need to go through the menu process.</p>
+<p><b>Memory Alerts</b></p>
+<p>Because Objects can nibble away at available memory, and because graphic screens consume large </p>
+<p>amounts, a low-memory alert system is built into the Object Editor.</p>
+<p>These alert messages will appear to help you automatically.</p>
+<p>13.02.15</p>
+<p>O</p>
+<p>B</p>
+<p>J</p>
+<p>E</p>
+<p>C</p>
+<p>T</p>
+<p> </p>
+<p>E</p>
+<p>D</p>
+<h1 style="page-break-before:always; "></h1>
+<p>The Menu Editor</p>
+<p>The AMOS Professional Menu Editor allows you to adapt and design your own menus simply and </p>
+<p>rapidly, using the mouse! All the advantages and features of AMOS Professional menus are fully </p>
+<p>explained in Chapter 6.5.</p>
+<p>The menu system is not only extremely comprehensive, it is also very powerful. Menus can be saved </p>
+<p>onto disc as a memory bank, and this bank can then be loaded into an AMOS Professional program, </p>
+<p>allowing the entire menu to be accessed with a single command.</p>
+<p><b>Loading the Menu Editor accessory</b></p>
+<p>Please load “Menu_Editor.AMOS” from your Accessories disc. The Main Menu appears in the lower </p>
+<p>part of the screen as soon as the Menu Editor is loaded.</p>
+<p>All operations are performed by clicking on options with the  <b>left</b>  mouse button, unless instructed </p>
+<p>otherwise. On-screen instructions and dialogue comments will appear at every stage of operating the </p>
+<p>Menu Editor, to help and guide you.</p>
+<p><b>The Main Menu</b></p>
+<p>The Main Menu displays seven simple options that are used for loading, saving and initialising your </p>
+<p>menus, as follows:</p>
+<p><b>[Create a new menu]</b></p>
+<p>This option is used to define a new screen to be used as the menu background. The screen's default </p>
+<p>status is displayed, and this current format can be changed by clicking on the new number of colours </p>
+<p>and the screen resolution, using the left mouse button. You can then proceed to the Main Editing </p>
+<p>Window by selecting [Edit it], or choose the [Prey, menu] option instead, which will call up the </p>
+<p>previous menu.</p>
+<p><b>[Edit current menu]</b></p>
+<p>This calls up the Main Editor Screen, which is detailed below, and the currently selected menu is </p>
+<p>initialised.</p>
+<p><b>[Save menu bank]</b></p>
+<p>As soon as this option is triggered, the File Selector is called up. A memory bank can now be created </p>
+<p>for your menus, and saved to disc. This menu can be loaded into an AMOS Professional program be </p>
+<p>means of a line like this:</p>
+<p>Load “Filename.Abk”</p>
+<p>The new menu can then be initialised with this:</p>
+<p>Bank To Menu 6</p>
+<p>The menu can now be activated by a MENU ON command. These menu banks are permanent, and </p>
+<p>they will be saved along with the relevant program automatically. This means that once a menu has </p>
+<p>been installed, and the menu handler has been included in your program, it will look after itself.</p>
+<p>13.03.01</p>
+<p>M</p>
+<p>E N</p>
+<p>U</p>
+<p> </p>
+<p>E D</p>
+<h1 style="page-break-before:always; "></h1>
+<p>The Menu Editor</p>
+<p><b>[Load a menu]</b></p>
+<p>After the File Selector appears, the selected menu file can be loaded from disc. This file must have  </p>
+<p>been defined in a sequential .MENU file, using the [Save current menu] option explained next. Once </p>
+<p>the menu has been loaded successfully, the program will proceed straight to the Main Editor Screen.</p>
+<p><b>[Save current menu]</b></p>
+<p>The File Selector is called, and an entire menu definition can be saved in a sequential. MENU file, </p>
+<p>ready for loading. If you prefer to access the menu directly from an AMOS Professional program, use </p>
+<p>the [Save menu bank] option instead.</p>
+<p><b>[Quit and grab bank]</b></p>
+<p>This option will leave the Menu Editor and return you to the main AMOS Professional Editor. If the </p>
+<p>Menu Editor is being run as an accessory, the new menu bank will be installed automatically, and the  </p>
+<p>newly created menu can now be accessed directly from the current program.</p>
+<p><b>[Quit]</b></p>
+<p>This also exits to the AMOS Professional main program, but <b>be warned</b>, this option completely erases </p>
+<p>the new menu definition!</p>
+<p><b>The Main Edit Screen</b></p>
+<p>The Edit Screen is divided into three areas.</p>
+<p><b>Vertical scroll bar</b></p>
+<p>At the left-hand side of the screen there is a vertical bar, equipped with a pair of up and down arrows.  </p>
+<p>This is used to scroll through very large menu definitions which exceed the dimensions of the Editor </p>
+<p>Window display.</p>
+<p><b>The Editor Menu</b></p>
+<p>At the bottom of the screen, all of the Editor Menu options are displayed, and these are explained  </p>
+<p>below.</p>
+<p><b>Editor Window</b></p>
+<p>The top section of the Main Edit Screen is where the menu that is currently being edited is displayed. </p>
+<p>Each item in the menu is represented as a small box with a number in it, and these boxes are </p>
+<p>organised as follows:</p>
+<p>All items in a single level of the menu are arranged in one vertical column. The first column on the  </p>
+<p>left represents the title line of the menu, and the second column shows the various items of that </p>
+<p>menu.</p>
+<p>Each item is numbered according to its position in the menu hierarchy. For example, the second menu </p>
+<p>option of title number 1 would be represented by a box numbered 1.2. This simple system means that </p>
+<p>you are able to read the entire structure of a menu at a single glance.</p>
+<p>13.03.02</p>
+<p>M</p>
+<p>E N</p>
+<p>U</p>
+<p> </p>
+<p>E D</p>
+<h1 style="page-break-before:always; "></h1>
+<p>The Menu Editor</p>
+<p>If you click with the  <b>right</b>  mouse button to test the menu that is currently being edited, you can </p>
+<p>compare this display with the menu line that it actually represents!</p>
+<p><b>The Editor Menu</b></p>
+<p>Here is a short guided tour through all of the options on offer in the Editor Menu, which occupies the </p>
+<p>bottom section of the Main Editor Window.</p>
+<p>This Editor Menu contains all of the commands needed to define the physical structure of a menu. All </p>
+<p>of these options are performed on the <b>current</b> menu item, which is selected from the Edit Window by </p>
+<p>clicking with the left mouse button. The current menu item is highlighted in reverse video.</p>
+<p>All menu options are toggle operations, with alternative options selected by each mouse click. There </p>
+<p>are three groups of options, which are from left to right, the Item status menu, the Tree editor menu  </p>
+<p>and the Draw menu.</p>
+<p><b>Item status</b></p>
+<p>The Item status Menu options are used to change the status of the currently selected menu item, as  </p>
+<p>follows:</p>
+<p><b>[Active] / [Inact]</b></p>
+<p>This option toggles the status of the current menu item between being active and inactive. Only active </p>
+<p>items can be selected from the finished menu.</p>
+<p><b>[Line] / [Bar] / [T.line]</b></p>
+<p>This selection affects the <b>whole branch</b> of the menu, not just the current item, and it is used to specify </p>
+<p>the form of the branch as either a Line, a Bar or a Total Line.</p>
+<p><b>[Linked] / [Separ.]</b></p>
+<p>Use this option to choose whether each item in the menu is to be linked with the one above it, or </p>
+<p>separated. Refer to the MENU LINK command in Chapter 6.5, if you need reminding of this system.</p>
+<p><b>[Br.sta] / [Br.mov]</b></p>
+<p>This option also affects the <b>whole branch</b> of the menu, and is short for Branch Stationary and Branch </p>
+<p>Moveable. It specifies whether the current menu branch can be repositioned by the user, and is </p>
+<p>identical to the MENU MOVABLE and MENU STATIC commands.</p>
+<p><b>[It.sta] / [It.mov]</b></p>
+<p>Short for Item Stationary and Item Moveable, this option toggles between whether or not items can be </p>
+<p>individually rearranged in a menu. This is the same choice offered by the MENU ITEM STATIC and </p>
+<p>MENU ITEM MOVABLE commands.</p>
+<p><b>Tree editor</b></p>
+<p>The Tree editor menu occupies the central block of options in the Main Editor Screen. These options  </p>
+<p>allow the menu tree to be changed to new preferences, and any additions and deletions are reflected </p>
+<p>in the main edit screen.</p>
+<p>13.03.03</p>
+<p>M</p>
+<p>E N</p>
+<p>U</p>
+<p> </p>
+<p>E D</p>
+<h1 style="page-break-before:always; "></h1>
+<p>The Menu Editor</p>
+<p>After the menu has been edited, it may be tested by pressing the  <b>right</b>  mouse button. If items are </p>
+<p>moveable, they can be repositioned freely, using the mouse New positions are retained until an item is </p>
+<p>deleted in the current branch, or the [Reset menu position] option is chosen. In this case, the menu </p>
+<p>will be initialised all over again.</p>
+<p><b>[Add item]</b></p>
+<p>This option adds a new item at the <b>end</b> of the current menu. As a default, the new item is assigned to </p>
+<p>the text string “EMPTY”. This default status can be changed using one of many options from the </p>
+<p>Draw menu, which appears below.</p>
+<p><b>[Ins item]</b></p>
+<p>Use this option to insert a new menu item at the <b>current cursor position</b>.</p>
+<p><b>[Branch]</b></p>
+<p>This is used to create a menu branch at the current cursor position, and add a new item to this branch.</p>
+<p><b>[Delete]</b></p>
+<p>This simple option erases the selected item from the menu.</p>
+<p><b>[Reset menu position]</b></p>
+<p>When this option is selected, the coordinates of all items belonging to the current menu branch are re-</p>
+<p>set to their default positions. The message “All offsets erased!” confirms that this has been done.</p>
+<p><b>Draw menu</b></p>
+<p>This menu is extremely important. It provides the gateway to the powerful Item Drawing Screen, </p>
+<p>which is where individual menu items are designed. When any one of the four options is selected, the </p>
+<p>Item Drawing Screen is called, so if you are simply exploring these options, you can click on the </p>
+<p>[previous menu] option at the bottom right-hand corner of the Item Drawing Screen to get back to  </p>
+<p>this Draw menu.</p>
+<p><b>[Normal]</b></p>
+<p>This option ensures that an item in the menu will have a normal appearance setting.</p>
+<p><b>[Highlighted]</b></p>
+<p>When this option is chosen, the shape of the displayed item will be highlighted if it is selected with  </p>
+<p>the mouse.</p>
+<p><b>[Inactive]</b></p>
+<p>After this option is triggered, an Object can be drawn which will be displayed if a selected item has </p>
+<p>been de-activated by a MENU INACTIVE command.</p>
+<p><b>[Background]</b></p>
+<p>Use this option to specify the background to be drawn behind the current item.</p>
+<p>13.03.04</p>
+<p>M</p>
+<p>E N</p>
+<p>U</p>
+<p> </p>
+<p>E D</p>
+<h1 style="page-break-before:always; "></h1>
+<p>The Menu Editor</p>
+<p><b>Item Drawing Screen</b></p>
+<p>I   his   is   the   heart   of   the  AMOS   Professional   Menu   Editor,   and   it   is   the   screen   where   the   exact </p>
+<p>appearance of each menu item is defined. All menu items are constructed from a list of 21 different </p>
+<p>graphics elements, which correspond to the <b>embedded menu instructions</b> detailed in Chapter 6.5 of </p>
+<p>this User Manual. Each of these elements can be edited completely separately from one another, so </p>
+<p>that menus can be modified after they have been created very quickly and very simply.</p>
+<p>The top left-hand section of this screen is the <b>Current Item Window</b>, where all drawing operations are </p>
+<p>controlled.</p>
+<p>The top right-hand section is the <b>Work Screen</b>, which holds a picture of the element being edited, as it </p>
+<p>will appear in the final menu. Below this Work Screen is a horizontal bar. There is a small panel on the </p>
+<p>left of this bar, which shows the current <b>fill pattern</b>. The rest of the bar is a <b>font window</b>, showing the </p>
+<p>current style and size of text being used.</p>
+<p>The <b>palette window</b> occupies a horizontal bar across the whole width of this screen, and the layout of </p>
+<p>this is explained below.</p>
+<p>The lower section of the screen contains the four menus used to control the drawing operations, </p>
+<p>headed   from   left   to   right,   Draw   functions,   Settings,   Object   and   Misc.   Dialogue   messages   and </p>
+<p>comments appear in this line of menu headings, during the menu editing process.</p>
+<p>Here is a guided tour of all the options in the four Item Drawing Screen menus, as they appear from </p>
+<p>left to right:</p>
+<p><b>Draw functions</b></p>
+<p>Colours for drawing an element must be selected from the horizontal Palette Window. The current ink </p>
+<p>colour is marked by the number 1, and the current paper setting is shown by the number 2. To change </p>
+<p>these settings, click on the top of half of the palette for the ink colour, and the bottom half of the  </p>
+<p>palette to select a new paper colour. Note that the outline colour is set to the same choice as the  </p>
+<p>current ink setting. Elements are drawn as follows:</p>
+<p>•</p>
+<p>Select an element to be defined using the Object menu, which is explained below.</p>
+<p>•</p>
+<p>Click on your choice of one of the drawing functions and move the mouse cursor into the </p>
+<p>Current Item Window.</p>
+<p>•</p>
+<p>Click the left mouse button, keep it held down and drag it to create the shape of the element. </p>
+<p>When the mouse button is released, the object that has just been created will be assigned to the </p>
+<p>current brush automatically.</p>
+<p>•</p>
+<p>Paste the current object into position by clicking on the left mouse button again.</p>
+<p>•</p>
+<p>If the result is not satisfactory, erase the current brush setting by pressing <b>right</b> mouse button </p>
+<p>while the mouse pointer is over the Work Screen.</p>
+<p>•</p>
+<p>Because each element in the menu can only be assigned to a single object from this Drawing </p>
+<p>menu, you must increment the element number <b>before</b> adding to your design, otherwise the </p>
+<p>existing element will be completely replaced.</p>
+<p>13.03.05</p>
+<p>M</p>
+<p>E N</p>
+<p>U</p>
+<p> </p>
+<p>E D</p>
+<h1 style="page-break-before:always; "></h1>
+<p>The Menu Editor</p>
+<p>Here is a list of the drawing options:</p>
+<p><b>[Line]</b></p>
+<p>This draws a single straight line in the current ink colour.</p>
+<p><b>[Box]</b></p>
+<p>A  hollow   rectangle   is  drawn   by  clicking   on   the   position   for   one   corner,   and   then   holding   and </p>
+<p>dragging to set the position of the diagonally opposite corner.</p>
+<p><b>[Bar]</b></p>
+<p>This draws a bar filled with the current fill pattern, displayed in the small Pattern Window. The </p>
+<p>pattern can be changed with the [-] and [+] options in the Settings menu.</p>
+<p><b>[Ellipse]</b></p>
+<p>Use this drawing function to create hollow ellipses or circles, in the usual way.</p>
+<p><b>[Icon]</b></p>
+<p>To paste an Icon onto the menu item, an image number can be selected using the [left arrow] and  </p>
+<p>[right arrow] keys. The Icon bank must first be loaded using the [Load a memory bank] option from </p>
+<p>the Misc: menu.</p>
+<p><b>[Bob]</b></p>
+<p>This is identical in use to the [Icon] option, except that the image is taken directly from the Object </p>
+<p>bank.</p>
+<p><b>[Text]</b></p>
+<p>After the screen prompt, type in the required text via the keyboard, and it will be assigned to the  </p>
+<p>current menu element.</p>
+<p><b>[T.Len]</b></p>
+<p>This is used to set the maximum length of the menu text.</p>
+<p><b>[Make Inverse]</b></p>
+<p>Use this option to reverse the text and paper colours in the current element, by swapping over their  </p>
+<p>values.</p>
+<p><b>[Make Border]</b></p>
+<p>This option adds a neat border around the entire element.</p>
+<p><b>Settings</b></p>
+<p>The Settings menu allows the status of the various text and graphics options to be changed, as </p>
+<p>follows:</p>
+<p><b>[N] [N] [N] [-] [+]</b></p>
+<p>The three [N] icons are used to select the various text modes, with Bold, Italic and Underline styles </p>
+<p>being shown in the Font Window, as they appear.</p>
+<p>13.03.06</p>
+<p>M</p>
+<p>E N</p>
+<p>U</p>
+<p> </p>
+<p>E D</p>
+<h1 style="page-break-before:always; "></h1>
+<p>The Menu Editor</p>
+<p>Fill patterns are selected by clicking on the [-] and [+] buttons, and the current pattern is displayed in </p>
+<p>the Pattern Window at the left-hand end of the Font Window. If the Object bank is loaded, click on [-] </p>
+<p>to assign an Object image to the current fill pattern.</p>
+<p><b>[Outline]</b></p>
+<p>This option is used to add an outline to the current fill pattern.</p>
+<p><b>[S. Font]</b></p>
+<p>As soon as this option is selected, the available fonts are loaded from the program disc, and a list  </p>
+<p>appears for selection. You can now choose a new typeface for the menu text, and the current selection </p>
+<p>is shown in the Font Window.</p>
+<p><b>Object</b></p>
+<p>This is the menu which controls the menu items, and it offers the following options:</p>
+<p><b>[-]</b></p>
+<p>Click on these options to select which element is to be defined on screen. A picture of the item will be </p>
+<p>displayed in the Current Item Window.</p>
+<p><b>[Ins]</b></p>
+<p>Use this option to insert a new graphic element at the current position. All subsequent elements will </p>
+<p>be shunted down one place, and if a 20th item exists, it will fall off the end of the list and be  </p>
+<p>permanently lost!</p>
+<p><b>[Del]</b></p>
+<p>This option is used to delete the currently selected element.</p>
+<p>[Push]</p>
+<p>An element can be saved into a <b>temporary</b> memory area, by using this option for the current menu </p>
+<p>item. Please seethe [Past] option below.</p>
+<p><b>[Past]</b></p>
+<p>This is used to copy an image from memory into the current element. The data must have been </p>
+<p>previously stored using the [Push] option.</p>
+<p><b>Misc</b></p>
+<p><b>[Push ltm]</b></p>
+<p>Similarly to the last option, [Push Itm] saves an entire item into a temporary memory area, allowing </p>
+<p>multiple copies of suitable Objects to be made.</p>
+<p><b>[Paste Itm]</b></p>
+<p>This is used to replace the current item with the contents of the <b>temporary</b> memory area filled by the </p>
+<p>last [Push Itm] command.</p>
+<p><b>[Load a memory bank]</b></p>
+<p>When this option is triggered, a chooser menu is displayed, allowing a set of Objects t o be loaded </p>
+<p>from disc. After the Object bank has been installed, the new palette is copied into the </p>
+<p>background screen automatically.</p>
+<p>13.03.07</p>
+<p>M</p>
+<p>E N</p>
+<p>U</p>
+<p> </p>
+<p>E D</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Disc Manager</p>
+<p>The AMOS Professional Disc Manager is a highly efficient and extremely fast tool for the professional </p>
+<p>organisation of all the files on your discs. It is ideal for programmers who have upgraded to an extra  </p>
+<p>disc drive, and single-drive users will also find it beneficial. The Disc Manager is used to reorganise </p>
+<p>all files from a SOURCE disc to a DESTINATION disc.</p>
+<p><b>Calling Disc Manager</b></p>
+<p>Disc Manager is summoned from the User Menu by selecting the [Disc Manager] option.</p>
+<p>Here is a view of the Disc Manager screen.</p>
+<p>The screen has two main display zones, clearly headed SOURCE and DESTINATION, with all the </p>
+<p>Disc Manager control buttons stacked between these two zones. The zone that is currently active has </p>
+<p>its path name highlighted by a red bar, and information about this active path is displayed in an </p>
+<p>information line at the bottom of the screen. If a path name is not valid then nothing is displayed in  </p>
+<p>the information line. As usual, all buttons and sliders are controlled using the mouse.</p>
+<p>Click on either the [SOURCE] or [DESTINATION] headings to select one of these zones, or click </p>
+<p>anywhere in either of the large window areas that display a list of the available directories.</p>
+<p>13.04.01</p>
+<p>D</p>
+<p>I</p>
+<p>S</p>
+<p>C</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Disc Manager</p>
+<p><b>Entering a path name</b></p>
+<p>Path   names   are   displayed   at   the   top   of   the   screen,   immediately   below   the   SOURCE   and </p>
+<p>DESTINATION headings. To enter a path name, click on the appropriate name panel, then type in a </p>
+<p>string of characters for the path name, from the keyboard. If an empty string is entered, the current  </p>
+<p>directory name will be used as the path name. To abort this process, press [Esc].</p>
+<p>It is important to remember that the path names of your Source and Destination <b>must</b>  be different </p>
+<p>from one another, and it is always good practice to give each of your discs a different name, to avoid </p>
+<p>confusion.</p>
+<p>At the inner end of each path name panel is a pair of [up arrow] and [down arrow] buttons. These are </p>
+<p>used to scroll into view any lists of files that are too long to fit into the Source or Destination </p>
+<p>windows. Below these buttons are normal vertical sliders, if you prefer to use them. A continuous  </p>
+<p>scroll of file names towards the mouse cursor is achieved by using the <b>right</b> mouse button.</p>
+<p>You   should   already   be   familiar   with   the   [Parent]   option   in   the  AMOS   Professional   File </p>
+<p>Selector. Similarly, each path of the Disc Manager has its own Parent button, to allow rapid </p>
+<p>access back to the parent folder, after searching through its files. To enter a sub- directory, all </p>
+<p>that is needed is a double-click on the folder name you want to open.</p>
+<p>A “device list” is displayed by clicking with the  <b>right</b>  mouse button in the active path panel. The </p>
+<p>available devices, that is to say the equipment for communicating with your Amiga such as disc </p>
+<p>drives, will be listed at the top of the window zone. One more click with the right mouse button will </p>
+<p>make the device names disappear. To select a device for use, simply click on its name with the left </p>
+<p>mouse button.</p>
+<p><b>Selecting files</b></p>
+<p>To select a file or a directory, place the mouse cursor over its name then click. De-select by clicking </p>
+<p>again on the file or folder.</p>
+<p>The vertical stack of control buttons is used to handle your files. They will now be explained, from top </p>
+<p>to bottom.</p>
+<p>[ALL] is a short-cut button that selects all of the files listed in the active path, ready for </p>
+<p>handling.</p>
+<p>[CLEAR] performs the opposite task to [ALL], by de-selecting all of the files in the active path.</p>
+<p>There can be files on your disc that end with an “Info” tag, and the [INFO] button acts as a </p>
+<p>switch to turn these information files off and on, in the zone window display. These files can </p>
+<p>still be copied even if they are not currently displayed, for example, if entire discs are being copied.</p>
+<p>13.04.02</p>
+<p>D</p>
+<p>I</p>
+<p>S</p>
+<p>C</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Disc Manager</p>
+<p>Files are displayed by name, followed by their length, in bytes. If you wish to turn off the </p>
+<p>display of their lengths, for example if the file names are too long, the [SIZE] button acts as a </p>
+<p>switch, turning them off and on. Even if a file name is shortened in the display, names of up to 64 </p>
+<p>characters long are still valid.</p>
+<p>The [FLIP] button performs a major task! It flips over both directories, so that the Source </p>
+<p>becomes the Destination, and the old Destination directory becomes the new Source. If you </p>
+<p>use it now, you will note that the active path stays active after a “flip”.</p>
+<p>Pressing   the   information   button   [???]   will   display   the  AMOS   Professional   Disc   Manager </p>
+<p>credits.</p>
+<p><b>Copying files</b></p>
+<p>The Disc Manager can handle any AMOS Professional files with the greatest of ease, as well as a </p>
+<p>range of other audio and text files. To copy one or more files or directories, first go to the Source </p>
+<p>directory and select one or more file names that interest you. Remember, if the files you want to copy  </p>
+<p>are currently displayed in the Destination directory, use the [FLIP] button to swap them into your </p>
+<p>Source directory.</p>
+<p>Now click on the [COPY] button. The Disc Manager will tell you exactly how many </p>
+<p>files and directories are to be copied, and it will also calculate if there is enough space </p>
+<p>available in the Destination directory.</p>
+<p>It does not take into account any space that might be saved by files that you wish to overwrite! Also </p>
+<p>note that a Ram disc grabs memory when it needs space, so you can ignore any reports on available </p>
+<p>disc space in this case.</p>
+<p>Pressing [COPY] again will kick off the copying process. The Disc Manager will create any directories </p>
+<p>needed on the destination disc and then load up as many files as it can from the Source disc, into the </p>
+<p>computer's memory, before saving them on the Destination disc.</p>
+<p>If you are using more than one disc drive, the process is incredibly easy. For those of you restricted to </p>
+<p>the internal floppy disc drive “Df0:”, your screen will tell you when to swap over your discs.</p>
+<p>The Disc Manager is not just concerned with copying files from one disc to another. It </p>
+<p>can perform much simpler tasks. Suppose you want to change the names of one or </p>
+<p>more files. Select the appropriate files using the mouse, and then click on the [RENAME] button.</p>
+<p>You will be asked to type in and enter the new file names, one by one, through the selected list. Press  </p>
+<p>the [Esc] key to halt this process at any time.</p>
+<p>To erase one or more files from the current disc, select their names in the usual way and </p>
+<p>then click on [DELETE]. A menu will appear, showing the files and directories to be </p>
+<p>deleted. You now have the following choices:</p>
+<p>[DELETE] erases the next file only.</p>
+<p>[SKIP] jumps over the next file, leaving it on the disc.</p>
+<p>13.04.03</p>
+<p>D</p>
+<p>I</p>
+<p>S</p>
+<p>C</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Disc Manager</p>
+<p>[DEL ALL] erases all the selected files, so take care when using this powerful option. You can halt the </p>
+<p>deleting process with a click of the mouse button.</p>
+<p>[ABORT] stops the deleting process, and returns you to the Disc Manager screen.</p>
+<p>This is a very simple way of making a new directory. Click on [MAKE DIR] and then </p>
+<p>type in the name of the new directory to be created.</p>
+<p>To find out the size of files and directories, select their names as usual and click on the </p>
+<p>[HOW BIG?] button. You will be told exactly how big the selected files and directories </p>
+<p>are, in total bytes.</p>
+<p><b>Examining files</b></p>
+<p>The AMOS Professional Disc Manager has been designed to provide the maximum possible service </p>
+<p>with the greatest possible ease. The Manager can be used to examine a whole range of different files </p>
+<p>and then provide you with the opportunity to examine them for yourself.</p>
+<p>Select as many files as you wish, and click on [EXAMINE]. AMOS Professional will </p>
+<p>now look at each of these files in turn and see what category they fall into. It achieves </p>
+<p>this by loading part of each file, and as soon as it is recognised, one of four options is presented, at </p>
+<p>your service.</p>
+<p>Depending on what type of files are being examined, you will be able to [DISPLAY], [HEAR], [READ] </p>
+<p>or [PRINT] them!</p>
+<p>In   this   way,   the   Disc  Manager   lets   you   examine   the   contents   of   your   discs   very   quickly,   while </p>
+<p>reorganising   them   or   simply   browsing   through.   Here   is   a   list   of   the   various   files   that   will   be </p>
+<p>recognised.</p>
+<p><b>IFF pictures</b></p>
+<p><b>AMOS Professional packed pictures</b></p>
+<p>When   these   sorts  of  pictures  are  recognised,   you   are  given   the  option   to  [DISPLAY]   them.   The </p>
+<p>displayed picture will remain on the screen until you press a mouse button.</p>
+<p><b>Object Banks</b></p>
+<p>If you choose to [DISPLAY] an Object bank on the screen, it will appear in reduced size, reminding </p>
+<p>you of all the images stored in that bank.</p>
+<p><b>ASCII text files</b></p>
+<p>Two choices are offered here. You may either [READ] a text that has been saved in this format, or </p>
+<p>[PRINT] out the file.</p>
+<p><b>IFF samples</b></p>
+<p><b>AMOS Professional music banks</b></p>
+<p><b>AMOS Professional sample banks</b></p>
+<p><i><b>Soundtracker</i> modules</b></p>
+<p><b>MED modules</b></p>
+<p>13.04.04</p>
+<p>D</p>
+<p>I</p>
+<p>S</p>
+<p>C</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Disc Manager</p>
+<p>If any of these files are recognised, you will be asked if you wish to [HEAR] them, IFF samples will be </p>
+<p>played at their original frequency as a default, but alternative frequencies may also be selected. Music </p>
+<p>banks will be played exactly as they were saved. When you [HEAR] a sample bank, the samples will </p>
+<p>be played one after the other. If you prefer, any individual sample may be selected and its playing  </p>
+<p>speed can be changed. <i>Soundtracker</i> modules will also be recognised, as well as most raw samples.</p>
+<p>There are <b>no</b> options provided for the following sorts of files:</p>
+<p><b>IFF music</b></p>
+<p><b>Amiga Dos executable programs</b></p>
+<p><b>Multiple banks</b></p>
+<p><b>Formatting Discs</b></p>
+<p>AMOS Professional has been designed to cater for all of your programming needs, without ever  </p>
+<p>having to leave the system and go wandering off too much less friendly regions, like the Workbench!</p>
+<p>Discs may be formatted at any time, via the Disc Manager. When [FORMAT] is selected, </p>
+<p>the new disc is prepared in this logical order:</p>
+<p>[NAME] is clicked on and then the name of your disc can be typed and entered.</p>
+<p>[DFx] is used to choose the name of the disc drive to be used for formatting the new disc. For </p>
+<p>example, if you are using the internal floppy drive, select “Df0:”.</p>
+<p>[VERIFY ON] or [VERIFY OFF]. To make sure that your new disc has been formatted perfectly, it will </p>
+<p>be verified after formatting automatically. This process may be switched off if you prefer, making disc </p>
+<p>formatting twice as fast.</p>
+<p>[FORMAT] is clicked on when everything has been set up to your liking. The entire process can be </p>
+<p>stopped at any time, using the [ABORT] button.</p>
+<p>A disc that can be loaded and run as soon as it is inserted into a disc drive must first be installed, </p>
+<p>otherwise a separate program will be needed to boot it. Although this can be achieved from the </p>
+<p>Amiga's CLI, AMOS Professional is designed to keep you inside its own system, so advanced users </p>
+<p>are provided with the [BOOTABLE] option.</p>
+<p><b>Copying discs</b></p>
+<p>As well as providing you with the easiest possible disc formatting, AMOS Professional allows you to </p>
+<p>make copies of entire discs, as many times as you like.</p>
+<p>After [DISC COPY] has been selected, the following steps are taken to make exact </p>
+<p>copies of whole discs.</p>
+<p>First,   select   the   name   of   the   disc   drive   to   be   used   for   holding   the   SOURCE.   Next,   choose   the </p>
+<p>DESTINATION drive, where the new copies are to be made. Obviously if you only have access to the </p>
+<p>one internal disc drive, both of these names will be the same.</p>
+<p>13.04.05</p>
+<p>D</p>
+<p>I</p>
+<p>S</p>
+<p>C</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Disc Manager</p>
+<p>Now choose the number of new copies you want to make of the original Source disc. The Disc </p>
+<p>Manager will ask for a new Destination disc after each copy has been made, until all of you copies </p>
+<p>have been completed.</p>
+<p>Select   [VERIFY   ON]   or   [VERIFY   OFF],   as   explained   above,   for   the   formatting   process.   If   the </p>
+<p>verification is on, the copying process will take twice as long as copying with verification set to off.</p>
+<p>Finally, hit the [DISC COPY] button, and follow the screen prompts. You will be pleased to learn that </p>
+<p>the AMOS Professional Disc Manager crunches down the disc tracks into the computer's memory, to </p>
+<p>try and save you the time and effort of swapping over discs more than is absolutely necessary.</p>
+<p>When you have finished exploiting the AMOS Professional Disc Manager, and you </p>
+<p>are ready to move on, simply use the [QUIT] button, at the top of the screen.</p>
+<p>Remember that directories can also be changed when editing your programs, allowing you to set </p>
+<p>directories from Direct mode.</p>
+<p><b>DIR$</b></p>
+<p><i>reserved variable: change current directory</i></p>
+<p>s$=<b>Dir$</b></p>
+<p><b>Dir$</b>=s$</p>
+<p>As explained in Chapter 10.2, DIR$ can hold the directory name that is to be used as the starting point </p>
+<p>for further disc operations, like this:</p>
+<p>Dir$=“Df0:Sounds/”</p>
+<p>Print Dir$</p>
+<p>13.04.06</p>
+<p>D</p>
+<p>I</p>
+<p>S</p>
+<p>C</p>
+<h1 style="page-break-before:always; "></h1>
+<p>The AMAL Editor</p>
+<p>The AMAL Editor accessory allows you to pack your AMAL programs into a single memory bank, so  </p>
+<p>that routines can be entered directly from the keyboard and edited on screen.</p>
+<p>All  of  the AMAL  Editor   features  are  called  up   via  drop-down  menus,   which  include  a  built-in </p>
+<p>monitoring system for rapid debugging, and a movement-pattern recorder.</p>
+<p>The AMAL Editor can be used as an accessory, in which case memory banks defined by your main </p>
+<p>program will be grabbed automatically, or it can be used as a normal AMOS Professional program.</p>
+<p>Please select the AMAL Editor now, from the AMOSPro_Accessories disc.</p>
+<p><b>The AMAL String Editor Screen</b></p>
+<p>After loading, the AMAL Editor displays its main String Editor Screen, which is always allocated to </p>
+<p>screen number  <b>seven</b>, and which is where AMAL program strings are created for storing in the </p>
+<p>AMAL bank. Please remember not to use this screen number for your own programs, when using the </p>
+<p>Editor. The screen is divided into three horizontal zones, as follows:</p>
+<p><b>The Information Line</b></p>
+<p>At the top of the screen, a black Information Line lists the current mode and also displays the AMAL </p>
+<p>channel number currently being edited. All of the drop-down menus are triggered by clicking in this </p>
+<p>Information Line, using the <b>right</b> mouse button. By using the <b>left</b> mouse button and then dragging </p>
+<p>the Information Line up and down, the entire String Editor Screen can be moved vertically, to reveal </p>
+<p>the current program display.</p>
+<p><b>The Selection Window</b></p>
+<p>Below the Information Line, there is a grey Selection Window. This is where any of the AMAL </p>
+<p>programs that are stored in memory can be selected for editing. In the centre of this window there are </p>
+<p>two rows of characters, one above the other. These items are read <b>vertically</b>, so the item on the left-</p>
+<p>hand side reads EE, which refers to the Environment Editor, which is explained at the end of this </p>
+<p>Chapter. The Next item refers to channel 00, then channel 01, all the way along to channel 15.</p>
+<p>When one of these programs is selected with the <b>left</b> mouse button, it is highlighted in inverse video, </p>
+<p>and loaded to the Editor Window. There is a [Synchro On/Off] feature, which is explained later, and if </p>
+<p>the [Synchro Off] option is selected, the number of channels is extended from 16 to 62. In this case, </p>
+<p>only the first 16 of these routines can be performed using the standard AMAL interrupt system.</p>
+<p><b>The Editor Window</b></p>
+<p>This is the large orange panel that occupies most of the screen, and it operates in a similar way to a </p>
+<p>normal AMOS Professional Edit window. AMAL programs can be entered at the current cursor </p>
+<p>position directly from the keyboard, and the mouse can be used to move the position of the editing </p>
+<p>cursor directly.</p>
+<p>13.05.01</p>
+<p>A</p>
+<p>M</p>
+<p>A</p>
+<p>L</p>
+<p> </p>
+<p>E</p>
+<p>D</p>
+<h1 style="page-break-before:always; "></h1>
+<p>The AMAL Editor</p>
+<p>Here is a list of the editing controls:</p>
+<p>[Return]</p>
+<p>Insert a line</p>
+<p>[Ctrl]+[Y]</p>
+<p>Delete a line</p>
+<p>[Tab]</p>
+<p>Jump to next Tab position</p>
+<p>[Cursor arrows]</p>
+<p>Move cursor one place up, down, left or right</p>
+<p>[Shift]+[Cursor arrows]</p>
+<p>Move cursor to start / end of line, or top / bottom of screen</p>
+<p><b>Lower drag bar</b></p>
+<p>At the bottom of the String Editor Screen, there is a black bar, which can be dragged vertically using </p>
+<p>the <b>left</b> mouse button, to reveal the current program display.</p>
+<p><b>The AMAL Editor Menus</b></p>
+<p>There are five drop-down menus, located along the left-hand side of the Information Line. These are </p>
+<p>called up and activated using the <b>right</b> mouse button. Here is a guided tour of all the menu options, </p>
+<p>from left to right.</p>
+<p><b>AMOS menu</b></p>
+<p>This simple menu offers the following three options:</p>
+<p><b>[About AMAL Editor]</b></p>
+<p>This displays a memory status report, showing the current text buffer free space, free chip memory </p>
+<p>and free fast memory.</p>
+<p><b>[Quit Esc]</b></p>
+<p>To get back to the AMOS Professional Edit window, click on the [Quit] option, or press the [Esc] key.  </p>
+<p>You will be asked to confirm your action with a [Y/N].</p>
+<p><b>[Back to system]</b></p>
+<p>This will leave AMOS Professional altogether, and take you to the Workbench screen. If you insist on </p>
+<p>leaving the comforts of AMOS Professional, you should trigger the [Really?] option.</p>
+<p><b>Edit menu</b></p>
+<p>Once AMAL programs have been loaded into memory, they can be run using one of the options in the </p>
+<p>Edit menu, triggered by the right mouse button, as before. Here is the choice of available options:</p>
+<p><b>[Run All] or [F1]</b></p>
+<p>This calls the AMAL Environment string, which is explained later, and executes all existing AMAL </p>
+<p>programs simultaneously.</p>
+<p><b>[Run Current] or [F2]</b></p>
+<p>Trigger this option to initialise the screen and execute the single AMAL program that is currently </p>
+<p>being edited. Once the program is running, you may return to the AMAL Editor window at any time </p>
+<p>by pressing a key.</p>
+<p>13.05.02</p>
+<p>A</p>
+<p>M</p>
+<p>A</p>
+<p>L</p>
+<p> </p>
+<p>E</p>
+<p>D</p>
+<h1 style="page-break-before:always; "></h1>
+<p>The AMAL Editor</p>
+<p><b>[Run Selected] or [F3]</b></p>
+<p>This performs the same task as [Run Current] or [F2], but instead of the current single program, the </p>
+<p>highlighted program in the Selection Window will be run.</p>
+<p><b>[Monitor] or [F4] The AMAL Monitor</b></p>
+<p>As soon as this option is selected, a new screen is displayed featuring all of the AMAL Monitor </p>
+<p>options. This monitoring device allows you to step through your program one instruction at a time.  </p>
+<p>At the top of the Monitor screen there is a selection window, showing the list of currently active </p>
+<p>programs. All of these programs will be executed simultaneously, so you must de-activate any that </p>
+<p>you are not immediately interested in. Click on any of these, to turn off the highlight selection.</p>
+<p>Because all of the AMAL registers can be accessed directly from this screen, it is very simple to isolate </p>
+<p>any errors and cure them. All options are selected by clicking on the screen, or by pressing the </p>
+<p>associated key. To cancel a selection, simply press the [Esc] key. Here are the operating steps for using </p>
+<p>the AMAL Monitor:</p>
+<p>•</p>
+<p><b>Initialise.</b>  Before  using  any  of  the  Monitor   options,  press  [I]  or   click  on  [Init  screen  and </p>
+<p>AMAL], which is the initialisation option at the top of the right-hand option stack. This runs </p>
+<p>the environment routine and prepares the Monitor for use.</p>
+<p>•</p>
+<p><b>External Registers.</b> On the left of the Monitor window there are two vertical displays, showing </p>
+<p>all 26 of the external registers, from RA to RZ. These can be changed at any time by clicking on </p>
+<p>the chosen register with the left mouse button, then entering a new value in hexadecimal.</p>
+<p>•</p>
+<p><b>Internal Registers.</b>  The central panel displays the internal registers in the format R(channel </p>
+<p>number,register number). Each AMAL program has its own individual set of internal registers, </p>
+<p>and they can be examined by clicking on one of the direction-arrow icons underneath the </p>
+<p>Internal register display panel, to display R(0,0) up to R(15,9). To set a register, highlight it </p>
+<p>with the left mouse button, and enter a new hexadecimal value from the keyboard.</p>
+<p>•</p>
+<p><b>Option Panel.</b>  You may test your routine by selecting any of the other options in the right- </p>
+<p>hand panel, once the system has been initialised. These are self-explanatory, as follows:</p>
+<p>[R] or [Run until key press]</p>
+<p>[G] or [Go until Reg=Value]</p>
+<p>[S] or [Perform one step]</p>
+<p>[Esc] or [Quit Monitor]</p>
+<p>We will now examine the final option in the [Edit] menu, which is to be found below the [Monitor] </p>
+<p>option.</p>
+<p><b>[Play Editor] or [F5]</b></p>
+<p>Two sub-menus are offered here, [<b>Back to String Editor Esc]</b> will take you straight back to the main </p>
+<p>String   Editor   Window.   The   alternative   option   allows   you   to   exploit   some   AMAL   magic!   This </p>
+<p>[Movement] menu is explained next.</p>
+<p><b>[Movement]</b></p>
+<p>Here are the options available from this sub-menu, from top to bottom:</p>
+<p>13.05.03</p>
+<p>A</p>
+<p>M</p>
+<p>A</p>
+<p>L</p>
+<p> </p>
+<p>E</p>
+<p>D</p>
+<h1 style="page-break-before:always; "></h1>
+<p>The AMAL Editor</p>
+<p><b>[Record] or [F1]</b></p>
+<p>This records a movement pattern and stores it in the AMAL memory bank. A full explanation of </p>
+<p>recording and playing movement patterns is explained below.</p>
+<p><b>[Playback] or [F2]</b></p>
+<p>Use this option to replay a pre-recorded movement pattern.</p>
+<p><b>[Insert] or [F3]</b></p>
+<p>This option is used to insert a new pattern at the current position. Any patterns after this insertion </p>
+<p>point will be shifted one place to the right, unless it is the 48th pattern in the list, in which case it will </p>
+<p>fall off the end of the list and be lost!</p>
+<p><b>[Delete] or [F4]</b></p>
+<p>Use this to erase the current movement pattern. All subsequent patterns in the list will now be shifted </p>
+<p>one position to the left.</p>
+<p><b>Recording and playing movement patterns</b></p>
+<p>The [Play Editor] option allows you to record a complex movement pattern, by repeatedly logging the </p>
+<p>position of the mouse cursor as it is moved across the screen, and storing this movement data in the </p>
+<p>AMAL memory bank. The movement pattern can then be used to animate almost any Object you like! </p>
+<p>Here is the procedure for using this technique:</p>
+<p>•</p>
+<p>Select the [Play Editor] from the [Edit] menu. Remember that the display can be repositioned </p>
+<p>using the black horizontal bar.</p>
+<p>•</p>
+<p>Choose the pattern number you want to define, by highlighting the appropriate item in the </p>
+<p>Selection Window.</p>
+<p>•</p>
+<p>Call the [Record] option from the [Movement] sub-menu, and instructions will appear on </p>
+<p>screen   regarding   the   current   recording   speed.   The   delay   between   each   recorded   mouse </p>
+<p>position   is   set   in   50ths   of   a  second,   and   the   default   setting   offers   the   smoothest   results. </p>
+<p>Alternatively, a slower setting can be used to save memory, sacrificing a degree of smoothness. </p>
+<p>The easiest way to discover what suits you best is to experiment.</p>
+<p>•</p>
+<p>Move the mouse to the start position for the proposed animation sequence, and press [Return] </p>
+<p>to start the recording operation.</p>
+<p>•</p>
+<p>Now move the mouse at will, and the mouse cursor position will be recorded continuously at </p>
+<p>the sampling rate you have chosen, until you halt the process by pressing the left mouse </p>
+<p>button.</p>
+<p>•</p>
+<p>Repeat the above sequences if necessary, and when you want to view the recorded animation </p>
+<p>pattern, select the [Play back] option from the [Movement] sub-menu.</p>
+<p><b>The Disc Menu</b></p>
+<p>This simple menu is called from the Information Line, using the right mouse button. It offers three </p>
+<p>self-explanatory options, as follows:</p>
+<p><b>[Load AMAL bank]</b></p>
+<p>This calls the File Selector, from which the selected AMAL bank can be loaded.</p>
+<p>13.05.04</p>
+<p>A</p>
+<p>M</p>
+<p>A</p>
+<p>L</p>
+<p> </p>
+<p>E</p>
+<p>D</p>
+<h1 style="page-break-before:always; "></h1>
+<p>The AMAL Editor</p>
+<p><b>[Save AMAL bank]</b></p>
+<p>The current bank will be saved to an appropriate disc, whose directory is read into the File Selector on </p>
+<p>screen.</p>
+<p><b>[Save As]</b></p>
+<p>To change the name of the current AMAL bank before saving to disc, use this option.</p>
+<p><b>The Option Menu</b></p>
+<p>This simple menu is employed to control the SYNCHRO facility, used to bypass the limitations of the </p>
+<p>Amiga's, interrupt system. If you need reminding of how this works, please refer to the SYNCHRO </p>
+<p>ON and SYNCHRO OFF section in Chapter 7.6 of this User Guide.</p>
+<p><b>[Synchro On]</b></p>
+<p>This option is toggled with the [SYNCHRO OFF] setting, when triggered by the right mouse button.</p>
+<p><b>[Set Period]</b></p>
+<p>This allows the period between each SYNCHRO to be set for all AMAL programs, and is prompted by </p>
+<p>on-screen instructions.</p>
+<p><b>[Set Selected]</b></p>
+<p>This works as above, but only affects the highlighted selection of AMAL programs.</p>
+<p><b>The Block Menu</b></p>
+<p>The last of the five menus in the AMAL Editor is a straightforward utility for manipulating blocks of  </p>
+<p>your   AMAL   string,   rapidly   and   simply.   As   with   the   Blocks   menu   available   from   the   AMOS </p>
+<p>Professional   Edit   Screen,   the   start   and   end   positions   of   the   block   are   first   marked,   and   then </p>
+<p>manipulated by cutting, pasting, hiding or printing. Here is the Block Menu layout:</p>
+<p><b>[Block Start] </b>or<b> [F6]</b></p>
+<p><b>[Block End] </b>or<b> [F7]</b></p>
+<p><b>[Block Hide] </b>or<b> [F8]</b></p>
+<p><b>[Block Cut] </b>or<b> [F9]</b></p>
+<p><b>[Block Paste] </b>or<b> [F10]</b></p>
+<p><b>[Block Print]</b></p>
+<p><b>[String Print]</b></p>
+<p><b>The Environment Generator</b></p>
+<p>The   vast   majority   of   AMAL   routines   will   normally   need   initialisation   from   the   main   AMOS </p>
+<p>Professional program. To make operations more convenient, the AMAL Editor includes a stripped-</p>
+<p>down version of the AMOS Professional interpreter called the Environment Generator. This allows </p>
+<p>you to perform <b>all</b> of the initialisation routines directly from the AMAL Editor, without the need to </p>
+<p>return to the main AMOS Professional program.</p>
+<p>A program written with the Environment Generator can be entered from the AMAL Editor exactly as </p>
+<p>if it is a normal AMOS Professional program, as follows:</p>
+<p>•</p>
+<p>Click on the EE (Environment Editor) option in the selection window.</p>
+<p>•</p>
+<p>Type in the program from the keyboard, and it will be saved as part of the </p>
+<p>current memory bank automatically.</p>
+<p>13.05.05</p>
+<p>A</p>
+<p>M</p>
+<p>A</p>
+<p>L</p>
+<p> </p>
+<p>E</p>
+<p>D</p>
+<h1 style="page-break-before:always; "></h1>
+<p>The AMAL Editor</p>
+<p>•</p>
+<p>The program will now be executed whenever an AMAL program is run from the Editor.</p>
+<p>•</p>
+<p>Please   note   that   if   you   want   to   call  AMAL  routines   from   the   main  AMOS   Professional </p>
+<p>program,   the   Environment   commands   that   are   listed   below   must   first   be   converted   into </p>
+<p>normal AMOS Professional commands, and the appropriate lines added at the start of this </p>
+<p>code. Also note that if Bobs are being used, a SCREEN instruction must be used to direct the </p>
+<p>output to your own screen, otherwise the Bobs will be drawn to the default AMAL Editor </p>
+<p>screen number 7.</p>
+<p>These AMAL Editor commands are similar to their AMOS Professional equivalents, except for the fact </p>
+<p>that they have been simplified to save memory. Here is a full list of commands that can be used by the </p>
+<p>AMAL Editor system:</p>
+<p><b>AMAL Environment Command</b></p>
+<p><b>Notes</b></p>
+<p>'</p>
+<p>REM, used at the start of a line</p>
+<p>SCREEN OPEN</p>
+<p>same as AMOS Professional</p>
+<p>SCREEN DISPLAY</p>
+<p>same as AMOS Professional</p>
+<p>SCREEN OFFSET</p>
+<p>same as AMOS Professional</p>
+<p>SCREEN</p>
+<p>same as AMOS Professional</p>
+<p>SCREEN CLOSE</p>
+<p>close all screens</p>
+<p>SCREEN CLONE</p>
+<p>same as AMOS Professional</p>
+<p>DOUBLE BUFFER</p>
+<p>same as AMOS Professional</p>
+<p>DUAL PLAY FIELD</p>
+<p>same as AMOS Professional</p>
+<p>DUAL PRIORITY</p>
+<p>same as AMOS Professional</p>
+<p>LOAD IFF “filename”,screen</p>
+<p>the screen number MUST be given</p>
+<p>LOAD “filename”,bank</p>
+<p>the bank number MUST be given</p>
+<p>ERASE bank</p>
+<p>same as AMOS Professional</p>
+<p>HIDE ON</p>
+<p>same as AMOS Professional</p>
+<p>UPDATE EVERY</p>
+<p>same as AMOS Professional</p>
+<p>FLASH</p>
+<p>same as AMOS Professional</p>
+<p>FLASH OFF</p>
+<p>same as AMOS Professional</p>
+<p>SET RAINBOW</p>
+<p>same as AMOS Professional</p>
+<p>RAINBOW</p>
+<p>same as AMOS Professional</p>
+<p>RAINBOW DEL</p>
+<p>delete any RAINBOW effects</p>
+<p>BOB</p>
+<p>same as AMOS Professional</p>
+<p>SET BOB</p>
+<p>same as AMOS Professional</p>
+<p>BOB OFF</p>
+<p>remove all Bobs from screen</p>
+<p>SPRITE</p>
+<p>same as AMOS Professional</p>
+<p>SPRITE OFF</p>
+<p>remove all Sprites from screen</p>
+<p>SET SPRITE BUFFER</p>
+<p>same as AMOS Professional</p>
+<p>SET REG number,value</p>
+<p>set AMAL register A to Z or 0 to 25</p>
+<p>CHANNEL TO SPRITE channel,Sprite</p>
+<p>CHANNEL TO BOB channel,Bob</p>
+<p>CHANNEL TO SCREEN OFFSET channel,screen</p>
+<p>CHANNEL TO SCREEN SIZE channel,screen</p>
+<p>CHANNEL TO RAINBOW channel,rainbow</p>
+<p>13.05.06</p>
+<p>A</p>
+<p>M</p>
+<p>A</p>
+<p>L</p>
+<p> </p>
+<p>E</p>
+<p>D</p>
+<h1 style="page-break-before:always; "></h1>
+<p>The AMAL Editor</p>
+<p>A range of useful Test instructions is available, and they all use the same general syntax, as follows:</p>
+<p>INSTRUCTION condition : list of statements</p>
+<p>The  statements  after  the  condition  will  only  be  executed  if  the  condition  is True,  otherwise  the </p>
+<p>following commands will be completely ignored and the program will jump directly to the next line </p>
+<p>of this Environment routine:</p>
+<p><b>AMAL Environment Command</b></p>
+<p><b>Notes</b></p>
+<p>IF SCREEN number</p>
+<p>True if the screen has been opened</p>
+<p>IF NOT SCREEN number</p>
+<p>True if the screen is currently closed</p>
+<p>IF BANK number</p>
+<p>True if the bank has been reserved</p>
+<p>IF NOT BANK number</p>
+<p>True if the bank is not reserved</p>
+<p>IF REG number,value</p>
+<p>True if Reg A to Z or 0 to 25 equals value</p>
+<p>To get you started, type in these texts:</p>
+<p>Screen Open 0,320,200,16,Lowres</p>
+<p>Double Buffer</p>
+<p>Load “AMOSPro_Tutorial:Objects/Bobs.Abk”,1</p>
+<p>Channel To Bob 0,1</p>
+<p>Screen 0</p>
+<p>Bob 1,100,100,1</p>
+<p>AMAL Channel 0</p>
+<p>Let X=0;</p>
+<p>Let Y=0;</p>
+<p>L:</p>
+<p>Let X=X+1;</p>
+<p>Let Y=Y+1;</p>
+<p>Pause;</p>
+<p>Jump;</p>
+<p>13.05.07</p>
+<p>A</p>
+<p>M</p>
+<p>A</p>
+<p>L</p>
+<p> </p>
+<p>E</p>
+<p>D</p>
+<h1 style="page-break-before:always; "></h1>
+<p>The Sample Bank Maker</p>
+<p>The   whole   purpose   of   AMOS   Professional   accessories   is   to   make   all   aspects   of   computer </p>
+<p>programming as simple and friendly as possible, while saving the user the time, effort and cost of </p>
+<p>having to go outside of the system.</p>
+<p>A ready-made recording studio is provided for creating your own customised sample banks, and it </p>
+<p>can be loaded from the “Accessories” disc now:</p>
+<p>Load “AMOSPro_Accessories:Sample_Bank_Maker.AMOS”</p>
+<p><b>The Sample Bank Maker screen</b></p>
+<p>A typical working screen is shown below, and all of its features can be easily identified in the short </p>
+<p>guided tour that follows.</p>
+<p><b>The Current Sample window</b></p>
+<p>The top of the screen is divided into two areas. The left-hand side holds the window which is used to  </p>
+<p>display the current sample being worked on, in the form of a visual “wave pattern”. You can load an </p>
+<p>example and view it in a moment. “Silence” is represented as a straight horizontal line in the middle </p>
+<p>of this Current Sample Window. The various frequencies that make up the sound of the current </p>
+<p>sample are displayed as jagged patterns of vertical lines, running left to the right, from the beginning </p>
+<p>to the end of the sample. As the sample is “played”, you can see how the wave pattern corresponds to </p>
+<p>what is heard. Above the Current Sample Window is a horizontal display panel, which will show the </p>
+<p>name of the current sample, along with its length, in bytes.</p>
+<p>13.06.01</p>
+<p>S</p>
+<p>A</p>
+<p>M</p>
+<p>P</p>
+<p>L</p>
+<p>E</p>
+<p> </p>
+<p>E</p>
+<p>D</p>
+<h1 style="page-break-before:always; "></h1>
+<p>The Sample Bank Maker</p>
+<p><b>The Sample Bank Window</b></p>
+<p>The upper right-hand section of the screen is where the contents of the sample bank is displayed. </p>
+<p>Each sample is listed with its own number, name and length in bytes. As you would expect, a vertical </p>
+<p>slider bar and slider arrows are provided to display any parts of the contents list that are too large to </p>
+<p>fit into the display. The name of the current sample bank is displayed at the top of this window.</p>
+<p><b>Transfer Buttons</b></p>
+<p>Between the Current Sample Window and the list of samples in the bank are two big buttons, marked  </p>
+<p>with a left-arrow and a right-arrow. These are transfer buttons used to move a sample between the </p>
+<p>bank (represented by the top right-hand side of the screen) and the working area (represented by the </p>
+<p>top left-hand side of the screen).</p>
+<p>This allows you to pull a sample from the bank, test it or work on it while it is in the Current Sample  </p>
+<p>Window, and then deposit it back at the selected position in the bank. If a copy of a sample that has </p>
+<p>been worked on is positioned as the last item in the bank, it becomes a new sample to be added at the </p>
+<p>end of the bank.</p>
+<p><b>The Information Line</b></p>
+<p>A horizontal Information Line runs across the width of the screen, below the Current Sample Window </p>
+<p>and the Sample Bank display. This reports on the current status of memory, and provides useful </p>
+<p>messages.</p>
+<p><b>The Control Panel</b></p>
+<p>The lower third of the screen is occupied by all of the control buttons that operate the Sample Bank </p>
+<p>Maker. Please load some samples now, before they can be demonstrated.</p>
+<p><b>Load Bank</b></p>
+<p>Use the mouse to trigger all of the control buttons as usual. Have your “AMOSPro_Examples” </p>
+<p>disc ready in the drive, and prepare to edit “Mixture.Abk” after pressing the [Load Bank] </p>
+<p>button. The numbers, names and lengths of all the samples in this bank should now appear in </p>
+<p>the display window.</p>
+<p><b>Load current sample from bank</b></p>
+<p>Now load one of the samples into the Current Sample Window, ready for testing.</p>
+<p>For example, select “Bubbler1” by highlighting its name with a mouse click and pressing the </p>
+<p>[Left arrow] transfer button. As soon as a current sample has been transferred, all of the other </p>
+<p>control buttons become active.</p>
+<p><b>Hear a sample</b></p>
+<p>If your audio system is ready, [Hear] the current sample now. See how the frequency pattern </p>
+<p>is shown between the start and end borders of the Current Sample Window. You are now </p>
+<p>ready to begin editing the sample.</p>
+<p>13.06.02</p>
+<p>S</p>
+<p>A</p>
+<p>M</p>
+<p>P</p>
+<p>L</p>
+<p>E</p>
+<p> </p>
+<p>E</p>
+<p>D</p>
+<h1 style="page-break-before:always; "></h1>
+<p>The Sample Bank Maker</p>
+<p><b>Start and end of sample</b></p>
+<p>Trigger the small [Start] and [End] arrows to move the settings for the beginning and end </p>
+<p>of  the  currents  ample.  As soon  as these  settings  are moved  from  the  left  and  right </p>
+<p>boundaries of the window, vertical lines appear to mark the new start and end positions. </p>
+<p>You can also click directly on the start and end lines in the Current Sample Window, and drag them to </p>
+<p>change their positions.</p>
+<p><b>Frequency settings</b></p>
+<p>The frequency at which a sample is played is measured in Hertz, and by changing this </p>
+<p>frequency some wonderful effects can be synthesised. This panel contains sets of up </p>
+<p>and down arrow buttons, with </p>
+<p>for the rapid raising of the frequency, </p>
+<p>the  </p>
+<p>button for fine-tuning downwards, and so on. Try changing the </p>
+<p>frequency of the current sample now, by decreasing the Hertz setting. Settings are </p>
+<p>normally made using the left mouse button, but use of the <b>right</b> mouse button will </p>
+<p>cause rapid level changes.</p>
+<p><b>Re-name sample</b></p>
+<p>Trigger this button if you want to change the name of the edited sample, before storing it in </p>
+<p>the bank. Up to eight characters can be typed in after the prompt, and the new name will </p>
+<p>appear at the top of the screen.</p>
+<p><b>Erase current sample</b></p>
+<p>This button is used to erase the currently edited sample.</p>
+<p>It does not effect the original version of this sample stored in the sample bank.</p>
+<p><b>Save current sample</b></p>
+<p>When you have finished editing the current sample, you can [Save] everything that is held </p>
+<p>between the start and end lines in the Current Sample Window as an IFF file on the current </p>
+<p>disc. This type of file is commonly used to store data that can be read by different sampler </p>
+<p>packages and computers. Any changes that have been made to the sample frequency and name will </p>
+<p>be saved as well as the actual sample data.</p>
+<p><b>Load raw sample</b></p>
+<p>When a “raw” sample is loaded, its name is computed from the filename, and its frequency is </p>
+<p>automatically set to 8363 Hertz, which is the Noisetracker default setting. If a sample is held </p>
+<p>in IFF, its own name and frequency are grabbed automatically.</p>
+<p><b>Return sample to bank</b></p>
+<p>If you decide that you want to store any edited changes that have been made to the current </p>
+<p>sample, use the large [Right Arrow] button to deposit the sample back in the sample bank. The </p>
+<p>remaining buttons listed below are used to affect the sample bank itself, as opposed to any </p>
+<p>current sample.</p>
+<p><b>Insert empty sample</b></p>
+<p>This button inserts an “empty” sample at the position which is currently highlighted </p>
+<p>in   the   bank.   This   position   can   be   anywhere  you   wish.   It   remains   empty, </p>
+<p>waiting to be filled by an edited copy of the currents ample.</p>
+<p>13.06.03</p>
+<p>S</p>
+<p>A</p>
+<p>M</p>
+<p>P</p>
+<p>L</p>
+<p>E</p>
+<p> </p>
+<p>E</p>
+<p>D</p>
+<h1 style="page-break-before:always; "></h1>
+<p>The Sample Bank Maker</p>
+<p><b>Delete a sample</b></p>
+<p>This is a powerful control button, and care should be taken when using it! The highlighted </p>
+<p>sample is totally erased from the sample bank, and it can <b>not</b> be recovered.</p>
+<p><b>Clear sample bank</b></p>
+<p>To clear the entire sample bank, use this button. Again, it must be emphasised that once the </p>
+<p>samples in the bank have been erased from memory, they cannot be recovered. Always keep </p>
+<p>back-up copies of your samples on another disc.</p>
+<p><b>Save As</b></p>
+<p>To save the edited sample bank with a new identity onto disc, the [Save As] option should be </p>
+<p>used. After a prompt, you can type in the new name for the bank, which will appear above </p>
+<p>the sample bank window.</p>
+<p><b>Save bank</b></p>
+<p>If you do not need to change the name of the bank, simply trigger the [Save Bank] button, and </p>
+<p>it will be saved to the current disc.</p>
+<p><b>Quit</b></p>
+<p>To leave the Sample Bank Maker, use the [QUIT] button, which is at the top of the screen, </p>
+<p>and you will be returned to the familiar AMOS Professional Edit Screen.</p>
+<p>13.06.04</p>
+<p>S</p>
+<p>A</p>
+<p>M</p>
+<p>P</p>
+<p>L</p>
+<p>E</p>
+<p> </p>
+<p>E</p>
+<p>D</p>
+<h1 style="page-break-before:always; "></h1>
+<p>The Resource Creator</p>
+<p>The AMOS Professional interface provides a vast range of facilities for generating attractive dialogue </p>
+<p>boxes and selectors on the screen. These items can be created from a set of pre-defined components </p>
+<p>held in a “resource bank”. The Interface normally uses the existing resources assigned to the Editor </p>
+<p>screen, and all of these graphics and messages can be accessed immediately.</p>
+<p>In addition to these resources, there is an invaluable Resource Creator available on the Accessories </p>
+<p>Disc, allowing you to define your own messages and import your own graphics from any IFF picture. </p>
+<p>It is even possible to replace the Editor screen with your own customised version!</p>
+<p>The standard resources are held in the “AMOS_System/AMOSPro.Editor_Resource” file, and they are </p>
+<p>loaded automatically when AMOS Professional loads. If this file is replaced by your own version, the </p>
+<p>appearance of the Editor screen will be transformed, but please take care. The sizes and positions of </p>
+<p>all the Editor objects must remain as set, or your personalised Editor will not work! Prepare for </p>
+<p>accidents by keeping a copy of the original resources somewhere safe before you make <b>any</b> changes.</p>
+<p><b>The Resource Creator Main Menu</b></p>
+<p>On entry to the Resource Creator, a simple Main menu screen is presented, which can be moved  </p>
+<p>anywhere over the current display by dragging its title zone with the left mouse button. Here is a list </p>
+<p>of the Main Menu options.</p>
+<p><b>[Create New Bank]</b></p>
+<p>This erases the current resource bank, and removes the source picture from memory.</p>
+<p><b>[Load Bank]</b></p>
+<p>When this option is selected, a file selector is opened, and a request is made for a filename. This new </p>
+<p>resource bank can now be loaded into memory. If graphic elements have previously been defined in </p>
+<p>the bank, their original source picture will be loaded automatically. If this file is not available from the </p>
+<p>current disc, you will be asked to insert the appropriate disc. Obviously, it is sensible to keep the </p>
+<p>resource and image files on the same disc, and avoid the tedious process of swapping over discs.</p>
+<p><b>[Grab Bank]</b></p>
+<p>There is an automatic facility for grabbing a Resource Bank, and this is explained at the end of this </p>
+<p>Chapter.</p>
+<p><b>[Save Bank]</b></p>
+<p>This option is used to save a resource bank as an “.Abk” file on the disc. The file can then be loaded  </p>
+<p>into the main AMOS Professional program, and allocated to an Interface program with a simple call </p>
+<p>to the RESOURCE BANK command.</p>
+<p><b>[Save Bank As]</b></p>
+<p>This saves the existing resource bank under a new name.</p>
+<p>13.07.01</p>
+<p>R</p>
+<p>E</p>
+<p>S</p>
+<p>O</p>
+<p>U</p>
+<p>R</p>
+<p>C</p>
+<p>E</p>
+<p> </p>
+<p>E</p>
+<p>D</p>
+<h1 style="page-break-before:always; "></h1>
+<p>The Resource Creator</p>
+<p><b>[Edit Graphic Elements]</b></p>
+<p>All the components used to construct the objects on the screen are created here. These objects can be </p>
+<p>displayed subsequently using the LIne, BOx and UNpack commands from an Interface program. You </p>
+<p>may also use the RESOURCE UNPACK instruction from the main AMOS Professional program. This </p>
+<p>option offers a working screen and sub-menu, which is fully explained below.</p>
+<p><b>[Edit Text Strings]</b></p>
+<p>This is used to enter the list of text strings that are to be used for the various on-screen messages.  </p>
+<p>These messages can be accessed using the MEssage function from an Interface program, or the AMOS </p>
+<p>Professional RESOURCE$ option. A full explanation of the text editing options appears below.</p>
+<p><b>[Quit]</b></p>
+<p>This will discard the current resource bank completely, and return to AMOS Professional. If any </p>
+<p>changes have been made, you will be asked to confirm your actions before being allowed to quit.</p>
+<p><b>Editing Graphic Elements</b></p>
+<p>Resource elements can be grabbed directly from a normal IFF screen. Any screen can be used for this </p>
+<p>purpose, including Hires and interlace mode screens. When the [Edit Graphic Elements] option is </p>
+<p>chosen, a selection box appears containing all of the current objects displayed on screen, with a </p>
+<p>summary of information about each one. The format of this summary is as follows:</p>
+<p>Item-no</p>
+<p>- Type</p>
+<p>: Size</p>
+<p>The item-no refers to the index number of the object that has been created, the type is one of four </p>
+<p>possible categories of object, described next, and the size of the object is given as explained below.</p>
+<p>The four possibilities for the category of object are an element, a horizontal line, a vertical line or a  </p>
+<p>box. There follows a brief explanation of each of these types of resource objects.</p>
+<p><b>Element</b></p>
+<p>This is a simple picture that can be displayed on the screen by using the UNpack command. The </p>
+<p>width of a resource element must be at least eight pixels, and it may be increased by multiples of  </p>
+<p>eight only. The height of an element can be as tall as required.</p>
+<p><b>Horizontal Line</b></p>
+<p>Resource lines are constructed by arranging a group of <b>three</b> components on screen. One component </p>
+<p>represents the Start of the line, another the Middle and the third is for the End of the line. Each </p>
+<p>element is made up of at least eight pixels,  and since there are three different components,  the </p>
+<p>Resource Creator will only allow you to grab these lines in steps of 8*3, or 24 units wide. Obviously, </p>
+<p>only one each of the Start and End components is possible, and AMOS Professional will repeat the </p>
+<p>Middle section of the line automatically.</p>
+<p>13.07.02</p>
+<p>R</p>
+<p>E</p>
+<p>S</p>
+<p>O</p>
+<p>U</p>
+<p>R</p>
+<p>C</p>
+<p>E</p>
+<p> </p>
+<p>E</p>
+<p>D</p>
+<h1 style="page-break-before:always; "></h1>
+<p>The Resource Creator</p>
+<p>So if you think of the Start, Middle and End components as being represented by their initial letters, </p>
+<p>the horizontal line could be displayed in any of the following ways:</p>
+<p>SME</p>
+<p>SMME</p>
+<p>SMMMMMMME</p>
+<p><b>Vertical Line</b></p>
+<p>These are similar to their horizontal equivalents, except that vertical lines are displayed from top to </p>
+<p>bottom rather than from left to right. So if the three components are represented as Start, Middle and </p>
+<p>End, they would appear like this:</p>
+<p>S</p>
+<p>M</p>
+<p>E</p>
+<p><b>Box</b></p>
+<p>Boxes are simply a rectangular arrangement of the components of lines. Each box is constructed from </p>
+<p>nine separate images that may be used to generate a great variety of different shapes. Look at the </p>
+<p>following schematic diagram:</p>
+<p>123 first line of Box</p>
+<p>456 second line of Box</p>
+<p>789 third line of Box</p>
+<p>If you remember how the Middle component of a line can be repeated, the above components could  </p>
+<p>be reconstructed to create a Box like this:</p>
+<p>1223</p>
+<p>4556</p>
+<p>4556</p>
+<p>7889</p>
+<p><b>Creating an Object</b></p>
+<p>When you click on the name of an object in the selection window, it becomes highlighted. A flashing </p>
+<p>panel will now appear over the image of the highlighted object on the screen.</p>
+<p>When creating an object it is important to note down the various definitions. This written reminder  </p>
+<p>will be invaluable when you return to AMOS Professional and try to use the new objects in a real </p>
+<p>Interface program!</p>
+<p>Here are the options for creating an object:</p>
+<p>13.07.03</p>
+<p>R</p>
+<p>E</p>
+<p>S</p>
+<p>O</p>
+<p>U</p>
+<p>R</p>
+<p>C</p>
+<p>E</p>
+<p> </p>
+<p>E</p>
+<p>D</p>
+<h1 style="page-break-before:always; "></h1>
+<p>The Resource Creator</p>
+<p><b>[Grab One Element]</b></p>
+<p>The source picture is brought to the front of the display, and you may now position the pointer over </p>
+<p>any selected part of the picture to create an item by clicking on a corner of the area to be grabbed and </p>
+<p>dragging a box around it, using the <b>left</b> mouse button. When this button is released, the box can be </p>
+<p>positioned directly over the object, using the mouse. Another click on the left mouse button grabs it </p>
+<p>into memory.</p>
+<p>As you work, an instant read-out of the current settings is given, making it easy to fine-tune objects to </p>
+<p>their optimum size. Mistakes are of no importance, and you may abort the operation at any time by </p>
+<p>pressing the <b>right</b> mouse button. Please note that the colour of the highlighted box can be changed by </p>
+<p>pressing the [Spacebar] key. The colour shift becomes visible when you next move the mouse.</p>
+<p>Once an object has been grabbed in this way, it will be added to the list of elements in the selection  </p>
+<p>window. If you click on it, it will be shown on the screen at its current position, enclosed by a flashing  </p>
+<p>bar.</p>
+<p><b>[Grab Horiz Line]</b></p>
+<p>This option is used to grab a group of <b>three</b> elements for the Start, Middle and End components of a </p>
+<p>horizontal line. All that needs to be done is to drag a box around the line, as explained above, and the  </p>
+<p>Resource Editor will take care of everything else automatically. The line will be divided into the three </p>
+<p>components and stored in the memory bank accordingly. It can now be called directly with a LIne </p>
+<p>command to generate lines of any length.</p>
+<p>Since each line is created in the manner that is explained above, the width of the line must be an exact  </p>
+<p>multiple of 24. The Resource Editor will take this into account when objects are grabbed, but there are </p>
+<p>no such limitations with regard to the original position of your horizontal lines. These can be grabbed </p>
+<p>from any part of the source picture.</p>
+<p><b>[Grab Vert Line]</b></p>
+<p>Similarly, this grabs three elements for a vertical line. As with horizontal lines, the entire process is </p>
+<p>automated. Simply position the mouse pointer over the top left-hand corner of the proposed line, </p>
+<p>hold down the left mouse button and drag a box around the required image. When the button is </p>
+<p>released, you may re-position the box as required, and click once again on the left mouse button to </p>
+<p>load it into memory.</p>
+<p>Note that the width of vertical lines must be a multiple of eight, and that the height must be divisible </p>
+<p>by three. This is managed by the Resource Creator automatically, so there is no danger of grabbing a </p>
+<p>wrongly dimensioned line.</p>
+<p><b>[Grab a Box]</b></p>
+<p>Similarly, use this option to grab a group of nine component elements to make up a box. The box can </p>
+<p>then be displayed using a BOx command from an Interface program. The width of this box may be </p>
+<p>increased in steps of 24, and the height must be an exact multiple of three.</p>
+<p>13.07.04</p>
+<p>R</p>
+<p>E</p>
+<p>S</p>
+<p>O</p>
+<p>U</p>
+<p>R</p>
+<p>C</p>
+<p>E</p>
+<p> </p>
+<p>E</p>
+<p>D</p>
+<h1 style="page-break-before:always; "></h1>
+<p>The Resource Creator</p>
+<p><b>[Exit]</b></p>
+<p>This returns you to the Main menu.</p>
+<p><b>[Del]</b></p>
+<p>Use this option to delete the currently highlighted element, which will be removed from the selection </p>
+<p>window.</p>
+<p><b>[Clear]</b></p>
+<p>This erases  <b>all</b>  resource graphics elements from memory, and you will be asked to confirm you </p>
+<p>decision before proceeding.</p>
+<p><b>[Change Picture]</b></p>
+<p>You are allowed to change the source picture <b>without</b> changing the position of the various elements, </p>
+<p>on condition that the new image must be <b>exactly</b> the same size as the original picture.</p>
+<p><b>Editing text strings</b></p>
+<p>To end this guided tour of the Resource Creator facilities, the options provided by [Edit Text Strings]  </p>
+<p>are examined.</p>
+<p>This sub-menu allows you to enter a list of pre-defined standard messages into the Resource Bank. </p>
+<p>These messages can then be accessed from an Interface program using the MEssage command, or </p>
+<p>from a main AMOS Professional program, with a RESOURCE$ instruction.</p>
+<p>The Text String menu contains a large selection window that can be scrolled vertically, using the slider </p>
+<p>bar on the right-hand side. Each item can be individually selected with the mouse, and edited directly </p>
+<p>on the screen.</p>
+<p>The [CLEAR] button erases <b>all</b> message strings from memory, whereas [EXIT] will return you to the </p>
+<p>Main menu.</p>
+<p>Entering a new text string is extremely easy, and the following steps should be taken:</p>
+<p>•</p>
+<p>Choose a string to be edited from the selection window, with a single click on the <b>left</b> mouse </p>
+<p>button.</p>
+<p>•</p>
+<p>Enter the new string definitions into memory.</p>
+<p>•</p>
+<p>Repeat this procedure for all of the strings that you wish to install.</p>
+<p>•</p>
+<p>Click on the [EXIT] button to return to the Main menu.</p>
+<p>•</p>
+<p>Save your messages onto disc, using the [Save] or [Save As] options.</p>
+<p>The editing of text strings takes place in an attractive dialogue box, and characters are typed using all </p>
+<p>of the normal editing commands.</p>
+<p>To save your new text into memory, press the [Return] key <b>twice</b>.</p>
+<p>13.07.05</p>
+<p>R</p>
+<p>E</p>
+<p>S</p>
+<p>O</p>
+<p>U</p>
+<p>R</p>
+<p>C</p>
+<p>E</p>
+<p> </p>
+<p>E</p>
+<p>D</p>
+<h1 style="page-break-before:always; "></h1>
+<p>The Resource Creator</p>
+<p>The following keyboard short-cuts have been assigned to these operations, to make the editing of text </p>
+<p>strings even faster:</p>
+<p><b>key</b></p>
+<p><b>effect</b></p>
+<p>[Return]</p>
+<p>Replace the existing text string at the current position by new text, </p>
+<p>completely erasing the original entry.</p>
+<p>[F-1]</p>
+<p>Insert text into a new position in the list, moving all of the existing </p>
+<p>entries one place down.</p>
+<p>[Del]</p>
+<p>Erase the current line and completely remove it from the message list.</p>
+<p>[Esc]</p>
+<p>Abort the operation and return to the selection window.</p>
+<p><b>Automatic Bank grabbing</b></p>
+<p>Similarly to the Sample Bank and Object Bank editors, AMOS Professional provides an automatic </p>
+<p>method of grabbing a bank with the Resource Creator. Supposing you are working on a program, and </p>
+<p>you decide to create a Resource Bank. The following steps should be followed:</p>
+<p>•</p>
+<p>Select the [Resource Ed] option from the user menu. The program will be loaded and sent to </p>
+<p>the command line “GRAB”.</p>
+<p>•</p>
+<p>The Resource Creator will grab the current program's bank automatically, and you are now </p>
+<p>free to modify it. If your current program has no available bank, simply create a new one or </p>
+<p>load a bank that has already been defined. The Resource Creator will display a “GRABBED” </p>
+<p>message immediately in front of the name of the bank.</p>
+<p>•</p>
+<p>When you select the [QUIT] option, you will be asked if you want to copy the modified bank </p>
+<p>back into your edited program.</p>
+<p>•</p>
+<p>On returning to the main AMOS Professional Edit screen, your modified Resource Bank will </p>
+<p>be in place.</p>
+<p>The advantage of this automatic system is that it very fast, because it suppresses the saving of a bank </p>
+<p>from the edited program, the need to load and save it from the Editor and then re-load it from the  </p>
+<p>edited program.</p>
+<p>13.07.06</p>
+<p>R</p>
+<p>E</p>
+<p>S</p>
+<p>O</p>
+<p>U</p>
+<p>R</p>
+<p>C</p>
+<p>E</p>
+<p> </p>
+<p>E</p>
+<p>D</p>
+</body>
+</html>

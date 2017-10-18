@@ -1,0 +1,2259 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+     "http://www.w3.org/TR/html4/transitional.dtd">
+<html>
+<head>
+
+  <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  <title></title>
+  <meta name="generator" content="LibreOffice 5.2.7.2 (Linux)"/>
+  <meta name="created" content="2017-10-03T07:53:48.485130788"/>
+  <meta name="changed" content="2017-10-04T06:08:04.587111874"/>
+</head>
+<body>
+<h1></h1>
+<p>AMOS Interface</p>
+<p>09.01</p>
+<p>AMOS Interface</p>
+<p>09.02</p>
+<p>Interface Language</p>
+<p>09.03</p>
+<p>Advanced Control Panels</p>
+<p>09.04</p>
+<p>Interface Resources</p>
+<h1 style="page-break-before:always; "></h1>
+<p>AMOS Interface</p>
+<p>Section 9 of this User Manual is devoted to the AMOS Professional Interface. You should be warned  </p>
+<p>that this is a very advanced feature of the system, and will take a while to fully understand, even for  </p>
+<p>experts! Unfortunately there can be no short-cuts with such a technical subject, so please persevere.</p>
+<p><b>Introducing the Interface</b></p>
+<p>Imagine the possibilities of including all of the features of the AMOS Professional Editor inside your  </p>
+<p>own  programs,   and  that   they  can   be  controlled   directly   from  the   screen  via  icons,   buttons   and </p>
+<p>selectors!</p>
+<p>How about a state-of-the-art graphics adventure, with selection boxes for the commands and an </p>
+<p>interactive   inventory   on   the   screen.   Or   a   set   of   direction   keys   that   display   all   of   the   available </p>
+<p>movements from the current location. Simple simulations could be transformed into complex fantasy </p>
+<p>worlds, arcade games could have interactive hi-score tables, and animations could be conjured up by </p>
+<p>the actions and reactions of the player.</p>
+<p>Perhaps   you   are   interested   in   more   serious   applications.   Then   imagine   an   animated   data   base, </p>
+<p>complete with intelligent dialogue boxes, or powerful calculators that appear above your program </p>
+<p>listings on demand. Even the humble File Selector could be transformed beyond recognition!</p>
+<p>You can stop imagining now, because all this and more is already available. The control panels used </p>
+<p>by the AMOS Professional Editor were not written in assembly language or C, they were produced  </p>
+<p>with the help of a built-in dialogue creator which we call the AMOS Professional Interface, and it is  </p>
+<p>waiting to serve you!</p>
+<p>The Interface is directly available from your AMOS Professional programs, so anything the Editor can </p>
+<p>achieve, you can do too! What's more, you have instant access to all of the original Editor messages  </p>
+<p>and   graphics,   allowing   an   effortless   matching   of   your   own   programs   to   the   existing   AMOS </p>
+<p>Professional style. Since the Editor messages are saved as part of the configuration file, it is simple to </p>
+<p>generate multi-lingual programs, with prompts and buttons available in a variety of languages.</p>
+<p>There is no need to rely on the default settings, and graphics can be designed from scratch, using 16,  </p>
+<p>32 or even 64 colours. A powerful Resource Creator is provided on the Accessory Disc, allowing </p>
+<p>images to be grabbed from any IFF picture, and immediately assigned to your icons, buttons and </p>
+<p>requesters.</p>
+<p>And if that hasn't whetted your appetite, see all of this theory in practice now, by running the </p>
+<p>following ready-made example program:</p>
+<p>Load “AMOSPro_Tutorial:Tutorials/Interface/Full_Example.AMOS”</p>
+<p><b>The need for the AMOS Professional Interface</b></p>
+<p>Experienced AMOS programmers will know that the features demonstrated in the above example </p>
+<p>program could also be created using standard AMOS screen zones, so why is a separate Interface </p>
+<p>language required?</p>
+<p>09.01.01</p>
+<p>I</p>
+<p>N</p>
+<p>T</p>
+<p>E</p>
+<p>R</p>
+<p>F</p>
+<p>A</p>
+<p>C</p>
+<p>E</p>
+<h1 style="page-break-before:always; "></h1>
+<p>AMOS Interface</p>
+<p>In  fact,  the  traditional  system  may  well  be useful,   but  it  has  many  limitations.   The  SET  ZONE </p>
+<p>command creates a rectangular testing zone around any area of the screen, and this area can be </p>
+<p>identified if it comes under the mouse pointer, via the MOUSE ZONE function. This is a powerful </p>
+<p>system, as demonstrated by the Disc Manager and Object editor, but these are massive programs </p>
+<p>involving huge amounts of work, even for the most experienced of programmers. If you need to </p>
+<p>generate similar features in your own programs, much time and effort would have to be expended.</p>
+<p>Up   to   now,   most   AMOS   programmers   have   restricted   themselves   to   simple,   two-dimensional </p>
+<p>displays,   using   basic   graphics.   The   results   compared   favourably   to   Workbench   1.3,   but   are   not </p>
+<p>acceptable to the AMOS Professional programmer.</p>
+<p>With the AMOS Professional Interface, the situation has been completely transformed ! Interactive </p>
+<p>three-dimensional buttons can be created anywhere on the screen, and made to perform in the most </p>
+<p>startling way! Control panels are ridiculously easy to create, and they can be handled automatically </p>
+<p>by AMOS Professional using a powerful interrupt system. Your program only needs to read these </p>
+<p>buttons and panels at regular intervals and the AMOS Professional Interface takes care of everything </p>
+<p>else.</p>
+<p>Scroll bars are as smooth as silk, and can be dragged directly by the mouse. The improvement over  </p>
+<p>the original VSLIDER and HSLIDER commands is astounding. Selectors can now be generated by a </p>
+<p>few lines of code, and they can be tailored to any programming need. The only problem created by </p>
+<p>the AMOS Professional Interface is the fact that there is so much to absorb! With over one hundred </p>
+<p>powerful instructions on board, embarking on the Interface can seem a daunting prospect, but fear </p>
+<p>not, once the fundamental principles have been mastered, everything will fall into place. You will be </p>
+<p>creating amazing dialogue boxes worthy of a true AMOS Professional!</p>
+<p><b>Introducing the AMOS Professional Interface</b></p>
+<p>The Interface is a complete language in its own right, dedicated to the single task of generating </p>
+<p>attractive dialogue boxes, buttons and control panels. It works in a similar manner to the AMOS </p>
+<p>Professional AMAL and MENU languages. Here are the rules of use:</p>
+<p>•</p>
+<p>All Interface programs are entered into strings.</p>
+<p>•</p>
+<p>These strings are brought to life with the standard AMOS Professional functions DIALOG </p>
+<p>BOX or DIALOG OPEN.</p>
+<p>•</p>
+<p>Each Interface instruction consists of a pair of capital letters. Similarly to AMAL, anything in </p>
+<p>lower case letters is completely ignored, allowing commands to be expanded and customised </p>
+<p>for readability and recognition. REM comments can be freely included in Interface listings, as </p>
+<p>long as no capital letters are used.</p>
+<p>•</p>
+<p>Each command is terminated by a semi-colon character. A colon can also be used for this </p>
+<p>purpose. Each command must be isolated from its neighbours in this way. Spaces are not </p>
+<p>enough.</p>
+<p>Here is a simple example of an Interface command:</p>
+<p>EXit;</p>
+<p>09.01.02</p>
+<p>I</p>
+<p>N</p>
+<p>T</p>
+<p>E</p>
+<p>R</p>
+<p>F</p>
+<p>A</p>
+<p>C</p>
+<p>E</p>
+<h1 style="page-break-before:always; "></h1>
+<p>AMOS Interface</p>
+<p><b>EX</b>it</p>
+<p><i>Interface instruction: leave Interface and return to AMOS Professional Basic</i></p>
+<p><b>EX</b>;</p>
+<p>The EXit command must always be the last instruction in an Interface program. It is used to return to </p>
+<p>the more familiar environment of AMOS Professional Basic programs, by informing I lie system that </p>
+<p>the last line of an Interface program has been reached. If the EXit command is omitted, a syntax error </p>
+<p>will be generated when the routine is tested or run.</p>
+<p><b>Variables and numbers</b></p>
+<p>The AMOS Professional Interface provides a standard way of performing calculations, and saving the </p>
+<p>results into variables.</p>
+<p>All Interface programs have their own list of variables, stored in an internal array. These variables </p>
+<p>have exactly the same format as ordinary AMOS Professional numbers.</p>
+<p>Each variable is referred to by an index number, from zero upwards. However, instead of reading an </p>
+<p>array in the conventional way, like this:</p>
+<p>VARIABLE(index number)</p>
+<p>Interface variables must have the item number placed first, like this:</p>
+<p>index number VARIABLE</p>
+<p><b>VA</b>riable</p>
+<p><i>Interface function: return value held by an index</i></p>
+<p>value=index number <b>VA</b>;</p>
+<p>VA will return the value associated with the item number index, making it available for your Interface </p>
+<p>program. As a default, up to 17 variables can be used at one time, but this number can be increased  </p>
+<p>via the DIALOG OPEN command, which is explained later.</p>
+<p><b>Setting a variable</b></p>
+<p><b>S</b>et<b> V</b>ariable</p>
+<p><i>Interface instruction: set an Interface variable</i></p>
+<p><b>SV</b> index number,value;</p>
+<p>Setting   a   variable   for   the  AMOS   Professional   Interface   is   very  easy.   Simply   give   the   command, </p>
+<p>followed by the number of the variable to be changed and the value to be entered. Interface variables </p>
+<p>are not limited to numbers, and complete strings of characters may be assigned as necessary. For </p>
+<p>example:</p>
+<p>  SetVar 0,42:</p>
+<p>this loads the value forty two into item number zero.</p>
+<p>  SetVar 1,'The answer is'; </p>
+<p>this loads a string into item number one.</p>
+<p>09.01.03</p>
+<p>I</p>
+<p>N</p>
+<p>T</p>
+<p>E</p>
+<p>R</p>
+<p>F</p>
+<p>A</p>
+<p>C</p>
+<p>E</p>
+<h1 style="page-break-before:always; "></h1>
+<p>AMOS Interface</p>
+<p>The use of quotation' marks in Interface programs is very important. You are recommended to use </p>
+<p><b>single quotation marks</b>  as above, instead of the conventional double quotes. This will avoid any </p>
+<p>confusion when Interface commands are typed into an ordinary AMOS Professional string.</p>
+<p>Numbers may also be entered in Hexadecimal or Binary notation, if preferred. For example:</p>
+<p>SetVar 2,$2A;</p>
+<p>SetVar 3,%101010;</p>
+<p><b>PR</b>int</p>
+<p><i>Interface instruction: print contents of a variable to screen</i></p>
+<p><b>PR</b> x,y,number,ink;</p>
+<p><b>PR</b> x,y,'text',ink;</p>
+<p>The  PRint   command  is  used   to  print  the   contents   of  a  variable.  After   the  command,   the   target </p>
+<p>coordinates should be specified, followed by the variable number or the string of characters to be  </p>
+<p>printed. The final parameter is a colour index number, which determines the ink colour to be used. </p>
+<p>The following example prints a message at coordinates 10,10 using colour 2. Note the use of single </p>
+<p>quotation marks, which is explained above.</p>
+<p>PRint 10,10,'Message',2;</p>
+<p>The next example would print the contents of 1 VA at the coordinates 0,100 in ink colour 2:</p>
+<p>PRint 0,100,1 VA,2;</p>
+<p>The hash character # can be used as a special function, which converts a number into a string. It is  </p>
+<p>similar to the normal AMOS Professional STR$ function. When using this, the following syntax must </p>
+<p>be observed:</p>
+<p>PRint 0,110,1 VA #,2;</p>
+<p><b>Expressions</b></p>
+<p>AMOS Professional Interface expressions have been carefully optimised for speed, which is why they </p>
+<p>appear very different from the standard system.</p>
+<p>All calculations are performed in  <b>reverse</b>, with operations and functions after the numbers. So a </p>
+<p>normal expression like 1+2 is entered as 12+ for an Interface program. Similarly:</p>
+<p>6*9 becomes 69*</p>
+<p>8/2 is 82/</p>
+<p>6-3 is generated by 63-</p>
+<p>These expressions can be entered as part of a normal Interface command. Supposing you want to add </p>
+<p>one to the variable zero (0 VA). This could be achieved by using a line such as:</p>
+<p>SetVar 0,0 VA 1+;</p>
+<p>09.01.04</p>
+<p>I</p>
+<p>N</p>
+<p>T</p>
+<p>E</p>
+<p>R</p>
+<p>F</p>
+<p>A</p>
+<p>C</p>
+<p>E</p>
+<h1 style="page-break-before:always; "></h1>
+<p>AMOS Interface</p>
+<p>To perform more complex calculation's some theoretical understanding is needed. Every time a value </p>
+<p>is entered into an expression, it is laced on the top of a list of numbers known as a stack. Supposing a </p>
+<p>stack is represented by this:</p>
+<p>3</p>
+<p>2</p>
+<p>1</p>
+<p>0</p>
+<p>The stack grows from the bottom upwards, so 3 sits on the top and the zero is sitting at the bottom. </p>
+<p>Whenever the Interface encounters a number or a string, it is pushed straight to the top of the current </p>
+<p>stack. But operators are treated differently. When an operator or a function is spotted, the Interface </p>
+<p>will execute it immediately, grabbing the required values directly from the stack. After the calculation </p>
+<p>has been performed, the result is replaced back onto the current stack. This process continues until </p>
+<p>the Interface reaches the end of the expression.</p>
+<p>Here is a theoretical calculation of one of these expressions, in this case how the result of 21 is  </p>
+<p>evaluated from the expression 23+ 4*1+</p>
+<p>23+4*1+=54*1+</p>
+<p>54*1+=20 1+</p>
+<p>20 1+=21</p>
+<p>That expression is evaluated strictly from left to right. The 2 and the 3 are first placed onto the stack </p>
+<p>and are then added together by the plus sign, giving a result of 5. The 4 is now loaded onto the stack </p>
+<p>to be multiplied by the item immediately below it, which is the 5 that resulted from the last operation. </p>
+<p>This gives a value of 20, and this new value is loaded onto the stack to be added to the item below, </p>
+<p>generating a final value of 21.</p>
+<p>It is important to realise that the stack is only retained during the current calculation. It has no </p>
+<p>permanent existence whatsoever! This means that after the expression has been calculated, exactly </p>
+<p>one value must be left in the stack, otherwise a syntax error will be generated.</p>
+<p>Here is a table of the available arithmetic operators:</p>
+<p><b>Operator</b></p>
+<p><b> Example</b></p>
+<p><b> Result</b></p>
+<p><b> Explanation</b></p>
+<p>+</p>
+<p>12</p>
+<p>3</p>
+<p>add two values together</p>
+<p>-</p>
+<p>23</p>
+<p>1</p>
+<p>subtract second value from value beneath in the stack</p>
+<p>*</p>
+<p>23*</p>
+<p>6</p>
+<p>multiply two values from the top of the stack</p>
+<p>/</p>
+<p>62/</p>
+<p>3</p>
+<p>divide a value by the value above it in the stack</p>
+<p>Neg</p>
+<p>2NEg</p>
+<p>-2</p>
+<p>toggle value from positive to negative</p>
+<p>!</p>
+<p>“H” “ello”!</p>
+<p>“Hello”</p>
+<p>Add two strings together</p>
+<p>#</p>
+<p>42#</p>
+<p>“42”</p>
+<p>convert a number into a string</p>
+<p>Min</p>
+<p>6 49 Min</p>
+<p>6</p>
+<p>give minimum of two values </p>
+<p>Max</p>
+<p>6 9 Max</p>
+<p>9</p>
+<p>give maximum of two values</p>
+<p>A separate set of logical operators that can be used to perform tests is explained in </p>
+<p>Chapter 9.2.</p>
+<p>09.01.05</p>
+<p>I</p>
+<p>N</p>
+<p>T</p>
+<p>E</p>
+<p>R</p>
+<p>F</p>
+<p>A</p>
+<p>C</p>
+<p>E</p>
+<h1 style="page-break-before:always; "></h1>
+<p>AMOS Interface</p>
+<p><b>Resources</b></p>
+<p>Each Interface program has access to a number of objects, known as  <b>resources</b>. These resources </p>
+<p>contain a set of images to be used for background effects, as well as a list of messages for titles or </p>
+<p>interactive buttons. There is a Resource Editor program on the Accessory Disc, which can be installed </p>
+<p>into a permanent memory bank ready for instant use. As a default, the Interface grabs the internal </p>
+<p>resources assigned to the Editor, allowing a complete range of useful images to be employed in your </p>
+<p>own programs. Resources are examined in detail in Chapter 9.4.</p>
+<p><b>Calling an AMOS Professional Interface program</b></p>
+<p><b>DIALOG BOX</b></p>
+<p><i>function: display dialogue box on screen</i></p>
+<p>button=<b>Dialog Box</b>(Interface$)</p>
+<p>button=<b>Dialog Box</b>(Interface$,<i>value</i>,<i>parameter$,x,y</i>)</p>
+<p>To display a requester or dialogue box, the DIALOG BOX function is used to handle your Interface </p>
+<p>commands from the specified Interface string. This dialogue now waits for either an appropriate </p>
+<p>button to be selected, or until a specific period of time has elapsed. The system then returns to the </p>
+<p>AMOS Professional main program, returning the value of the button. The dialogue box can be quit at </p>
+<p>any time by pressing [Ctrl]+[C]. If this is done, a value of zero will be returned.</p>
+<p>The Interface$ parameter is a normal AMOS Professional string, containing the Interface program. </p>
+<p>This may be followed by various optional parameters:</p>
+<p>The optional value parameter contains a value that is loaded straight into the internal variable array. It </p>
+<p>can then be accessed using the VA function, from the dialogue box, or requester.</p>
+<p>Parameter$ holds an optional string parameter which will be forwarded to the Interface program. It </p>
+<p>will be saved as item 1 of the variable array (1 VA).</p>
+<p>Finally,   the   optional   coordinates   x,   y   are   given,   to   position   the   dialogue   box   on   screen.   These </p>
+<p>coordinates   may   be   overridden   by   a   BAse   command   inside   the   Interface   program,   and   this   is </p>
+<p>explained later. Here are some examples:</p>
+<p>A$=A$+“SetVar 1,'The answer is', set variable one to a message”</p>
+<p>A$=A$+“SetVar0,42; variable zero is loaded with forty two”</p>
+<p>A$,A$+“PRint 0,100,1 VA,2; print the message”</p>
+<p>A$=A$+“PRint 0,110,0 VA #,2; print the answer”</p>
+<p>A$=A$+“EXit; leave the interface program”</p>
+<p>Print Dialog Box(A$)</p>
+<p>B$=B$+“PRint 0,0,1 VA,2; PRint 0,10,0 VA #,2; EXit;”</p>
+<p>D=Dialog Box(B$,42,“The Answer”)</p>
+<p>D=Dialog Box(B$,42,“The Answer”,100,100)</p>
+<p>09.01.06</p>
+<p>I</p>
+<p>N</p>
+<p>T</p>
+<p>E</p>
+<p>R</p>
+<p>F</p>
+<p>A</p>
+<p>C</p>
+<p>E</p>
+<h1 style="page-break-before:always; "></h1>
+<p>AMOS Interface</p>
+<p>Please note that if the Interface program is to wait for user input, a RunUntil command must be  </p>
+<p>included before the final EXit, otherwise the dialogue box will jump directly to the main AMOS  </p>
+<p>Professional program after the last Interface program instruction. RunUntil is explained in detail </p>
+<p>below.</p>
+<p>The DIALOG BOX facility is only intended for simple requesters. To control the dialogue directly </p>
+<p>from an AMOS Professional program, the DIALOG OPEN and DIALOG RUN commands must be </p>
+<p>used instead. These are fully explained at the beginning of Chapter 9.3, which is devoted to advanced </p>
+<p>control panels.</p>
+<p><b>Creating a simple requester</b></p>
+<p>If a large requester with a lot of graphics is to be generated, it can be very difficult to keep track of all </p>
+<p>of the coordinates. You can simplify things enormously by entering all of the coordinates relative to </p>
+<p>the top left-hand corner of the requester box.</p>
+<p><b>BA</b>se</p>
+<p><i>Interface instruction: set coordinate base for dialogue box</i></p>
+<p><b>BA</b> x,y;</p>
+<p>The BAse command sets the reference point for  <b>all</b>  future coordinate calculations, and is used by </p>
+<p>simply setting the screen coordinates of the new origin. The default coordinate values are 0,0.</p>
+<p>If this command is called more than once, the new BAse setting will replace the previous one. This </p>
+<p>coordinate reference point can also be set using the x,y parameters with the DIALOG BOX command, </p>
+<p>as explained earlier. Here is a working example:</p>
+<p>A$=A$+“BAse 50,50; set the coordinate base”</p>
+<p>A$=A$+“INk 5,0,0; Graphic Box 0,0,150,50; draw a filled bar in ink five”</p>
+<p>A$=A$+“PrintOutline 5,10,'AMOS Professional',2,4; print message in outline text”</p>
+<p>A$=A$+“PRint 45,20,'Basic',4; display message in normal text”</p>
+<p>A$=A$+“EXit; leave the interface program”</p>
+<p>D=Dialog Box(A$) : Wait Key</p>
+<p><b>Saving the background graphics</b></p>
+<p>The simple drawing operations used in these examples would destroy any existing graphics on the </p>
+<p>screen. But AMOS Professional dialogue boxes should wink into place over an existing display, and </p>
+<p>then return the screen to its original state after use. The Interface includes commands that do exactly </p>
+<p>that!</p>
+<p><b>SI</b>ze</p>
+<p><i>Interface instruction: define the size of graphics to be saved</i></p>
+<p><b>SI</b> width,height;</p>
+<p>The SIze command sets the size of the dialogue box on the screen, and prepares the Interface system </p>
+<p>to save the background graphics. The location of this screen area is set by giving the number of pixels </p>
+<p>for the width of the zone, followed by the number of pixels for its height, measured relative to the </p>
+<p>reference point already set by the Base command.</p>
+<p>09.01.07</p>
+<p>I</p>
+<p>N</p>
+<p>T</p>
+<p>E</p>
+<p>R</p>
+<p>F</p>
+<p>A</p>
+<p>C</p>
+<p>E</p>
+<h1 style="page-break-before:always; "></h1>
+<p>AMOS Interface</p>
+<p><b>SA</b>ve</p>
+<p><i>Interface instruction: save background under the dialogue box</i></p>
+<p><b>SA</b> block number;</p>
+<p>This is used to save the graphics defined by the previous BAse and SIze commands. The area that is </p>
+<p>saved into memory will be restored to the screen after the Interface program reaches its final EXit </p>
+<p>instruction. Give the Save command, followed by the number of a memory block to be used for the </p>
+<p>graphics. If this has already been defined, it will be replaced by the new definition.</p>
+<p>Note that each new control panel can save its own background area independently. Blocks will be re-</p>
+<p>drawn in reverse order when the dialogue panel is removed. If there is insufficient memory, an error </p>
+<p>will be generated when the program is initialised.</p>
+<p>Supposing   a   dialogue   box   is   to   be   positioned   from   coordinates   50,50   to   210,110.   The   following </p>
+<p>sequence of instructions could be used:</p>
+<p>A$=A$+“BA 50,50; set the coordinate base”</p>
+<p>A$=A$+“SI 160,60; SA 1; save area under dialogue box”</p>
+<p>A$=A$+“IN 0,0,0; GB 5,5,155,56; IN 5,0,0; GB 0,0,150,50; draw a fancy </p>
+<p>box”</p>
+<p>A$=A$+“PO 5,10,'AMOS Professional',2,4; PR 45,20,'Basic',4; print </p>
+<p>messages”</p>
+<p>A$=A$+“EXit; quit interface program”</p>
+<p>D=Dialog Box(A$) : Wait key</p>
+<p>Unfortunately, when that example is run, the graphics will be removed from the screen immediately </p>
+<p>after they have been drawn! This is because DIALOG BOX executes the entire Interface program in a </p>
+<p>single burst, and jumps back to the main AMOS Professional program as soon as it is completed. In  </p>
+<p>order to use a dialogue box, the Interface must be instructed to wait for an event of some sort. To  </p>
+<p>make that example work properly, read on!</p>
+<p><b>Waiting for an event</b></p>
+<p><b>R</b>un<b>U</b>ntil</p>
+<p><i>Interface instruction: run until conditions are satisfied</i></p>
+<p><b>RU</b> delay,flags;</p>
+<p>This command runs an Interface program from the first command, and activates all buttons and </p>
+<p>sliders that have been defined in the dialogue box. The box now waits on screen, until a specific set of </p>
+<p>conditions have been satisfied.</p>
+<p>These conditions can be anything from pressing [Ctrl]+[C], selecting a [Quit] icon, or simply hitting a </p>
+<p>key. The requester may also be displayed for a specific amount of time. If the original screen contents </p>
+<p>have been saved using the SAve command, they will be restored to normal as soon as the program </p>
+<p>returns to AMOS Professional Basic.</p>
+<p>The RunUntil command is ideal for use with dialogue boxes that do not need to interact with the </p>
+<p>main AMOS Professional program.</p>
+<p>09.01.08</p>
+<p>I</p>
+<p>N</p>
+<p>T</p>
+<p>E</p>
+<p>R</p>
+<p>F</p>
+<p>A</p>
+<p>C</p>
+<p>E</p>
+<h1 style="page-break-before:always; "></h1>
+<p>AMOS Interface</p>
+<p>The delay parameter holds the interval time for the dialogue to remain on screen, specified in 50th of </p>
+<p>a second. If this value is greater than zero, the box will automatically exit after the chosen period has </p>
+<p>elapsed, with no need for any user input. On the other hand, a value of zero will wait patiently for a </p>
+<p>user response, or until the conditions specified in the flag values have been met.</p>
+<p>The flag parameter is a simple bitmap, with a value of 1 in the relevant position activating the feature, </p>
+<p>and a zero disabling it. Here are the settings:</p>
+<p>Bit 0</p>
+<p>clears the keyboard buffer before running. This is similar to a CLEAR KEY command.</p>
+<p>Bit 1</p>
+<p>ignores any accidental mouse key presses before the dialogue box is drawn.</p>
+<p>Bit 2</p>
+<p>exits whenever a key is pressed from the keyboard.</p>
+<p>Bit 3</p>
+<p>quits when the user clicks on one of the mouse keys.</p>
+<p>Here are some example settings:</p>
+<p>  RUn 500,%1111;</p>
+<p>display box for five seconds or until mouse click or key press</p>
+<p>  RUn 0,0;</p>
+<p>wait for quit button explained later</p>
+<p>You can now display a crude requester on the screen, by changing the last working example as </p>
+<p>follows:</p>
+<p>A$=A$+“BA 50,50; set the coordinate base”</p>
+<p>A$=A$+“SI 160,60; SA 1; save area under dialogue box”</p>
+<p>A$=A$+“IN 0,0,0; GB 5,5,155,56; IN 5,0,0; GB 0,0,150,50; draw a fancy </p>
+<p>box”</p>
+<p>A$=A$+“PO 5,10,'AMOS Professional',2,4; PR 45,20,'Basic',4; print </p>
+<p>messages”</p>
+<p>A$=A$+“RU 0,%0110; wait for either a mouse click or a key press”</p>
+<p>A$=A$+“EXit;”</p>
+<p>D=Dialog Box(A$)</p>
+<p>Requesters serve a useful purpose, but real control panels need to employ buttons, icons and slider  </p>
+<p>bars. The AMOS Professional Interface makes this very easy, and offers a large selection of options.</p>
+<p>The last part of this Chapter deals with simple button commands Advanced control panels will be </p>
+<p>explained in Chapter 9.3. All these commands are used to display an object on the screen which is </p>
+<p>automatically assigned its own zone, and can then be manipulated in a variety of ways.</p>
+<p><b>Interface buttons</b></p>
+<p><b>BU</b>tton</p>
+<p><i>Interface instruction: define an Interface button</i></p>
+<p><b>BU</b> number,x,y,width,height,setting,minimum,maximum;[][]</p>
+<p>The BUtton command defines a simple Interface button, which can then be selected directly using the </p>
+<p>mouse. This button system is very flexible, and can be used to generate dozens of different button </p>
+<p>types in a few simple lines of code.</p>
+<p>09.01.09</p>
+<p>I</p>
+<p>N</p>
+<p>T</p>
+<p>E</p>
+<p>R</p>
+<p>F</p>
+<p>A</p>
+<p>C</p>
+<p>E</p>
+<h1 style="page-break-before:always; "></h1>
+<p>AMOS Interface</p>
+<p>These buttons can be read in several ways. If the RUn command has been used in the program the </p>
+<p>button value that has been selected will be returned immediately by a DIALOG BOX or DIALOG </p>
+<p>RUN command. Alternatively, a background dialogue box can have its buttons read directly from an </p>
+<p>AMOS Professional main program, which is explained later.</p>
+<p>Here are the BUtton command parameters, in order:</p>
+<p>After the BUtton instruction, the number of the button is specified, from 1 upwards. If several buttons </p>
+<p>are to be linked together, they can be assigned the same number without causing any problems at all. </p>
+<p>Each button can be individually tested by the RDIALOG function in an AMOS Professional main </p>
+<p>program.</p>
+<p>The x,y coordinates hold the position of the button, relative to the BAse setting of the dialogue box.</p>
+<p>The width and height parameters determine the size of the rectangular test zone that is to enclose the </p>
+<p>new button, and are given in pixels as usual.</p>
+<p>Setting refers to an initial value setting for the new button, starting from zero. This indicates the  </p>
+<p>actual appearance of the position of the button on screen. In the case of a simple ON/OFF button, a </p>
+<p>value of zero could indicate OFF, while 1 would indicate an ON setting. Normally, the value of this </p>
+<p>setting will increase by one every time the button is “clicked”, but this may be changed directly, </p>
+<p>within your new button definition.</p>
+<p>The minimum and maximum parameters are used to set the range of the allowable button settings. If </p>
+<p>the button exceeds the maximum limit, it is automatically set back to the minimum setting.</p>
+<p>After these parameters have been specified, you are ready to draw the button on the screen. This is </p>
+<p>defined using a simple list of Interface commands enclosed in square brackets. These instructions can </p>
+<p>feature anything, including any of the Interface graphics operations. The semi- colon in front of the </p>
+<p>first square bracket is essential!</p>
+<p>The drawing routine is first called when the button is initialised, and it is performed again every time  </p>
+<p>the button is activated by the user.</p>
+<p>At the beginning of the routine, the coordinate base is moved to the specified x,y position, and the </p>
+<p>Size is set to the specified width and height. So all drawing operations are relative to the start position </p>
+<p>of the current button. This means that there is no need to know the final location of the button on the </p>
+<p>screen, so the button may be moved around by simply changing the original coordinate values in x,y. </p>
+<p>The same drawing routines can also be used for several different buttons.</p>
+<p>There is a second set of square brackets, which can remain empty, or contain optional commands.  </p>
+<p>These are used to define any “change” routine, to be called every time the button is released.</p>
+<p>09.01.10</p>
+<p>I</p>
+<p>N</p>
+<p>T</p>
+<p>E</p>
+<p>R</p>
+<p>F</p>
+<p>A</p>
+<p>C</p>
+<p>E</p>
+<h1 style="page-break-before:always; "></h1>
+<p>AMOS Interface</p>
+<p>Note that there is <b>no semi-colon</b> after this final set of brackets. if one is included a syntax error will be </p>
+<p>generated when the program is run. Beware of making this very easy mistake!</p>
+<p>Whenever a button is selected by the user, the AMOS Professional Interface performs the following </p>
+<p>sequence of actions:</p>
+<p>•</p>
+<p>The button setting is incremented by one, and this new setting is compared to the values held </p>
+<p>in the minimum and maximum parameters.</p>
+<p>•</p>
+<p>The commands held in the button drawing routine are now executed on screen.</p>
+<p>•</p>
+<p>The system waits for the mouse key to be released</p>
+<p>•</p>
+<p>If it has been defined, the “change” routine is now performed. This can change the setting </p>
+<p>value   of  <b>any</b>  button   on   the   screen,   allowing   you   to   link   several   buttons   together.   If   the </p>
+<p>“change” commands move one or more buttons to a new setting, they will be updated with an </p>
+<p>appropriate call to the relevant drawing routine.</p>
+<p>Here are some examples of button definitions:</p>
+<p>  BU 1,80,38,50,10,0,0,1;</p>
+<p>set position and size of button number one</p>
+<p>  [PR 1,2,'Button 1',6;][]</p>
+<p>draw button using a simple print command</p>
+<p>BU 2,10,38,50,10,0,0,1;[PR 1,2,'Button 2',7;][]</p>
+<p><b>B</b>utton<b>Q</b>uit</p>
+<p><i>Interface instruction: trigger an exit button</i></p>
+<p><b>BQ</b>;</p>
+<p>There are special buttons featured in the Editor requesters, such as [Ok] and [Cancel], which are used </p>
+<p>to leave the dialogue box the moment that they are selected by the user. These “Exit” buttons are </p>
+<p>created using the Button Quit instruction. This command can be placed inside the “change” brackets </p>
+<p>in order to trigger a forced exit from the dialogue box after the button has been selected.</p>
+<p>For example:</p>
+<p>BU 1,80,38,50,10,0,0,1 ;[PR 1,2,'Button 1',6;][BQ;]</p>
+<p><b>Drawing a button</b></p>
+<p>Buttons can be drawn in a variety of styles, using any of the Interface graphics commands. A full list </p>
+<p>of all these commands is fully explained in Chapter 9.2. Here are some typical options:</p>
+<p>Text buttons can be created by enclosing the required text with a box or a filled bar, as follows:</p>
+<p>BUtton 1,20,16,50,10,0,0,1;</p>
+<p>[INk 4,0,0;GraphicSquare 0,0,50,10; PRint 1,2,'Button',6;][]</p>
+<p>BUtton 2,120,16,40,1,0,0,1;</p>
+<p>[INk 1,0,0; GraphicBox 0,0,33,10; PRint 1,2,'Quit',4;][ButtonQuit;]</p>
+<p>09.01.11</p>
+<p>I</p>
+<p>N</p>
+<p>T</p>
+<p>E</p>
+<p>R</p>
+<p>F</p>
+<p>A</p>
+<p>C</p>
+<p>E</p>
+<h1 style="page-break-before:always; "></h1>
+<p>AMOS Interface</p>
+<p><b>Vertical buttons</b> can be drawn using the Vertical Text command, like this:</p>
+<p>BUtton 3,135,35,10,42,0,0,1;</p>
+<p>[INk 0,0,0; Graphic Box 2,2,12,42; INk 6,0,0; Graphic Box 0,0,9,39;</p>
+<p>VText 0,0,'Hello!',2;][]</p>
+<p><b>Graphical Icons</b>  can be generated using a packed image held in the Resource bank. They can be </p>
+<p>displayed with a simple call to the UNpack command, as follows:</p>
+<p>[UNpack 0,0,1]</p>
+<p><b>Complex</b>  buttons  may   be  produced   using   a  packed  picture  as  the  background,   along   with   any </p>
+<p>combination of the Interface text and graphics commands. The background can also be generated </p>
+<p>from a whole line of images, using the powerful LIne command. Here is a ready- made example to </p>
+<p>examine:</p>
+<p> Load “AMOSPro_Tutorials:Tutorial/Interface/Simple_Requester.AMOS”</p>
+<p><b>Changing a button</b></p>
+<p>The ability to call an Interface routine whenever the status of a button is changed allows a range of </p>
+<p>useful effects to be generated. The key to these effects is held by three Interface button functions, </p>
+<p>BPosition, BReturn and BChange.</p>
+<p><b>BP</b>osition</p>
+<p><i>Interface function: return the setting inside a button definition</i></p>
+<p>setting=<b>BP</b></p>
+<p>After a normal button is created with a BUtton definition, the position of the current setting can be  </p>
+<p>read  straight  from  the  drawing  routine,  using  a simple  call  to  the  BPosition  function.  BPosition </p>
+<p>returns a value from the minimum to maximum, depending on the current setting of the button. It  </p>
+<p>can be used to flick the image of the button ON or OFF as part of the drawing routine, so that there is  </p>
+<p>one image for the selected button, and a different appearance for the original version.</p>
+<p>This can be used in a number of ways. Here are some examples for changing the colour of text or  </p>
+<p>background, using the INk command:</p>
+<p>BUtton 1,50,38,50,10,0,0,1;</p>
+<p>[INk 0,0,0; GraphicSquare 0,0,50,10; PRint 1,2,'Button',BPosition+5;][]</p>
+<p>display highlighted text in a new ink colour</p>
+<p>BUtton 2,90,38,50,10,0,0,1;</p>
+<p>[INk BPosition 1+,0,0; change the background of the button when selected</p>
+<p>GraphicBox 0,0,33,10; PRint 1,2,'Quit',4;][ButtonQuit;]</p>
+<p>As mentioned earlier, another possibility is to display a packed image from the resource bank.</p>
+<p>09.01.12</p>
+<p>I</p>
+<p>N</p>
+<p>T</p>
+<p>E</p>
+<p>R</p>
+<p>F</p>
+<p>A</p>
+<p>C</p>
+<p>E</p>
+<h1 style="page-break-before:always; "></h1>
+<p>AMOS Interface</p>
+<p>The value of BPosition can be use4 to choose between two pictures representing ON and OFF in the </p>
+<p>following way:</p>
+<p>BUtton 3,180,38,50,10,0,0,1</p>
+<p>[UNpack   BPosition   13+;]   toggle   images   13   and   14   depending   on </p>
+<p>bposition value</p>
+<p>[] no change routine required in this case</p>
+<p>The same technique can be used to generate buttons with a number of different positions. All that is </p>
+<p>required is to specify the appropriate values of the setting, minimum and maximum parameters in </p>
+<p>your button definitions, then test BPosition as part of the main drawing routine. Here is a ready-made </p>
+<p>example using this system:</p>
+<p>Load “AMOSPro_Tutorials:Tutorial/Interface/Button_Types.AMOS”</p>
+<p><b>BR</b>eturn</p>
+<p><i>Interface instruction: change the setting of a button</i></p>
+<p><b>BR</b> new setting;</p>
+<p>This instruction can only be used inside a dialogue change routine, which is held in the second pair of </p>
+<p>square brackets, as explained earlier. BReturn moves the button to the specified new setting, and </p>
+<p>changes the value of BPosition. It then calls up the original drawing routine to update the display. If  </p>
+<p>this includes the BPosition function, the effect can be seen immediately.</p>
+<p>This feature can be used to return the button to its original state, after the mouse key is released. If it </p>
+<p>is omitted, the button will stay in its current setting until it is chosen once more. Here is a schematic  </p>
+<p>example:</p>
+<p>BUtton 1,160,100,64,16,0,0,1;[drawing routine...][BReturn 0;]</p>
+<p><b>BC</b>hange</p>
+<p><i>Interface instruction: change the setting of any active button</i></p>
+<p><b>BC</b> number,new setting</p>
+<p>An alternative way to change the setting of a button is to make it behave like a radio button. Here, </p>
+<p>only one of a group of buttons may be switched on at any time, and as soon as it is “on” the other </p>
+<p>related buttons automatically appear to be switched “off”.</p>
+<p>The BChange command is used to alter the setting of  <b>any</b>  active button on the screen, simply by </p>
+<p>specifying the number of the button or buttons that are to be changed, followed by the new setting </p>
+<p>required.</p>
+<p>If many buttons are to be affected by this technique, the process can be simplified by assigning them </p>
+<p>all to the same identification number. Note that BChange has <b>no</b> effect on the current button, even if it </p>
+<p>is specifically given in  the  instruction.  To  change  the  setting of the current button,  the BReturn </p>
+<p>command should be used instead.</p>
+<p>Here is an instant working example of every button type:</p>
+<p>Load “AMOSPro_Tutorials:Tutorial/Interface/Working_Buttons.AMOS”</p>
+<p>09.01.13</p>
+<p>I</p>
+<p>N</p>
+<p>T</p>
+<p>E</p>
+<p>R</p>
+<p>F</p>
+<p>A</p>
+<p>C</p>
+<p>E</p>
+<h1 style="page-break-before:always; "></h1>
+<p>AMOS Interface</p>
+<p><b>Keyboard short-cuts</b></p>
+<p>Any of your buttons can be optionally assigned to an equivalent control-key combination from the </p>
+<p>keyboard.</p>
+<p><b>KY</b></p>
+<p><i>Interface instruction: set keyboard short-cut</i></p>
+<p><b>KY</b> ascii,shift</p>
+<p>The KY command requires two parameters. The first is the ASCII code of the chosen key (scan codes </p>
+<p>can be entered by simply adding 128 to their value). The shift parameter is a bitmap which allows a </p>
+<p>test to be made for one or more control keys, and the default value is zero. The full list of possibilities  </p>
+<p>is explained under the KEY SHIFT function in Chapter 10.1.</p>
+<p>Once   the   keyboard   short-cut   has   been   defined,   the   button   may   be   activated   by   pressing   the </p>
+<p>appropriate key.  This will click the button on screen and release it immediately.  Here are some </p>
+<p>example settings:</p>
+<p>  KY 13,0</p>
+<p>this is the return key</p>
+<p>  KY 128 76+,0</p>
+<p>this tests the up arrow key which has scan code 76</p>
+<p><b>N</b>o<b>W</b>ait</p>
+<p><i>Interface instruction: specify a quick release button</i></p>
+<p><b>NW</b>;</p>
+<p>It is often necessary for buttons to take effect immediately, without waiting for the mouse key to be </p>
+<p>released. The NoWait command is provided for this purpose, and it is normally used with a BQuit </p>
+<p>instruction,   or   with   routines   that   need   to   interact   directly   with   an   existing  AMOS   Professional </p>
+<p>program. It is used like this:</p>
+<p>BUtton 1,120,16,40,10,0,0,1;[In 1,0,0; GB 0,0,33,10; PR 1,2,'Quit',4;][NoWait,BQ;]</p>
+<p>09.01.14</p>
+<p>I</p>
+<p>N</p>
+<p>T</p>
+<p>E</p>
+<p>R</p>
+<p>F</p>
+<p>A</p>
+<p>C</p>
+<p>E</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Interface Language</p>
+<p>This   Chapter   deals   with   all   of   the  AMOS   Professional   Interface   general   purpose   programming </p>
+<p>commands.</p>
+<p>The Interface is a complete language, and includes a full set of general instructions that can be used to </p>
+<p>great effect in dialogue boxes. There is an extensive range of graphics commands, a testing facility </p>
+<p>and a pair of important program control instructions for making jumps. The Interface even provides </p>
+<p>fully-operative procedures and user-defined functions!</p>
+<p><b>The graphics functions</b></p>
+<p>When defining a number of buttons, it is important to be able to arrange them neatly as part of the </p>
+<p>display. The AMOS Professional Interface provides a number of simple functions to shoulder the </p>
+<p>burden of these problems.</p>
+<p>As usual, these functions read their values directly from the number stack, so the numbers go before </p>
+<p>the operations.</p>
+<p><b>B</b>ase<b>X</b></p>
+<p><b>B</b>ase<b>Y</b></p>
+<p><i>Interface functions: get the coordinate base location</i></p>
+<p>x=<b>BX</b></p>
+<p>y=<b>BY</b></p>
+<p>These functions are used to return the screen coordinates that are to be used as the starting point for  </p>
+<p>all   future   calculations.   These   values   are   assumed   to   have   been   previously   set   with   the   BAse </p>
+<p>instruction.</p>
+<p><b>S</b>ize<b>X</b></p>
+<p><b>S</b>ize<b>Y</b></p>
+<p><i>Interface functions: get the size of the dialogue box</i></p>
+<p>width=<b>SX</b></p>
+<p>height=<b>SY</b></p>
+<p>Use these functions to provide the precise dimensions of the current dialogue box, as set with the SIze </p>
+<p>command.</p>
+<p><b>S</b>creen<b>W</b>idth</p>
+<p><i>Interface functions: read dimensions of the current screen</i></p>
+<p>width=<b>SW</b></p>
+<p>height=<b>SH</b></p>
+<p>The SW and SH functions find the height and width of the current AMOS Professional screen. They </p>
+<p>can be used in conjunction with the SX and SY functions to position a dialogue box neatly in the </p>
+<p>centre of the display. For example:</p>
+<p>Size 240.100;</p>
+<p>BAse SW SX 2/-,SH SY 2/-;</p>
+<p>09.02.01</p>
+<p>I</p>
+<p>N</p>
+<p>T</p>
+<p>E</p>
+<p>R</p>
+<p>F</p>
+<p>A</p>
+<p>C</p>
+<p>E</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Interface Language</p>
+<p>The next pair of functions keep track of the graphics cursor. This is automatically positioned at the </p>
+<p>location of the last drawing operation on the screen.</p>
+<p><b>XA</b></p>
+<p><b>YA</b></p>
+<p><i>Interface functions: get previous coordinates of graphics cursor</i></p>
+<p>x=<b>XA</b></p>
+<p>y=<b>YA</b></p>
+<p>XA and YA retain a copy of the graphic coordinates, at their position before the most recent graphics </p>
+<p>operation was performed. This pair of values can be very useful when objects need to be defined  </p>
+<p>relative to one another, as you will only have to set the coordinates of the first object, and all of the </p>
+<p>others will be relative to it. For example:</p>
+<p>GraphicSquare 10,10,30,30; draw a box at 10,10</p>
+<p>GraphicSquare XA,40,XA 20+,30; draw a box immediately below at 10,40</p>
+<p><b>XB</b></p>
+<p><b>YB</b></p>
+<p><i>Interface functions: get current coordinates of graphics cursor</i></p>
+<p>x=<b>XB</b></p>
+<p>y=<b>YB</b></p>
+<p>These two functions complement the previous pair, and they return the position of the graphics </p>
+<p>cursor after the execution of the most recent instruction. Here are some schematic examples:</p>
+<p>BUtton 1,160,100,...;[][]</p>
+<p>BUtton 2,XB,YA,...;[][]</p>
+<p>PRint 0,8,“Hello, first line”,2;</p>
+<p>PRint XA,YB,“This line will be directly under!”,2;</p>
+<p><b>The Graphics Commands</b></p>
+<p>Here are all of the AMOS Professional Interface graphics commands. They fall into the following </p>
+<p>main groups: boxes and bars, lines and outlines, and the text commands. Most of these Interface </p>
+<p>instructions are very similar to their normal AMOS Professional equivalents.</p>
+<p><b>Boxes and Bars</b></p>
+<p><b>G</b>raphic<b>B</b>ox</p>
+<p><i>Interface instruction: draw a filled box</i></p>
+<p><b>GB</b> x1,y1,x2,y2;</p>
+<p>To draw a box that is filled with the current colour, the GraphicBox command is followed by familiar </p>
+<p>top left-hand corner coordinates, and then the coordinates of the diagonally opposite corner.</p>
+<p>09.02.02</p>
+<p>I</p>
+<p>N</p>
+<p>T</p>
+<p>E</p>
+<p>R</p>
+<p>F</p>
+<p>A</p>
+<p>C</p>
+<p>E</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Interface Language</p>
+<p>All coordinates are measured from the start location of the dialogue box, which can be set by the </p>
+<p>Interface instruction BAse, or the AMOS Professional command DIALOG BOX. The default position </p>
+<p>is the top left-hand corner of the screen.</p>
+<p><b>IN</b>k</p>
+<p><i>Interface instruction: set current drawing colours</i></p>
+<p><b>IN</b> pen,background,outline;</p>
+<p>The colours for boxes and bars and all future drawing operations are set by the INk command. The </p>
+<p>three parameters are as follows:</p>
+<p>The pen parameter is set by the colour index number to be used for drawing all future items.</p>
+<p>The background colour is then chosen for filling bars and for the paper colour on which text is to be  </p>
+<p>printed. This option is usually <b>ignored</b>, because the background is completely transparent, but it may </p>
+<p>be activated using a SetWriting mode, which is explained later.</p>
+<p>The third parameter to be set is for the outline colour of a bar. This is only relevant if the outline mode </p>
+<p>has been switched on, using a previous SetPattern instruction, also explained later.</p>
+<p>If one of these settings is to be left unchanged, simply enter a <b>negative</b> value for the relevant colour </p>
+<p>number. As you may expect, a wide range of fill patterns can also be used.</p>
+<p><b>S</b>et<b>P</b>attern</p>
+<p><i>Interface instruction: set the fill pattern for dialogue box</i></p>
+<p><b>SP</b> pattern number,outline mode;</p>
+<p>The Interface SetPattern command is a combination of the normal SET PATTERN and SET PAINT </p>
+<p>instructions, and it is used to set the fill pattern and toggle the outline mode of all subsequent </p>
+<p>GraphicBox commands.</p>
+<p>The pattern for all future drawing operations is an index number from zero to 34. The outline mode </p>
+<p>can be set to zero to turn it off completely, or to 1 to activate the feature. If the setting is activated, bars </p>
+<p>will be automatically enclosed by a hollow box in the current outline colour.</p>
+<p>To generate a hollow box in its own right, the next command is used.</p>
+<p><b>G</b>raphic<b>S</b>quare</p>
+<p><i>Interface instruction: draw a hollow rectangle</i></p>
+<p><b>GS</b> x1,y1,x2,y2;</p>
+<p>This is the equivalent to the normal BOX command, and it is used to draw a hollow rectangle, </p>
+<p>determined by the coordinates of the top left and bottom right-hand corners.</p>
+<p>09.02.03</p>
+<p>I</p>
+<p>N</p>
+<p>T</p>
+<p>E</p>
+<p>R</p>
+<p>F</p>
+<p>A</p>
+<p>C</p>
+<p>E</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Interface Language</p>
+<p><b>Lines and Outlines</b></p>
+<p><b>S</b>et<b>L</b>ine</p>
+<p><i>Interface instruction: set the style of a line</i></p>
+<p>SL pattern;</p>
+<p>This is identical to the SET LINE command, and is used to design the style of all future line drawing. </p>
+<p>The pattern for the line style is set by the combination of “dots and dashes” in binary format. For </p>
+<p>example, this example would set a line style of equal solid and blank components:</p>
+<p>SLine %1111000011110000;</p>
+<p><b>G</b>raphic<b>L</b>ine</p>
+<p><i>Interface instruction: draw a line on the screen</i></p>
+<p><b>GL</b> x1,y1,x2,y2;</p>
+<p>This   command   draws   a   graphical   line   from   coordinates   x1,y1   to   x2,y2,   like   the   normal   DRAW </p>
+<p>command. As usual with Interface commands, the starting coordinates are measured from the BAse </p>
+<p>position. For example:</p>
+<p>GLine 0,0,100,100</p>
+<p><b>G</b>raphic<b>E</b>llipse</p>
+<p><i>Interface instruction: draw an ellipse or circle</i></p>
+<p><b>GE</b> x,y,radius1,radius2;</p>
+<p>This simple Interface command is used to draw hollow ellipses or circles. The centre of the figure is </p>
+<p>set by coordinates x,y relative to the BAse location, and then the height and width of the figure are set </p>
+<p>by specifying the length of the appropriate radii in pixels. To draw a circle, simply specify the same </p>
+<p>value for both radii.</p>
+<p><b>Displaying text</b></p>
+<p>Once the surroundings of the requester have been generated, the following commands will be needed </p>
+<p>to display text in these dialogue boxes. The PRint command is examined in Chapter 9.1, here are some </p>
+<p>more instructions to affect the way text is displayed.</p>
+<p><b>P</b>rint<b>O</b>utline</p>
+<p><i>Interface instruction: print hollow text with outline</i></p>
+<p><b>PO</b> x,y,'text',outline colour,text colour;</p>
+<p>The PrintOutine command is used 'to call up outlined or stencilled text. This is achieved by pasting </p>
+<p>the   same   text   at   slightly   different   positions,   and   is   most   effective   with   larger   typefaces.   The </p>
+<p>parameters are self-explanatory, and consist of the starting coordinates for the text on screen, the </p>
+<p>string of text enclosed in single quotation marks and the index numbers of the outline and text </p>
+<p>colours.</p>
+<p>09.02.04</p>
+<p>I</p>
+<p>N</p>
+<p>T</p>
+<p>E</p>
+<p>R</p>
+<p>F</p>
+<p>A</p>
+<p>C</p>
+<p>E</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Interface Language</p>
+<p>One side effect of the PrintOutline command is that the drawing mode is automatically re-set to </p>
+<p>transparent, and so a previous opaque setting may need to be changed. This is explained next.</p>
+<p><b>S</b>et<b>W</b>riting</p>
+<p><i>Interface instruction: set the writing mode for text and graphics</i></p>
+<p><b>SW</b> mode;</p>
+<p>Normally, all text and graphics are drawn over a transparent background, allowing them to merge </p>
+<p>neatly into the existing display. If you need to set the background colour using an INk command, you </p>
+<p>must change the mode to “opaque”. The mode parameter that affects this command uses a value from </p>
+<p>zero to 7, and is fully explained under the GR WRITING command in Chapter 6.4. A parameter value </p>
+<p>of zero will set an opaque mode, and a value of 1 re-sets it to transparent. Use of the PrintOutline  </p>
+<p>command automatically re-sets the mode to transparent.</p>
+<p><b>S</b>et<b>F</b>ont</p>
+<p><i>Interface instruction: select font to be assigned to text</i></p>
+<p><b>SF</b> number,style;</p>
+<p>To change the type font used by a previous PRint or PrintOutline command, use SetFont followed by </p>
+<p>the number of the new font to be assigned to the text, and the style to be adopted by that font. A full  </p>
+<p>explanation of the available styles can be found under the SET TEXT command in Chapter 5.6.</p>
+<p>If only the style is to be changed, the font remains unaffected when a dummy parameter value, such </p>
+<p>as zero, is used for the font number.</p>
+<p>There are four more simple Interface functions that can be used to manipulate text, which are self </p>
+<p>explanatory.</p>
+<p><b>T</b>ext<b>W</b>idth</p>
+<p><i>Interface function: return the width of current font text in pixels</i></p>
+<p>width=“text” <b>TW</b></p>
+<p><b>T</b>ext<b>H</b>eight</p>
+<p><i>Interface function: return the height of current font in pixels</i></p>
+<p>height=<b>TH</b></p>
+<p><b>T</b>ext<b>L</b>ength</p>
+<p><i>Interface function: return the number of characters in a string of text</i></p>
+<p>number=“text” <b>TL</b></p>
+<p><b>C</b>entre<b>X</b></p>
+<p><i>Interface function: centre text in the display</i></p>
+<p>position=“text” <b>CX</b></p>
+<p>The CentreX function is used to find the correct centring location by comparing the width of the given </p>
+<p>text with the value returned by an SX function, like this:</p>
+<p>SetVar 0,“Hello, this is the text”</p>
+<p>PRint 0VA CentreX,0,0 VA,2;</p>
+<p>09.02.05</p>
+<p>I</p>
+<p>N</p>
+<p>T</p>
+<p>E</p>
+<p>R</p>
+<p>F</p>
+<p>A</p>
+<p>C</p>
+<p>E</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Interface Language</p>
+<p><b>V</b>ert<b>T</b>ext</p>
+<p><i>Interface instruction: display vertical text</i></p>
+<p><b>VT</b> x,y,'text',colour</p>
+<p>The VertText command is used to display a column of vertical text using the specified colour index </p>
+<p>number, starting at your chosen coordinates.</p>
+<p><b>Labels and Tests</b></p>
+<p>The AMOS Professional Interface also supports a number of program control instructions, allowing </p>
+<p>simple tests to be performed and jumps to be made to various routines. These controls make it easy to </p>
+<p>create complex multi-level user interfaces.</p>
+<p><b>LA</b>bel</p>
+<p><i>Interface instruction: create a simple label</i></p>
+<p><b>LA</b> label;</p>
+<p>The LAbel command is used to define a marker label in an Interface program. This can them be </p>
+<p>employed  as  the  target  destination  for   a JumP  or  JumpSub  command,   which  are  the  Interface's </p>
+<p>equivalents to the familiar GOTO and GOSUB operations in normal AMOS Professional programs. It </p>
+<p>can also be used as an entry point for the DIALOG RUN instruction.</p>
+<p>Several complete dialogue boxes can be installed into the same definition string, if required.</p>
+<p>Unlike   conventional   AMOS   Professional   programs   which   recognise   any   characters   for   labels, </p>
+<p>Interface labels are referred to by <b>numbers</b> only, ranging from zero up to 65535. If a newly defined </p>
+<p>label already exists, an error message will be generated. Interface labels are defined in the following </p>
+<p>manner:</p>
+<p>LA 10; set up label number 10</p>
+<p><b>J</b>m<b>P</b></p>
+<p><i>Interface instruction: jump to an Interface program label</i></p>
+<p><b>JP</b> label;</p>
+<p>The JumP command transfers control to the Interface instructions that commence with the selected </p>
+<p>label number. This label must be defined elsewhere in the Interface program. The JumP instruction </p>
+<p><b>cannot</b> be used inside any of the routines held in square brackets of a BUtton command. It is used  </p>
+<p>with the single parameter of the target label, like this:</p>
+<p>JumP 10;</p>
+<p>Interface labels are also used to mark the start of various subroutines, which are entered and left as  </p>
+<p>explained next.</p>
+<p>09.02.06</p>
+<p>I</p>
+<p>N</p>
+<p>T</p>
+<p>E</p>
+<p>R</p>
+<p>F</p>
+<p>A</p>
+<p>C</p>
+<p>E</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Interface Language</p>
+<p><b>J</b>ump<b>S</b>ubroutine</p>
+<p><i>Interface instruction: call an Interface sub-routine</i></p>
+<p><b>JS</b> label;</p>
+<p>The JumpSubroutine command calls up the sub-routine whose beginning is marked by the specified </p>
+<p>label number from zero to 65535. Sub-routines may be nested inside one another, with a maximum of </p>
+<p>128 calls that can be made from each routine.</p>
+<p><b>R</b>e<b>T</b>urn</p>
+<p><i>Interface instruction: return from an Interface sub-routine</i></p>
+<p><b>RT</b>;</p>
+<p>An Interface sub-routine <b>must</b> be terminated by a ReTurn command. The Interface program will now </p>
+<p>re-commence from the command immediately after the initial JumpSubroutine call. If a ReTurn call is </p>
+<p>encountered out of sequence, an error will be generated.</p>
+<p><b>Interface conditional tests</b></p>
+<p>Constructing a test facility inside the AMOS Professional Interface is relatively simple.</p>
+<p><b>IF</b></p>
+<p><i>Interface structure: Mark start of conditional test</i></p>
+<p><b>IF</b> expression;[routine]</p>
+<p>The familiar IF structure is followed by an Interface expression. When the expression results in a  </p>
+<p>value of zero (False), any routine held inside the square brackets will be completely ignored, but if the </p>
+<p>expression is not zero (True) the bracketed routine will be executed immediately.</p>
+<p>The expression is a normal Interface expression, and all values are taken from the stack in reverse </p>
+<p>order! The routine within the square brackets contains a list of normal Interface commands to be </p>
+<p>performed if the expression is true.</p>
+<p>There is no limit to the size or the number of these commands, and JUmp as well as JumpSubroutine </p>
+<p>calls can be included. User-defined instructions may be accessed, and these are explained below. It is </p>
+<p>even possible to include another IF within the square brackets, and providing the number of opening </p>
+<p>brackets equals the number of closing brackets, all should be well. Here is a very simple example of a </p>
+<p>conditional test:</p>
+<p>IF 0VA 1=; if the contents of variable zero is equal to one</p>
+<p>[PRint 0,0,'Variable 0 equals 1',5; then print a message]</p>
+<p>Here is a table of the available testing operators that can be used for Interface conditional tests:</p>
+<p><b>Operator</b></p>
+<p><b>Meaning</b></p>
+<p><b>Notes</b></p>
+<p>=</p>
+<p>equals</p>
+<p>Gives -1 if two values are equal, otherwise gives zero</p>
+<p>\</p>
+<p>not equals</p>
+<p>Gives -1 if two values are unequal. Do not confuse with /</p>
+<p>&lt;</p>
+<p>less than</p>
+<p>Gives -1 if the first value is less than the second value</p>
+<p>&gt;</p>
+<p>greater than</p>
+<p>Gives -1 if the first value is greater than the second value</p>
+<p>&amp;</p>
+<p>logical AND</p>
+<p>|</p>
+<p>logical OR</p>
+<p>09.02.07</p>
+<p>I</p>
+<p>N</p>
+<p>T</p>
+<p>E</p>
+<p>R</p>
+<p>F</p>
+<p>A</p>
+<p>C</p>
+<p>E</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Interface Language</p>
+<p><b>User-defined functions</b></p>
+<p>User-defined   Interface   commands   are   treated   in   exactly   the   same   way   as   any   of   the   existing </p>
+<p>instructions, and they can be used to create whole libraries of box definitions, button types and </p>
+<p>selectors.</p>
+<p><b>U</b>ser<b>I</b>nstruction</p>
+<p><i>Interface instruction: create a user-defined Interface command</i></p>
+<p><b>UI</b> XX,number of parameters;[instruction definition]</p>
+<p>To create a new Interface instruction, use the UI command and then specify the pair of capital letters </p>
+<p>that are to represent the name of the new instruction from now on. For example, SB could be specified </p>
+<p>to refer to a new command for drawing a ShadowedBox. The new name must not already be used for </p>
+<p>an existing Interface command.</p>
+<p>The   pair   of   identification   letters   is   followed   by   a   list   of   parameter   values.   Each   user-defined </p>
+<p>instruction can read up to <b>nine</b> parameter values from the Interface program, these parameters must </p>
+<p>be separated by commas, and can be entered directly in the command line. They can now be read </p>
+<p>from the new definition routine using the parameter functions P1 to P9.</p>
+<p>Finally, the definition of the user-defined command is specified inside a pair of square brackets. This </p>
+<p>definition enters an Interface program to be assigned to the new instruction, and it can include </p>
+<p>anything you wish.</p>
+<p>Here is a complete working example of a user-defined instruction that draws a shadowed dialogue </p>
+<p>box:</p>
+<p>A$=A$+“BA 50,50;”</p>
+<p>A$=A$+“SI 160,60; SA 1;”</p>
+<p>A$=A$+“SB 0,0,150,50,5,0,5;”</p>
+<p>AS=A$+“PO 10,10,'AMOS Professional',2,4; PR 48,20,'Basic',4;”</p>
+<p>A$=A$+“BU 1,90,38,50,10,0,0,6;”</p>
+<p>A$=A$+“[ShadowBox 0,0,50,10,1,0,4 BPos+; PR 1,2,'Button',6;][]”</p>
+<p>A$=A$+“RU 0,7;EXit;”</p>
+<p>A$=A$+“UserInstruction ShadowBox,7; create shadowed box with seven </p>
+<p>parameters”</p>
+<p>A$=A$+“[IN P6,0,0; GB P1 P5+,P2 P5+,P3 P5+,P4 P5+; draw the shadow effect”</p>
+<p>A$=A$+“1N P7,0,0; GB P1,P2,P3,P4, draw the box at the top]”</p>
+<p>D=Dialog Box(A$)</p>
+<p>The Interface provides a method of arranging your user-defined instructions so that they behave </p>
+<p>exactly like the built-in graphics operations.</p>
+<p><b>XY</b></p>
+<p><i>Interface instruction: set graphics variables</i></p>
+<p><b>XY</b> xa,ya,xb,yb</p>
+<p>The XY instruction loads the internal variables XA, YA, XB and YB with the position of the graphics </p>
+<p>cursor before and after the new operation.</p>
+<p>09.02.08</p>
+<p>I</p>
+<p>N</p>
+<p>T</p>
+<p>E</p>
+<p>R</p>
+<p>F</p>
+<p>A</p>
+<p>C</p>
+<p>E</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Interface Language</p>
+<p>The xa,ya parameters hold the values to be loaded into XA and YA, and these store the coordinates of </p>
+<p>the graphics cursor before the current operation is performed. Similarly, the xb,yb parameters enter </p>
+<p>values to be stored in XB and YB, and they are used to set the position of the cursor after the new </p>
+<p>instruction as been executed. So after the new command has done its work, the internal variables can </p>
+<p>b set up accordingly. For example:</p>
+<p>'An instruction that draws a box and then prints some text in it.</p>
+<p>'XB YB will be at the end of the box, and not at the printed text!</p>
+<p>'The syntax for this is TextBox x1,y1,x2,y2,text</p>
+<p>UserInstruction TextBox,5;</p>
+<p>[BOx P1,P2,1,P3,P4; PRint P1,P2,P5,1; XY P1,P2,P3,P4;]</p>
+<p>User instructions have a few limitations, which should be remembered. Each command is restricted to </p>
+<p>a maximum of nine parameters, identified as P1 to P9, and any user-defined instruction can call up to </p>
+<p>a maximum of ten additional UserInstruction commands from the definition routine.</p>
+<p>One additional problem can occur if you want to create a new button type with a UserInstruction. You </p>
+<p>need to save the parameters somewhere safe before you leave your routine, so that they will be </p>
+<p>readily available when the new button is selected on the screen. This problem only occurs if you are </p>
+<p>defining a zone <b>inside</b> a UserInstruction, and the problem can be solved by the following instruction.</p>
+<p><b>S</b></p>
+<p><b>et</b></p>
+<p><b>Z</b></p>
+<p><b>onevariable</b></p>
+<p><i>Interface instruction: save a parameter for the next zone definition</i></p>
+<p><b>SZ</b> value;</p>
+<p>This command is used to set the internal zone variable for the  <b>next</b>  active zone to be defined. The </p>
+<p>value can be a number or a string that you want to save, and the Interface stores it in an internal  </p>
+<p>buffer, ready for the new Zone definition. You can now use the ZoneVariable function to poke this  </p>
+<p>value directly into the new zone, so that a “change” routine, held inside the second pair of square </p>
+<p>brackets, will work as normal. This function is explained lastly.</p>
+<p><b>Z</b></p>
+<p><b>one</b></p>
+<p><b>V</b></p>
+<p><b>ariable</b></p>
+<p><i>Interface function: read a zone variable from the internal buffer area</i></p>
+<p>value=<b>ZV</b></p>
+<p>This function can only be used inside a change or a draw routine held inside square brackets. It  </p>
+<p>returns the contents of the internal zone variable, and pokes it into your definition for safe- keeping. </p>
+<p>For example:</p>
+<p>'This user instruction defines a button made of text only</p>
+<p>'MyButton zone,x,y,text</p>
+<p>Userinstruction MyButton,4;</p>
+<p>[SetZone P4; save parameter four in the internal buffer zone</p>
+<p>BUtton P1,P2,P3,P4 TextWidth 16+,TextHeight 4+,0,0,1;</p>
+<p>[PRint 0,0,ZoneVariable,1][] zvar permanently installs text into the new button</p>
+<p>09.02.09</p>
+<p>I</p>
+<p>N</p>
+<p>T</p>
+<p>E</p>
+<p>R</p>
+<p>F</p>
+<p>A</p>
+<p>C</p>
+<p>E</p>
+<h1 style="page-break-before:always; "></h1>
+<p>The Editor</p>
+<p><b>Machine code extensions</b></p>
+<p>The final part of this Chapter explains how to add your own machine code extensions directly into </p>
+<p>the AMOS Professional Interface.</p>
+<p><b>CA</b>ll</p>
+<p><i>Interface instruction: call a machine code extension</i></p>
+<p><b>CA</b> address;</p>
+<p>The address parameter refers to the address of a machine code program in memory, and the easiest </p>
+<p>way to load it is to place it into an Interface variable from the main program. For example:</p>
+<p>Vdialog(1,0)=Start(6) : Rem Load 0VA of channel 1 with the address of bank 6.</p>
+<p>You can now run your CAll routine using a line like this:</p>
+<p>Call 0VA;</p>
+<p>Machine code can be used to modify <b>all</b> registers, and should return with an RTS. All aspects of using </p>
+<p>machine code for your AMOS Professional programs are examined in detail in Appendix A of this  </p>
+<p>User Guide. If you are familiar with assembly language, the following brief information will be of use:</p>
+<p>On entry to your routine, data will be placed in the address registers like this:</p>
+<p>A6=</p>
+<p>Program pointer</p>
+<p>A5=</p>
+<p>AMOS datazone</p>
+<p>A4=</p>
+<p>Base of this Dialog Structure</p>
+<p>A3=</p>
+<p>Parameter stack. Use this to grab values from the Interface stack.</p>
+<p>09.02.10</p>
+<p>I</p>
+<p>N</p>
+<p>T</p>
+<p>E</p>
+<p>R</p>
+<p>F</p>
+<p>A</p>
+<p>C</p>
+<p>E</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Advanced Control Panels</p>
+<p>This Chapter reveals the true power of the AMOS Professional Interface, and deals with the creation </p>
+<p>of advanced control panels, dialogue channels, edit zones and sliders.</p>
+<p>The last Chapter explained how simple requesters and dialogue boxes wait for the user to make a </p>
+<p>selection, and then return straight back to the main AMOS Professional program with the result. But </p>
+<p>this only uses fraction of the system. In actual fact the Interface is capable of running a dialogue box  </p>
+<p>completely in the background, exactly like an AMOS Professional menu.</p>
+<p>A control panel can be displayed on screen permanently, and each button selection can be read as it </p>
+<p>happens, directly from the main program, without any interruption to that program whatsoever. This </p>
+<p>means that a computer game can be busy performing its calculations while the user enters new values </p>
+<p>into a dialogue box.</p>
+<p>In order to access these features, a little preparation must be made in advance in order to exploit </p>
+<p>dialogue channels.</p>
+<p><b>Dialogue channels</b></p>
+<p><b>DIALOG OPEN</b></p>
+<p><i>instruction: open a channel to an Interface program</i></p>
+<p><b>Dialog Open</b> channel number,Interface string</p>
+<p><b>Dialog Open</b> channel number,Interface string,<i>nvar,buffer</i></p>
+<p>The DIALOG OPEN command opens a “communication channel” to the new program, and loads it </p>
+<p>with a list of Interface commands. If there are any problems, an appropriate error message will </p>
+<p>appear, and mistakes can be located using a simple call to the error function EDIALOG, which is </p>
+<p>explained below.</p>
+<p>The parameters for a DIALOG OPEN instruction are given as follows:firstly,  the number of the </p>
+<p>channel to be opened, starting from 1. Providing that there is enough memory, you may open as </p>
+<p>many channels as you wish. A string should be specified next, containing one or more Interface </p>
+<p>programs to be initialised. If this string contains several programs, each routine should begin with a </p>
+<p>LAbel instruction and end with an EXit command.</p>
+<p>Normally AMOS Professional provides enough space to hold up to 17 different values in every </p>
+<p>Interface channel (0 VA to 16 VA). If more channels are needed, this array can be expanded via an  </p>
+<p>optional nvar parameter, and each extra variable will take up four bytes of memory. There is a final </p>
+<p>optional parameter that allocates bytes for an internal memory buffer used by Interface programs. </p>
+<p>This array holds all of the information that is required to display dialogue boxes and selectors on </p>
+<p>screen. As a default, 1k is reserved for each channel that has been defined, but if the requirements are </p>
+<p>very complex, this value may have to increase. An error message will appear automatically if the </p>
+<p>current allocation is too small.</p>
+<p>Note that the DIALOG OPEN command only initialises the communication <b>channel</b>, and it does not </p>
+<p>start the program running or generate any graphics on the screen. To accomplish this, the following </p>
+<p>function is used.</p>
+<p>09.03.01</p>
+<p>I</p>
+<p>N</p>
+<p>T</p>
+<p>E</p>
+<p>R</p>
+<p>F</p>
+<p>A</p>
+<p>C</p>
+<p>E</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Advanced Control Panels</p>
+<p><b>DIALOG RUN</b></p>
+<p><i>function: run a dialogue box from an open channel</i></p>
+<p>button=<b>DIALOG RUN</b>(channel number)</p>
+<p>button=<b>DIALOG RUN</b>(channel number,label,x,y)</p>
+<p>As   its   name   suggests,   DIALOG   RUN   executes   an   Interface   dialogue   program   from   a   specified </p>
+<p>channel, previously opened by a call to DIALOG OPEN. This Interface program will now run in the </p>
+<p>background, leaving the main AMOS Professional program to continue from its next instruction, </p>
+<p>providing that the Interface program does <b>not</b> contain a RunUntil instruction.</p>
+<p>The use of an Interface RunUntil command will force the Interface program to behave exactly like the </p>
+<p>original DIALOG BOX routine, so it will take complete control of the system and only return when </p>
+<p>the user clicks on an exit button, or aborts by pressing [Ctrl]+[C]. In this case, the value held by </p>
+<p>“button” will contain the number of the last button pressed by the user.</p>
+<p>The parameters for a DIALOG RUN function are very simple. First give the number of a channel that </p>
+<p>is currently open, then define the label in an Interface command string from which the program is to </p>
+<p>start. If a label is not specified, the Interface program will commence from the first routine in the list. </p>
+<p>Optional x,y coordinates can also be set to position the control panel on screen, and all graphics  </p>
+<p>coordinates will now be measured from this location. It is important to note that if a BAse command </p>
+<p>is included in the program, these new x,y coordinates will be completely ignored! Also note that </p>
+<p>optional coordinates can be given without specifying the label parameter, as long as the appropriate </p>
+<p>commas are included. For example:</p>
+<p>Dialog Run(1,,x,y)</p>
+<p>Here is a simple working example:</p>
+<p>A$=A$+“BA 50,50;SI 180,60;SA 1 ;IN 5,0,0;GB 0,0,170,50;”</p>
+<p>A$=A$+“PO 10,10,'Simple Keyboard',2,4;”</p>
+<p>Rem Define two quick return buttons</p>
+<p>A$=A$+“BU 1,10,28,24,10,0,0,1;[IN 0,BP 2*,0;SW 1;PR 4,2,' 1 ',4;][BR 0;NW;]”</p>
+<p>A$=A$+“BU 2,70,28,24,10,0,0,1;[IN 0,BP 2*,0;SW 1;PR 4,2,' 2 ',4;][BR 0;NW;]”</p>
+<p>A$=A$+“EXit;”</p>
+<p>Dialog Open 1,A$ : Rem Open a channel to the Interface program in A$</p>
+<p>R=Dialog Run(1) : Rem Run the program</p>
+<p>Rem Read each keypress as it is made</p>
+<p>Repeat</p>
+<p>P=Dialog(1) : Rem Check for button selection explained later</p>
+<p>If P&lt;&gt;0 Then Play P*10,10</p>
+<p>Until Inkey$&lt;&gt;“”</p>
+<p>Dialog Close</p>
+<p><b>DIALOG CLOSE</b></p>
+<p><i>instruction: close one or more dialogue channels</i></p>
+<p><b>Dialog Close</b></p>
+<p><b>Dialog Close</b> channel number</p>
+<p>This command closes one or more dialogue channels on the screen.</p>
+<p>09.03.02</p>
+<p>I</p>
+<p>N</p>
+<p>T</p>
+<p>E</p>
+<p>R</p>
+<p>F</p>
+<p>A</p>
+<p>C</p>
+<p>E</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Advanced Control Panels</p>
+<p>Interface programs are terminated and removed from memory immediately. If the Interface programs </p>
+<p>contain an SA command, the original background areas will be neatly pasted back onto the display.</p>
+<p>Any active channel can be shut down with this command, by specifying a channel number. If the  </p>
+<p>channel number is omitted, <b>all</b> of the current Interface channels will be de-activated. Please see the </p>
+<p>DIALOG FREEZE Command below, for something a little less drastic!</p>
+<p><b>EDIALOG</b></p>
+<p><i>function: find an error in an Interface program</i></p>
+<p>position=<b>Edialog</b></p>
+<p>Whenever an error occurs in an Interface program, its position can be found with a quick call to the </p>
+<p>EDIALOG function. The relevant section of the Interface string will be displayed on screen, enabling </p>
+<p>you to discover what has gone wrong. In practice, the most common mistakes are caused by missing </p>
+<p>or wrongly-used semi-colon characters!</p>
+<p>Here is a small error handler that may be useful if included in your own programs:</p>
+<p>On ErrOr Goto TRAP: Rem Add this line before a DIALOG OPEN command</p>
+<p>...: Rem The rest of your program goes here</p>
+<p>TRAP: Print Mid$(DB$,Edialog,80) : Wait Key : End : Rem Error handler</p>
+<p><b>Testing an active zone</b></p>
+<p><b>DIALOG</b></p>
+<p><i>function: return status of an open dialogue box</i></p>
+<p>button=<b>Dialog</b>(channel number)</p>
+<p>This function provides a simple method of testing whether or not an option from a control panel has </p>
+<p>been selected. Simply specify the number of the open channel that is to be tested.</p>
+<p>After this function has been performed, one of the following values for the tested button will be </p>
+<p>returned:</p>
+<p><b>&lt; 0</b></p>
+<p>A negative value means that the current channel is inactive,  either because it has not been </p>
+<p>assigned to a dialogue box, or because the user has left the box via an exit button.</p>
+<p><b>= 0</b></p>
+<p>A value of zero indicates that there has been no user-input since the previous test.</p>
+<p><b>&gt; 0</b></p>
+<p>If a positive value is returned, it indicates the number of the last button that was selected by the </p>
+<p>user. In the case of edit zones, a value will only be returned when the [Return] key is pressed.</p>
+<p>Once the value of the contents held by the DIALOG function has been checked, it will be re-set to  </p>
+<p>zero.</p>
+<p>09.03.03</p>
+<p>I</p>
+<p>N</p>
+<p>T</p>
+<p>E</p>
+<p>R</p>
+<p>F</p>
+<p>A</p>
+<p>C</p>
+<p>E</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Advanced Control Panels</p>
+<p>Here is an example of a simple check:</p>
+<p>Do</p>
+<p>D=Dialog(1)</p>
+<p>Exit If D&lt;0</p>
+<p>If D&gt;0</p>
+<p>On D Gosub BUTTON1,BUTTON2</p>
+<p>Wait Vbl</p>
+<p>Endif</p>
+<p>Loop</p>
+<p><b>RDIALOG</b></p>
+<p><i>function: read the status of a zone or button</i></p>
+<p>button=<b>RDIALOG</b>(channel number,button number)</p>
+<p>button=<b>RDIALOG</b>(channel number,button number, object number)</p>
+<p>This function is used to read the position of a particular button or selector. Specify the number of an  </p>
+<p>open Interface channel, and then give the number of the button or zone to be tested. There is also an </p>
+<p>optional parameter which can be specified to check one of several objects that have been assigned to a </p>
+<p>current zone number. If this object number is omitted, then the status of the first object defined in the </p>
+<p>current zone number will be returned. Object numbers are arranged according to the order in which </p>
+<p>they have been defined in the Interface program, so the first button has an object number of zero, the </p>
+<p>second will be read as 1, and so on.</p>
+<p>The result returned by the RDIALOG function depends on the type of zone being scrutinised. In the </p>
+<p>case of a simple button, its current value will be given, but there are special numerical edit zones  </p>
+<p>(explained later) which will return a new value entered by the user. If a text zone is checked in this </p>
+<p>way, a result of zero will given, and the RDIALOG$ function should be used instead. This is explained </p>
+<p>next.</p>
+<p><b>RDIALOG</b></p>
+<p>$</p>
+<p><i>function: return text string entered into an edit zone</i></p>
+<p>text string=<b>RDIALOG$</b>(channel number,zone number)</p>
+<p>text string=<b>RDIALOG$</b>(channel number,zone number,<i>object number</i>)</p>
+<p>Use this function to return a string of text Assigned to a zone. If the selected zone does not contain </p>
+<p>any text, an empty string will be presented. Please see the Interface EDit command for more details.</p>
+<p><b>Accessing a variable array</b></p>
+<p>Variables that have been assigned to an active Interface channel can be read and modified directly </p>
+<p>from the main AMOS Professional program.</p>
+<p>09.03.04</p>
+<p>I</p>
+<p>N</p>
+<p>T</p>
+<p>E</p>
+<p>R</p>
+<p>F</p>
+<p>A</p>
+<p>C</p>
+<p>E</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Advanced Control Panels</p>
+<p><b>VDIALOG</b></p>
+<p><i>function: assign or read an Interface string</i></p>
+<p><b>Vdialog</b>(channel number,variable number)=value</p>
+<p>value=<b>Vdialog</b>(channel number,variable number)</p>
+<p>This function can be used to either read or change the variables in any active Interface program. The </p>
+<p>active channel number is selected, followed by the number of the variable you are interested in.  The </p>
+<p>value refers to the new integer value that has been selected for this variable.</p>
+<p><b>VDIALOG$</b></p>
+<p><i>function: assign or read an Interface value</i></p>
+<p><b>Vdialog$</b>(channel number,variable number)=string$</p>
+<p>string$=<b>Vdialog$</b>(channel number,variable number)</p>
+<p>The VDIALOG$ function is exactly the same as the previous function, except that it works with </p>
+<p>strings rather than numbers.</p>
+<p>Specify   the   channel   number   and   the   variable   number,   and   then   string$   holds   a   new   AMOS </p>
+<p>Professional string to be stored in the Interface variable array.</p>
+<p><b>Advanced Control Panels</b></p>
+<p>There now follows a detailed examination of some of the additional zone commands which make the </p>
+<p>AMOS Professional Interface so special!</p>
+<p><b>Editing zones</b></p>
+<p>The AMOS Professional Interface allows for both text and numbers to be input into screen zones.</p>
+<p><b>ED</b>it</p>
+<p>Interface instruction: create a text edit zone</p>
+<p><b>ED</b> zone number,x,y,width,max,'string',paper,pen;</p>
+<p>The EDit instruction opens a zone for text input on the screen. This zone can be selected with the  </p>
+<p>mouse, and then a string of characters may be typed in using all the normal line-editing functions. </p>
+<p>The text cursor may also be positioned directly, by clicking the mouse pointer on the required new </p>
+<p>position.</p>
+<p>The EDit parameters begin with the zone number, from 1 upwards. The x,y coordinates set the </p>
+<p>position of the text input line relative to the coordinate base, and will be added to the BAse setting to </p>
+<p>give the actual position of the line. If the resulting x-coordinate is not an exact multiple of 16, it will be </p>
+<p>rounded <b>down</b> to the nearest 16 pixels.</p>
+<p>The width parameter sets the width of the text edit window, and is specified in the number of </p>
+<p>characters to be accommodated, rounded <b>up</b> to the nearest even number. Next, the maximum length </p>
+<p>of the text string must be given in characters, and an area of this size will be reserved in the channel  </p>
+<p>buffer.</p>
+<p>09.03.05</p>
+<p>I</p>
+<p>N</p>
+<p>T</p>
+<p>E</p>
+<p>R</p>
+<p>F</p>
+<p>A</p>
+<p>C</p>
+<p>E</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Advanced Control Panels</p>
+<p>The 'string' parameter enters a string of characters that will be initially loaded into the text edit zone. </p>
+<p>If a default string is not required, simply use a pair of single quotation marks with nothing in them, or </p>
+<p>use a zero. Finally, set the colour index numbers for the paper and pen to be used for the characters on </p>
+<p>screen.</p>
+<p>If the size of the string is larger that the physical size of the zone, the string will scroll automatically as </p>
+<p>more characters are typed in. If the [Return] or [Tab] key is pressed within the edit line, the Interface </p>
+<p>will jump to the next EDit zone, if it has been defined. When the final zone is reached, all keyboard </p>
+<p>input will be directed to the dialogue buttons, and the next [Tab] press will return you back to the  </p>
+<p>original editing zone.</p>
+<p>When  the  dialogue  box  is  drawn,   the  first  edit  zone  of  the  Interface program  will  be activated </p>
+<p>automatically.  Please note that order  of  activity  follows  the order  in which the edit  zones  were </p>
+<p>declared in the Interface program, and <b>not</b> the number of the zones.</p>
+<p>The contents of an edit zone can be read directly from the main AMOS Professional program, using a </p>
+<p>simple call to a RDIALOG$ function. Also, if the [Return] key has been pressed, the number of the  </p>
+<p>selected EDit zone will also be available from the DIALOG function.</p>
+<p>Characters are entered in a new text zone window with the number z+1000. If the program is to  </p>
+<p>display some text while the zone is in use, the default screen window should be re-activated with a </p>
+<p>WINDOW 0 instruction. After the text has been displayed, the edit window can be handled by a line  </p>
+<p>like this:</p>
+<p>Window Z+1000: Rem Z is the number of the EDit zone</p>
+<p>Here is a working example of a text input zone:</p>
+<p>A$=A$+“BA 50,50;SI 200,60; SA 1; set things up”</p>
+<p>A$=A$+“IN 5,0,0; GB 0,0,200,50; PR 16,10,'Enter your name human!',2;”</p>
+<p>A$=A$+“BU 1,150,40,50,10,0,0,16;”</p>
+<p>A$=A$+“[1N BPos 4+,0,0; GB 0,0,50,10; PR 2,0,' Quit',2;][BQ]”</p>
+<p>A$=A$+“ED 2,16,25,14,14,”,0,2; define an edit zone”</p>
+<p>A$=A$+“EXit,”</p>
+<p>Dialog Open 1,A$ : Rem Open a channel</p>
+<p>R=Dialog Run(1) : Rem the Interface program</p>
+<p>Repeat</p>
+<p>D=Dialog(1) : Rem Wait until Return Key is pressed</p>
+<p>Until D&lt;0</p>
+<p>Print “Hello ”;Rdialog$(1,2)</p>
+<p>Dialog Close</p>
+<p>The numerical equivalent of a text zone is examined next.</p>
+<p>09.03.06</p>
+<p>I</p>
+<p>N</p>
+<p>T</p>
+<p>E</p>
+<p>R</p>
+<p>F</p>
+<p>A</p>
+<p>C</p>
+<p>E</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Advanced Control Panels</p>
+<p><b>DI</b>git</p>
+<p><i>Interface instruction: create a numeric editing zone</i></p>
+<p><b>DI</b> zone number,x,y,width,value,flag,paper,pen;</p>
+<p>The DIgit instruction creates a special edit window for entering numbers. It is very similar to the  </p>
+<p>previous Edit command, except for the fact that only the digits from zero to 9 may be entered, and  </p>
+<p>anything else will be completely ignored by the Interface system.</p>
+<p>Please refer to the EDit command to see how the zone number is specified first, followed by the x,y-</p>
+<p>coordinates that set the position of the zone on screen. The width of the window is then set, and it is </p>
+<p>rounded up to the next even number, in exactly the same way as with an EDit instruction.</p>
+<p>The value parameter defines what the initial default value displayed in the edit window is to be. The </p>
+<p>flag parameter indicates whether the default is to be shown in the window, with a zero setting to </p>
+<p>make the default value invisible, and any other setting meaning that it will be displayed as normal. </p>
+<p>Finally, the paper and pen parameters are set by the colour index numbers to use for the input </p>
+<p>numeric characters.</p>
+<p>The DIgit value can be read from the main AMOS Professional program with the RDIALOG function.</p>
+<p>Here is a simple working example:</p>
+<p>A$=A$+“BA 50,50; SI 200,90; SA 1;”</p>
+<p>A$=A$+“IN 5,0,0; GB 0,0,200,80;PR 16,10,'Enter your name human!',2;”</p>
+<p>A$=A$+“BU 1;150,70,40,10,0,0,16;”</p>
+<p>A$=A$+“[IN BPos 4+,0,0; GB 0,0,50,10; PR 2,0,' Quit',2;][BQ;] KY </p>
+<p>13,0;”</p>
+<p>A$=A$+“ED 2,16,25,14,14,”,0,2; text edit zone”</p>
+<p>A$=A$+“PR 16,40,'How old are you?',2;”</p>
+<p>A$=A$+“DIgit 3,16,50,4,30,0,0,2; numerical edit zone”</p>
+<p>A$=A$+“EXit;”</p>
+<p>Dialog Open 1,A$ : R=Dialog Run(1)</p>
+<p>Repeat</p>
+<p>D=Dialog(1) : Rem Wait for the user to enter the last item</p>
+<p>Until D&lt;0</p>
+<p>Print “Hello ”;Rdialog$(1,2) : Print “You are ”;Rdialog(1,3); “years </p>
+<p>old”</p>
+<p>Dialog Close</p>
+<p><b>Sliders and Selectors</b></p>
+<p>One of the most powerful features of the Interface system is the facility to create a wide variety of </p>
+<p>sliders and selection boxes in AMOS Professional programs. The next part of this Chapter provides a </p>
+<p>detailed examination of the commands that make this possible.</p>
+<p><b>H</b>orizontal<b>S</b>lider</p>
+<p><i>Interface instruction: create an animated horizontal slider bar</i></p>
+<p><b>HS</b> zone number,x,y,width,height,position,trigger,total,step;[changes]</p>
+<p>The HS command draws an animated horizontal slider bar on the screen.</p>
+<p>09.03.07</p>
+<p>I</p>
+<p>N</p>
+<p>T</p>
+<p>E</p>
+<p>R</p>
+<p>F</p>
+<p>A</p>
+<p>C</p>
+<p>E</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Advanced Control Panels</p>
+<p>It is similar to the AMOS Professional HSLIDER command, with the additional facility of allowing the </p>
+<p>slider's position to be determined directly using the mouse. All of the animation is handled by the </p>
+<p>Interface automatically.</p>
+<p>Here is an explanation of the HS parameters, in the order that they are set.</p>
+<p>The zone number is simply the number of the new zone that is to be defined. Next the width and the </p>
+<p>height of the slider is set, and since this is a horizontal bar being created, it is sensible for the width to </p>
+<p>be greater than the height!</p>
+<p>The position parameter is a simple number, ranging from zero to “total”, and it determines the </p>
+<p>default position of the slider's trigger, which is the active part of the horizontal bar, somewhere in the </p>
+<p>middle, that is dragged to the left or right by the mouse.</p>
+<p>Total   is   the   parameter   which   defines   the   maximum   value   that   will   be   returned   by   the   slider. </p>
+<p>Allowable positions range from 1 to “total”, with each step representing a movement of the trigger, in </p>
+<p>pixels.</p>
+<p>The   step   parameter   controls   the   distance   that   is   to   be   moved   whenever   the   user   clicks   on   the </p>
+<p>background area of the slider. The bar will scroll slowly towards the current mouse position in units </p>
+<p>specified by the number of pixels given in the “total” parameter above. Once the actual pointer has </p>
+<p>been reached, it will cycle back and forth by a single step.</p>
+<p>Finally,  a list of Interface commands  is given within  a  set of square  of brackets.  This [changes] </p>
+<p>parameter will be called up whenever the slider is moved on the screen.</p>
+<p>After   a  selector   has   been   activated,   its   position   can   be   read   from   the   main  AMOS  Professional </p>
+<p>program using the RDIALOG function, as explained earlier in this Chapter. The new position will </p>
+<p>only be reported to the main program <b>after</b> the user releases the left mouse button.</p>
+<p>The colours used by the slider bar are zero for the background area, 4 for the unselected bar and 3 for  </p>
+<p>the selected bar, which is normally flashing. Here is a working example of a horizontal slider in </p>
+<p>action:</p>
+<p>B$=B$+“BA 112,50; set base coordinates to the screen centre”</p>
+<p>B$=B$+“HSlide 1,0,0,100,16,0,1,100,1;[] define a one hundred position </p>
+<p>slider”</p>
+<p>B$=B$+“EXit;”</p>
+<p>Dialog Open 1,B$ : Rem Open a dialogue channel to the slider</p>
+<p>D=Dialog Run(1) : Rem Run the program held in B$</p>
+<p>Curs Off : Centre “”</p>
+<p>Rem Read the slider</p>
+<p>Repeat</p>
+<p>D=Dialog(1) : Rem See if slider has been selected</p>
+<p>If D&lt;&gt;0 Then Locate 14,20 : Print “Position ”;Rdialog(1,1);“ ”;</p>
+<p>Until Inkey$&lt;&gt;“”</p>
+<p>Dialog Close</p>
+<p>09.03.08</p>
+<p>I</p>
+<p>N</p>
+<p>T</p>
+<p>E</p>
+<p>R</p>
+<p>F</p>
+<p>A</p>
+<p>C</p>
+<p>E</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Advanced Control Panels</p>
+<p><b>V</b>ertical<b>S</b>lider</p>
+<p><i>Interface instruction: create an animated vertical slider bar</i></p>
+<p><b>VS</b> zone number,x,y,width,height,position,trigger,total,step;[changes]</p>
+<p>The VerticalSlider command generates a working vertical slider, as demonstrated by the standard </p>
+<p>AMOS Professional file selector. The parameters are exactly the same as for the HSlider command, </p>
+<p>and the position of the slider can be read by a call to the RDIALOG function, like this:</p>
+<p>position=RDIALOG(channel number,zone number)</p>
+<p>Once slider bars have been created, they can be used to produce attractive selector boxes. These allow </p>
+<p>you to scroll through a list of items directly on the screen, and select them individually using the  </p>
+<p>mouse, again, as demonstrated by the AMOS Professional file selector.</p>
+<p><b>Reading arrays</b></p>
+<p>In order to generate an Interface selector, a method is needed of grabbing an entire list of items from </p>
+<p>the AMOS Professional main program. A simple function is provided for transferring complete arrays </p>
+<p>into an Interface routine.</p>
+<p><b>ARRAY</b></p>
+<p><i>function: load the address of an array into a program</i></p>
+<p>address=<b>ARRAY</b>(list$(0))</p>
+<p>The ARRAY function returns the address in memory of the first item in the specified list$ array. This </p>
+<p>string can contain any data at all, but if the array is to be accessed from an Interface program, each  </p>
+<p>element in the array must be of <b>exactly</b> the same length.</p>
+<p>After it has been returned, the address may now be installed into an Interface program using the </p>
+<p>VDIALOG function, as follows:</p>
+<p>Vdialog(1,0)=Array(V$(0)) : Rem Loads 0 VA (channel 1) with the address of V$(0)</p>
+<p>Once installed like that, the address can be accessed from an Interface program using the ArrayRead  </p>
+<p>function.</p>
+<p><b>A</b>rray<b>R</b>ead</p>
+<p><i>Interface function: read an element from an AMOS Professional array</i></p>
+<p>item=address,element number <b>AR</b></p>
+<p>This function returns the specified item from a normal AMOS Professional array. The element to be </p>
+<p>returned must have been previously loaded into an Interface variable from the main program. The </p>
+<p>two parameters that must be specified are the address which holds the location of the first item in the </p>
+<p>array, followed by the number of the item in that array which is to be returned. Obviously, if the </p>
+<p>number of the specified element is higher than the dimension of the array, an error will be generated.</p>
+<p>09.03.09</p>
+<p>I</p>
+<p>N</p>
+<p>T</p>
+<p>E</p>
+<p>R</p>
+<p>F</p>
+<p>A</p>
+<p>C</p>
+<p>E</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Advanced Control Panels</p>
+<p><b>A</b>rray<b>S</b>ize</p>
+<p><i>Interface function: return the size of an array</i></p>
+<p>size=address <b>AS</b></p>
+<p>The ArraySize function is used to return the number of elements in an AMOS Professional array,  </p>
+<p>stored at the specified address. The address is the location of the array in memory which has been </p>
+<p>loaded from the ARRAY function.</p>
+<p><b>Displaying items on the screen</b></p>
+<p>After an item array has been entered into the Interface, it can be displayed on the screen using the </p>
+<p>powerful ActiveList command.</p>
+<p><b>A</b>ctive<b>L</b>ist</p>
+<p><i>Interface instruction: display an active list window</i></p>
+<p><b>AL</b> zone number,x,y,width,height,address,index,flag,paper,pen;[changes]</p>
+<p>This command displays an active window for an AMOS Professional string array. Each string can be </p>
+<p>individually selected with the mouse, and returned to the main program by the RDIALOG$ function. </p>
+<p>An ActiveList command can be linked to a set of slider bars or an edit zone, so that the bars move the </p>
+<p>list up and down through the array, and the edit zone changes the value that has been selected on </p>
+<p>screen.</p>
+<p>The parameters for this instruction must be given in the following order:</p>
+<p>The zone number to be allocated to the selector, followed by the x,y-coordinates to set the position of </p>
+<p>the selection box on screen. Because a normal window is used for this display, the location of the x-</p>
+<p>coordinate will be rounded down to the nearest multiple of 16. If the coordinate base has been set to a </p>
+<p>new value with a BAse instruction, this will be added to the x-coordinate before it is rounded down,  </p>
+<p>so the final screen coordinate will always be an exact multiple of 16.</p>
+<p>The width and height of the window are specified next, in the number of characters required.</p>
+<p>These parameters are followed by the address of the string array to be displayed in the selector box, </p>
+<p>and this array must have been previously defined in the program. The address of the array can now </p>
+<p>be grabbed with the ARRAY function from the AMOS Professional main program, and loaded into an </p>
+<p>appropriate   Interface   variable   with   VDIALOG.   It   can   then   be   entered   directly   into   the   AList </p>
+<p>command. This system is explained in detail below.</p>
+<p>The next parameter is the index number of the first item to be displayed in the selector box. If this </p>
+<p>number goes past the end of the array, the selector will be filled with blank lines.</p>
+<p>The flag parameter is a bit-map that is used to trigger a range of useful features, as follows:</p>
+<p>Bit 0</p>
+<p>If this is set to one, each string will be preceded by a number representing its position in the  </p>
+<p>array. The count normally starts from zero, but this can be changed as explained next.</p>
+<p>09.03.10</p>
+<p>I</p>
+<p>N</p>
+<p>T</p>
+<p>E</p>
+<p>R</p>
+<p>F</p>
+<p>A</p>
+<p>C</p>
+<p>E</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Advanced Control Panels</p>
+<p>Bit 1</p>
+<p>is only active if the automatic numbering system has been turned on by setting Bit 0 to one. If </p>
+<p>this is the case, then the number count will start from one rather than zero, if Bit 1 is set to one.</p>
+<p>Bit 2</p>
+<p>changes the way the selector reacts to the mouse pointer. If it is set to zero, each line will react </p>
+<p>to the mouse immediately, with no need for a click of the mouse button. If Bit 2 is set to one, </p>
+<p>then items must be selected explicitly with the <b>left</b> mouse button.</p>
+<p>The paper and pen parameters are the colour index numbers for the text in the item.</p>
+<p>Finally, the square brackets hold an Interface routine that determines any changes to be executed </p>
+<p>every time one of the items is selected.</p>
+<p>Note that the text is displayed using a normal AMOS Professional window defined by the number  </p>
+<p>z+2000. Particular care should be taken if you are writing to the screen while reading a selector. </p>
+<p>Return to the normal screen before printing, with a WINDOW 0 command, then use a line like </p>
+<p>WINDOW Z+2000 to move the cursor back to the active window. If this is not done, text will be </p>
+<p>printed inside the selection area!</p>
+<p>As   with   all   of   these   techniques,   there   is   a   ready-made   working   example   of   an   active   window,  </p>
+<p>available for examination:</p>
+<p>Load “AMOSPro_Tutorials:Tutorial/Interface/Sliders.AMOS”</p>
+<p><b>I</b>nactive<b>L</b>ist</p>
+<p><i>Interface instruction: display an inactive list window</i></p>
+<p><b>IL</b> zone number,x,y,width,height,address,index,flag,paper,pen;</p>
+<p>To  display a window containing items  in an  array  that  are  <b>not</b>  for  selection  by the mouse,  the </p>
+<p>InactiveList command is used in much the same way as an ActiveList instruction except that there is </p>
+<p>no [changes] parameter. Inactive windows are useful for generating simple lists on the screen.</p>
+<p>Before using the AList or IList commands, some advance preparation should be carried out, using the </p>
+<p>following steps:</p>
+<p>First of all, define a string array to hold the items in memory, using a line like this:</p>
+<p>Dim ITEM$(100)</p>
+<p>Next, load the items into the array. These items may be anything you wish, such as the commands for </p>
+<p>an adventure game, or a set of filenames on a disc. The one factor that must be ensured is that each  </p>
+<p>item must have exactly the <b>same</b> number of characters. Use spaces to pad items as necessary.</p>
+<p>The third step is to enter the Interface program into a string, and include an ActiveList command. The </p>
+<p>following example line would create zone 1 at coordinates 10,10, with 15 lines of 30 characters each, </p>
+<p>taking the address of the item array from 0 VA.</p>
+<p>AL 1,10,10,30,15,0 VA,0,0,0,1;[]</p>
+<p>09.03.11</p>
+<p>I</p>
+<p>N</p>
+<p>T</p>
+<p>E</p>
+<p>R</p>
+<p>F</p>
+<p>A</p>
+<p>C</p>
+<p>E</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Advanced Control Panels</p>
+<p>Now open an Interface communication channel with a DIALOG OPEN command, and grab the </p>
+<p>address of the first character in the item array to be loaded into an Interface variable.</p>
+<p>Dialog Open A$,1</p>
+<p>AD=Array(ITEM(0)) : Vdialog(1,0)=AD</p>
+<p>Finally, call the Interface program with DIALOG RUN, like this:</p>
+<p>R=Dialog Run(1)</p>
+<p><b>Creating a selector</b></p>
+<p>The ActiveList command is very useful, but it is not intended to operate in isolation. To create a </p>
+<p>working selection box, an appropriate set of sliders, buttons and edit zones need to be linked up, as </p>
+<p>explained in the next part of this Chapter.</p>
+<p><b>Z</b>one<b>P</b>osition</p>
+<p><i>Interface function: return the status of a zone</i></p>
+<p>value=<b>ZP</b></p>
+<p>ZonePosition returns the value of the current zone's status. In fact it is simply an expanded version of </p>
+<p>the BP function, with the difference being that it can be used in any active zone, including buttons.</p>
+<p><b>Z</b>one<b>C</b>hange</p>
+<p><i>Interface instruction: change the status of a zone</i></p>
+<p><b>ZC</b> zone number,new data;</p>
+<p>ZoneChange is a simple expansion of the BC instruction. It is used within the “changes” square </p>
+<p>brackets to link a number of zones together into one compound object. After the ZC command, </p>
+<p>specify the number of the zone to be affected, followed by some new data that is to be fed into the </p>
+<p>zone.</p>
+<p>The new data depends on the type of zone that is to be affected, and there are four possibilities:</p>
+<p><b>Buttons</b>. The data holds a new value for the status of the button position. If this is different from the </p>
+<p>current position, the button will be re-drawn immediately.</p>
+<p><b>Edit zones</b>. If a text zone has been created with EDit, the new data should contain a new string of  </p>
+<p>characters that is to be displayed in the box. Similarly, if the zone was defined using Digit, the existing </p>
+<p>number will be replaced by a newly specified value.</p>
+<p><b>Sliders</b>. The data is used to move the slider bar on the screen, exactly as if it had been selected by the </p>
+<p>user.</p>
+<p><b>Active lists</b>. In this case, the selection window is scrolled up or down the string array.</p>
+<p>09.03.12</p>
+<p>I</p>
+<p>N</p>
+<p>T</p>
+<p>E</p>
+<p>R</p>
+<p>F</p>
+<p>A</p>
+<p>C</p>
+<p>E</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Advanced Control Panels</p>
+<p>The ZoneChange command can be used to great effect with the ZonePosition function, to link the </p>
+<p>positions of various items in the dialogue box. For example, if a slider bar has been assigned to zone 1, </p>
+<p>and an active list to zone 2, you would be able to scroll through the list with the slider using a line like  </p>
+<p>this:</p>
+<p>VSlide 1,16,16,8,64,0,1,12,1; create a twelve position slider</p>
+<p>[ZChange 2,ZPosition;] set zone two to position of changed slider</p>
+<p>The commands inside the square brackets are executed automatically whenever the slider is moved </p>
+<p>on the screen, and they copy the new slider position straight into the active list command and move </p>
+<p>the list through the selector window.</p>
+<p>Here is a step by step procedure for generating a selection box on screen:</p>
+<p>Firstly, create a list of components needed for the selector. This could begin with a vertical scroll bar, </p>
+<p>where 0 VA holds the address of the item array already set up in the main program, and AS returning </p>
+<p>the number of items:</p>
+<p>VSlider 1,x,y,width,height,0,8,0 VA AS,1;[]</p>
+<p>Next an ActiveList is defined for the selection window, using a line like this:</p>
+<p>AList 2,x+width,y,20,8,0 VA,0,0,0,4; set up the item list</p>
+<p>Finally, a text edit zone is created to hold the current item on screen, like this;</p>
+<p>EDit 3,x,y+height,width/8,width/8,0,0,2;</p>
+<p>Now the scroll bar can be linked to the item display in the ActiveList window, as already explained.</p>
+<p>VSlider 1,x,y,width,height,0,1,0 VA AS,1; create a twelve position slider</p>
+<p>[ZChange 2,ZPosition;] set zone two to slider position</p>
+<p>Lastly, the ActiveList is linked with the EDit command, so that it loads the selected item into the </p>
+<p>editing zone, as follows:</p>
+<p>AList 2,x+width,y,20,8,0 VA,0,0,0,4; set up the item list</p>
+<p>[ZChange 3,0 VA ZPosition ARray;] load the edit zone with selected item</p>
+<p>Remember that 0 VA stores the address of the array, ZPosition holds the item number and ARray is </p>
+<p>used to get the item. This will return the value of the selected item straight to the EDit zone. If you </p>
+<p>need to transfer the edited version back to the selector, the appropriate array item needs to be loaded </p>
+<p>directly from the main AMOS Professional program. Please see the DIALOG UPDATE command for </p>
+<p>a detailed explanation.</p>
+<p>It is sometimes necessary to link up a number of zones in sequence, and relative values instead of </p>
+<p>absolute zone numbers can be used for this purpose.</p>
+<p>09.03.13</p>
+<p>I</p>
+<p>N</p>
+<p>T</p>
+<p>E</p>
+<p>R</p>
+<p>F</p>
+<p>A</p>
+<p>C</p>
+<p>E</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Advanced Control Panels</p>
+<p><b>Z</b>one<b>N</b>umber</p>
+<p><i>Interface function: return the number of a zone</i></p>
+<p>number=<b>ZN</b></p>
+<p>The ZoneNumber function is used to return the number of the current zone. It is intended to be used </p>
+<p>in conjunction with the ZoneChange command, like this:</p>
+<p>[ZChange ZNumber 1+ZPosition] loads the next zone with existing position value.</p>
+<p><b>Controlling a selector from the main program</b></p>
+<p><b>DIALOG UPDATE</b></p>
+<p><i>instruction: update a zone</i></p>
+<p><b>Dialog Update</b> channel number,zone number[,param1][,param2][,param3]</p>
+<p>This instruction enables AMOS Professional programs to force the Interface to re-draw a zone on the </p>
+<p>screen.   It   is   especially   useful   for   selectors,   which   often   need   to   interact   directly   with   the   main </p>
+<p>program. These can include file selectors that need to read a new search path and update the file list, </p>
+<p>as well as EDit routines that must load a selection window with a new value entered by the user.</p>
+<p>The DIALOG UPDATE parameters are given in the following order: first the channel number of an </p>
+<p>active dialogue channel to be updated. This is followed by the number of the zone to be affected. </p>
+<p>There are also three parameters held inside their own set of square brackets, and the effect of these </p>
+<p>parameters varies, depending on the type of the zone. Parameter 1 affects any of the different zone  </p>
+<p>types,   whereas   Parameters   2   and   3   affect   active   lists   and   sliders   only.   Here   is   a   table   of   the </p>
+<p>possibilities:</p>
+<p><b>Parameter 1</b></p>
+<p>Button</p>
+<p>Enters a new status position</p>
+<p>Active List</p>
+<p>Sets the number of the first string displayed</p>
+<p>Slider</p>
+<p>Moves the slider</p>
+<p>Digit</p>
+<p>Replaces the existing number zone</p>
+<p>Edit</p>
+<p>Inserts a new string into the edit zone</p>
+<p><b>Parameter 2</b></p>
+<p>Active List</p>
+<p>Changes the currently selected string</p>
+<p>Slider</p>
+<p>Changes the size of the slider window</p>
+<p><b>Parameter 3</b></p>
+<p>Active List</p>
+<p>Chooses the last element of the array that can be selected. Normally this </p>
+<p>parameter is equal to the size of the array, but it can be restricted for </p>
+<p>certain applications.</p>
+<p>Slider</p>
+<p>Changes the “total” parameter</p>
+<p>09.03.14</p>
+<p>I</p>
+<p>N</p>
+<p>T</p>
+<p>E</p>
+<p>R</p>
+<p>F</p>
+<p>A</p>
+<p>C</p>
+<p>E</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Advanced Control Panels</p>
+<p><b>DIALOG FREEZE</b></p>
+<p><i>instruction: stop dialogue channel input</i></p>
+<p><b>Dialog Freeze</b> [channel number]</p>
+<p>This command is used to freeze all input from one or more active dialogue channels. The number of a </p>
+<p>single dialogue routine that is to be suspended is specified in square brackets. If this number is </p>
+<p>omitted all current channels will be frozen.</p>
+<p><b>DIALOG UNFREEZE</b></p>
+<p><i>instruction: re-activate a frozen dialogue channel</i></p>
+<p><b>Dialog Unfreeze</b> [channel number]</p>
+<p>Use this instruction to re-activate one or more dialogue channels from the point at which they were </p>
+<p>frozen.</p>
+<p><b>DIALOG CLR</b></p>
+<p><i>instruction: clear a dialogue box</i></p>
+<p><b>Dialog Clr</b> channel number</p>
+<p>The DIALOG CLR instruction erases all zones and shuts down the dialogue box completely, leaving </p>
+<p>the specified channel open. The Interface program can now be re-run from the beginning, using a </p>
+<p>further call to the DIALOG RUN command.</p>
+<p>As always, if the background area has been saved using the SA option, it will be restored to its </p>
+<p>original position.</p>
+<p><b>HyperText</b></p>
+<p>The   impressive   interactive   Help   system   is   one   of   the   most   user-friendly   aspects   of   the  AMOS </p>
+<p>Professional system, allowing detailed information to be called up using single mouse key- presses </p>
+<p>from the Editor. More impressive than this is the fact that the Help system was entirely written in </p>
+<p>AMOS Professional, and it is a typical example of the Interface in action!</p>
+<p>The final part of this Chapter explains how similar systems can be created using the HyperText </p>
+<p>feature.</p>
+<p><b>H</b>yper<b>T</b>ext</p>
+<p><i>Interface instruction: open an interactive text window</i></p>
+<p><b>HT</b> zone number,x,y,width,height,address,line number,buffer,paper,pen;[changes]</p>
+<p>The HyperText command opens a simple window on a piece of text held in memory. This text can </p>
+<p>include optional words or phrases that may be selected directly by the user. Each option returns a </p>
+<p>specific value to the main program, which can then be used to jump to some additional text, or call up </p>
+<p>an appropriate routine from the main program.</p>
+<p>The zone number is given as usual, followed by x,y-coordinates. The x-coordinate will be rounded </p>
+<p>down to the nearest multiple of 16.</p>
+<p>09.03.15</p>
+<p>I</p>
+<p>N</p>
+<p>T</p>
+<p>E</p>
+<p>R</p>
+<p>F</p>
+<p>A</p>
+<p>C</p>
+<p>E</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Advanced Control Panels</p>
+<p>Next the width and height parameters are specified to define the size of the text window that will </p>
+<p>hold the required characters. This window is very similar to a window produced by AList, and is </p>
+<p>relatively crude compared to the fancy Help screen display.  However, when border images and </p>
+<p>sliders are added, things begin to take on a true AMOS Professional appearance.</p>
+<p>Text is listed in windows numbered 3000+z, and you can write to these windows from the main </p>
+<p>program if necessary, using a WINDOW command like this:</p>
+<p>Window 3001 : Rem Print to text window assigned to zone 1</p>
+<p>The next parameter to be given is the address of the text in memory. Unlike the AList command,  </p>
+<p>HyperText expects an address of a <b>Memory Bank</b> rather than an array. This bank should already be </p>
+<p>loaded with some text in standard ASCII format, and each line should be separated by either a </p>
+<p>chr$(13) for Amiga format, or by chr$(13)+ chr$(10) for PC format. Text must be terminated with a </p>
+<p>single chr$(0) character.</p>
+<p>The line number parameter holds the number of the first line in the text to be displayed in the </p>
+<p>window.</p>
+<p>The buffer parameter sets the maximum number of buttons on any one screen line. The Interface </p>
+<p>requires 8 bytes for each zone, so if the window is 25 lines high, and ten button's are required on </p>
+<p>every line, you will need 25*10*8 or 2000 bytes for the buffer area. If you simply want to display some </p>
+<p>normal text, use a value of zero for the buffer parameter instead.</p>
+<p>The paper and pen parameters are set as usual, to determine the colour of the text on screen, and the  </p>
+<p>background window will be filled with the paper colour when it is initially drawn.</p>
+<p>The square brackets hold an Interface function that will be called up whenever the mouse is clicked  </p>
+<p>on the HyperText zone. If the zone returns a number, it will now be available directly from the </p>
+<p>ZPosition function.</p>
+<p><b>Creating some HyperText</b></p>
+<p>The text can include a number of active zones if required. These are defined using curled brackets,  </p>
+<p>and there are two alternative formats, as follows:</p>
+<p>{[value]highlighted text}</p>
+<p>or</p>
+<p>{[value,paper,pen]highlighted text}</p>
+<p>The square brackets contain a value which will be transferred to the program when the item is </p>
+<p>selected. This can be either a number or a part of the text, up to 64 characters long. If the value is a  </p>
+<p>number, such as {[1000]...}, the main program will load it into an RDIALOG function, and it can now </p>
+<p>be read directly from a [changes] routine using the ZPosition function. If a string is entered, such as </p>
+<p>{[Hello everybody]...}, the main program will grab it with RDIALOG$ instead, and the ZPosition </p>
+<p>function will return a value of zero.</p>
+<p>09.03.16</p>
+<p>I</p>
+<p>N</p>
+<p>T</p>
+<p>E</p>
+<p>R</p>
+<p>F</p>
+<p>A</p>
+<p>C</p>
+<p>E</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Advanced Control Panels</p>
+<p>Supposing an automatic jump to a specific page of text is required. The HyperText command would </p>
+<p>look like this:</p>
+<p>HText 1,0,0,40,20,text_address,0,4,0,3;</p>
+<p>[ZChange 1,ZPosition]</p>
+<p>The entry in the text would -he defined along the following lines:</p>
+<p>{[10] Goto line 10}</p>
+<p>{[100] Goto line 100}</p>
+<p>After the return value has been set up, the paper and pen colours of the button can also be included. If </p>
+<p>these are not defined, the ink and paper colours will be swapped over when the active highlighted </p>
+<p>word is displayed on screen.</p>
+<p>Finally, the word or sentence to be highlighted is given. This can be anything from a single character </p>
+<p>up to an entire line of text, and it will be displayed at the current cursor position automatically.</p>
+<p>The zone definition is now closed with a closing curled bracket.</p>
+<p>If an error should occur, or if there are too many button zones on the same line, the zone will be </p>
+<p>printed in simple ASCII, and the [{}] characters will be visible on the screen.</p>
+<p>To scroll the window with a slider bar, the number of lines in the current piece of text need to be </p>
+<p>known. This allows you to set the “total” value to the actual size of the text, and then scroll the text by </p>
+<p>a single line.</p>
+<p>The HyperText instruction places this size in the internal ZoneVariable, so all that needs to be done is </p>
+<p>define the slider <b>after</b> the text window is opened. For example:</p>
+<p>SetVar 1,0; variable number one holds the position in the text</p>
+<p>HText 1,0,0,38,20,0 VA,1 VA,10,0,1;[]</p>
+<p>SetVar 2,ZVar; load the number of lines into variable number two</p>
+<p>VSlider 2,38 8*,0,8,20 8*,1 VA,40,2 VA,1; use this to set the total value</p>
+<p>[SetVar 1,ZPos; ZChange 1,1VA:] move hypertext window to new position</p>
+<p>If a HyperText window has been defined as a separate screen, it can be physically manipulated using </p>
+<p>a ScreenMove command.</p>
+<p><b>S</b>creen<b>M</b>ove</p>
+<p><i>Interface instruction: move a screen linked to mouse pointer</i></p>
+<p><b>SM</b>;</p>
+<p>This simple instruction is used to automatically drag the screen when the mouse pointer is moved, </p>
+<p>and it should be called as part of a [changes] routine to position the screen whenever a particular item </p>
+<p>is selected. In this final example, a button is set up that generates the scroll bar used by the Help </p>
+<p>window.</p>
+<p>BUtton 6,24,0,SX,10,0,0,0;[][ScreenMove;]</p>
+<p>09.03.17</p>
+<p>I</p>
+<p>N</p>
+<p>T</p>
+<p>E</p>
+<p>R</p>
+<p>F</p>
+<p>A</p>
+<p>C</p>
+<p>E</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Interface Resources</p>
+<p>Up  to   now,   it   has   been   explained   how   Interface  graphics   are  generated   using   built-in   Interface </p>
+<p>commands. It is also possible to create superb effects using pre-defined images stored in memory.</p>
+<p>Each Interface program has access to a set of special resources held in an appropriate memory bank. </p>
+<p>These resources can be created with the Resource Bank Maker, which has Chapter 13.7 devoted to it.  </p>
+<p>Once defined, resources can be installed for use with the AMOS Professional Interface.</p>
+<p>The Resource Bank is normally allocated to memory bank 16, and the loading of a resources file is </p>
+<p>explained at the very end of this Chapter.</p>
+<p>Alternatively, this process can be avoided if the current Editor settings are used. As a default, AMOS </p>
+<p>Professional provides instant access to all of the system messages and Editor objects. These provide </p>
+<p>everything needed to generate a wide variety of attractive dialogue boxes.</p>
+<p>There are two types of resources: messages, which hold a series of button definitions and titles, and </p>
+<p>packed pictures, which can be anything at all.</p>
+<p><b>ME</b>ssage</p>
+<p><i>Interface function: return a message from Resource Bank</i></p>
+<p>message=number <b>ME</b></p>
+<p>The MEssage function takes a number from the stack and returns the appropriate message from the </p>
+<p>Resource Bank. If the value for the number of the message is out of range, an error will be generated. </p>
+<p>MEssage can be used in a PRint or PrintOutline command, like this:</p>
+<p>A$=“PRint 0,0,7,MEssage,5;”</p>
+<p>A$=A$+“EXit;”</p>
+<p>D=Dialog Box(A$)</p>
+<p>A message can also be displayed directly from the main AMOS Professional program, using the </p>
+<p>RESOURCES function, which is explained later.</p>
+<p><b>UN</b>pack</p>
+<p><i>Interface instruction: unpack an image from Resource Bank</i></p>
+<p><b>UN</b> x,y,image number;</p>
+<p>Packed pictures can be taken from the Resource Bank, and unpacked for items such as buttons or  </p>
+<p>dialogue boxes. First specify the x,y-coordinates at which the image is to be unpacked. In this case, the </p>
+<p>x-coordinate is rounded to a multiple of eight. Then specify the number of the single image to be </p>
+<p>unpacked.</p>
+<p>Resource Screen Open 0,640,200,2</p>
+<p>A$=“UNpack 10,10,13; EXit;”</p>
+<p>D=Dialog Box(A$)</p>
+<p>09.04.01</p>
+<p>I</p>
+<p>N</p>
+<p>T</p>
+<p>E</p>
+<p>R</p>
+<p>F</p>
+<p>A</p>
+<p>C</p>
+<p>E</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Interface Resources</p>
+<p>In addition to single images, more complex arrangements can be built up from combining a group of </p>
+<p>individual component images, and the following commands are available to exploit this facility.</p>
+<p><b>LI</b>ne</p>
+<p><i>Interface instruction: draw a line from Resource Bank image components</i></p>
+<p><b>LI</b> x,y,first image,width;</p>
+<p>The LIne command is used to construct a line from <b>three</b> single images held in the Resource Bank. </p>
+<p>The x,y-coordinates set the position of the top left-hand corner of the line, with the x- coordinate </p>
+<p>rounded to the nearest multiple of eight pixels. Then the number of the <b>first</b> image to be used for the </p>
+<p>line is given. Lastly, the width of the line is set in pixels, and this width should be an exact multiple of  </p>
+<p>the image width, otherwise the width of the line will be increased to the nearest image boundary.</p>
+<p>The following diagram illustrates the three component images, defining the start, the middle and the </p>
+<p>end of the line.</p>
+<p>These components can be rearranged to generate larger lines, as illustrated next:</p>
+<p><b>VL</b>ine</p>
+<p><i>Interface instruction: draw a vertical line from Resource Bank components</i></p>
+<p><b>VL</b> x,y,first image,height</p>
+<p>This is very similar to the LIne command, except that it displays a vertical line composed of a series of </p>
+<p>three images held in the Resource Bank. The x,y-coordinates for the top left-hand corner of the line  </p>
+<p>are given, followed by the number of the first of the three images to be used in the display. Finally, the </p>
+<p>height of the line is specified, and it will be rounded up to the nearest multiple of three automatically.</p>
+<p><b>BO</b>x</p>
+<p><i>Interface instruction: draw a box from Resource Bank image components</i></p>
+<p><b>BO</b> x,y,first image,width,height;</p>
+<p>Similarly, the BOx instruction draws a rectangular bar from an assortment of nine packed images </p>
+<p>from the Resource Bank. The parameters are the same as for a LIne command, with the additional </p>
+<p>parameter of the height of the box, which can be anything you wish. The component images for the </p>
+<p>rectangle are in the following format:</p>
+<p>09.04.02</p>
+<p>I</p>
+<p>N</p>
+<p>T</p>
+<p>E</p>
+<p>R</p>
+<p>F</p>
+<p>A</p>
+<p>C</p>
+<p>E</p>
+<p>1</p>
+<p>2</p>
+<p>2</p>
+<p>2</p>
+<p>3</p>
+<p>1</p>
+<p>2</p>
+<p>3</p>
+<p>4</p>
+<p>5</p>
+<p>6</p>
+<p>7</p>
+<p>8</p>
+<p>8</p>
+<p>1</p>
+<p>2</p>
+<p>3</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Interface Resources</p>
+<p>These components can be re-used to produce a large number of possible displays, such as in the next </p>
+<p>example diagram:</p>
+<p><b>PU</b>sh</p>
+<p><i>Interface instruction: push image to an offset position in the Resource Bank</i></p>
+<p><b>PU</b> offset;</p>
+<p>The PUsh command sets an offset value to the first image in the Resource Bank, and this offset will be </p>
+<p>added to  all  subsequent  image  numbers.   This  means  that  you  can make  a dialogue  box  totally </p>
+<p>independent from the images in the Resource Bank. For example, if new images are added at the </p>
+<p>beginning of the bank at any subsequent time, the images used by your existing resource commands </p>
+<p>will be pushed down the required number  of places,  and they will work perfectly without any </p>
+<p>changes in numbering required. To demonstrate this, the following two lines would have exactly the </p>
+<p>same effect:</p>
+<p>PUsh 0; UNpack 0,0,13;</p>
+<p>PUsh 13; UNpack 0,0,0;</p>
+<p><b>The Resource commands</b></p>
+<p>Here is a full explanation of the additional AMOS Professional instructions and functions that can be </p>
+<p>used to exploit the Resource Bank.</p>
+<p><b>RESOURCE BANK</b></p>
+<p><i>instruction: select a bank to be used for resources</i></p>
+<p><b>Resource Bank</b> number</p>
+<p>This command is used to tell AMOS Professional in which bank the resources to be used by Interface  </p>
+<p>programs are kept. The number parameter holds the number of the memory bank to be allocated. If </p>
+<p>this bank does not exist, the Editor's internal resource bank will be used as a default. This means that </p>
+<p>after this command has been called, you can return to the Editor resources by employing a dummy  </p>
+<p>value, such as zero. Here is an example:</p>
+<p>Load “Resource.Abk”,16 : Rem This can be any filename</p>
+<p>Resource Bank 16: Rem Set resources to Bank 16</p>
+<p><b>RESOURCE$</b></p>
+<p><i>function: read a message from the Resource Bank</i></p>
+<p>message=<b>Resource$</b>(message number)</p>
+<p>The RESOURCE$ function returns one of the messages from the current Resource Bank, to be used by </p>
+<p>an AMOS Professional program. If the bank has not been defined, the standard Editor messages will </p>
+<p>be made available from the Configuration file.</p>
+<p>09.04.03</p>
+<p>I</p>
+<p>N</p>
+<p>T</p>
+<p>E</p>
+<p>R</p>
+<p>F</p>
+<p>A</p>
+<p>C</p>
+<p>E</p>
+<p>1</p>
+<p>2</p>
+<p>2</p>
+<p>2</p>
+<p>3</p>
+<p>4</p>
+<p>5</p>
+<p>5</p>
+<p>5</p>
+<p>6</p>
+<p>4</p>
+<p>5</p>
+<p>5</p>
+<p>5</p>
+<p>6</p>
+<p>7</p>
+<p>8</p>
+<p>8</p>
+<p>8</p>
+<p>9</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Advanced Control Panels</p>
+<p>Each national grouping is provided with its own set of messages in the appropriate language, and </p>
+<p>these messages can be used to generate multi-language programs. The message number parameter </p>
+<p>enters the number of the message. Here is an example:</p>
+<p>For A=1 To 7</p>
+<p>Print Resource$(A)</p>
+<p>Next A</p>
+<p>The following list shows the strings related to the various numbers:</p>
+<p><b>Number</b></p>
+<p><b>Message</b></p>
+<p>&gt;0 </p>
+<p>String from the Resource bank</p>
+<p>0</p>
+<p>Full pathname of APSystem folder</p>
+<p>&lt;0</p>
+<p>Configuration system strings, as follows:</p>
+<p>-1 to -9</p>
+<p>Default file names</p>
+<p>-10 to -36</p>
+<p>All 26 extensions</p>
+<p>38, -38</p>
+<p>Communication ports</p>
+<p>-40</p>
+<p>Default cursor flashing</p>
+<p>2001 to -2044</p>
+<p>Miscellaneous strings used by Editor</p>
+<p>-2045 to -2049</p>
+<p>Editor system files</p>
+<p><b>RESOURCE SCREEN OPEN</b></p>
+<p><i>instruction: open a screen using the resource settings</i></p>
+<p><b>Resource Screen Open</b> number,width,height,flash</p>
+<p>This instruction opens a screen using the settings that are stored in the Resource Bank. These screen </p>
+<p>settings include the number of colours, the resolution and the entire colour palette.</p>
+<p>The parameters are given in the following order: the number of the screen to be defined from zero to </p>
+<p>7, the width of this screen in pixels and the height of the screen in lines. Finally a simple flag is set for </p>
+<p>the flash feature, with a value of zero to turn off the flash, or any other appropriate value to assign the </p>
+<p>flash effect to that colour index number.</p>
+<p>The new screen will be installed with the colour palette held in the Resource Bank.</p>
+<p>The following example opens a screen using the settings from the internal Resource Bank, just like the </p>
+<p>Editor screen, where the flashing colour is index number 2.</p>
+<p>Resource Screen Open 0,640,200,2</p>
+<p><b>RESOURCE UNPACK</b></p>
+<p><i>instruction: unpack an image from the Resource Bank</i></p>
+<p><b>Resource Unpack</b> number,x,y</p>
+<p>This AMOS Professional command unpacks a single element from the current Resource Bank and </p>
+<p>displays it on the screen.</p>
+<p>09.03.04</p>
+<p>I</p>
+<p>N</p>
+<p>T</p>
+<p>E</p>
+<p>R</p>
+<p>F</p>
+<p>A</p>
+<p>C</p>
+<p>E</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Interface Resources</p>
+<p>The number parameter refers to the number of the element to be displayed, and the x,y- coordinates </p>
+<p>specify the position of the new image on screen.</p>
+<p>The instruction can be used directly in games programs to hold the various graphics components in a </p>
+<p>very compact format. These images can be saved in the Resource Bank using the Resource Bank </p>
+<p>Maker, and installed into memory along the following lines:</p>
+<p>Load “Resource.Abk”,l6 : Rem This can be any filename</p>
+<p>Resource Bank 16 : Rem set the resources to bank 16</p>
+<p>09.04.05</p>
+<p>I</p>
+<p>N</p>
+<p>T</p>
+<p>E</p>
+<p>R</p>
+<p>F</p>
+<p>A</p>
+<p>C</p>
+<p>E</p>
+</body>
+</html>

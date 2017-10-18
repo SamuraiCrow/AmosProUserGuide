@@ -1,0 +1,17 @@
+OpenDirectory(1,"images")
+e=NextDirectoryEntry(1)
+While e<>NIL
+	If RightStr(e.Name,4)=".jpg"
+		LoadBrush(1,"images/"..e.Name)
+		o$="images/"..UnLeftStr(e.Name,4)..".gif"
+		SaveBrush(1,o$,#NOTRANSPARENCY,#IMGFMT_GIF,{Colors=4})
+;		if e.Size < FileSize(o$)
+;			DeleteFile(o$)
+;		Else
+			DeleteFile("images/"..e.Name)
+;		EndIf
+	EndIf
+	e=NextDirectoryEntry(1)
+Wend
+DebugPrint("Done")
+End

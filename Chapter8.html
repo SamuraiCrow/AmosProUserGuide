@@ -1,0 +1,1048 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+     "http://www.w3.org/TR/html4/transitional.dtd">
+<html>
+<head>
+
+  <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  <title></title>
+  <meta name="generator" content="LibreOffice 5.2.7.2 (Linux)"/>
+  <meta name="created" content="2017-10-03T07:49:46.010873453"/>
+  <meta name="changed" content="2017-10-04T06:04:04.854237879"/>
+</head>
+<body>
+<h1></h1>
+<p>Audio</p>
+<p>08.01</p>
+<p>Music</p>
+<p>08.02</p>
+<p>Samples</p>
+<p>08.03</p>
+<p>Playing Music Modules</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Music</p>
+<p>This Chapter explains how to exploit the superb sound capabilities of the Amiga. It will deal with </p>
+<p>simple sound effects and the use of music in AMOS Professional programs.</p>
+<p>Generally, the sound capabilities of a television set are terrible. To release the full potential of AMOS </p>
+<p>Professional stereo sound, a hi-fi system or personal stereo should first be connected to the Amiga's </p>
+<p>pair of stereo phono sockets. </p>
+<p>All AMOS Professional sound commands operate independently from games and utility routines, so </p>
+<p>that they can never interfere with your programming. On the contrary, they should enhance your </p>
+<p>work in any way that you chose, acting as markers, adding realism, soothing, shocking or providing </p>
+<p>comic relief.</p>
+<p><b>Ready-made sound effects</b></p>
+<p>Any imaginable sound effect can be used in an AMOS Professional program, whether it is natural, </p>
+<p>synthetic, pre-recorded or composed by you. In fact the choice is so vast that the next two Chapters </p>
+<p>are   devoted   to   the   wonders   of   sound   samples!  A  whole   bank   of   pre-recorded   effects   has   been </p>
+<p>prepared for your use, but there are three common sound effects that can be called up by their own </p>
+<p>commands and used for testing and punctuating your routines.</p>
+<p><b>BOOM</b></p>
+<p><i>instruction: generate explosive sound effect</i></p>
+<p><b>Boom</b></p>
+<p>By   making   use   of   interrupts   to   simulate   “white   noise”,   the   BOOM   command   plays   a   realistic </p>
+<p>explosive sound effect. This does not delay the program at all, so it may be necessary to use WAIT </p>
+<p>between successive explosions, or to create ricochet and echo effects For example:</p>
+<p>Curs Off : Centre “Thunderbolt and Lightning”</p>
+<p>Flash 1, “(FFF,1)(000,147)(A5F,2)”</p>
+<p>Boom : Wait 150: Boom : Cls</p>
+<p>Centre “Very Very Frightening”</p>
+<p>Wait 50 : Boom</p>
+<p><b>SHOOT</b></p>
+<p><i>instruction: generate percussive sound effect</i></p>
+<p><b>Shoot</b></p>
+<p>The SHOOT command generates a simple sound effect in exactly the same way as BOOM.  For </p>
+<p>example:</p>
+<p>Shoot : Wait 25: Shoot : Print “Ouch!”</p>
+<p><b>BELL</b></p>
+<p><i>instruction: generate pure tone</i></p>
+<p><b>Bell</b></p>
+<p><b>Bell <i></b>pitch</i></p>
+<p>Unlike the built-in explosive sound effects, BELL produces a simple pure tone.</p>
+<p>08.01.01</p>
+<p>M</p>
+<p>U</p>
+<p>S</p>
+<p>I</p>
+<p>C</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Music</p>
+<p>The frequency or “pitch” of this sound can be changed by adding a pitch value after the BELL </p>
+<p>command, ranging from 1 for a very deep ring, up to 96 for an ultra high pitched sound. You can hear  </p>
+<p>the range of frequencies with this example:</p>
+<p>For F=1 To 96</p>
+<p>Bell F : Wait F/10+1 : Rem Vary delay</p>
+<p>Next F</p>
+<p><b>Musical pitch</b></p>
+<p>The values from 1 to 96 that are used to control the pitch of the BELL sound correspond to the notes </p>
+<p>on the keyboard of a piano. The white key at the extreme left-hand side of the keyboard is known as  </p>
+<p>Bottom C, and corresponds to pitch value 1. Value 2 is the equivalent to the black note next to it,  </p>
+<p>which is a C#, and so on up to “Middle C” at pitch value 37, then all the way up to 96. Grand piano </p>
+<p>keyboards run out of notes after 88, and most synthesizer keyboards have a lot less than that.</p>
+<p>In Western music, notes are given their own code letter so that musicians can all refer to the same </p>
+<p>pitch when they try and play together. These letters repeat themselves after twelve notes, and each </p>
+<p>group of twelve is known as an “octave”.</p>
+<p>Here is a table of pitch values, along with their musical note equivalents and octave groupings.</p>
+<p><b>Octave</b></p>
+<p><b>Note</b></p>
+<p><b>0</b></p>
+<p><b>1</b></p>
+<p><b>2</b></p>
+<p><b>3</b></p>
+<p><b>4</b></p>
+<p><b>5</b></p>
+<p><b>6</b></p>
+<p><b>7</b></p>
+<p><b>C</b></p>
+<p>1</p>
+<p>13</p>
+<p>25</p>
+<p>37</p>
+<p>49</p>
+<p>61</p>
+<p>73</p>
+<p>85</p>
+<p><b>C#</b></p>
+<p>2</p>
+<p>14</p>
+<p>26</p>
+<p>38</p>
+<p>50</p>
+<p>62</p>
+<p>74</p>
+<p>86</p>
+<p><b>D</b></p>
+<p>3</p>
+<p>15</p>
+<p>27</p>
+<p>39</p>
+<p>51</p>
+<p>63</p>
+<p>75</p>
+<p>87</p>
+<p><b>D#</b></p>
+<p>4</p>
+<p>16</p>
+<p>28</p>
+<p>40</p>
+<p>52</p>
+<p>64</p>
+<p>76</p>
+<p>88</p>
+<p><b>E</b></p>
+<p>5</p>
+<p>17</p>
+<p>29</p>
+<p>41</p>
+<p>53</p>
+<p>65</p>
+<p>77</p>
+<p>89</p>
+<p><b>F</b></p>
+<p>6</p>
+<p>18</p>
+<p>30</p>
+<p>42</p>
+<p>54</p>
+<p>66</p>
+<p>78</p>
+<p>90</p>
+<p><b>F#</b></p>
+<p>7</p>
+<p>19</p>
+<p>31</p>
+<p>43</p>
+<p>55</p>
+<p>67</p>
+<p>79</p>
+<p>91</p>
+<p><b>G</b></p>
+<p>8</p>
+<p>20</p>
+<p>32</p>
+<p>44</p>
+<p>56</p>
+<p>68</p>
+<p>80</p>
+<p>92</p>
+<p><b>G#</b></p>
+<p>9</p>
+<p>21</p>
+<p>33</p>
+<p>45</p>
+<p>57</p>
+<p>69</p>
+<p>81</p>
+<p>93</p>
+<p><b>A</b></p>
+<p>10</p>
+<p>22</p>
+<p>34</p>
+<p>46</p>
+<p>58</p>
+<p>70</p>
+<p>82</p>
+<p>94</p>
+<p><b>A#</b></p>
+<p>11</p>
+<p>23</p>
+<p>35</p>
+<p>47</p>
+<p>59</p>
+<p>71</p>
+<p>83</p>
+<p>95</p>
+<p><b>B</b></p>
+<p>12</p>
+<p>24</p>
+<p>36</p>
+<p>48</p>
+<p>60</p>
+<p>72</p>
+<p>84</p>
+<p>96</p>
+<p><b>Channels and voices</b></p>
+<p>The Amiga produces sound like a river, and AMOS Professional allows you to split this river into four </p>
+<p>separate channels, all pouring out at the same time, but each capable of individual control. These </p>
+<p>channels can be heard individually, or mixed together, or directed to the left and right creating stereo </p>
+<p>sound. They can also be individually increased and decreased in volume, or dammed up altogether.</p>
+<p>Each of these channels can be given a different “voice”, and each voice can be controlled in terms of </p>
+<p>volume and direction.</p>
+<p>08.01.02</p>
+<p>M</p>
+<p>U</p>
+<p>S</p>
+<p>I</p>
+<p>C</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Music</p>
+<p><b>VOLUME</b></p>
+<p><i>instruction: control sound volume</i></p>
+<p><b>Volume</b> level</p>
+<p><b>Volume</b> <i>voice</i>,level</p>
+<p>The VOLUME command controls the level of sound flowing through one or more channels, ranging </p>
+<p>from zero (complete silence) up to 63 (ear-splitting), like this:</p>
+<p>For L=0 To 63</p>
+<p>Volume L: Bell 80 : Wait 5</p>
+<p>Next L</p>
+<p>Once the VOLUME level has been set, all future sound effects and music will be delivered at that </p>
+<p>level, across all four channels. In order to create stereo effects and perfect sound mixes, each of the  </p>
+<p>voices needs to be adjusted independently from one another.</p>
+<p><b>VOICE</b></p>
+<p><i>instruction: activate voice</i></p>
+<p><b>Voice</b> bit-mask</p>
+<p>Soundtracks  are  made  up  of   one  or   more  voices,   acting   independently   or   together.   The   VOICE </p>
+<p>command is used to activate voices by setting a bit-mask, with each bit representing the state of one of </p>
+<p>the four available channels through which the voices flow. To play the required voice (from 0 to 3) </p>
+<p>simply set the relevant bit to 1, otherwise a value of zero will keep the voice silent. Here are some </p>
+<p>example settings:</p>
+<p>Voice %1111 : Rem Activate all voices</p>
+<p>Voice %0001 : Rem Activate voice 0 only</p>
+<p>Voice %1001 : Rem Activate voices 3 and 0</p>
+<p>The volume of each voice can now be controlled by specifying voices and volumes, like this:</p>
+<p>Volume %0001,63</p>
+<p>Boom : Wait 100: Rem Channel 1 loud</p>
+<p>Volume %1110,5</p>
+<p>Boom : Wait 50: Rem Channels 2,3,4 soft</p>
+<p>Bell 40 : Wait 50 : Volume 60: Bell 40</p>
+<p>Here are some common values for voice settings, that can be used to make programming a little </p>
+<p>easier:</p>
+<p><b>Value</b></p>
+<p><b>Voices used</b></p>
+<p><b>Effect</b></p>
+<p>15</p>
+<p>0,1,2,3</p>
+<p>use all four voices</p>
+<p>9</p>
+<p>0,3</p>
+<p>combine output to left speaker</p>
+<p>6</p>
+<p>2,4</p>
+<p>combine output to right speaker</p>
+<p>1</p>
+<p>0</p>
+<p>use voice 0</p>
+<p>2</p>
+<p>1</p>
+<p>use voice 1</p>
+<p>4</p>
+<p>2</p>
+<p>use voice 2</p>
+<p>8</p>
+<p>3</p>
+<p>use voice 3</p>
+<p>08.01.03</p>
+<p>M</p>
+<p>U</p>
+<p>S</p>
+<p>I</p>
+<p>C</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Music</p>
+<p><b>Playing notes</b></p>
+<p><b>PLAY</b></p>
+<p><i>instruction: play a voice</i></p>
+<p><b>Play</b> pitch,delay</p>
+<p><b>Play</b> <i>voice</i>,pitch,delay</p>
+<p><b>PLAY OFF</b></p>
+<p><i>instruction: stop a voice playing</i></p>
+<p><b>Play Off</b></p>
+<p>Patterns of individual notes can be played, allocated to any voice, given a pitch and delayed for  </p>
+<p>pause, using just one PLAY command.</p>
+<p>The voice parameter is optional, allowing notes to be played through any combination of the Amiga's </p>
+<p>four voices, and is set by the usual bit-map format.</p>
+<p>The pitch parameter uses the values from 1 to 96, which correspond to the notes in the table given  </p>
+<p>earlier. Delay sets the length of any pause between this PLAY command and the next instruction in </p>
+<p>the program, with a value of zero starling the note and immediately going on to the next command.</p>
+<p>The next example demonstrates this technique, including stereo harmonies:</p>
+<p>Play 1,40,0: Play 2,50,0: Rem No delay</p>
+<p>Wait Key</p>
+<p>Play 1,40,15: Play 2,50,15: Rem Delay</p>
+<p>Rem Play a random sequence of notes</p>
+<p>Do</p>
+<p>V=Rnd(1 5): P=Rnd(96): Play V,P,3</p>
+<p>Loop</p>
+<p>PLAY is not restricted to pure notes. It is possible to assign complex wave forms to voices, using the </p>
+<p>WAVE and NOISE commands, which are explained next. To stop the playing process, simply turn it </p>
+<p>off like this:</p>
+<p>Play Off</p>
+<p><b>Making waves</b></p>
+<p>Every individual sound has its own identity pattern, which is the equivalent of an audio fingerprint. </p>
+<p>This is because each sound is composed of its own unique frequencies. In the same way that a </p>
+<p>hospital monitor displays a moving “wave” which pulses in lime to the frequencies of a heartbeat, </p>
+<p>different sounds create their own wave forms. For example, a cymbal crash has a wave form of jagged </p>
+<p>peaks very close together, whereas the smooth harmonics of a cello make much more rounded waves.</p>
+<p>08.01.04</p>
+<p>M</p>
+<p>U</p>
+<p>S</p>
+<p>I</p>
+<p>C</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Music</p>
+<p>With AMOS Professional, the shape of a wave form is set using a list of 256 numbers, with each </p>
+<p>number representing the intensity of an individual section of the wave.</p>
+<p><b>SET WAVE</b></p>
+<p><i>instruction: define a wave form</i></p>
+<p><b>Set Wave</b> number,shape$</p>
+<p>The SET WAVE command sets the wave form of an individual sound, that can then be used at various </p>
+<p>pitches to create music or sound effects. This command requires two parameters, the number of the </p>
+<p>wave to be set, followed by the shape of this pattern, held in a string.</p>
+<p>Wave numbers zero and 1 are already allocated, so these numbers should not be used. Wave zero </p>
+<p>holds a random noise pattern, used to generate the explosive effects of BOOM and SHOOT, while </p>
+<p>wave number 1 is a smooth pattern in the shape of a sine wave, which is used as the “template” for </p>
+<p>the pure tones needed by the PLAY and BELL commands. So when setting your new wave patterns, </p>
+<p>use the identification numbers from 2 upwards.</p>
+<p>Setting the parameter for the shape of the wave form is a little more complicated.</p>
+<p>Each one of the 256 numbers which make up the shape of the wave form sets a single level of intensity </p>
+<p>for that single part of the wave. Each one of these intensities can hold a possible value ranging from </p>
+<p>-128 up to 127. Look at the diagram below. The vertical scale represents this range of intensities (-128 </p>
+<p>to 127) and the horizontal scale shows the physical length of the wave form, in other words the </p>
+<p>individual moments of time as the wave is played (256).</p>
+<p>This   triangular   wave   pattern   does   not   make   a   very   exciting   sound,   but   it   serves   as   a   simple </p>
+<p>introduction to making your own wave forms.</p>
+<p>Because AMOS Professional strings can only hold <b>positive</b> numbers from zero to 256, the negative </p>
+<p>values in this wave form need to be converted before use. This is extremely easy, and is achieved by </p>
+<p>adding 256 to the negative numbers in the list! In other words, a value of -50 would be entered as 206, </p>
+<p>like this:</p>
+<p>-50+256=206</p>
+<p>08.01.05</p>
+<p>M</p>
+<p>U</p>
+<p>S</p>
+<p>I</p>
+<p>C</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Music</p>
+<p>The following program shows how the sort of wave form in the above diagram could be created The </p>
+<p>wave form is then assigned to a wave and played, which is explained a little later.</p>
+<p>S$</p>
+<p>=“ ” : Rem Clear wave form string</p>
+<p>For W=-128 To 127</p>
+<p>X=W : If X&lt;0 Then Add X,256</p>
+<p>S$=S$+Chr$(X)</p>
+<p>Next W</p>
+<p>Set Wave 2,S$</p>
+<p>Wave 2 To 15: For S=10 to 60: Play S,10: Next S</p>
+<p>The wave forms of musical instruments are much more complicated than the last example, but they </p>
+<p>are not too difficult to reproduce. By combining several sine waves together, with each sine wave </p>
+<p>having a different starting point, the type of pattern shown in the next diagram is achieved.</p>
+<p>This sort of wave form generates smooth harmonics, which can then be used as the “templates” for </p>
+<p>musical notes, and the sort of routine in the next example can produce typical sine waves:</p>
+<p>SHAPE$=“ ” : Degree</p>
+<p>For S=0 To 255</p>
+<p>V=Int((Sin(S)/2+Sin(S*2+45)/4)*128)+127</p>
+<p>SHAPE$=SHAPE$+Chr$(V)</p>
+<p>Next S</p>
+<p>Set Wave 2,SHAPE$ : Wave 2 To 15</p>
+<p>For N=10 To 60: Play N,10 : Next N</p>
+<p><b>WAVE</b></p>
+<p><i>instruction: assign a wave to sound channel</i></p>
+<p><b>Wave</b> number <b>To</b> voices</p>
+<p>The WAVE command is used to assign the specified wave number to one or more sound channels.</p>
+<p>08.01.06</p>
+<p>M</p>
+<p>U</p>
+<p>S</p>
+<p>I</p>
+<p>C</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Music</p>
+<p>The voice parameter contains a bit-map in the standard format, and if a bit pattern is set to 1 then the </p>
+<p>appropriate voice is used to PLY the sound. Remember that wave number zero is already reserved for </p>
+<p>the NOISE channel, and wave number 1 contains a smooth sine wave for pure tone. Here are some </p>
+<p>examples:</p>
+<p>Wave 1 To %1111 : Rem Play pure tone through all voices</p>
+<p>Play 60,0</p>
+<p>Wave 0 To %0001 : Rem Use voice 0 for noise</p>
+<p>Play 20,10</p>
+<p><b>NOISE TO</b></p>
+<p><i>instruction: assign noise wave to sound channel</i></p>
+<p><b>Noise To</b> voices</p>
+<p>This command has the same effect as assigning the white noise wave form number zero to the </p>
+<p>selected voices, and it is used to form the foundations for a whole range of special effects, such as </p>
+<p>explosions and percussion drumming. The bit-pattern used to set one or more voices has already been </p>
+<p>explained above. Here is an example:</p>
+<p>Noise To 15 Rem All four voices</p>
+<p>Play 60,50</p>
+<p>Play 30,0</p>
+<p><b>SAMPLE</b></p>
+<p><i>instruction: assign a sample to the current wave</i></p>
+<p><b>Sample</b> number <b>To</b> voices</p>
+<p>This is the most powerful of the wave commands. SAMPLE is used to assign the specified sound </p>
+<p>sample number, which is already stored in the Sample Bank, directly to the current wave form. The </p>
+<p>voices to be used are set in the usual way. When PLAY is used, this sample will be taken from the  </p>
+<p>Sample Bank and used as the “musical instrument” to be played. Try this example:</p>
+<p>Load “AMOSPro_Examples:Samples/Mixture.Abk”,6</p>
+<p>Sam Bank 6</p>
+<p>Sample 5 To 15</p>
+<p>For S=20 To 50</p>
+<p>Play S,50</p>
+<p>Next S</p>
+<p>The pitch values that  can  be  applied to  any particular  sample will  vary,  but  normally  anything </p>
+<p>between 10 and 50 is satisfactory.</p>
+<p><b>DEL WAVE</b></p>
+<p><i>instruction: delete a wave</i></p>
+<p><b>Del Wave</b> number</p>
+<p>To delete a wave that has been set up with a SET WAVE instruction, simply use this command </p>
+<p>followed by the number of the wave to be erased.</p>
+<p>08.01.07</p>
+<p>M</p>
+<p>U</p>
+<p>S</p>
+<p>I</p>
+<p>C</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Music</p>
+<p>When this has been done, all deleted voices will be set to the standard default sine wave. The pre-set </p>
+<p>wave numbers zero and 1 can be manipulated, but they <b>cannot</b> be eradicated.</p>
+<p><b>Making audio envelopes</b></p>
+<p>An “envelope” is audio jargon for how a sound is manipulated during the brief period of tin that it is  </p>
+<p>played. In other words, whether it bursts into life or makes a more subtle entry (attack), whether it </p>
+<p>fades away with dignity or lives life to the full (decay), how long it hangs on for (sustain) and finally, </p>
+<p>the manner in which it meets its end (release). All of this is achieved simply by changing the volume  </p>
+<p>of individual sections of the wave form.</p>
+<p><b>SET ENVEL</b></p>
+<p><i>instruction: create a volume envelope</i></p>
+<p><b>Set Envel</b></p>
+<p> wave number,phase number </p>
+<p><b>To</b></p>
+<p> duration,volume</p>
+<p>AMOS Professional uses envelopes to change your original wave forms according to a set pattern. The </p>
+<p>parameters are as follows:</p>
+<p>The wave number sets the wave form to be affected, and any number can be used <b>including</b> the pre-</p>
+<p>set wave numbers zero and 1.</p>
+<p>The phase number refers to one of seven individual sections of the original wave form that is to be  </p>
+<p>defined, ranging from 0 to 6.</p>
+<p>The duration controls the length of this particular segment (phase number) of the wave form, and is </p>
+<p>expressed in units of one 50th of a second. This is how the speed of a volume change in any phase of </p>
+<p>the wave form is controlled.</p>
+<p>Volume specifies the volume to be reached by the <b>end</b> of this phase, ranging from zero for silence up </p>
+<p>to 63 for full blast.</p>
+<p>In the next example, an envelope for wave form number one is set, so that segment zero (its first  </p>
+<p>phase) lasts for four seconds, ramping up to full volume by its end, no matter what the original </p>
+<p>volume was at the start of this phase.</p>
+<p>Set Envel 1,0 To 200,63</p>
+<p><b>LED ON</b></p>
+<p><b>LED OFF</b></p>
+<p><i>instructions: toggle audio filter</i></p>
+<p><b>Led On</b></p>
+<p><b>Led Off</b></p>
+<p>Most tape recorders and hi-fl systems have some sort of filtering system to ”clean” up sound by </p>
+<p>eliminating the high frequencies that generate unwanted hiss. When filters are used, there is always a </p>
+<p>trade off between overall sound quality and clear definition.</p>
+<p>08.01.08</p>
+<p>M</p>
+<p>U</p>
+<p>S</p>
+<p>I</p>
+<p>C</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Music</p>
+<p>For example, although some distortion may be eliminated, certain percussion sounds will be robbed </p>
+<p>of their characteristics. The LED filter changes the way these high frequencies are treated by the </p>
+<p>system,   but   by  using   the   LED   OFF   command,   you   can   recapture   the   essential   quality   of   many </p>
+<p>instrumental sounds.</p>
+<p>The difference made by the LED filter can be clearly heard in the following example:</p>
+<p>Load “AMOSPro_Examples:Music/Music.Abk”</p>
+<p>Music 1</p>
+<p>Do</p>
+<p>If Mouse Key=1 Then Led On: Print “LED ON!”</p>
+<p>If Mouse Key=2 The Led Off : Print “LED OFF”</p>
+<p>Loop</p>
+<p>Audio quality is very much an individual choice, and the LED filter will sound more pleasing with </p>
+<p>certain   sequences,   but   distorted   with   others.   Warbling   the   filter   on   and   off  can   also   give   some </p>
+<p>interesting effects.</p>
+<p>The name LED derives from the light-emitting diode that activates the power light on your Amiga. </p>
+<p>When the LED filter is toggled off and on, this light is also turned off and on to indicate the status of </p>
+<p>the filter.</p>
+<p><b>VUMETER</b></p>
+<p><i>function: test volume of a voice</i></p>
+<p>volume=<b>Vumeter</b>(voice)</p>
+<p>Volume meters (Vu-meters) are a familiar sight on the control panels of audio equipment. AMOS </p>
+<p>Professional is not only able to monitor the volume level of any selected voice number from 0 to 3, it </p>
+<p>can also use the value of the volume intensity to make graphics dance around in response to the  </p>
+<p>intensity of a soundtrack!</p>
+<p>The value returned is given as the volume intensity, ranging from silence (0) up to full volume (63). </p>
+<p>The best way to understand the effect of all the commands in this Chapter is to hear them working. Be </p>
+<p>sure to try out all of the demonstration programs that are available via the HELP feature.</p>
+<p><b>Playing music</b></p>
+<p>The AMOS Professional music system allows backing tracks to be added to any program. Music can </p>
+<p>be   created   from   a   variety   of   sources,   including   original   samples   and   compositions,   which   are </p>
+<p>explained   in   the   following   two   Chapters.   These   backing   tracks   are   converted   into   the   AMOS </p>
+<p>Professional format, and held in the Music Bank.</p>
+<p>Music tracks are loaded with the MUSIC command, volume is controlled by MVOLUME, and speed </p>
+<p>by MVOLUME. Individual music passages can be halted using the MUSIC STOP instruction, and all </p>
+<p>music is halted by MUSIC OFF.</p>
+<p>08.01.09</p>
+<p>M</p>
+<p>U</p>
+<p>S</p>
+<p>I</p>
+<p>C</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Music</p>
+<p>For a taster of these techniques in action, load this ready-made example:</p>
+<p>Load “AMOSPro_Examples:Music/Music.Abk”</p>
+<p>Music 1: Mvolume 63 : Tempo 35</p>
+<p>08.01.10</p>
+<p>M</p>
+<p>U</p>
+<p>S</p>
+<p>I</p>
+<p>C</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Samples</p>
+<p>This Chapter explains how to make use of sampled sound to enhance your programs. For users </p>
+<p>restricted to the Amiga's internal floppy drive, AMOS Professional allows a range of superb “live” </p>
+<p>sound effects and musical tones to be called up. If you have access to a hard drive or CD- ROM, the </p>
+<p>AMOS Professional Double Buffered Sampling system offers full exploitation of sampled sound. </p>
+<p>There is even a built-in “recording studio” ready to be used, and you can enjoy the facilities of this </p>
+<p>Sample Bank Maker accessory, which is featured in Chapter 13.6 of this User Guide.</p>
+<p>Modern computers are able to store sound frequencies in the form of digits. Your Amiga is a digital </p>
+<p>sound synthesizer, and AMOS Professional is ready, willing and able to harness its power. There are </p>
+<p>many digital sound samplers on the market, ready to be plugged into your computer for grabbing </p>
+<p>sound samples off CD, cassette, radio and microphone. Unfortunately there are two restrictions in </p>
+<p>enjoying   these   sources   for   digital   sound.   Firstly,   sampler   cartridges   are   rather   expensive,   and </p>
+<p>secondly, stealing other people's audio creations is illegal! Luckily, there are thousands of public </p>
+<p>domain   sound   effects   and   musical   instrument   samples   that  AMOS   Professional   can  import   and </p>
+<p>transform for your own purposes, perfectly and legally. AMOS Professional sound samples are held </p>
+<p>in their own memory banks, and bank number 5 is usually held as the default sample bank.</p>
+<p><b>Playing a sound sample</b></p>
+<p><b>SAM PLAY</b></p>
+<p><i>instruction: play a sound sample from the sample bank</i></p>
+<p><b>Sam Play</b> sample number</p>
+<p><b>Sam Play</b> <i>voice</i>,sample number</p>
+<p><b>Sam Play</b> <i>voice</i>,sample number, <i>frequency</i></p>
+<p>The SAM PLAY command is used to play a digital sound sample through your audio system. Simply </p>
+<p>define the number of the required sample held in the bank. There is no limit to the number of samples </p>
+<p>that can be stored, other than available memory.</p>
+<p>There   are   two   optional   parameters   that   can   also   be   given.   A  voice   parameter   can   be   placed </p>
+<p>immediately   after   the   SAM   PLAY   command,   in   front   of   the   sample   number.   This   is   a   bitmap </p>
+<p>containing a list of the voices the sample will use. There is one bit for each of the four available voices,  </p>
+<p>and to play a voice the relevant bit should be set to 1, as explained in the last Chapter. The other  </p>
+<p>parameter can be given after the sample number, and this governs the frequency of the sound. The </p>
+<p>frequency parameter sets the speed at which the sample will be played back, and the setting is given </p>
+<p>in Hertz. This is a professional standard of measurement, but as a rule of thumb, a rate of 4000 is </p>
+<p>acceptable for simple sound effects, with 10000 for recognisable speech. By changing this playback </p>
+<p>rate, the sample pitch can be adjusted over a very wide range, allowing a single sample to generate  </p>
+<p>many different sounds.</p>
+<p>08.02.01</p>
+<p>S</p>
+<p>A</p>
+<p>M</p>
+<p>P</p>
+<p>L</p>
+<p>E S</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Samples</p>
+<p>The  </p>
+<p>following  </p>
+<p>example  </p>
+<p>loads  </p>
+<p>up  </p>
+<p>a  </p>
+<p>bank  </p>
+<p>of</p>
+<p> </p>
+<p>ready-made  </p>
+<p>samples  </p>
+<p>stored  </p>
+<p>on  </p>
+<p>your </p>
+<p>“AMOSPro_Examples” disc, and allows you to play them in random order:</p>
+<p>Load “AMOSPro_Examples:Samples/Mixture.Abk”,5</p>
+<p>Sam Bank 5</p>
+<p>Curs Off : Cls 0: Paper 0</p>
+<p>Locate 0,10</p>
+<p>Centre “Press a key from A to J”</p>
+<p>Do</p>
+<p>A$=Inkey$</p>
+<p>A=Asc(A$)</p>
+<p>If A&gt;96 And A&lt;107</p>
+<p>Sam Play A-96</p>
+<p>End If</p>
+<p>Loop</p>
+<p>You can try playing the keys rapidly, like a miniature drum kit, as well as holding down the keys to </p>
+<p>get some hammer-drill effects! The next example demonstrates the use of two voices for a simple echo </p>
+<p>effect, and how frequency changes can alter the sample:</p>
+<p>Load “AMOSPro_Examples:Samples/Mixture.Abk”,10</p>
+<p>Sam Bank 10</p>
+<p>Sam Play 1,12 : Wait 5: Sam Play 2,12: Rem Simple echo effect</p>
+<p>Wait Key</p>
+<p>Sam Play 1,13,2000: Rem Lower Pitch</p>
+<p>Wait Key</p>
+<p>Sam Play 1,13,5000: Rem Higher Pitch</p>
+<p><b>SAM STOP</b></p>
+<p><i>instruction: stop one or more samples playing</i></p>
+<p><b>Sam Stop</b></p>
+<p><b>Sam Stop</b></p>
+<p> </p>
+<p><i>voices</i></p>
+<p>This simple command is used to stop all samples playing through your loudspeaker system. If it is </p>
+<p>followed by an optional voice parameter, only the selected voices will be switched off. Voices are  </p>
+<p>chosen using a binary bit-map, where any bit that is assigned to 1 will have the associated voice </p>
+<p>terminated. Otherwise it will be ignored. The voices are associated with the following bits:</p>
+<p>Voice</p>
+<p>3210</p>
+<p>Bitmap</p>
+<p>%1111</p>
+<p>For example, the next line would stop samples playing on voices 3 and 1:</p>
+<p>Sam Stop %1010</p>
+<p>08.02.02</p>
+<p>S</p>
+<p>A</p>
+<p>M</p>
+<p>P</p>
+<p>L</p>
+<p>E S</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Samples</p>
+<p><b>Changing a sample bank</b></p>
+<p>Digital   sound   samples   are   normally   stored   in   memory  bank   5,   but  there   are   no   restrictions   on </p>
+<p>assigning other banks to hold samples.</p>
+<p><b>SAM BANK</b></p>
+<p><i>instruction: change the current sample bank</i></p>
+<p><b>Sam Bank</b> bank number</p>
+<p>The SAM BANK instruction dictates that all future SAM PLAY commands will take samples from the </p>
+<p>newly specified memory bank. If several parallel banks are set up, AMOS Professional can swap </p>
+<p>between them with a simple call to the SAM BANK command. To hear all of the samples used in one </p>
+<p>of the AMOS Professional example games, load the following file and listen to what is stored in the  </p>
+<p>memory bank, using this routine:</p>
+<p>Load “AMOSPro_Productivity:Wonderland/Wonderland Samples.Abk”</p>
+<p>Sam Bank 6</p>
+<p>For A=1 To 5</p>
+<p>Print “Sample number ”;A</p>
+<p>For B=1 To 3</p>
+<p>Sam Play A</p>
+<p>Wait 20</p>
+<p>Next B</p>
+<p>Next A</p>
+<p><b>Playing a sample from memory</b></p>
+<p>Samples do not have to be held in a special bank. In fact, a “raw” sound sample can be stored </p>
+<p>anywhere in the computer's memory using BLOAD, and then played with the following command:</p>
+<p><b>SAM RAW</b></p>
+<p><i>instruction: play a raw sample from memory</i></p>
+<p><b>Sam Raw</b> voice,address,length,frequency</p>
+<p>SAM RAW plays a raw sample, and can be used to scan through any program or sound library discs, </p>
+<p>searching for a sample that matches the given parameters.</p>
+<p>The voice parameter has already been explained. Address refers to the location address of the sound </p>
+<p>sample, which is normally inside an AMOS Professional memory bank, but can be anywhere. The </p>
+<p>length parameter confirms the length in bytes of the sample to be played. Finally, frequency dictates </p>
+<p>the playback speed of the original sample,given in Hertz.</p>
+<p>A typical raw sample command looks like this:</p>
+<p>Reserve as work 10,21480</p>
+<p>R$=“AMOSPro_Examples:Samples/Mixture.Abk”</p>
+<p>Bload R$,Start(10)</p>
+<p>Sam Raw 15,Start(10),length(10),3000</p>
+<p>08.02.03</p>
+<p>S</p>
+<p>A</p>
+<p>M</p>
+<p>P</p>
+<p>L</p>
+<p>E S</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Samples</p>
+<p><b>SAM LOOP ON</b></p>
+<p><b>SAM LOOP OFF</b></p>
+<p><i>instructions: toggle repetition of a sample</i></p>
+<p><b>Sam Loop On</b></p>
+<p><b>Sam Loop Off</b></p>
+<p>There are many instances where a single sample needs to be repeated over and over again. SAM </p>
+<p>LOOP ON ensures that all sound samples which follow this instruction will be looped continuously. </p>
+<p>To turn off the looping facility,simply call the SAM LOOP OFF command. Add a SAM LOOP ON  </p>
+<p>instruction to the last example, before the SAMRAW command, and hear the result.</p>
+<p><b>Double buffered sampling</b></p>
+<p>Samples are ideal for generating realistic sound effects directly from AMOS Professional programs. </p>
+<p>However,   as   the   samples   get   longer,   their   memory   requirements   become   prohibitive!   If   sound </p>
+<p>samples   are   used   sparingly,   several   seconds   of   perfect   audio   effects   can   be   conjured   up   by   an </p>
+<p>unexpanded Amiga. Unfortunately, continuous soundtracks would seem like an impossibility, with </p>
+<p>one minute of digital sound consuming almost a megabyte of data!</p>
+<p>Owners of the basic Amiga machine will be forced to use most memory for routines and screens, but </p>
+<p>AMOS Professional can offer hard drive users an alternative sampling technique, allowing the entire </p>
+<p>disc to be treated as “virtual” memory. This means that instead of loading an entire sound sample as a </p>
+<p>single block, it can be played a section at a time directly from disc. The only limitation to the size of  </p>
+<p>such samples is the amount of free space in the storage facility.</p>
+<p>The principle of Double Buffered Sampling is very similar to the display system employed by the </p>
+<p>screen Double Buffer. It works by storing two sample banks in memory, the <b>physical</b> and the logical </p>
+<p>sample banks.</p>
+<p>The physical bank holds the sample which is currently being played through your loudspeakers, and </p>
+<p>the logical bank contains the sample that is being loaded from disc.</p>
+<p>At the beginning of a program, the physical and logical banks are loaded with the first two blocks of  </p>
+<p>sample data. The physical sample can then be played with a SAM RAW command, and whenever the </p>
+<p>physical bank runs out of information, the banks are swapped over to create a seamless audio signal. </p>
+<p>The logical bank now becomes the physical bank, and vice versa.</p>
+<p>AMOS Professional provides three powerful commands used to control this process directly. SAM </p>
+<p>SWAP activates double buffered sampling, SLOAD  loads a specific section of the sample file in </p>
+<p>memory, and the SAM SWAPPED function checks for the need to load a new block of sample data.</p>
+<p>Here is the procedure for using double buffered sampling:</p>
+<p>•</p>
+<p>Reserve two memory banks in CHIP Ram, to hold the logical and physical samples. The size of </p>
+<p>these banks will depend on the playback frequency, and the amount of background graphics. </p>
+<p>It is good practice to start with a small value, such as 8k, and then increase this value until the </p>
+<p>resulting sound effect is perfect.</p>
+<p>08.02.04</p>
+<p>S</p>
+<p>A</p>
+<p>M</p>
+<p>P</p>
+<p>L</p>
+<p>E S</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Samples</p>
+<p>•</p>
+<p>Load the first two segments of the sample into the logical and physical memory banks, using </p>
+<p>the SLOAD command.</p>
+<p>•</p>
+<p>Play the physical sample, using a SAM RAW instruction.</p>
+<p>•</p>
+<p>Activate the sample swapping process with SAM SWAP.</p>
+<p>•</p>
+<p>Continue with the main program, and simply test the status of the sample at regular intervals </p>
+<p>using the SAM SWAPPED function. A value of -1 (True) will indicate the need to load the next </p>
+<p>segment of sample data with</p>
+<p>•</p>
+<p>The swapping system is then re-initialised by SAM SWAP, and the process continues.</p>
+<p><b>SLOAD</b></p>
+<p><i>instruction: load a section of a sample</i></p>
+<p><b>Sload</b></p>
+<p> channel number </p>
+<p><b>To</b></p>
+<p> address,length</p>
+<p>The SLOAD instruction is an extended version of the BLOAD command, and it is designed to load </p>
+<p>selected parts of a file into memory, one section at a time.</p>
+<p>First give the channel number of a sample file stored on disc, which has been previously opened with </p>
+<p>an OPEN IN instruction. This is followed by the destination address of the data in memory. This will </p>
+<p>normally be the start address of an AMOS Professional memory bank. Finally, the length of the </p>
+<p>sample section is given, in the form of the number of bytes to be loaded into memory. These bytes will </p>
+<p>be loaded directly from the current position of the file pointer, and this pointer may be moved </p>
+<p>anywhere in the file, using the POF function. This means that you have complete control over the </p>
+<p>starting point of the loading operation. Obviously, if the requested position lies outside of the current </p>
+<p>file, an error will be reported. If the length is larger than the actual file, AMOS Professional will read </p>
+<p>all of the remaining bytes up to the end of the file.</p>
+<p>After the data has been successfully loaded, the file pointer will be moved to the next byte in the </p>
+<p>sample automatically.</p>
+<p>It should be apparent that the SLOAD command can be used for applications other than sample </p>
+<p>loading. It will work equally well with any drive, including the internal floppy drive, but only a hard </p>
+<p>disc,  Ram-disc or  <b>CD  ROM</b>  will be fast  enough to  load  samples,  for  use  with  the  SAM  SWAP </p>
+<p>command! This is explained below.</p>
+<p><b>SSAVE</b></p>
+<p><i>instruction: save a data chunk anywhere into an existing file</i></p>
+<p><b>Ssave</b> channel number, start <b>To</b> end</p>
+<p>This command is the reverse of SLOAD. It allows you to save a chunk of memory data into a file </p>
+<p>opened with OPEN OUT or APPEND. Use the LOF, POF and EOF functions to control where you </p>
+<p>want to position the data within the file.</p>
+<p>08.02.05</p>
+<p>S</p>
+<p>A</p>
+<p>M</p>
+<p>P</p>
+<p>L</p>
+<p>E S</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Samples</p>
+<p><b>SAM SWAP</b></p>
+<p><i>instruction: activate sample-switching</i></p>
+<p><b>Sam Swap</b> voices <b>To</b> address,length</p>
+<p>The SAM SWAP command activates the automatic sound-swapping system. It specifies the location </p>
+<p>and size of a logical sample which has been loaded previously with the SLOAD instruction. The </p>
+<p>sample will be played through loudspeakers the instant that the current physical sample runs out of </p>
+<p>data.</p>
+<p>The voices parameter is a bit-pattern that defines which voices are to be used for playing the sample.  </p>
+<p>Each bit in this pattern sets the swapping on a particular voice, according to the following format:</p>
+<p>Voice</p>
+<p>3210</p>
+<p>Bitmap</p>
+<p>%1111</p>
+<p>The address parameter gives the address of the next logical sample in memory. This address must be </p>
+<p>in CHIP Ram. Length is simply the number of bytes to be played of the new section of sample.</p>
+<p>It is essential to note that SAM SWAP only works with an existing sample. It does not actually play a </p>
+<p>sample through a loudspeaker. Therefore, it has to be initialised by a SAM RAW command before it </p>
+<p>can be used, which will start off the physical sample and set up the playback speed for the entire </p>
+<p>sample of sound. For example:</p>
+<p>Sam Raw %0011,Start(5),20000,12000 : Rem 12000 is the playback speed</p>
+<p>Rem Swap the samples assigned to voices 0 and 1 using data in bank 6</p>
+<p>Sam Swap %0011,Start(6),20000 : Rem 20000 is the length of logical sample</p>
+<p><b>SAM SWAPPED</b></p>
+<p><i>function: test for successful sample swap</i></p>
+<p>value=<b>Sam Swapped</b>(voice number)</p>
+<p>Use the SAM SWAPPED function to test the specified voice to see if the logical and physical samples </p>
+<p>have been exchanged by a SAM SWAP command. The voice number is a value from zero to 3, and if </p>
+<p>the sample is being played on a number of voices simultaneously, any of those voice numbers can be </p>
+<p>used.</p>
+<p>SAM SWAPPED will make a report by giving one of the following three values:</p>
+<p><b>-1</b>  means   that   the   previous   physical   sample   has   finished   playing,   and   the   samples   have   been </p>
+<p>successfully swapped. It is now time to load a new sample into the logical memory bank, and call the </p>
+<p>SAM SWAP command again. Please note that this value is also returned after a normal SAM RAW </p>
+<p>command has finished playing a sample.</p>
+<p>08.02.06</p>
+<p>S</p>
+<p>A</p>
+<p>M</p>
+<p>P</p>
+<p>L</p>
+<p>E S</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Samples</p>
+<p><b>Zero</b>  means that the physical sample is currently being played, and there is a fresh logical sample </p>
+<p>waiting for the automatic switching operation. In this case, there is no need to load any further </p>
+<p>information into memory.</p>
+<p><b>1</b>  means that the sample player has run out of data, and that the sample swapping operation has </p>
+<p>failed.   You   will   now   need   to   re-initialise   the   sample   from   the   beginning,   using   a   SAM   RAW </p>
+<p>command. If this value is repeatedly given, your logical and physical sample banks are probably too </p>
+<p>small. Try increasing their size to the next sensible value.</p>
+<p>The SAM SWAPPED function should be called at regular intervals while the sample is being played. </p>
+<p>It can be used as part of the main program loop, or called automatically after a set period, using the </p>
+<p>EVERY command.</p>
+<p>Here is a typical listing, that demonstrates how these commands should be used:</p>
+<p>Reserve As Chip Work 10,10000</p>
+<p>Reserve As Chip Work 11,10000</p>
+<p>Open In 1, “Dh0:Name_of a_big_sample”</p>
+<p>L=Lof(1) : C=0 : A=Start(10)</p>
+<p>Sload 1 To Start(10),10000 : C=C+10000</p>
+<p>Sload 1 To Start(11),10000 : C=C+10000</p>
+<p>Sam Raw %1111,Start(10),10000,10000</p>
+<p>Do</p>
+<p>Gosub CHECK_SAM</p>
+<p>If C&gt;L Then Goto FINI</p>
+<p>Sam Swap %1111 To Start(11),10000</p>
+<p>Sload 1 To Start(10),10000 : C=C+10000</p>
+<p>Gosub CHECK SAM</p>
+<p>If C&gt;L Then Goto FINI</p>
+<p>Sam Swap %1111 To Start(10),10000 : C=C+10000</p>
+<p>Sload 1 To Start(11),10000</p>
+<p>Loop</p>
+<p>CHECK_SAM:</p>
+<p>Repeat</p>
+<p>A=Sam Swapped(1)</p>
+<p>Locate 0,0: Print A;“ ”</p>
+<p>Until A=-1</p>
+<p>Return</p>
+<p>FINI:</p>
+<p>Close 1: End</p>
+<p>08.02.07</p>
+<p>S</p>
+<p>A</p>
+<p>M</p>
+<p>P</p>
+<p>L</p>
+<p>E S</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Playing Music modules</p>
+<p>A complete range of facilities I provided for playing music composed with the AMOS Professional </p>
+<p>system, as well as module created with the popular Tracker and Med systems.</p>
+<p><b>Playing AMOS Professional music</b></p>
+<p>Any pieces of AMOS Professional music that are to be used with your programs must be held in the </p>
+<p>Music Bank, which is normally Bank 3. These musical pieces can be played without affecting tiny </p>
+<p>other part of the main program. If sound effects are triggered on a channel that is currently playing </p>
+<p>music, the tune will be suspended while the sound effect is performed, and will start again from its </p>
+<p>last position once the effect is over.</p>
+<p>Several musical arrangements can be stored in the same bank, provided that there is enough memory, </p>
+<p>and to identify melodies each piece of music must be given its own number.</p>
+<p><b>MUSIC</b></p>
+<p><i>instruction: play a piece of AMOS Professional music</i></p>
+<p><b>Music</b> number</p>
+<p>The MUSIC command is used to start playing the specified melody. Up to three different melodies </p>
+<p>can be started at the same time, but each new MUSIC instruction will halt the current melody and </p>
+<p>hold its status in a stack. When the new song has ended, the original music will start again exactly </p>
+<p>where it left off. Here is a ready-made melody to load and play:</p>
+<p>Load “AMOSPro_Examples:Music/Music.Abk”</p>
+<p>Music 1</p>
+<p>If you do not want your music to play through to the end, it can be halted in either of the two  </p>
+<p>following ways.</p>
+<p><b>MUSIC STOP</b></p>
+<p><i>instruction: stop a single passage of music</i></p>
+<p><b>Music Stop</b></p>
+<p>This instruction brings the current single passage of music to a halt. If there is any other active music </p>
+<p>held in the stack and waiting to be played, that music will begin to play at once.</p>
+<p><b>MUSIC OFF</b></p>
+<p><i>instruction: turn off all music</i></p>
+<p><b>Music Off</b></p>
+<p>The   MUSIC   OFF   command   is   used   to   turn   off   all  AMOS   Professional   music   in   your   program </p>
+<p>completely. After this command has been called, the sound track can only be re-started by executing a </p>
+<p>MUSIC command all over again.</p>
+<p><b>MVOLUME</b></p>
+<p><i>instruction: set the volume of a piece of music</i></p>
+<p><b>Mvolume</b> level</p>
+<p>To set the volume of a piece of music, or to change its current volume, this command is </p>
+<p>followed by a number ranging from zero for complete silence, up to 63 for as loud as </p>
+<p>possible.</p>
+<p>08.03.01</p>
+<p>M</p>
+<p>O</p>
+<p>D</p>
+<p>U L</p>
+<p>E</p>
+<p>S</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Playing Music Modules</p>
+<p>Obviously, by setting up a simple loop, you can fade your music up or down.</p>
+<p><b>TEMPO</b></p>
+<p><i>instruction: change the speed of a piece of music</i></p>
+<p><b>Tempo</b> speed</p>
+<p>Changing the volume or speed of music and sound effects can enhance the mood of most programs. </p>
+<p>The TEMPO command is used to modify the speed of the current melody, and must be followed by a </p>
+<p>number ranging from 1 for as slow as possible, up to 100 for incredibly fast. Here is an example of </p>
+<p>music mood changing:</p>
+<p>Load “AMOSPro_Examples:Music/Music.Abk”</p>
+<p>Music 1</p>
+<p>Do</p>
+<p>For X=0 To 63</p>
+<p>Tempo X: Mvolume X</p>
+<p>Wait 10: Next X</p>
+<p>Loop</p>
+<p>Please note that music created using the Tracker and MED systems may include their own tempo and </p>
+<p>volume labels, and these will override the settings specified by AMOS Professional.</p>
+<p><b>Playing Tracker modules</b></p>
+<p>If you are unable or unwilling to write your own musical masterpieces, there is no need to worry.  </p>
+<p>AMOS Professional lets you take other composers' soundtracks and add them to your original games </p>
+<p>and utilities. There are thousands of public domain soundtracks written with various systems, and to </p>
+<p>make life easy, you are provided with a range of commands that will play the latest Soundtracker </p>
+<p>modules.</p>
+<p>A Tracker module can only be played while all other AMOS Professional music is stopped. The </p>
+<p>following TRACKER instructions should only be used for Tracker modules and not for normal AMOS </p>
+<p>Professional music, otherwise some bizarre noises are likely to be generated. The AMOS Professional </p>
+<p>VOLUME and TEMPO commands will have no effect on Tracker modules, which have their own </p>
+<p>built-in controls.</p>
+<p><b>TRACK LOAD</b></p>
+<p><i>instruction: load a Tracker module</i></p>
+<p>Track Load “modulename”,bank number</p>
+<p>Use this command to load a specified Tracker module into the memory bank number of your choice. </p>
+<p>Any existing data in this bank will be erased before the module is loaded, and the new bank will be  </p>
+<p>called “Tracker”.</p>
+<p><b>TRACK PLAY</b></p>
+<p><i>instruction: play a Tracker module</i></p>
+<p><b>Track Play</b></p>
+<p><b>Track Play</b> <i>bank number</i>,pattern number</p>
+<p>08.03.02</p>
+<p>M</p>
+<p>O</p>
+<p>D</p>
+<p>U L</p>
+<p>E</p>
+<p>S</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Playing Music Modules</p>
+<p>To start your Tracker module playing, give this command followed by the appropriate bank number. </p>
+<p>If the bank number is omitted, bank number 6 will be used as a default.</p>
+<p>Most electronic composers use sets of patterns to make up a tune, and these can be repeated in any </p>
+<p>suitable order. A Tracker sequence can be started from any one of these patterns, providing that you </p>
+<p>know which pattern number refers to which particular part of the sequence. An optional pattern </p>
+<p>number can be added after the bank number parameter. Here are some example settings:</p>
+<p>Track Play : Rem Use default Tracker bank</p>
+<p>Track Play ,5 : Rem Play pattern 5 from default Tracker bank</p>
+<p>Track Play 9,5: Rem Play pattern 5 from bank 9</p>
+<p><b>TRACK LOOP ON</b></p>
+<p><b>TRACK LOOP OFF</b></p>
+<p><i>instructions: toggle a Tracker loop</i></p>
+<p><b>Track Loop On</b></p>
+<p><b>Track Loop Off</b></p>
+<p>Use these commands to make Tracker modules loop over and over again, or to stop a particular loop </p>
+<p>after it has commenced. Try this example:</p>
+<p>Track Load “AMOSPro_Examples:Music/Mod.Tracker”</p>
+<p>Track Play</p>
+<p>Track Loop On</p>
+<p><b>TRACK STOP</b></p>
+<p><i>instruction: stop all Tracker music</i></p>
+<p><b>Track Stop</b></p>
+<p>This command is used to halt all Tracker modules playing.</p>
+<p><b>Playing Med modules</b></p>
+<p>If   you   wish   to   play   Med  modules,   the   “Medplayer.library”  file   must   be   in   your   “Libs:”  folder. </p>
+<p>Naturally, if you have no intention of exploiting the Med library, there is no need to load it and  </p>
+<p>allocate unnecessary memory. Both “MMDO” and “MMD1” modules can be used for your programs.</p>
+<p><b>MED LOAD</b></p>
+<p><i>instruction: load a Med module</i></p>
+<p><b>Med Load</b> “Module name”,bank number</p>
+<p>The MED LOAD instruction loads the specified module in memory, and re-locates it to the specified </p>
+<p>reserved bank in Chip memory. This bank is not a data bank, and will not be saved along with your  </p>
+<p>program, so Med modules must be loaded anew each time that the program is run.</p>
+<p>This command will open the “Medplayer.library” file, and you may be asked to insert your System </p>
+<p>disc into the drive if this file is not available on the current disc.</p>
+<p>08.03.03</p>
+<p>M</p>
+<p>O</p>
+<p>D</p>
+<p>U L</p>
+<p>E</p>
+<p>S</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Playing Music Modules</p>
+<p>As with Tracker modules, AMOS Professional sound samples can be played while Med modules are </p>
+<p>active. When a sound effect is triggered, any Med music will be stopped on all four voices, and will </p>
+<p>start again as soon as the sample has been played.</p>
+<p><b>MED PLAY</b></p>
+<p><i>instruction: play a Med module</i></p>
+<p><b>Med Play</b></p>
+<p><b>Med Play</b> <i>bank number</i>,song number</p>
+<p>This instruction plays the specified currently loaded Med module. If no bank number parameter is </p>
+<p>given, the data in the last appropriate bank to be loaded will be played. Med modules can include </p>
+<p>more than one song, and an individual melody can be specified by including the song number to be </p>
+<p>played, as follows:</p>
+<p>Med Play 2</p>
+<p>Med Play ,2</p>
+<p>Med Play 2,2</p>
+<p><b>MED STOP</b></p>
+<p><i>instruction: stop the current Med module</i></p>
+<p><b>Med Stop</b></p>
+<p>This simple instruction halts the current Med song being played. The song can now be started from </p>
+<p>the beginning with a new call to MED PLAY, or continued using a MED CONT command.</p>
+<p><b>MED CONT</b></p>
+<p><i>instruction: continue a Med module</i></p>
+<p><b>Med Cont</b></p>
+<p>This   command   is   used   to   re-commence   a   Med   module   that   has   been   halted   by   a   MED   STOP </p>
+<p>instruction. The song will continue from the exact point at which it was stopped.</p>
+<p><b>MED MIDI ON</b></p>
+<p><i>instruction: access MIDI instructions in a Med module</i></p>
+<p><b>Med Midi On</b></p>
+<p>MIDI is the international standard by which musical instruments talk to one another and stands for </p>
+<p>Musical Instrument Digital Interface. If the Med module contains MIDI instructions for controlling </p>
+<p>keyboards, drum machines and so on, the MED MIDI ON command must be given <b>before</b> the first </p>
+<p>MED LOAD command, in other words, before the “Medplayer.library” file is opened.</p>
+<p>08.03.04</p>
+<p>M</p>
+<p>O</p>
+<p>D</p>
+<p>U L</p>
+<p>E</p>
+<p>S</p>
+</body>
+</html>

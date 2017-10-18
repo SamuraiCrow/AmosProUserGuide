@@ -1,0 +1,1439 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+     "http://www.w3.org/TR/html4/transitional.dtd">
+<html>
+<head>
+
+  <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  <title></title>
+  <meta name="generator" content="LibreOffice 5.2.7.2 (Linux)"/>
+  <meta name="created" content="2017-10-03T07:59:12.054738420"/>
+  <meta name="changed" content="2017-10-04T06:15:49.284805839"/>
+</head>
+<body>
+<h1></h1>
+<p>Debugging</p>
+<p>12.01</p>
+<p>The Monitor</p>
+<p>12.02</p>
+<p>Error Handling</p>
+<p>12.03</p>
+<p>AMOS Errors</p>
+<h1 style="page-break-before:always; "></h1>
+<p>The Monitor</p>
+<p>This User Guide can help you to overcome most problems in your programming, and the ready-made </p>
+<p>HELP programs will demonstrate all of the techniques described in its pages. But a User Guide can </p>
+<p>never   get   inside   your   own   programs   and   explain   what   is   going   on.   Believe   it   or   not,  AMOS </p>
+<p>Professional can!</p>
+<p>The AMOS Professional Monitor is a very simple idea, but it is also incredibly powerful. It may </p>
+<p>summoned up to examine any AMOS Professional routine, or even a single expression. The Monitor </p>
+<p>is used to find out exactly what is happening and why, and to make an instant report on screen.</p>
+<p><b>Calling the Monitor</b></p>
+<p>To call up the AMOS Professional Monitor from the Editor, simply click on the [Monitor] option in the </p>
+<p>Project Menu, or press the [F5] key.</p>
+<p><b>MONITOR</b></p>
+<p><i>instruction: call AMOS Professional Monitor</i></p>
+<p><b>Monitor</b></p>
+<p>MONITOR is also a command in its own right, and can be typed from Direct Mode or included </p>
+<p>anywhere in your program listing. When called from inside an AMOS Professional program, the </p>
+<p>MONITOR  command   stops   the   program   and   summons   up   the   Monitor   Screen.   The   monitoring </p>
+<p>process will then start from the location immediately after the MONITOR command, ready to step </p>
+<p>through the program one instruction at a time. For example:</p>
+<p>Print “Time to call the Monitor!”</p>
+<p>Wait 100</p>
+<p>Monitor</p>
+<p>Print “This is the next instruction”</p>
+<p>Before the next instruction is executed, the Monitor Screen appears, and the system is ready to be  </p>
+<p>exploited.</p>
+<p><b>Using the Monitor</b></p>
+<p>The AMOS Professional Monitor is totally icon-driven and controlled by the mouse, so there is no </p>
+<p>need   to   type   anything   at   all!   To   prepare   for   a   step-by-step   guide   of   the   Monitor,   you   are </p>
+<p>recommended to load one of the demos on the AMOSPro Examples disc, so that the Monitor can  </p>
+<p>analyse it.</p>
+<p>If the Monitor screen is displayed, click on the quit icon [Q] in the top right-hand corner of the push-</p>
+<p>button control keypad of the Monitor Screen, and load the following example now:</p>
+<p>Load “AMOSPro_Examples:Examples/H-0/Help7.AMOS”</p>
+<p>Run the example from the Editor, to remind yourself how it looks, then break into it with [Ctrl]+[C] </p>
+<p>and press [Spacebar] to return to the Editor.</p>
+<p>12.01.01</p>
+<p>M</p>
+<p>O</p>
+<p>N</p>
+<p>I</p>
+<p>T</p>
+<p>O</p>
+<p>R</p>
+<h1 style="page-break-before:always; "></h1>
+<p>The Monitor</p>
+<p>Now   trigger   the   [Monitor]   option   or   press   [F5],   and   the   Monitor   Screen   will   appear   looking </p>
+<p>something like this:</p>
+<p>The AMOS Professional Monitor has been designed to perform all of the following tasks:</p>
+<p>•</p>
+<p>To examine the instructions in a program, one at a time, and to display a report showing the </p>
+<p>result of what happens when its parameters have been evaluated. In other words, the Monitor </p>
+<p>can test any instruction in any program.</p>
+<p>•</p>
+<p>To display HELP information regarding any selected instruction.</p>
+<p>•</p>
+<p>To supply the result of any expression in the program, where possible. If there is an error in </p>
+<p>the expression, the offending line will be identified.</p>
+<p>•</p>
+<p>To provide error message reports.</p>
+<p>The Monitor screen is divided into four areas, as follows:</p>
+<p>•</p>
+<p>The top left-hand quarter is the <b>graphic output window</b>.</p>
+<p>•</p>
+<p>The top right-hand quarter is the <b>control keypad</b>.</p>
+<p>•</p>
+<p>The central lower screen is the <b>program listing window</b>.</p>
+<p>•</p>
+<p>The bottom lower screen is the <b>information window</b>.</p>
+<p>12.01.02</p>
+<p>M</p>
+<p>O</p>
+<p>N</p>
+<p>I</p>
+<p>T</p>
+<p>O</p>
+<p>R</p>
+<h1 style="page-break-before:always; "></h1>
+<p>The Monitor</p>
+<p><b>The Graphic Output Window</b></p>
+<p>The window that occupies the top left-hand quarter of the Monitor Screen displays the graphic output </p>
+<p>of the current program screen. The screen number is displayed above it. Lowres screens are reduced </p>
+<p>to exactly half of their original size, so that a 320x200 screen fits perfectly into this window. If the </p>
+<p>screen is larger than this default size, it can be explored using the four directional arrow icons in the </p>
+<p>push-button control panel. Hires screens are  <b>not</b>  reduced, and these are also examined using the </p>
+<p>direction arrows.</p>
+<p>All colour animations, including FLASH and FADE will be shown during the monitoring process. If  </p>
+<p>the current screen features more than 16 colours, then colours 16 to 31, colours 41 to 47 and colours 48 </p>
+<p>to 63 will each be converted to colours 0 to 15. Obviously HAM pictures may well generate some  </p>
+<p>bizarre displays.</p>
+<p>Experiment with the directional arrows, and then click anywhere in the graphic output window with </p>
+<p>the left mouse button. This returns to the original program display for as long as the button remains </p>
+<p>pressed, and is a useful feature to-remind you of exactly what is on the screen you are dealing with.</p>
+<p><b>The Program Listing Window</b></p>
+<p>This window gives you a view of the current program listing. Any items to be examined can be </p>
+<p>marked out, but nothing in this window can be changed. Once the Monitor has been initialised, </p>
+<p>helpful markers will be shown in the program listing, acting as reminders for the following points:</p>
+<p>•</p>
+<p>The current program location is marked by a black cursor with three small arrow-heads. It </p>
+<p>always appears before the <b>next</b> instruction to be examined.</p>
+<p>•</p>
+<p>You are allowed to set a “break point” in the listing, and these are marked in <b>inverse video</b>.</p>
+<p>•</p>
+<p>Any item that you want information about will be <b>underlined</b>.</p>
+<p><b>The Information Window</b></p>
+<p>This is where all of the Monitor information appears. It commences by displaying the next instruction </p>
+<p>to be examined, but as more of the Monitor features become active, information is displayed in the  </p>
+<p>following order, from top to bottom in this window:</p>
+<p>•</p>
+<p>Error messages</p>
+<p>•</p>
+<p>Information on instructions</p>
+<p>•</p>
+<p>The next instruction to be examined</p>
+<p>•</p>
+<p>The first parameter of the next instruction</p>
+<p>•</p>
+<p>The second parameter, the third parameter, and so on.</p>
+<p><b>Changing the window displays</b></p>
+<p>Scroll bars are provided to move the display of the program listing, vertically and horizontally in the </p>
+<p>Program Listing Window. The “centre” button at the top right-hand corner of this window is used to </p>
+<p>centre the display on the next instruction to be executed. A vertical scroll bar is also available for the  </p>
+<p>Information Window.</p>
+<p>12.01.03</p>
+<p>M</p>
+<p>O</p>
+<p>N</p>
+<p>I</p>
+<p>T</p>
+<p>O</p>
+<p>R</p>
+<h1 style="page-break-before:always; "></h1>
+<p>The Monitor</p>
+<p>The horizontal line between the Program Listing Window and the Information Window can also be </p>
+<p>dragged up and down, in order to enlarge one of these windows and reduce the other to a minimum </p>
+<p>of three lines.</p>
+<p><b>The control keypad</b></p>
+<p>Each of the push-buttons in the control keypad is triggered via the mouse. Here is au explanation of </p>
+<p>the controls.</p>
+<p><b>Scrolling the screen output</b></p>
+<p>The four directional arrows are used to scroll the reduced screen in the graphic output </p>
+<p>window. The central button in this group selects the screen to be displayed, starting from </p>
+<p>screen   zero,   and   then   in   order   through   any   additional   screens   until   screen   zero   is </p>
+<p>displayed once more.</p>
+<p><b>Initialising the Monitor</b></p>
+<p>This is the Initialisation button, and it has exactly the same effect as using [Run] from the </p>
+<p>Editor. Firstly, a [Test] of the program is performed. If AMOS Professional encounters an </p>
+<p>error,   the   faulty   line   will   be   displayed   in   the   program   listing   window.   If   the   testing   process   is </p>
+<p>successful and no errors are found, a Default command will be given and a program pointer will be </p>
+<p>initialised at the first instruction in the program that is being monitored.</p>
+<p>The [INIT] button <b>must</b> be triggered before the program listing can be checked, step by step.</p>
+<p><b>One-Step Control</b></p>
+<p>Clicking on this button tells the Monitor to examine the next instruction, give a report and then </p>
+<p>go back and wait for your next action. The black program cursor will now be pointing to the </p>
+<p>next instruction, and the Information Window will also show the next instruction and give any </p>
+<p>parameter list.</p>
+<p><b>Slow-Run Control</b></p>
+<p>When this button is triggered, the Monitor will interpret instructions one at a time, and re-</p>
+<p>draw the whole display after  each examination. By using this option, you can follow the </p>
+<p>progress of the program listing in slow motion. To stop the slow-run, click on the stop button.</p>
+<p><b>Stop Button</b></p>
+<p>The stop button brings the interpretation process to a halt, and returns you to the Monitor. </p>
+<p>Pressing [Ctrl]+[C] has the same effect, and so does a “break point”, which is explained below. </p>
+<p>If a non-trapped error is discovered, it will be displayed in the Information Window and you </p>
+<p>will also be taken back to the Monitor.</p>
+<p><b>Normal-Run Control</b></p>
+<p>This button will run the program from the Monitor and update the graphic display every 50th </p>
+<p>of   a   second,   allowing   a   faster   speed   of   operation.   The   program   itself   and   the   Monitor </p>
+<p>information windows will not be updated until a stop in the program. To stop the process, </p>
+<p>simply use the stop button.</p>
+<p>12.01.04</p>
+<p>M</p>
+<p>O</p>
+<p>N</p>
+<p>I</p>
+<p>T</p>
+<p>O</p>
+<p>R</p>
+<h1 style="page-break-before:always; "></h1>
+<p>The Monitor</p>
+<p><b>Fast-Run Button</b></p>
+<p>When fast-run is used, the program's own display is used and the program is run at full speed. </p>
+<p>If an error is not found, the only way to return to the Monitor during a fast-run is to press </p>
+<p>[Ctrl]+[C], or use break points.</p>
+<p><b>Break Point Button</b></p>
+<p>Click   on   the   break   point   button   with   the   left   mouse   button   as   usual,   then   click   on   the </p>
+<p>instruction in the program listing wherever you wish to <b>set</b> the break. The instruction will be </p>
+<p>highlighted in inverse video. To <b>remove</b> a break point, click on an area which is adjacent to the </p>
+<p>highlighted listing, such as the area without any commands or text to the right of the program lines.</p>
+<p><b>Evaluation Button</b></p>
+<p>The button marked [VAL] allows you to use a very accurate setting for the evaluation process. </p>
+<p>Click on the button and then use the mouse to set the individual character that marks the </p>
+<p>beginning   of   the   expression   to   be   evaluated.   With   the   button   held   down,   drag   it   to   the </p>
+<p>character in the listing to mark the end of the expression you are interested in, and release the button </p>
+<p>to underline the expression. The evaluation will now be reported in the Information Window.</p>
+<p><b>Help Button</b></p>
+<p>Click on the help button [?], then click on the instruction you need help with. The keyword will </p>
+<p>be underlined, and the trusty AMOS Professional Help Window will appear, at your service.</p>
+<p><b>Quit</b></p>
+<p>This button takes you back to the Editor. If the Monitor system has been called up from inside  </p>
+<p>a   program   using   the   MONITOR  command,   you   will   be   returned   to   the   program   at   the </p>
+<p>instruction immediately after that command.</p>
+<p><b>Evaluating expressions</b></p>
+<p>The Monitor may be simple to use, but it is incredibly skilful in the way it analyses expressions, and </p>
+<p>reports the results back to you. Here are the ground rules for a simple demonstration. First, run this </p>
+<p>example to give yourself something to work on, and then call up the Monitor.</p>
+<p>A=1 : B=2 : C=3</p>
+<p>D=A+B*C-1</p>
+<p>Print D</p>
+<p>Initialise the program by clicking on the [INIT] button. If you were to press [VAL] and ask for an  </p>
+<p>evaluation of A+B without first initialising B, you would be asking for the impossible. Also, if you </p>
+<p>asked for an evaluation of “k”, you would be told that it is not possible to evaluate something that is </p>
+<p>plainly idiotic! On the other hand, if you ask for an evaluation of something self evident, like “1”, it  </p>
+<p>will be given. Also, the expression must be at the same level of procedure as the program pointer.</p>
+<p>12.01.05</p>
+<p>M</p>
+<p>O</p>
+<p>N</p>
+<p>I</p>
+<p>T</p>
+<p>O</p>
+<p>R</p>
+<h1 style="page-break-before:always; "></h1>
+<p>The Monitor</p>
+<p>With the black program cursor still on the first line of the example program, trigger [VAL] and ask for </p>
+<p>an evaluation of D by clicking on “D” in the last line of the example. The result of zero will be given! </p>
+<p>D will only be equal to A+B*C-1 when all the expressions have been evaluated.</p>
+<p>Advance the process by one step by pressing the appropriate one-step button on the control panel, </p>
+<p>and the cursor moves to the next expression on the first line. Now advance two more steps, and get </p>
+<p>the correct evaluations for A,B and C, from the second line of the program. D will still come back as </p>
+<p>zero, but by advancing another step, D is given as 6.</p>
+<p>To get rid of an expression from the Information Window, just click on it with the mouse cursor.</p>
+<p>That was a very simple example, of course. However, when dealing with complex programs, you can </p>
+<p>use the Monitor with the greatest of ease to extract all sorts of interesting results from the expressions </p>
+<p>in the listing. Explore one of the AMOS Professional example programs now, and test out the Monitor </p>
+<p>on the most complex expressions you can find.</p>
+<p>12.01.06</p>
+<p>M</p>
+<p>O</p>
+<p>N</p>
+<p>I</p>
+<p>T</p>
+<p>O</p>
+<p>R</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Error Handling</p>
+<p>When AMOS Professional encounters an error in your programs, or if you attempt the impossible, </p>
+<p>automatic assistance is offered in the form of error messages displayed in the information line. If this </p>
+<p>happens while you are programming, you can try to correct the mistake immediately. If the problem </p>
+<p>is found when you try to test or run a program, AMOS Professional will take you to the offending line </p>
+<p>as soon as you edit.</p>
+<p><b>Trapping errors</b></p>
+<p>Routines can be set up in advance for handling errors inside an AMOS Professional program, so that </p>
+<p>when   a   mistake   is   spotted,   error   trapping   swings   into   action.   This   process   is   triggered   by   the </p>
+<p>following command:</p>
+<p><b>ON ERROR</b></p>
+<p><i>structure: trap an error within a Basic program</i></p>
+<p><b>On Error Goto</b> label</p>
+<p>By this method, when an error occurs in your Basic program, a jump is made to whatever label has </p>
+<p>been defined. This label acts as the starting point for your own error correction routine, and after the </p>
+<p>mistake has been corrected you can return to your main program without the need to go via the </p>
+<p>editor window. Try this simple routine:</p>
+<p>Do</p>
+<p>Input “Type in two numbers”;A,B</p>
+<p>Print A;“ divided by “;B;” is ”;A/B</p>
+<p>Loop</p>
+<p>This will work perfectly until you try to enter a value of zero for B and it is discovered that division  </p>
+<p>by zero is impossible. Such unforeseen problems can be catered for by setting an error trap like this:</p>
+<p>On Error Goto HELP</p>
+<p>AGAIN:</p>
+<p>Do</p>
+<p>Input Type in two numbers”;A,B</p>
+<p>Print A; divided by ;B;” is ”;A/B</p>
+<p>Loop</p>
+<p>Rem Error Handler</p>
+<p>HELP:</p>
+<p>Print</p>
+<p>Print Sorry, you have tried to divide”</p>
+<p>Print “your number by zero.”</p>
+<p>Resume AGAIN : Rem Go back to input</p>
+<p>If you are unfortunate enough to write an error inside your own error trapping routine, AMOS </p>
+<p>Professional will grind to a halt! There are two ways to deliberately disable ON ERROR GOTO.</p>
+<p>On Error : Rem disable error trap</p>
+<p>12.02.01</p>
+<p>E</p>
+<p>R</p>
+<p>R</p>
+<p>O</p>
+<p>R</p>
+<p>S</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Error Handling</p>
+<p>Call ON ERROR without any parameters like that, or force it to go to zero, like this:</p>
+<p>On Error Goto 0</p>
+<p>To get back to your program after ON ERROR has been called, you must use RESUME. Never use </p>
+<p>GOTO for this purpose.</p>
+<p><b>RESUME</b></p>
+<p><i>structure: resume the execution of current program after an error trapping routine</i></p>
+<p><b>Resume</b></p>
+<p><b>Resume Next</b></p>
+<p><b>Resume</b> labelname</p>
+<p><b>Resume</b> linenumber</p>
+<p>Used on its own, RESUME will jump back to the statement which caused the error and try it again. To </p>
+<p>return   to   the   instruction   immediately   after   the   one   that   caused   the   error,   use   RESUME   NEXT. </p>
+<p>Alternatively, to jump to a specific point in your main program, simply follow RESUME with a </p>
+<p>reference to a chosen label or a normal line number.</p>
+<p><b>ON ERROR PROC</b></p>
+<p><i>structure: trap an error using a procedure</i></p>
+<p><b>On Error Proc</b> name</p>
+<p>Errors can also be trapped using a procedure. ON ERROR PROC selects a named procedure which is </p>
+<p>automatically called if there is an error in the main program. In fact, this is a structured version of the </p>
+<p>ON ERROR GOTO command. In this case, your procedure must be terminated by an END PROC in </p>
+<p>the usual way, then return to the main program with an additional call to RESUME, which can be </p>
+<p>placed just before the final END PROC statement. Here is an example:</p>
+<p>On Error Proc HELP</p>
+<p>Do</p>
+<p>Input “Type in two numbers”;A,B</p>
+<p>Print A;“ divided by “;B;” is ”;A/B</p>
+<p>Loop</p>
+<p>Rem Error Handler</p>
+<p>Procedure HELP</p>
+<p>Print</p>
+<p>Print “Sorry, you have tried to divide”</p>
+<p>Print “your number by zero.”</p>
+<p>Resume Next: Rem Go back to input</p>
+<p>End Proc</p>
+<p>When using a procedure to deal with errors, and you want to jump to a particular label, a special </p>
+<p>marker must be placed inside that procedure. This is achieved with the RESUME LABEL structure.</p>
+<p>12.02.02</p>
+<p>E</p>
+<p>R</p>
+<p>R</p>
+<p>O</p>
+<p>R</p>
+<p>S</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Error Handling</p>
+<p><b>RESUME LABEL</b></p>
+<p><i>structure: jump to a label after an error has been isolated using a procedure</i></p>
+<p><b>Resume Label</b> label</p>
+<p>This defines the label which is to be returned to after an error. It must be called outside of your error </p>
+<p>handler, immediately after the original ON ERROR PROC or ON ERROR GOTO statement. For an </p>
+<p>example of RESUMEL ABEL, please see the last routine in this Chapter.</p>
+<p><b>ERRN</b></p>
+<p><i>function: return the error code number of the last error</i></p>
+<p>number=<b>Errn</b></p>
+<p><b>Print Errn</b></p>
+<p>When you use ON ERROR to create error handling routines, you will want to know exactly what sort </p>
+<p>of error has happened in the main program. Errors discovered while your program is running each </p>
+<p>have a specific error code number, and the number of the last error to be isolated can be returned by </p>
+<p>using the ERRN function.</p>
+<p><b>ERROR</b></p>
+<p><i>instruction: deliberately generate an error and return to Editor</i></p>
+<p><b>Error</b> number</p>
+<p>Supposing you have set up an error handling routine and you want to test your programming skills. </p>
+<p>The   ERROR   command   offers   a   simple   method   of   simulating   various   mistakes   without   all   the </p>
+<p>inconvenience of waiting for them to happen. To test this system, select the error of your choice using  </p>
+<p>the error code numbers listed in the next Chapter. For example:</p>
+<p>Error 88</p>
+<p>That will quit your program and display a Disc full error message, simulating what would happen </p>
+<p>when your current disc gets filled with data. You may also combine ERROR with the ERRN function, </p>
+<p>to print out the current error condition, after a problem in your program:</p>
+<p>Error Errn</p>
+<p>Finally, ERROR can be used with RESUME LABEL inside an error handling routine, to jump straight </p>
+<p>back to a label set up with the previous command. For example:</p>
+<p>On Error Proc HELP</p>
+<p>Resume Label WELCOME</p>
+<p>Error 88</p>
+<p>Print “This line is never printed”</p>
+<p>WELCOME : Print “Hello! Hello! I'm back again!”</p>
+<p>End</p>
+<p>Procedure HELP</p>
+<p>Print “There seems to be an error!”</p>
+<p>Resume Label</p>
+<p>Endproc</p>
+<p>12.02.03</p>
+<p>E</p>
+<p>R</p>
+<p>R</p>
+<p>O</p>
+<p>R</p>
+<p>S</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Error Handling</p>
+<p><b>TRAP</b></p>
+<p><i>instruction: trap an error</i></p>
+<p><b>Trap</b> instruction</p>
+<p>The   TRAP   command   offers   a   much   sleeker   error-trapping   service   than   an   ON   ERROR   GOTO </p>
+<p>structure, and it is used to detect errors for a particular instruction. The TRAP instruction is used </p>
+<p>before any normal AMOS Professional instruction with <b>no</b> colon between them, and it disables the </p>
+<p>error system for the specified instruction. This means that if an error occurs, the program will not be </p>
+<p>halted, but the number of the error will be reported instead. This number can then be returned by the </p>
+<p>ERRTRAP function, explained below. Here is an example of trapping a disc access error:</p>
+<p>Trap Load “File.Abk”,10</p>
+<p>If Errtrap : Print “Disc Error!” : End If</p>
+<p>TRAP will only detect an error for the instruction that immediately follows, so in the next example the </p>
+<p>second usage of the LOCATE instruction <b>will</b> cause an error!</p>
+<p>Trap Locate -1,-1 : Locate -1,-1</p>
+<p><b>ERRTRAP</b></p>
+<p><i>function: return an error code number after a TRAP</i></p>
+<p>number=<b>Errtrap</b></p>
+<p>This function is used to return the error status after a previous TRAP command. If no error has been </p>
+<p>detected,   a  zero  s   returned,   otherwise   the   appropriate   error   number   is  given.   The   related   error </p>
+<p>message can then be returned using the ERR$ function, explained next.</p>
+<p><b>ERR$</b></p>
+<p><i>function: return an error message string</i></p>
+<p>text$=<b>Err$</b>(error number)</p>
+<p>This simple function returns an error message string. If the error number is out of range, then an </p>
+<p>empty string will be given. ERR$ will return error messages as long as they are loaded in memory, but </p>
+<p>messages will not be returned from a compiled program, or if the Editor has been KILLed.</p>
+<p>12.02.04</p>
+<p>E</p>
+<p>R</p>
+<p>R</p>
+<p>O</p>
+<p>R</p>
+<p>S</p>
+<h1 style="page-break-before:always; "></h1>
+<p>AMOS Errors</p>
+<p>AMOS Professional offers several sets of error messages to help you correct your  programming </p>
+<p>mistakes. Editing error messages may appear while you are in the middle of programming. Program </p>
+<p>error messages can happen when you test your work. Run time messages come complete with their </p>
+<p>own number code, and they pinpoint errors while your program is running. Error messages appear in </p>
+<p>the information line of your screen, and are automatically displayed to help and inform you.</p>
+<p><b>Editing error messages</b></p>
+<p>While you are editing programs, one of the following messages may appear.</p>
+<p><b>Bottom of text</b></p>
+<p>The text cursor has come to the last line of your current program.</p>
+<p><b>Cannot delete warm-start information!</b></p>
+<p>You've tried to use AMOS Warm-start system on a Write protected disc. AMOS won't reload until the </p>
+<p>“AMOSPro.LastSession” has been successfully deleted. Remove the protection and try again. If the </p>
+<p>problem persists, you'll have to delete the file manually. It's in the APSystem folder.</p>
+<p><b>Cannot hide the last window</b></p>
+<p>AMOS Professional always requires at least one window on the screen at any one time. So you can't </p>
+<p>hide the final window away as an accessory.</p>
+<p><b>Cannot load configuration</b></p>
+<p>If you've tried to load a new configuration using the option in the [Config] menu, and the file you  </p>
+<p>have selected is not valid then this error will be generated. It will also appear in the CLI or Workbench </p>
+<p>if AMOS Professional cannot load the default configuration when it is being booted or re-loaded after </p>
+<p>a KILL EDITOR command. A backup copy of the default configuration file can be found in the </p>
+<p>Extra_Configs folder on the AMOSPro System disc.</p>
+<p><b>Cannot load included file</b></p>
+<p>The INCLUDE command can't find your chosen include file. Check that it's available in one of your </p>
+<p>drives.</p>
+<p><b>Cannot save configuration</b></p>
+<p>AMOS  can't save  your  configuration file  onto  your  start-up  disc.  This  error  can  occur  if  you've </p>
+<p>selected the [Save Configuration] feature from the [Quit Options] menu or when saving from the </p>
+<p>menu item in the [Config] menu. If there's not enough space on your boot-disc, or it's write protected, </p>
+<p>you'll get an error.</p>
+<p><b>Cannot save editor set-up: warm start not enabled</b></p>
+<p>AMOS Professional cannot save the AMOSPro.LastSession file or cannot save one of the program files </p>
+<p>being worked on. This can happen for many reasons - disc protected, no disc in drive, disc full etc. If </p>
+<p>this happens, the next warm-start procedure is aborted and the next time you boot up you'll have an </p>
+<p>empty editor.</p>
+<p><b>Disc error</b></p>
+<p>The Editor has been unable to load a configuration file, include file, or library from the </p>
+<p>current disc. If the file is on a floppy, try re-inserting it a couple of times. If all else </p>
+<p>fails, use DISCDOCTOR to salvage your data and try again with a fresh disc.</p>
+<p>12.03.01</p>
+<p>E</p>
+<p>R</p>
+<p>R</p>
+<p>O</p>
+<p>R</p>
+<p>S</p>
+<h1 style="page-break-before:always; "></h1>
+<p>AMOS Errors</p>
+<p><b>Editor command not runnable</b></p>
+<p>ASK EDITOR and CALL EDITOR can only be used by EDITOR ACCESSORIES. These are normal </p>
+<p>programs with a SET EDITOR command at the start.</p>
+<p><b>Editor function not found</b></p>
+<p>You've used an incorrect function number in an ASK EDITOR or CALL EDITOR command.</p>
+<p><b>Error in previous program</b></p>
+<p>There was a problem with the accessory program you've called up with PRUN, or accessed from the </p>
+<p>USER MENU. If possible, bring up the listing on the screen, and try running the program again from </p>
+<p>an editor window. You should spot the error immediately.</p>
+<p><b>Line too long</b></p>
+<p>You've tried to enter a line into the editor which is longer than the maximum of 251 characters. If  </p>
+<p>possible, split the line into a number of smaller pieces.</p>
+<p><b>Mark not defined</b></p>
+<p>This error is generated using the [Goto] system mark and [Goto] user mark from the [Editor] menu. </p>
+<p>You are only allowed to jump to a mark if it's been previously defined from the editor. User marks are </p>
+<p>created  by  you,  but System  marks are  generated automatically whenever  you move through  an </p>
+<p>AMOS program listing. However, if you call them straight after a program has been loaded, you can </p>
+<p>still get this error.</p>
+<p><b>No errors</b></p>
+<p>No errors have been detected in the current program during the testing process.</p>
+<p><b>No macros defined</b></p>
+<p>If you try to clear macros when there are none set-up this message will be displayed.</p>
+<p><b>No more Redo</b></p>
+<p>You've run out of things to redo. You can only redo lines which have been previously recalled by the </p>
+<p>UNDO command. So every REDO matches exactly one UNDO operation.</p>
+<p><b>No more Undo</b></p>
+<p>You've reached the end of the stored key presses used by the undo option. If you've got enough </p>
+<p>memory, AMOS Professional will happily allow you to undo the entire editing session a character at a </p>
+<p>time.</p>
+<p><b>Not a procedure</b></p>
+<p>You are trying to use the [Procedure Open/Close] options, but the text cursor is not positioned over a  </p>
+<p>procedure.</p>
+<p><b>Not an AMOS program</b></p>
+<p>You've attempted to load the wrong sort of program into the Editor. AMOS Professional is compatible </p>
+<p>with all versions of AMOS and Easy AMOS. But you can't load .AMOS format compiled programs </p>
+<p>created from the original AMOS Compiler.</p>
+<p>12.03.02</p>
+<p>E</p>
+<p>R</p>
+<p>R</p>
+<p>O</p>
+<p>R</p>
+<p>S</p>
+<h1 style="page-break-before:always; "></h1>
+<p>AMOS Errors</p>
+<p><b>Not done</b></p>
+<p>This “error” is generated when you abort from an operation such as [Load], [New], or [Quit] I corn </p>
+<p>the Editor. It's also produced when the editor is unable to comply with your instructions.</p>
+<p><b>Not found</b></p>
+<p>A SEARCH or REPLACE operation from the Editor has been unable to find your requested search </p>
+<p>string.</p>
+<p><b>Out of buffer space</b></p>
+<p>The AMOS Professional Editor stores each program listing in an internal “memory buffer”. If you run </p>
+<p>out of space in this buffer, you'll get an “Out of buffer space” error. The solution is to use the [Set Text  </p>
+<p>Buffer] function from the [Editor] menu to increase the allocation. Each extra byte can hold a single </p>
+<p>character in your program listing. Note that providing you INCREASE the memory buffer, your </p>
+<p>current   program   listing   will   be  perfectly   safe.   If   you   reduce   it   however,   it   will   be  erased   from </p>
+<p>memory!</p>
+<p>The most common cause of this problem is when you select the “Automatic Adaptation” option after </p>
+<p>loading a large file. This will reserve just 254 bytes for your editing operations. If you click on [No], </p>
+<p>AMOS will automatically call [Set Text Buffer] so that you can expand the memory buffer to a more </p>
+<p>sensible size.</p>
+<p><b>Out of Editor memory</b></p>
+<p>You've tried to load an AMOS program which is too large to fit into the available memory. If you've </p>
+<p>several windows open, try closing some of them to grab back a little extra space. Don't forget to save </p>
+<p>any changes first! Also check the amount of available memory with the [Information] option from the </p>
+<p>[Project]   menu.   If   there   seems   to   be   plenty   of   Ram,   you've   probably   suffered   from   a   memory </p>
+<p>fragmentation problem. Save your programs, and re-boot your Amiga from scratch.</p>
+<p><b>Out of memory</b></p>
+<p>There is no more memory available to hold the current programs. Using the CLOSE WORKBENCH </p>
+<p>instruction can restore 40k of memory used by the Workbench screen.</p>
+<p><b>Out of memory: Cannot load program</b></p>
+<p>This error is generated when there isn't enough memory to hold an accessory program assigned to </p>
+<p>one of the Editor options. It's also produced by the PRUN command. The solution is to free up as </p>
+<p>much memory as possible by closing any unused windows. If you still can't call the program, save  </p>
+<p>any changes and re-boot AMOS Professional from scratch. This re-initialises the Amiga's memory </p>
+<p>system and provides the maximum storage space your AMOS programs.</p>
+<p><b>Please choose a RELOCATABLE PROGRAM!</b></p>
+<p>The [Insert Program] option from the [Editor/Procedures] menu only works with 68000 machine code </p>
+<p>programs in PC relative (relocatable) format. If you've included instructions which move directly to a </p>
+<p>fixed memory location, your assembler will have placed extra relocation information at the end of </p>
+<p>your machine code. This cannot be used by AMOS Professional, so your program will be rejected out </p>
+<p>of hand.</p>
+<p>12.03.03</p>
+<p>E</p>
+<p>R</p>
+<p>R</p>
+<p>O</p>
+<p>R</p>
+<p>S</p>
+<h1 style="page-break-before:always; "></h1>
+<p>AMOS Errors</p>
+<p><b>Program already running</b></p>
+<p>This will occur if a program tries to PRUN itself.</p>
+<p><b>Program is not an accessory</b></p>
+<p>You are using Accessory specific commands (ASK EDITOR, CALL EDITOR etc.) within program that </p>
+<p>is not an Accessory. To be an Accessory, a program must include SET ACCESSORY at the beginning of </p>
+<p>its code and also be called from the Editor menus.</p>
+<p><b>Sorry! Editor configuration not recoverable!</b></p>
+<p>AMOS Professional has attempted a Warm-start. In order to work it needs to be able to find the  </p>
+<p>“AMOSPro.LastSession” file from the APSystem folder. If this is corrupted, or write-protected, you'll </p>
+<p>get an error when you try to load AMOS Professional. If you've write-protected the disc, remove the  </p>
+<p>protection, and try again. If it still fails to load, delete the “AMOSPro.LastSession” file from the CLI </p>
+<p>and re-boot. AMOS Professional should now load correctly.</p>
+<p><b>Syntax error</b></p>
+<p>The current line of your program is written wrongly. You must have the correct syntax or “grammar” </p>
+<p>for the construction you are trying to use, as explained in this User Guide.</p>
+<p><b>Text buffer too small</b></p>
+<p>The SET TEXT BUFFER command from the Editor menu will not allow you to set the text buffer </p>
+<p>smaller than 1024 bytes. Try a higher value.</p>
+<p><b>Too many direct mode variables</b></p>
+<p>Normally, you are allowed to create up to 64 new variables while in direct mode. If your program is </p>
+<p>using too much memory, space in the variable table may become restricted.</p>
+<p><b>This editor command needs a string</b></p>
+<p>An ASK EDITOR or a CALL EDITOR command has been used with the wrong sort of parameters. It </p>
+<p>was expecting a string, but you've entered a number instead.</p>
+<p><b>This file is not an AMOSPro Macro file!</b></p>
+<p>The [Load Macros] option from the [Project/Macro] menu has attempted to load a file which is in the  </p>
+<p>wrong format.</p>
+<p><b>This function cannot be used in a macro!</b></p>
+<p>When you're creating a Macro, you're not allowed to call up any existing Macro definitions from the  </p>
+<p>keyboard. If you try, you'll get a dialogue box with this error, and your Macro definition will be </p>
+<p>aborted.</p>
+<p><b>This key is not assigned to a macro!</b></p>
+<p>The macro definition you've attempted to delete with [Erase Macro] does not exist! You've probably </p>
+<p>made a typing mistake.</p>
+<p>12.03.04</p>
+<p>E</p>
+<p>R</p>
+<p>R</p>
+<p>O</p>
+<p>R</p>
+<p>S</p>
+<h1 style="page-break-before:always; "></h1>
+<p>AMOS Errors</p>
+<p><b>This is not a relocatable executable routine!</b></p>
+<p>You've attempted to use INSERT PROGRAM to install the wrong type of program into a procedure. </p>
+<p>This program file must contain a 68000 machine code routine in PC relative (relocatable) format. </p>
+<p>Programs created with the AMOS Compiler are NOT acceptable!</p>
+<p><b>This is not a 'User' menu option!</b></p>
+<p>The Delete Option command can only be used to delete entries from the User Menu. If you try to </p>
+<p>wipe out any other item, you'll get an error.</p>
+<p><b>This line can't be modified</b></p>
+<p>You've tried to edit a line containing a closed procedure. This is not allowed! If the procedure contains </p>
+<p>normal AMOS instructions you can use F9 to expand the definition onto the screen. Machine code </p>
+<p>procedures can't be listed in this way.</p>
+<p><b>This menu option cannot be assigned to a key</b></p>
+<p>The [Set Key Short-cut] option from the [Config] menu can't be used to assign short-cuts to an </p>
+<p>Accessory program listed in the AMOS menu.</p>
+<p><b>This menu option cannot be assigned to a program!</b></p>
+<p>The [Set Program to Menu] feature from the [Config] menu allows you to assign practically any menu </p>
+<p>item to an AMOS program. The only exceptions, are the various Accessory options from the AMOS </p>
+<p>Menu. These can't be redefined from the editor.</p>
+<p><b>This menu option is already assigned to a program!</b></p>
+<p>You've tried to assign a new program to a menu item which has already been set up. Click on [Cancel] </p>
+<p>to abort, or [Replace] to assign your new program.</p>
+<p><b>Top of text</b></p>
+<p>The text cursor has come to the first line of your current program.</p>
+<p><b>Variable name buffer too small</b></p>
+<p>You have used too many overlong names for your variables. Variable names are held in a buffer, and </p>
+<p>its default size may be changed from the [Set Interpreter] option in the [Config] menu.</p>
+<p><b>Warm-Start Error</b></p>
+<p>AMOS  </p>
+<p>Professional</p>
+<p> </p>
+<p>has  </p>
+<p>attempted  </p>
+<p>to  </p>
+<p>re-start</p>
+<p> </p>
+<p>using  </p>
+<p>the  </p>
+<p>session  </p>
+<p>data  </p>
+<p>held  </p>
+<p>in  </p>
+<p>the </p>
+<p>“AMOSPro.LastSession” file from the APSystem folder. This can happen if you attempt to warm-start </p>
+<p>AMOS Professional from a Write-Protected disc. Remove the protection and try again. If AMOS still </p>
+<p>fails to load, there's probably been a disc error of some sort. So delete the “AMOSPro.LastSession” file </p>
+<p>from the CLI and re- boot. AMOS should now load as normal.</p>
+<p><b>What block?</b></p>
+<p>You've   tried   to   use   the   Block   commands   without   defining   a   block   on   the   screen.   This   can   be </p>
+<p>accomplished with the [Ctrl]+[B] or [Block On/Off] option from the [Block] menu. You'll also get this </p>
+<p>error if you try to [Print] or [Save] a block. These operations first require you to grab the block into </p>
+<p>memory with [Store] or [Cut]. Highlighting the block is not enough!</p>
+<p><b>You should assign a program to this option!</b></p>
+<p>You've called a menu option from the user menu which doesn't have a program assigned </p>
+<p>to it. Use the “Set Program To Menu” feature from the Config menu to install an </p>
+<p>AMOS program to this option.</p>
+<p>12.03.05</p>
+<p>E</p>
+<p>R</p>
+<p>R</p>
+<p>O</p>
+<p>R</p>
+<p>S</p>
+<h1 style="page-break-before:always; "></h1>
+<p>AMOS Errors</p>
+<p><b>Program errors</b></p>
+<p>There is no need to wait until your programs are executed before any errors become obvious. By </p>
+<p>making use of the [Test] option, an automatic check is made of all the instructions in your current </p>
+<p>program while you are still editing. The following messages may also appear when a program is </p>
+<p>[Run].</p>
+<p><b>Array already dimensioned</b></p>
+<p>You are trying to dimension an array that has already been dimensioned in the current program.</p>
+<p><b>Array not dimensioned</b></p>
+<p>You must first give an array a dimension before it can be specified in an expression.</p>
+<p><b>Can't open narrator</b></p>
+<p>The file “narrator.device” cannot be found in the current “devs:” directory.</p>
+<p><b>This instruction must be alone on a line</b></p>
+<p>You must place a DATA statement at the very beginning of a line. The only exception to this rule is </p>
+<p>when you define a LABEL.</p>
+<p><b>DO without LOOP</b></p>
+<p>A DO structure has been located without a corresponding LOOP command to end it.</p>
+<p><b>ELSE without ENDIF</b></p>
+<p>You have forgotten to end an IF test with its ENDIF command.</p>
+<p><b>ELSE without IF</b></p>
+<p>An ELSE command must be preceded by an IF command.</p>
+<p><b>ENDIF without IF</b></p>
+<p>An ENDIF command has been found without an IF statement for it to refer back to.</p>
+<p><b>Extension not loaded</b></p>
+<p>You are trying to run a program that makes use of one or more new commands that are held in an </p>
+<p>extension file. Make sure that the appropriate extensions are installed on your boot disc and that the </p>
+<p>extensions have been selected from the [Set Interpreter] menu option.</p>
+<p><b>FOR without matching NEXT</b></p>
+<p>You are trying to use a FOR command, but have forgotten to follow it with a NEXT statement.</p>
+<p><b>IF without ENDIF</b></p>
+<p>A structured IF test must be ended by a single ENDIF statement. This sort of IF test is totally different </p>
+<p>from an IF … THEN command.</p>
+<p>12.03.06</p>
+<p>E</p>
+<p>R</p>
+<p>R</p>
+<p>O</p>
+<p>R</p>
+<p>S</p>
+<h1 style="page-break-before:always; "></h1>
+<p>AMOS Errors</p>
+<p><b>Illegal direct mode</b></p>
+<p>Direct   mode   only   permits   you   to   run   certain   types   of   instructions   from   the   command   line.  All </p>
+<p>program control instructions such as FOR. .NEXT, IF. .THEN, GOSUB, and GOTO are forbidden. In </p>
+<p>addition, you are NOT allowed to call any AMOS Professional procedures from direct mode.</p>
+<p><b>Illegal number of parameters</b></p>
+<p>You've entered the wrong number of values in one of your AMOS Professional instructions. You can </p>
+<p>find the correct syntax using the HELP system. Just position the cursor over the start of the offending </p>
+<p>instruction, and hit the HELP key from the keyboard.</p>
+<p><b>Included file is not an AMOS program!</b></p>
+<p>The AMOS INCLUDE system is only capable of including runnable AMOS format programs. You've </p>
+<p>probably typed the filename wrong.</p>
+<p><b>LOOP without DO</b></p>
+<p>A LOOP command has been found, but there is no DO statement to trigger it off.</p>
+<p><b>Label defined twice</b></p>
+<p>A label or procedure can only be defined once in each program.</p>
+<p><b>Music bank not defined</b></p>
+<p>The music number you are looking for is not in the current music bank.</p>
+<p><b>Music bank not found</b></p>
+<p>There is no music bank.</p>
+<p><b>NEXT without FOR</b></p>
+<p>You have forgotten to precede a NEXT instruction with its FOR command.</p>
+<p><b>No ELSE IF after an ELSE</b></p>
+<p>The ELSE IF statement can only be used between the IF and the ELSE of an IF..ELSE..ENDIF test. </p>
+<p>You're not allowed to insert it between the ELSE and the ENDIF.</p>
+<p><b>No THEN in a structured test</b></p>
+<p>You cannot use IF ... THEN inside a structured test, but you are allowed to make use of IF ...ELSE IF ... </p>
+<p>ENDIF.</p>
+<p><b>No jumps allowed in the middle of a loop!</b></p>
+<p>You can only jump out from a loop once you are inside of it. You cannot jump into a loop using a </p>
+<p>GOTO or GOSUB statement.</p>
+<p><b>Not enough loops to exit</b></p>
+<p>You have specified a larger count of loops than the number of active loops available in your EXIT or </p>
+<p>EXIT IF command.</p>
+<p>12.03.07</p>
+<p>E</p>
+<p>R</p>
+<p>R</p>
+<p>O</p>
+<p>R</p>
+<p>S</p>
+<h1 style="page-break-before:always; "></h1>
+<p>AMOS Errors</p>
+<p><b>Out of memory</b></p>
+<p>During a [Test] operation, this error message may appear when there is not enough memory available </p>
+<p>to reserve the required variable buffer space. Please see the SET BUFFER command.</p>
+<p><b>Procedure's limits must be alone on a line</b></p>
+<p>All PROCEDURE and END PROC statements must begin on their own line.</p>
+<p><b>Procedure not closed</b></p>
+<p>You have forgotten to end one of your procedures with an END PROC statement.</p>
+<p><b>Procedure not opened.</b></p>
+<p>An END PROC statement has been discovered without a corresponding PROCEDURE defined before </p>
+<p>it.</p>
+<p><b>REPEAT without matching UNTIL</b></p>
+<p>A REPEAT instruction has been found, but there is no UNTIL statement to go with it.</p>
+<p><b>Sample not defined</b></p>
+<p>You are trying to play an audio sample that does not exist in the current sample bank.</p>
+<p><b>Shared must be alone on a line</b></p>
+<p>The SHARED command must be the only statement on the current line.</p>
+<p><b>Structure too long</b></p>
+<p>Loops in AMOS Professional have a maximum span of 65,536 bytes. So if you have lines between a </p>
+<p>FOR...NEXT loop that exceed this limit you'll receive this error. The same applies to IF...ENDIF and all </p>
+<p>other loops.</p>
+<p><b>Syntax error</b></p>
+<p>The current line of your program is written wrongly. You must have the correct syntax or “grammar” </p>
+<p>for the construction you are trying to use, as explained in this User Guide.</p>
+<p><b>This array is not defined in the main program</b></p>
+<p>If a SHARED command is used within a procedure but the array that you want to share is not </p>
+<p>dimensioned at the start of the program then this error will occur.</p>
+<p><b>This instruction must be used within a procedure</b></p>
+<p>You are trying to use the SHARED command outside of a procedure definition.</p>
+<p><b>This variable is already defined as SHARED</b></p>
+<p>You are not allowed to define the same variable more than once in a single procedure.</p>
+<p><b>Trap must be immediately followed by an instruction</b></p>
+<p>The TRAP command runs an AMOS instruction and automatically traps any error before returning to </p>
+<p>the next line.</p>
+<p>12.03.08</p>
+<p>E</p>
+<p>R</p>
+<p>R</p>
+<p>O</p>
+<p>R</p>
+<p>S</p>
+<h1 style="page-break-before:always; "></h1>
+<p>AMOS Errors</p>
+<p><b>UNTIL without REPEAT</b></p>
+<p>You have used an UNTIL command that does not refer to a previous REPEAT statement.</p>
+<p><b>Undefined label</b></p>
+<p>Your program is trying to find a label that you have forgotten to specify.</p>
+<p><b>Undefined procedure</b></p>
+<p>You are trying to call up a procedure that does not exist in your program.</p>
+<p>Use empty brackets when defining a shared array</p>
+<p>You are not allowed to include the dimensions of an array when you define it as SHARED.</p>
+<p><b>User function not defined</b></p>
+<p>You've probably tried to call a non-existent user defined function from direct mode. Note that Direct </p>
+<p>mode can access any User Defined functions created by your current program. Providing they've </p>
+<p>been installed in memory with a RUN, they can be used with impunity.</p>
+<p><b>Variable buffer can't be changed in the middle of a program!</b></p>
+<p>Apart from a REM statement, the SET BUFFER command must always be used as the very first line of  </p>
+<p>your program.</p>
+<p><b>Variable buffer too small</b></p>
+<p>While you are running a [Test] on your program, it is possible that the area reserved for variables can </p>
+<p>overflow. If there is enough memory available, use SET BUFFER to expand this area.</p>
+<p><b>WEND without WHILE</b></p>
+<p>There is no WHILE command to go with your WEND statement.</p>
+<p><b>WHILE without matching WEND</b></p>
+<p>There is no matching WEND statement to go with your WHILE command.</p>
+<p><b>Run time errors</b></p>
+<p>When   AMOS   Professional   comes   across   a   mistake   while   your   program   is   running,   it   will </p>
+<p>automatically halt the program, pinpoint the offending instruction and display the relevant error </p>
+<p>message. As soon as you continue editing your program, the cursor will go to the line in your  </p>
+<p>program where the error is lurking. These run time errors each have a special code number, which is </p>
+<p>displayed in brackets immediately after the error message, and these code numbers can be used in the </p>
+<p>process of error trapping. For example, you may want to find the error message that goes with a </p>
+<p>particular code number, by using a line such as:</p>
+<p>Error Errornumber</p>
+<p><b>256 characters for a wave (181)</b></p>
+<p>Audio waves can only be created by a list of 256 bytes.</p>
+<p><b>Address error (25)</b></p>
+<p>You are trying to read an odd address in a DEEK or LEEK command, which must </p>
+<p>always be even. Similarly, DOKE and LOKE cannot load these addresses.</p>
+<p>12.03.09</p>
+<p>E</p>
+<p>R</p>
+<p>R</p>
+<p>O</p>
+<p>R</p>
+<p>S</p>
+<h1 style="page-break-before:always; "></h1>
+<p>AMOS Errors</p>
+<p><b>Amal bank not reserved (116)</b></p>
+<p>You've tried to use an Amal PLay command in a program without defining a movement pattern in the </p>
+<p>AMAL Bank. These banks are created with the AMAL Accessory program. If you're not actually using </p>
+<p>PLay, check that you've correctly separated any Pause or Let instructions in your AMAL program.</p>
+<p><b>Animation string too long (113)</b></p>
+<p>Your current AMAL program is too long, the maximum number of bytes is 65536. You may split your </p>
+<p>program into several smaller sections, and it is possible to animate the same object using several </p>
+<p>AMAL channels.</p>
+<p><b>AREXX device not interactive (199)</b></p>
+<p>This error is reported back by AREXX. We don't know what it means so write to Commodore!</p>
+<p><b>Arexx library not found (194)</b></p>
+<p>You've attempted to use the AREXX commands on a system on which it hasn't been installed. The </p>
+<p>AREXX library is held in the “rexxsyslib.library” and should be normally available from the LIBS </p>
+<p>directory of your Workbench disc. Note; AREXX is provided free with Workbench 2, but other users </p>
+<p>will need to purchase it separately.</p>
+<p><b>Arexx message not answered (198)</b></p>
+<p>You've received a message from an external AREXX program and you haven't answered back. You </p>
+<p>must answer all messages at once otherwise the sending program will be hanging around waiting for </p>
+<p>your answer.</p>
+<p><b>Arexx port already opened (193)</b></p>
+<p>You've tried to open the same AREXX port twice using AREXX OPEN.</p>
+<p><b>Arexx port not opened (196)</b></p>
+<p>You've attempted to use the AREXX ANSWER, =AREXX, or AREXX WAIT commands without first </p>
+<p>opening up a communications channel with AREXX OPEN.</p>
+<p><b>Array already dimensioned (28)</b></p>
+<p>You have tried to dimension the same array more than once in the same program.</p>
+<p><b>Autotest already opened (111)</b></p>
+<p>An illegal AMAL autotest has been defined inside an existing autotest command.</p>
+<p><b>Bad IFF format (30)</b></p>
+<p>You are attempting to use LOAD I FF to load a file in the wrong format. LOAD I FF can only load IFF  </p>
+<p>screens into memory and not general purpose IFF files.</p>
+<p><b>Bad parameter (149)</b></p>
+<p>You've made a mistake when setting up the serial port with SERIAL SPEED, SERIAL BITS, SERIAL </p>
+<p>PARITY, or SERIAL X. Check your current set up.</p>
+<p>12.03.10</p>
+<p>E</p>
+<p>R</p>
+<p>R</p>
+<p>O</p>
+<p>R</p>
+<p>S</p>
+<h1 style="page-break-before:always; "></h1>
+<p>AMOS Errors</p>
+<p><b>Bank already reserved (35)</b></p>
+<p>You have tried to create a memory bank that already exists.</p>
+<p><b>Bank not reserved (36)</b></p>
+<p>The bank that you are trying to select has not been created using RESERVE. This error message can </p>
+<p>also result from certain commands trying to use data from a specific memory bank automatically, </p>
+<p>such as SAMPLAY.</p>
+<p><b>Block not defined (46)</b></p>
+<p>You've tried to use the PUT BLOCK command with a non-existent Block number. Call GET BLOCK to </p>
+<p>grab some blocks into memory.</p>
+<p><b>Block not found (65)</b></p>
+<p>You cannot specify a block without first creating it, using GET BLOCK.</p>
+<p><b>Bob not defined (68)</b></p>
+<p>You cannot manipulate a Bob without first setting it up using a BOB command.</p>
+<p><b>Bordered windows not on edge of screen (59)</b></p>
+<p>You are not allowed to position a window at the edge of a screen, but must leave at least eight pixels </p>
+<p>between them, to allow space for the border.</p>
+<p><b>Break detected (159)</b></p>
+<p>The device you are communicating with has aborted the present serial operation.</p>
+<p><b>Buffer overflow (156)</b></p>
+<p>The SERIAL SEND or SERIAL INPUT commands have run out of buffer space. Increase the amount </p>
+<p>of memory with SERIAL BUFFER and try again.</p>
+<p><b>Cannot load med.library (187)</b></p>
+<p>You've tried to use the MED PLAYER commands without installing the med.library file in the LIBS  </p>
+<p>folder of your current start-up disc. A copy can be found on the AMOSPro System disc.</p>
+<p><b>Cannot open Arexx port (195)</b></p>
+<p>You've tried to open a busy AREXX port with AREXX OPEN. Check that you've entered it in the </p>
+<p>correct format. The name should be in UPPER CASE. You should find a usable port with the =AREXX </p>
+<p>EXIST function.</p>
+<p><b>Cannot open library (170)</b></p>
+<p>LIB OPEN can't find the requested library in the LIBS folder of your start-up disc. Make sure it's there.</p>
+<p><b>Cannot start med.library (188)</b></p>
+<p>The   med.library   requires   all   sound   channels   to   be   unused   before   it   can   be   opened.   So  AMOS </p>
+<p>Professional makes a check and if all four channels are clear the library is opened.</p>
+<p><b>Can't fit picture in current screen (32)</b></p>
+<p>You have tried to use LOAD I FF to load a picture into an existing screen of a different type. AMOS </p>
+<p>Professional will automatically create a screen of the right type if you specify a screen number in the </p>
+<p>correct range of 0 to 7.</p>
+<p>12.03.11</p>
+<p>E</p>
+<p>R</p>
+<p>R</p>
+<p>O</p>
+<p>R</p>
+<p>S</p>
+<h1 style="page-break-before:always; "></h1>
+<p>AMOS Errors</p>
+<p>You should tag the number of the destination screen to the LOAD IFF command like this:</p>
+<p> Load Iff “filename”, number</p>
+<p><b>Can't open narrator (185)</b></p>
+<p>AMOS Professional is unable to find “narrator.device” in the current “devs:” directory, so the narrator </p>
+<p>program cannot be loaded.</p>
+<p><b>Can't resume to a label (4)</b></p>
+<p>You cannot use RESUME label inside an error procedure.</p>
+<p><b>Can't set dual playfield (70)</b></p>
+<p>The   screens   you   are   using   are   not   suitable   for   setting   up   a   dual   playfield.   The   correct   screen </p>
+<p>combinations are explained under the DUAL PLAYFIELD section of this User Guide.</p>
+<p><b>Command not supported by device (143)</b></p>
+<p>This error is returned by the DEV DO and DEV SEND commands. A command has been sent that is </p>
+<p>not supported. Check with Commodore's documentation.</p>
+<p><b>Copper list too long (77)</b></p>
+<p>The   user-defined   copper   list   has   a   pre-set   limit   of   12k.   This   may   be   extended   using   the   [Set </p>
+<p>Interpreter] option from the [Config] menu.</p>
+<p><b>Copper not disabled (76)</b></p>
+<p>You are not allowed to use the COP MOVE or COP SWAP commands before disabling the normal </p>
+<p>copper list with COPPER OFF.</p>
+<p><b>Device already opened (140)</b></p>
+<p>You've tried to open the same device twice. The PRINTER and PARALLEL devices can only be </p>
+<p>opened once in any particular session. If you're using multi-tasking, check that another application </p>
+<p>hasn't grabbed the device first. If so, you'll have to quit from the application before running your  </p>
+<p>AMOS program.</p>
+<p><b>Device cannot be opened (142)</b></p>
+<p>The selected device cannot be opened for use. Make sure that it's correctly connected, and that the </p>
+<p>appropriate device drivers are available from the DEVS folder of your current start-up disc.</p>
+<p><b>Device error (144)</b></p>
+<p>A device has reported a device specific error. AMOS Professional cannot keep all possible errors in </p>
+<p>memory so check with Commodore documentation for the correct error meaning.</p>
+<p><b>Device not available (86)</b></p>
+<p>You have specified a disc or a drive, but your Amiga does not believe that it exists, possibly because </p>
+<p>you have changed a disc unexpectedly. You can set the directory to the correct drive name with an  </p>
+<p>instruction such as:</p>
+<p> Dir$=“Df0:”</p>
+<p>12.03.12</p>
+<p>E</p>
+<p>R</p>
+<p>R</p>
+<p>O</p>
+<p>R</p>
+<p>S</p>
+<h1 style="page-break-before:always; "></h1>
+<p>AMOS Errors</p>
+<p><b>Device not opened (141)</b></p>
+<p>You've  called  a  printer,   parallel,   or   serial  command   without  previously   opening  a  channel   with </p>
+<p>PRINTER OPEN, PARALLEL OPEN or SERIAL OPEN.</p>
+<p><b>Directory not empty (85)</b></p>
+<p>You can only erase directories when all the files held within them have been deleted by the KILL </p>
+<p>command.</p>
+<p><b>Directory not found (80)</b></p>
+<p>The required  directory  cannot  be  found on the  current disc.  List the current disc  and check  its  </p>
+<p>contents.</p>
+<p><b>Disc error (101)</b></p>
+<p>There's a problem with a disc you're trying to access from one of your disc operations, or with the </p>
+<p>AMOS   Professional   file   selector.   Try   removing   the   disc   and   re-inserting   it.   This   clears   up   most </p>
+<p>problems. If you still can't get the disc to work after a couple of attempts, there may be a problem </p>
+<p>with   your   disc.   You   may   need   to   use   the   DISCDOCTOR   program   on   your   Workbench   disc. </p>
+<p>DISCDOCTOR should only be used as a last resort, but it's quite good at salvaging dead discs.</p>
+<p><b>Disc full (88)</b></p>
+<p>There is not enough space on your current disc to hold your data.</p>
+<p><b>Disc is not validated (83)</b></p>
+<p>This message is likely to be generated when your Amiga is unable to come to terms with a perfectly </p>
+<p>valid disc. Try again. If the problem persists, you may have to resort to the DISC DOCTOR program, </p>
+<p>which is on the standard Workbench disc.</p>
+<p><b>Disc is write protected (84)</b></p>
+<p>The disc's write protection tab is “on”. To save your data on the current disc, remove it, slide the write </p>
+<p>protection tab to the “off” position and try again. Alternatively, use another disc.</p>
+<p><b>Division by zero (20)</b></p>
+<p>You are trying to divide a number by zero, and this is impossible.</p>
+<p><b>End of file (100)</b></p>
+<p>The end of the current file has been reached unexpectedly, while the disc is being accessed. You </p>
+<p>should use the EOF function to test for this condition from inside your program.</p>
+<p><b>End of program (10)</b></p>
+<p>This information message is given after AMOS Professional has executed the last instruction in your </p>
+<p>program.</p>
+<p><b>Error not resumed (3)</b></p>
+<p>You have come out of an error-handling routine, but forgotten to reset the error using RESUME.</p>
+<p><b>Error procedure must RESUME to end (8)</b></p>
+<p>You may not exit from an error-handling procedure using END PROC. Use one of the </p>
+<p>special RESUME commands instead.</p>
+<p>12.03.13</p>
+<p>E</p>
+<p>R</p>
+<p>R</p>
+<p>O</p>
+<p>R</p>
+<p>S</p>
+<h1 style="page-break-before:always; "></h1>
+<p>AMOS Errors</p>
+<p><b>File already exists (76)</b></p>
+<p>You cannot RENAME a file with the same name already belonging to another file or directory on your </p>
+<p>current disc.</p>
+<p><b>File already opened (96)</b></p>
+<p>You cannot OPEN or APPEND a file that is already open.</p>
+<p><b>File format not recognised (95)</b></p>
+<p>The LOAD command can only be used to load AMOS Professional program and bank files from disc. </p>
+<p>Use BLOAD for files stored in standard Amiga format. Use LOAD IFF for Iff screens.</p>
+<p><b>File is protected against deletion (89)</b></p>
+<p>There is an Amiga security command to stop accidental erasure of important system files. This is the </p>
+<p>PROTECT command, available from the CLI or Workbench. You have probably tried to KILL one of </p>
+<p>these protected files.</p>
+<p><b>File is protected against reading (91)</b></p>
+<p>You have requested a file that has been protected from unauthorised examination. The PROTECT </p>
+<p>command is available from the CLI or Workbench, and is explained in the Amiga User's Guide that </p>
+<p>you ignored when you unpacked your computer!</p>
+<p><b>File is write protected (90)</b></p>
+<p>You are trying to change a file that has been locked with the PROTECT security command from  </p>
+<p>AmigaDos.</p>
+<p><b>File not found (81)</b></p>
+<p>You have tried to call up a file or directory that does not exist.</p>
+<p><b>File not opened (97)</b></p>
+<p>You must use an instruction like OPEN IN, OPEN OUT or APPEND to open access to a file, before  </p>
+<p>you can use it to transfer data.</p>
+<p><b>File type mismatch (98)</b></p>
+<p>You have used a command that is not allowed with the current file. For example, GET and PUT will </p>
+<p>not work with sequential files.</p>
+<p><b>Flash declaration error (52)</b></p>
+<p>There is a mistake in the animation string that defines a FLASH colour sequence.</p>
+<p><b>Font not available (44)</b></p>
+<p>SET FONT couldn't find the font number you've specified in the instruction. These fonts should be </p>
+<p>available from the FONTS: directory of your current start-up disc.</p>
+<p><b>Fonts not examined (37)</b></p>
+<p>You must first create a list of available fonts using GET FONTS before you can use the SET FONT </p>
+<p>command.</p>
+<p>12.03.14</p>
+<p>E</p>
+<p>R</p>
+<p>R</p>
+<p>O</p>
+<p>R</p>
+<p>S</p>
+<h1 style="page-break-before:always; "></h1>
+<p>AMOS Errors</p>
+<p><b>Hardware data overrun (150)</b></p>
+<p>This error can be generated if you wait too long before loading your data from the serial port using  </p>
+<p>SERIAL INPUTS. If there's too much waiting in the wings the serial port can be overloaded, and the </p>
+<p>system   collapses.   Possible   solutions   include   reducing   the   transfer   rate   with   SERIAL  SPEED,   or </p>
+<p>reading the information a character at a time with SERIAL GET.</p>
+<p><b>I/O error (94)</b></p>
+<p>The   Input/Output   error   message   implies   that   there   is   a   corrupted   file   that   cannot   be   accessed </p>
+<p>properly. Try again, checking any disc drive connections. If necessary, you may have to resort to the </p>
+<p>DISC DOCTOR program, supplied on your original Workbench disc.</p>
+<p><b>IFF compression not recognised (31)</b></p>
+<p>You are trying to load a screen that has been compressed with an unfamiliar system. Try and re- save </p>
+<p>your original screen source in standard IFF format.</p>
+<p><b>Icon not defined (74)</b></p>
+<p>The icon specified in your instruction cannot be found in the current Icon bank.</p>
+<p><b>Invalid baud rate (147)</b></p>
+<p>The SERIAL SPEED command only permits you to set the speed to certain values. If the current serial  </p>
+<p>device doesn't support your value, you'll get this error.</p>
+<p><b>Illegal block parameters (66)</b></p>
+<p>The values you have entered in a GET BLOCK or PUT BLOCK command are not allowed.</p>
+<p><b>Illegal copper parameter (78)</b></p>
+<p>The   value   entered   in   a   COP  MOVE,   COP  MOVEL  or   COP  SWAP  instruction   is   outside   of   the  </p>
+<p>permitted range.</p>
+<p><b>Illegal direct mode (17)</b></p>
+<p>Direct   mode   only   permits   you   to   run   certain   types   of   instructions   from   the   command   line.  All </p>
+<p>program control instructions such as FOR. .NEXT, IF. .THEN, GOSUB, and GOTO are forbidden. In </p>
+<p>addition, you are NOT allowed to call any AMOS Professional procedures from direct mode.</p>
+<p><b>Illegal file name (82)</b></p>
+<p>You are trying to use a non-standard file name.</p>
+<p><b>Illegal function call (23)</b></p>
+<p>There is a mistake with the values in an AMOS Professional command. Return to the editor and </p>
+<p>identify the likely command in your line of program. Allowable parameters are all detailed in this </p>
+<p>User Guide.</p>
+<p><b>Illegal instruction during autotest (115)</b></p>
+<p>Check to see if an AUTOTEST has been defined by mistake. If it is intentional, you may have used an </p>
+<p>AMAL command such as Move or Anim. Also check the upper and lower case usage of your AMAL </p>
+<p>labels.</p>
+<p><b>Illegal number of colours (49)</b></p>
+<p>You are trying to use the wrong number of colours on screen at once. Check the syntax of </p>
+<p>your SCREEN OPEN commands, or check this User Guide for a full list of available </p>
+<p>screen colour options.</p>
+<p>12.03.15</p>
+<p>E</p>
+<p>R</p>
+<p>R</p>
+<p>O</p>
+<p>R</p>
+<p>S</p>
+<h1 style="page-break-before:always; "></h1>
+<p>AMOS Errors</p>
+<p><b>Illegal print dimensions (164)</b></p>
+<p>The PRINTER DUMP command is unable to print your screen with the selected dimensions. Check </p>
+<p>for a mistake in the “special” parameter. This can have a dramatic effect on the size of your screen on  </p>
+<p>the actual paper.</p>
+<p><b>Illegal screen parameter (48)</b></p>
+<p>You have specified dimensions using SCREEN OPEN that are not acceptable. Your minimum screen </p>
+<p>size can be as small as 32x8, and the maximum is 1024x1024 pixels.</p>
+<p><b>Illegal user function call (16)</b></p>
+<p>You've made an error in either a user defined function, as created by the DEF FN command. The most </p>
+<p>likely mistake is that you've entered the wrong number of variables in your FN statement.</p>
+<p><b>Illegal window parameter (60)</b></p>
+<p>An incorrect value has been entered in one of the WIND or WINDOW commands.</p>
+<p><b>Input too long (99)</b></p>
+<p>Either your input string is too long for a previously dimensioned variable, or you have tried to </p>
+<p>INPUT# a line of more than 1000 characters.</p>
+<p><b>Instruction only valid in autotest (112)</b></p>
+<p>The Direct or eXit commands can only be used inside an AMAL AUTOTEST.</p>
+<p><b>Interface Error: Bad syntax (120)</b></p>
+<p>There's a syntax or typing error in one of your AMOS Interface programs. Use the EDIALOG function </p>
+<p>to find the position of your error in the command string.</p>
+<p><b>Interface Error: Channel already defined (124)</b></p>
+<p>You've tried to open the same AMOS Interface channel number twice. There's a mistake in one of the </p>
+<p>DIALOG OPEN commands in your program.</p>
+<p><b>Interface Error: Channel not defined (125)</b></p>
+<p>There's a problem with a DIALOG RUN command in your program. The channel number you've </p>
+<p>attempted to execute does not exist. It needs to have been previously assigned to an AMOS Interface </p>
+<p>command sequence with a call to DIALOG OPEN.</p>
+<p><b>Interface Error: Illegal function call (128)</b></p>
+<p>You've   entered   the   wrong   sort   of   values   in   one   of   your   AMOS   INTERFACE   commands.   Use </p>
+<p>EDIALOG to find the offending command. A full list of all the parameter options can be found </p>
+<p>directly from the HELP menu.</p>
+<p><b>Interface Error: Illegal number of parameters (131)</b></p>
+<p>You've typed too few, or too many values into one of your AMOS Interface functions. Use EDIALOG </p>
+<p>to located the mistake, and the AMOS HELP menu to find the correct number of parameters for your  </p>
+<p>instruction.</p>
+<p>12.03.16</p>
+<p>E</p>
+<p>R</p>
+<p>R</p>
+<p>O</p>
+<p>R</p>
+<p>S</p>
+<h1 style="page-break-before:always; "></h1>
+<p>AMOS Errors</p>
+<p><b>Interface Error: Label defined twice (122)</b></p>
+<p>This is a mistake with the LA or LAbel command in your AMOS Interface program. You appear to </p>
+<p>have defined the same label twice with exactly the same value.</p>
+<p><b>Interface Error: Label not defined (123)</b></p>
+<p>A JUmp or JS command has been entered in your AMOS Interface program with a non-existent label </p>
+<p>number. Labels are defined using the LA command. Unlike AMOS Professional or AMAL, you're only </p>
+<p>allowed to use numbers from 1 to 65536. Names are not permitted.</p>
+<p><b>Interface Error: Screen modified (126)</b></p>
+<p>After an Interface channel has been opened to a particular screen, the screen has been altered or </p>
+<p>closed. Interface stores information about the screen from the start, so you must keep the screen in the </p>
+<p>same format.</p>
+<p><b>Interface Error: Type mismatch (129)</b></p>
+<p>One of the values in an Interface function is of the wrong type. If you're using a variable, check that it </p>
+<p>contains the right sort of data. An Interface variable can be used to store both strings or numbers. So  </p>
+<p>it's easy to get confused.</p>
+<p><b>Interface Error: Variable not defined (127)</b></p>
+<p>You've called the VA function with a no existent variable number. Permissible numbers range from 0 </p>
+<p>to 65535. However, the system defaults to just 17. You can increase this limit with a simple option  </p>
+<p>from the DIALOG OPEN command.</p>
+<p><b>Invalid parallel parameter (173)</b></p>
+<p>There's a problem with one of the parameters you're using with the PARALLEL SEND or PARALLEL </p>
+<p>INPUT commands.</p>
+<p><b>Jump to/within autotest in animation string (110)</b></p>
+<p>It is illegal to Jump directly inside an AUTOTEST from your main AMAL program. To leave an </p>
+<p>AUTOTEST, use the eXit or Direct commands instead.</p>
+<p><b>Label already defined in animation string (114)</b></p>
+<p>Two versions of the same label definition have been discovered in an AMAL program. All labels must </p>
+<p>consist of a single upper case letter.</p>
+<p><b>Label not defined (40)</b></p>
+<p>You have included a label in an instruction, but forgotten to define it. Check for mistakes in computed </p>
+<p>GOTO, GOSUB or RESTORE statements.</p>
+<p><b>Label not defined in animation string (109)</b></p>
+<p>You are attempting to jump to a non-existent label in an AMAL animation string.</p>
+<p><b>Library already opened (168)</b></p>
+<p>You've tried to open the same library twice with LIB OPEN.</p>
+<p><b>Library not opened (169)</b></p>
+<p>LIB CALL has been used with a non-existent channel number. You'll need to open this channel first </p>
+<p>using LIB OPEN.</p>
+<p>12.03.17</p>
+<p>E</p>
+<p>R</p>
+<p>R</p>
+<p>O</p>
+<p>R</p>
+<p>S</p>
+<h1 style="page-break-before:always; "></h1>
+<p>AMOS Errors</p>
+<p><b>Menu item not defined (39)</b></p>
+<p>The item specified in a MENU command has not been previously defined using MENU$.</p>
+<p><b>Menu not opened (38)</b></p>
+<p>The MENU ON command has been called, but no menu has been previously defined using the </p>
+<p>MENU$ or MAKE MENU BANK instruction.</p>
+<p><b>Music bank not defined (184)</b></p>
+<p>There is no music bank in memory.</p>
+<p><b>Music bank not found (183)</b></p>
+<p>The Music that you want to play does not exist in the current music bank.</p>
+<p><b>Next without For in animation string (108)</b></p>
+<p>In an AMAL animation string, each Next command must be associated with a single For statement. </p>
+<p>Also check the upper and lower case of any comments in your AMAL program.</p>
+<p><b>No data set ready (157)</b></p>
+<p>A strange error message generated by Commodore's Serial device. We think it may happen when the </p>
+<p>serial device just cannot handle the incoming data. Let us know if you know better!</p>
+<p><b>No ON ERROR PROC before this instruction (5)</b></p>
+<p>You can only use RESUME LABEL after an ON ERROR PROC command.</p>
+<p><b>No data after this label (41)</b></p>
+<p>You cannot RESTORE the data pointer to a line with no DATA statements on that line or subsequent </p>
+<p>lines.</p>
+<p><b>No disc in drive (93)</b></p>
+<p>Your Amiga does not believe that there is a disc in the drive you want to access. Try again.</p>
+<p><b>No programs below current program (43)</b></p>
+<p>You are trying to BGRAB a bank, but the current program has not been installed as an accessory.</p>
+<p><b>No message waiting (197)</b></p>
+<p>You've tried to answer a message with AREXX ANSWER which has not actually been received. You </p>
+<p>may need to add an AREXX WAIT command before your instruction. Also check that you've opened </p>
+<p>the correct Arexx communications port.</p>
+<p><b>No zones defined (73)</b></p>
+<p>This   is   an   error   generated   by   the   RESET   ZONE   command.   RESET   ZONE   erases   all   the   zone </p>
+<p>definitions you've created using SET ZONE. It can only be called after you've reserved some memory </p>
+<p>for your zones with RESERVE ZONE.</p>
+<p><b>Non dimensioned array (27)</b></p>
+<p>You are trying to refer to an array, but it has not yet been defined.</p>
+<p>12.03.18</p>
+<p>E</p>
+<p>R</p>
+<p>R</p>
+<p>O</p>
+<p>R</p>
+<p>S</p>
+<h1 style="page-break-before:always; "></h1>
+<p>AMOS Errors</p>
+<p><b>Not an AmigaDOS disc (92)</b></p>
+<p>AMOS Professional can only read discs created on an Amiga. If you want to use discs that are of </p>
+<p>compatible size but originate from another sort of computer, you will first have to use specialised </p>
+<p>software to translate the data.</p>
+<p><b>Not a med module (189)</b></p>
+<p>The MED LOAD command is only capable of loading music modules which are compatible with the </p>
+<p>MED music format. So check that the music is in the correct format.</p>
+<p><b>Not a packed bitmap (200)</b></p>
+<p>You have attempted to unpack a data bank which is not in bitmap format.</p>
+<p><b>Not a packed screen (201)</b></p>
+<p>The data you are trying to unpack is not in packed screen format.</p>
+<p><b>Not a tracker module (186)</b></p>
+<p>The TRACKER LOAD command is only capable of loading music modules which are compatible </p>
+<p>with the popular NOISETRACKER music format.</p>
+<p><b>Out of data (33)</b></p>
+<p>You may have left out some information from one of your DATA lines, because a READ command has </p>
+<p>gone past the last item of data in the current program. Alternatively, there may be a typing error in a </p>
+<p>RESTORE command.</p>
+<p><b>Out of internal memory (printer device) (167)</b></p>
+<p>The printer device cannot cope with what you've requested. This Commodore internal error may vary </p>
+<p>upon the device.</p>
+<p><b>Out of memory (24)</b></p>
+<p>Your Amiga thinks that it has run out of available memory storage space. If the information line </p>
+<p>assures you that there is plenty of spare memory, simply save your program, re-boot and load the </p>
+<p>program back in. There are commands which will free up memory when you start reaching the </p>
+<p>Amiga's limits. These are: CLOSE EDITOR, KILL EDITOR and CLOSE WORKBENCH.</p>
+<p><b>Out of memory (parallel device 172), (printer device 166), ( serial device 148)</b></p>
+<p>If a device requires memory and finds that there's no more left, one of the above will be reported  </p>
+<p>back.  Try adding the CLOSE WORKBENCH or  CLOSE EDITOR commands at the start of your </p>
+<p>program to free up some additional memory.</p>
+<p><b>Out of stack space (0)</b></p>
+<p>There   are   too   many   procedure   calls   nested   inside   one   another.   Although   AMOS   Professional </p>
+<p>procedures can call themselves up, this error may be reported after about 50 loops. The same can </p>
+<p>happen with the GOSUB command. See the SET STACK command if you need to extend this limit.</p>
+<p><b>Out of variable space (11)</b></p>
+<p>Normally, AMOS Professional allocates 8k of storage space for your strings and arrays. To </p>
+<p>increase variable space,  use the SET BUFFER command at the beginning of your </p>
+<p>program.</p>
+<p>12.03.19</p>
+<p>E</p>
+<p>R</p>
+<p>R</p>
+<p>O</p>
+<p>R</p>
+<p>S</p>
+<h1 style="page-break-before:always; "></h1>
+<p>AMOS Errors</p>
+<p><b>Overflow (29)</b></p>
+<p>The result of a calculation has exceeded the maximum size of a variable.</p>
+<p><b>POP without GOSUB (2)</b></p>
+<p>POP   can   only   be   executed   inside   a   subroutine   which   was   previously   gone   to   with   a   GOSUB </p>
+<p>command. To exit from a procedure, use POP PROC.</p>
+<p><b>Parallel device already used (171)</b></p>
+<p>The PARALLEL OPEN command can only be used ONCE in your program. If you've already opened </p>
+<p>the   printer   port   with   PRINTER   OPEN,   the   parallel   device   may   not   be   available   for   your   use. </p>
+<p>Alternatively, if your Amiga has several of these parallel ports you might need to access the devices </p>
+<p>directly using the DEV OPEN command.</p>
+<p><b>Parallel initialisation error (177)</b></p>
+<p>The parallel device has refused to open probably because another program is using it.</p>
+<p><b>Parallel line error (174)</b></p>
+<p>The PARALLEL SEND, PARALLEL INPUT$ or PRINTER SEND commands have been unable to </p>
+<p>access the parallel port. Check than the cables are plugged firmly into the connectors, and try again.</p>
+<p><b>Parallel port reset (176)</b></p>
+<p>Commodore documentation is vague on this error. We guess it's due to a Parallel printer being turned </p>
+<p>off or the connectors being unplugged during transmission.</p>
+<p><b>Program interrupted (9)</b></p>
+<p>You have pressed the [Ctrl] and [C] keys at the same time, to exit directly from your program, or used </p>
+<p>a STOP instruction. This is an information message, not an error.</p>
+<p><b>Printer cannot output graphics (162)</b></p>
+<p>The PRINTER DUMP command can only dump your screens onto printers which support some sort </p>
+<p>of graphics mode. This applies to the vast majority of printers currently on the market, and includes </p>
+<p>ANY normal dot-matrix or laser printer. However, if you're using a daisy wheel printer, you'll be </p>
+<p>unable to make use of this feature. Sorry!</p>
+<p><b>RETURN without GOSUB (1)</b></p>
+<p>RETURN can only be used to exit from a subroutine that was originally entered with a GOSUB.</p>
+<p><b>Rainbow not defined (75)</b></p>
+<p>You must define your rainbow effect using SET RAINBOW before you can call it up.</p>
+<p><b>Resume label not defined (6)</b></p>
+<p>The label you have specified in a RESUME command does not exist.</p>
+<p><b>Resume without error (7)</b></p>
+<p>The RESUME command cannot be executed unless an error has been discovered in your program.</p>
+<p>12.03.20</p>
+<p>E</p>
+<p>R</p>
+<p>R</p>
+<p>O</p>
+<p>R</p>
+<p>S</p>
+<h1 style="page-break-before:always; "></h1>
+<p>AMOS Errors</p>
+<p><b>Sample not defined (179)</b></p>
+<p>The sample that you want to play does not exist in the current sample bank.</p>
+<p><b>Sample bank not found (180)</b></p>
+<p>There is no sample bank in memory.</p>
+<p><b>Screen already in double buffering (69)</b></p>
+<p>You cannot call DOUBLE BUFFER more than once on the same screen.</p>
+<p><b>Screen not in dual playfield mode (71)</b></p>
+<p>You may only use DUAL PRIORITY after creating a dual playfield.</p>
+<p><b>Screen not opened (47)</b></p>
+<p>You must open a screen with the SCREEN OPEN command before it can be accessed.</p>
+<p><b>Screens can't be ANIMated (67)</b></p>
+<p>AMAL can only move or scroll screens. It is impossible to animate screens using the built in Anim </p>
+<p>command.</p>
+<p><b>Scrolling zone not defined (72)</b></p>
+<p>Before using the SCROLL command, the direction and size of the scrolling area must be defined with </p>
+<p>SET SCROLL.</p>
+<p><b>Selected unit already in use (160)</b></p>
+<p>The unit number can be specified for Serial communications and this error will occur if the requested  </p>
+<p>unit is in use. You'll need to have a special multi-serial board though!</p>
+<p><b>Serial device already in use (145)</b></p>
+<p>Another application is using the serial device and has forbidden access to other programs.</p>
+<p><b>Shift declaration error (53)</b></p>
+<p>There is a mistake in the colour sequence used in a SHIFT UP or SHIFT DOWN instruction.</p>
+<p><b>Sprite error (105)</b></p>
+<p>The values entered into a SPRITE command are outside of the required limits. Check this User Guide </p>
+<p>for the correct parameters.</p>
+<p><b>String too long (21)</b></p>
+<p>AMOS Professional allows a maximum of 65000 characters in any string.</p>
+<p><b>Syntax error in animation string (107)</b></p>
+<p>There is an error in the animation sequence specified by an Anim command. Check for typing errors, </p>
+<p>especially for full stops instead of commas.</p>
+<p><b>Text window 0 can't be closed (62)</b></p>
+<p>The WIND CLOSE command can only close windows which have been defined using WIND OPEN. </p>
+<p>So it won't close the original text window.</p>
+<p><b>This window has no border (63)</b></p>
+<p>A BORDER command has been used on a window which has no border.</p>
+<p>12.03.21</p>
+<p>E</p>
+<p>R</p>
+<p>R</p>
+<p>O</p>
+<p>R</p>
+<p>S</p>
+<h1 style="page-break-before:always; "></h1>
+<p>AMOS Errors</p>
+<p><b>Time-out error (155)</b></p>
+<p>The SERIAL INPUTS command or SERIAL GET command have waited in vain for information over </p>
+<p>the serial channel. They've finally aborted with an error. Check that everything is connected correctly, </p>
+<p>and that the other end of the communications line is actually sending you some data. This time-out  </p>
+<p>limit can be set from the Workbench Preferences.</p>
+<p><b>Too many colours in flash (51)</b></p>
+<p>There is a maximum allowance of 16 colour changes in a single FLASH command.</p>
+<p><b>Type mismatch (34)</b></p>
+<p>An illegal value has been assigned to a variable. The following line shows two classic Type mismatch </p>
+<p>errors:</p>
+<p>A$=23 : B=“A string into an integer?”</p>
+<p><b>User cancelled request (161)</b></p>
+<p>The printer was not available to the printer device, a system requester appeared and you clicked on </p>
+<p>Cancel and then this error occurred.</p>
+<p><b>User function not defined (15)</b></p>
+<p>There's a problem with a user defined function created with DEF FN. AMOS can't find the function </p>
+<p>you are referring to. Check that you've defined your function earlier in your program with DEF FN. </p>
+<p>This line must occur BEFORE your FN function actually appears in the listing! You can't create your </p>
+<p>function as part of a procedure, or a subroutine.</p>
+<p><b>Valid screen numbers range from 0 to 7 (50)</b></p>
+<p>There is a maximum of eight screens that can be opened at any one time.</p>
+<p><b>Wave 0 and 1 are reserved (182)</b></p>
+<p>Waves 0 and 1 are automatically reserved for white noise and pure tones respectively. So you can't </p>
+<p>redefine them using the SET WAVE command.</p>
+<p><b>Window already opened (55)</b></p>
+<p>It is impossible to open a window that is already open.</p>
+<p><b>Window not opened (54)</b></p>
+<p>You are trying to access a window that does not exist, because it has not been opened.</p>
+<p><b>Window too large (57)</b></p>
+<p>It is impossible to open the requested window, because its dimensions are too large to fit into the  </p>
+<p>current screen.</p>
+<p><b>Window too small (56)</b></p>
+<p>The requested window is smaller than the minimum permitted size. Please see WIND OPEN and </p>
+<p>WIND SIZE for a full explanation.</p>
+<p>12.03.22</p>
+<p>E</p>
+<p>R</p>
+<p>R</p>
+<p>O</p>
+<p>R</p>
+<p>S</p>
+</body>
+</html>

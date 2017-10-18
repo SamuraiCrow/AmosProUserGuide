@@ -1,0 +1,2488 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+     "http://www.w3.org/TR/html4/transitional.dtd">
+<html>
+<head>
+
+  <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  <title></title>
+  <meta name="generator" content="LibreOffice 5.2.7.2 (Linux)"/>
+  <meta name="created" content="2017-10-03T07:42:39.233168293"/>
+  <meta name="changed" content="2017-10-04T05:57:32.779395901"/>
+</head>
+<body>
+<h1></h1>
+<p>Screen Control</p>
+<p>06.01</p>
+<p>Setting up Screens</p>
+<p>06.02</p>
+<p>Using Screens</p>
+<p>06.03</p>
+<p>Screen Effects</p>
+<p>06.04</p>
+<p>Graphics</p>
+<p>06.05</p>
+<p>Menus</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Setting up Screens</p>
+<p>This Chapter explains how AMOS Professional screens are created and made ready to display the </p>
+<p>wonders of text, graphics and special effects.</p>
+<p>Think of your television set or monitor as a glass window, through which you can view whatever </p>
+<p>AMOS  Professional  displays  on   its  own  “screen”.   The  screen   used  to   show  AMOS  Professional </p>
+<p>images is not the same as your TV display, because an AMOS Professional screen can be changed in </p>
+<p>many different ways, while the glass window of the TV set remains firmly fixed!</p>
+<p>So far in this User Guide, everything has been displayed on a single AMOS Professional screen that  </p>
+<p>appears in the glass window of your TV set. As an aid to understanding the theory of different </p>
+<p>screens,  and to  see  the  theory put into practice,  make sure that  you  use the  ready-made HELP </p>
+<p>programs as you read through this Chapter.</p>
+<p><b>The AMOS Professional screens</b></p>
+<p><b>The default screen</b></p>
+<p>Whenever an AMOS Professional program is run, a screen area is automatically set up to display the </p>
+<p>results of that program. This is known as the “default” screen, and it forms the standard display area </p>
+<p>that is used for all normal drawing operations. The default screen is given the identity number zero. </p>
+<p>The individual dots on the screen that make up the image are known as “pixels”, and screen zero is </p>
+<p>320 pixels wide, 200 pixels high and it can display 16 different colours.</p>
+<p><b>Additional screens</b></p>
+<p>Apart from the default screen, seven more screens can be set up and used for AMOS Professional </p>
+<p>programs, and each of these new screens is given an identity number from 1 to 7. When a new screen  </p>
+<p>is set up, it has to be “opened”, and when this is done, its individual width, height, number of colours </p>
+<p>and pixel size is also defined.</p>
+<p><b>Screen resolution</b></p>
+<p>Although the default screen is 320 pixels wide, this “resolution” can be doubled to 640 pixels across </p>
+<p>the screen. When the screen is 320 pixels wide it is in low resolution, or “Lowres”, for short. If this is </p>
+<p>changed to 640 pixels wide, the screen is in high resolution, known as “Hires”.</p>
+<p><b>Defining a screen</b></p>
+<p><b>SCREEN OPEN</b></p>
+<p><i>instruction: open a new screen</i></p>
+<p><b>Screen Open</b> number,width,height,colours,pixel mode</p>
+<p>To open a new screen give the SCREEN OPEN command, followed by these parameters:</p>
+<p><b>Number</b>  is the identification number of the new screen, ranging from 0 to 7. If a screen with this </p>
+<p>number already exists, it will be completely replaced by this new screen.</p>
+<p>06.01.01</p>
+<p>S</p>
+<p>C</p>
+<p>R E</p>
+<p>E</p>
+<p>N S</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Setting up Screens</p>
+<p><b>Width</b>  sets up the numbest- of pixels that will make up the width of the new screen. There is no </p>
+<p>problem in opening a screen that is wider than the physical limit of the television or monitor display,  </p>
+<p>and extra-wide screens can be manipulated by the SCREEN OFFSET command. The widest possible </p>
+<p>screen is 1024 pixels across, from zero to 1023.</p>
+<p><b>Height</b> holds the number of pixels that make up the height of the screen. Like the width parameter, </p>
+<p>this can be larger than the visible screen height to a maximum of 1023 pixels, and scrolled into view. </p>
+<p>Screens with oversized widths and heights can be used with all of the normal screen techniques </p>
+<p>which are explained later.</p>
+<p><b>Colours</b>  sets the number of colours to be used for the new screen. The choice for this number is </p>
+<p>normally between 2,4,8,16 or 32. There are two special sorts of screens that can make use of 64 colours </p>
+<p>(Extra Half Bright mode screens), and 4096 colours (Hold And Modify mode screens), and these </p>
+<p>modes are explained at the end of this Chapter.</p>
+<p><b>Pixel mode</b>  is a choice of the width of the pixel points on the screen. Lowres is the normal status,  </p>
+<p>allowing 320 pixels to be displayed across the screen, at any one time. Hires halves the width of each </p>
+<p>pixel, and so allows 640 to be displayed.</p>
+<p><b>LOWRES</b></p>
+<p><i>function: set screen mode to 320 pixels wide</i></p>
+<p><b>Screen Open</b> number,width,height,colours,Lowres</p>
+<p><b>HIRES</b></p>
+<p><i>function: set screen mode to 640 pixels wide</i></p>
+<p><b>Screen Open</b> number,width,height,colours,Hires</p>
+<p>When the default screen is automatically opened, screen 0 is the equivalent to the following setting:</p>
+<p>Screen Open 0,320,200,16,Lowres</p>
+<p>To open screen number 1 as an oversize high-resolution screen with eight colours, you would use </p>
+<p>something like this:</p>
+<p>Screen Open 1,600,400,8,Hires</p>
+<p>This routine opens all eight available screens and brings them into view:</p>
+<p>Curs Off : Cls 13: Paper 13</p>
+<p>Print : Centre “Hello, I'm SCREEN 0”</p>
+<p>For S=1 To 7</p>
+<p>Screen Open S,320,20,16,Lowres</p>
+<p>Curs Off : Cls S+2 : Paper S+2</p>
+<p>Centre “And I am SCREEN”+Str$(S)</p>
+<p>Screen Display S,,50+S*25,,8</p>
+<p>Next S</p>
+<p>06.01.02</p>
+<p>S</p>
+<p>C</p>
+<p>R E</p>
+<p>E</p>
+<p>N S</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Setting up Screens</p>
+<p>Here is a table which lists the different screen options, along with an indication of the amount of  </p>
+<p>memory a standard size screen will consume.</p>
+<p><b>Colours</b></p>
+<p><b>Resolution</b></p>
+<p><b>Memory</b></p>
+<p><b>Notes</b></p>
+<p>2</p>
+<p>320x200</p>
+<p>8k</p>
+<p>PAPER=0 PEN=1 no FLASH Cursor=1</p>
+<p>2</p>
+<p>640x200</p>
+<p>16k</p>
+<p>as above </p>
+<p>4</p>
+<p>320x200</p>
+<p>16k</p>
+<p>PAPER=1 PEN=2 FLASH=3 Cursor=3</p>
+<p>4</p>
+<p>640x200</p>
+<p> 32k</p>
+<p>as above</p>
+<p>8</p>
+<p>320x200</p>
+<p>24k</p>
+<p>PAPER=1 PEN=2 FLASH=3 Cursor=3</p>
+<p>8</p>
+<p>640x200</p>
+<p>48k</p>
+<p>as above</p>
+<p>16</p>
+<p>320x200</p>
+<p>32k</p>
+<p>default setting</p>
+<p>16</p>
+<p>640x200</p>
+<p>64k</p>
+<p>32</p>
+<p>320x200</p>
+<p>40k</p>
+<p>64</p>
+<p>320x200</p>
+<p>48k</p>
+<p>Extra Half Bright mode</p>
+<p>4096</p>
+<p>320x200</p>
+<p>48k</p>
+<p>Hold And Modify mode</p>
+<p><b>Controlling screens</b></p>
+<p><b>SCREEN CLOSE</b></p>
+<p><i>instruction: erase a screen</i></p>
+<p><b>Screen Close</b> number</p>
+<p>Use the SCREEN CLOSE command to erase a screen and free the memory it was using for other </p>
+<p>programming needs. Simply specify the screen number to be deleted.</p>
+<p><b>DEFAULT</b></p>
+<p><i>instruction: re-set to the default screen</i></p>
+<p><b>Default</b></p>
+<p>The DEFAULT instruction closes all currently opened screens and restores the display back to the </p>
+<p>original default setting.</p>
+<p><b>AUTO VIEW ON</b></p>
+<p><b>AUTO VIEW OFF</b></p>
+<p><i>instructions: toggle viewing mode on and off</i></p>
+<p><b>Auto View On</b></p>
+<p><b>Auto View Off</b></p>
+<p>When SCREEN OPEN is used to create a new screen, the screen is usually displayed at once. This </p>
+<p>may be inconvenient during the initialisation stages of a program, in which case the AUTO VIEW </p>
+<p>OFF command can be used to disable this automatic display system. Screens can then be updated at a  </p>
+<p>convenient point, using the VIEW instruction. To re-activate the automatic screen updating system, </p>
+<p>use the AUTO VIEW ON command.</p>
+<p>06.01.03</p>
+<p>S</p>
+<p>C</p>
+<p>R E</p>
+<p>E</p>
+<p>N S</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Setting up Screens</p>
+<p><b>VIEW</b></p>
+<p><i>instruction: display current screen setting</i></p>
+<p><b>View</b></p>
+<p>When the AUTO VIEW OFF instruction is engaged, VIEW can be used to display any changes that </p>
+<p>have been made to the current screen settings, and they will be displayed at the next vertical blank </p>
+<p>period following the VIEW command.</p>
+<p><b>Moving a screen</b></p>
+<p>Once a screen has been opened, it can be positioned and moved anywhere on the television display. </p>
+<p>This means that screens can be made to bounce, slip, slide, flip over, sink out of sight and behave in </p>
+<p>all sorts of bizarre ways. This also means that screens can overlap or be displayed above one another, </p>
+<p>and so several different screen modes can be shown at once in separate areas of the display.</p>
+<p><b>SCREEN DISPLAY</b></p>
+<p><i>instruction: position a screen</i></p>
+<p><b>Screen Display</b> number</p>
+<p><b>Screen Display</b> number,<i>x,y,width,height</i></p>
+<p>To position a screen, the SCREEN DISPLAY command is used, followed by these parameters:</p>
+<p><b>Number</b>  refers to the number of the screen to be displayed, from 0 to 7. All or any of the other </p>
+<p>parameters can be omitted, but the relevant commas must be included.</p>
+<p>The x,y-coordinates are given as “hardware” coordinates, which refer to physical positions on the </p>
+<p>television screen, not the area used by AMOS Professional screens. These set the position from which </p>
+<p>your AMOS Professional screen will be displayed on the TV screen.</p>
+<p><b>X</b> coordinates can range from 0 to 448, and they are automatically rounded down to the nearest 16-</p>
+<p>pixel boundary. Only the positions from 112 to 432 are actually visible on the TV screen, so avoid </p>
+<p>using an x-coordinate below 112.</p>
+<p><b>Y</b>  coordinates can range between 0 and 312, but because every TV set displays a slightly different </p>
+<p>visible area, it is sensible to keep the range between 30 and 300. A small amount of experimenting will </p>
+<p>reveal what suits your own system.</p>
+<p><b>Width</b> sets the width of the screen in pixels. If this is different from the original setting, only a part of  </p>
+<p>the image will be shown, starting from the top left-hand corner of the screen. It will also be rounded  </p>
+<p>down to the nearest 16 pixels.</p>
+<p><b>Height</b> is used to set the height of the screen in exactly the same way as the width.</p>
+<p>If any of the optional parameters are left out, the <b>default</b> settings will be applied automatically.</p>
+<p>06.01.04</p>
+<p>S</p>
+<p>C</p>
+<p>R E</p>
+<p>E</p>
+<p>N S</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Setting up Screens</p>
+<p>For example, to display screen zero, keeping its original width and height, this line could be used:</p>
+<p>Screen Display 0,112,40,,</p>
+<p>Only one screen at a time can be shown on each horizontal line of the display, but several screens can </p>
+<p>be placed on top of one another. If screens are placed next to each other, in other words if they are </p>
+<p>sewn together to make a continuous display, there is one line of pixels where the screens meet that </p>
+<p>becomes “dead”. This effect can be seen by moving the mouse pointer between the Direct mode  </p>
+<p>window and the Default Screen, where a line of “dead” pixels occurs.</p>
+<p>One way of getting over this dead zone is to create an extra-large screen that is bigger than the TV </p>
+<p>display, and then move the visible area around inside its boundaries. When using extra-large screens, </p>
+<p>the area to be viewed is set with the SCREEN OFFSET command.</p>
+<p><b>SCREEN OFFSET</b></p>
+<p><i>instruction: offset screen at hardware coordinates</i></p>
+<p><b>Screen Offset</b> number,x,y</p>
+<p>Look at the diagram below, where the area of the visible screen is shown as a sort of “port-hole” 320  </p>
+<p>pixels wide by 200 pixels high, inside a larger AMOS Professional screen. Of course, the port- hole can </p>
+<p>be made smaller using the SCREEN DISPLAY command.</p>
+<p>The SCREEN OFFSET command is followed by the number of the screen to be displayed, then the x, </p>
+<p>y-coordinates of the “offset”, which is the point where the top left-hand corner of the visible display is </p>
+<p>to start, measured from the top left-hand corner of the extra-large screen.</p>
+<p>06.01.05</p>
+<p>S</p>
+<p>C</p>
+<p>R E</p>
+<p>E</p>
+<p>N S</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Setting up Screens</p>
+<p>The visible area can be Moved around the extra-large screen by changing the offset coordinates, and </p>
+<p>some very smooth scrolling effects are achieved. These can be used for background graphics in </p>
+<p>computer games, as well as more serious applications like route finders or star constellations.</p>
+<p><b>Manipulating screens</b></p>
+<p><b>SCREEN CLONE</b></p>
+<p><i>instruction: clone a screen</i></p>
+<p>Screen Clone number</p>
+<p>To create an identical copy of the current screen, and assign this new “clone” with a new screen </p>
+<p>number, use the SCREEN CLONE command followed by the destination screen number. Here is an </p>
+<p>example of a multi-cloned screen:</p>
+<p>Screen Open 0,320,20,4,Lowres</p>
+<p>Flash Off</p>
+<p>Screen Display 0,,70,,</p>
+<p>For S=1 To 7</p>
+<p>Screen Clone S</p>
+<p>Screen Display S,,S*20+70,,</p>
+<p>Next S</p>
+<p>Print “Start typing”;</p>
+<p>Do</p>
+<p>AS=Inkey$</p>
+<p>If A$&lt;&gt;“” Then Print A$;</p>
+<p>Loop</p>
+<p>Screen cloning is an ideal technique for two-player computer games, with each player controlling half </p>
+<p>of the visible display area.</p>
+<p>The clone uses the same memory area as the original screen, and will be displayed at the same place </p>
+<p>as the original. Any of the usual screen operations can be used with the clone, such as SCREEN  </p>
+<p>DISPLAY and SCREEN OFFSET. However, because there is only one copy of the original screen data </p>
+<p>in memory, it is impossible to use the SCREEN command with the cloned copy.</p>
+<p><b>DUAL PLAYFIELD</b></p>
+<p><i>instruction: combine two screens</i></p>
+<p><b>Dual Playfield</b> first screen,second screen</p>
+<p>The DUAL PLAYFIELD mode is the equivalent of mixing together two images from separate video </p>
+<p>cameras, and is achieved by displaying two screens simultaneously at the same x,y- coordinates. Each </p>
+<p>of the two screens can be manipulated completely independently from one other, and this can be </p>
+<p>exploited to produce very smooth parallax scrolling. Because the sizes of the two screens can be </p>
+<p>different, a smaller screen can be scrolled against a larger background screen, creating the parallax </p>
+<p>effect.</p>
+<p>06.01.06</p>
+<p>S</p>
+<p>C</p>
+<p>R E</p>
+<p>E</p>
+<p>N S</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Setting up Screens</p>
+<p>The two components of this dual playfield are treated as any other AMOS Professional screen, and </p>
+<p>they can even be double buffered or animated with AMAL.</p>
+<p>To create a dual playfield screen, simply give the command, followed by the two numbers of the </p>
+<p>relevant screens, which have already been defined using SCREEN OPEN. Both screens must have the </p>
+<p>same resolution, and there are some restrictions on the number of colours allowed. Here is a table of  </p>
+<p>the possibilities:</p>
+<p><b>1st Screen</b></p>
+<p><b>2nd Screen</b></p>
+<p><b>Resolution of both screens</b></p>
+<p>2 colours</p>
+<p>2 colours</p>
+<p>Lowres or Hires</p>
+<p>4 colours</p>
+<p>2 colours</p>
+<p>Lowres or Hires</p>
+<p>4 colours</p>
+<p>4 colours</p>
+<p>Lowres or Hires</p>
+<p>8 colours</p>
+<p>4 colours</p>
+<p>Lowres only</p>
+<p>8 colours</p>
+<p>8 colours</p>
+<p>Lowres only</p>
+<p>The colours of these screens are taken from the palette of the <b>first</b> screen with colour zero being IF </p>
+<p>treated as transparent. The first screen makes use of colours zero to 7, while the second screen uses 8  </p>
+<p>to 15. When you are drawing to the second screen, AMOS Professional will automatically convert the </p>
+<p>colour index to the appropriate number before using it. This means that colours zero to 7 of the </p>
+<p>second screen's palette will use colours 8 to 15 of the first screen's palette, in ascending order.</p>
+<p>Always make the <b>first</b> screen the current screen when changing the colour settings.</p>
+<p>Remember that the automatic conversion process does not apply to assignment statements such as </p>
+<p>COLOUR or PALETTE.</p>
+<p>When using SCREEN OFFSET to position a dual playfield screen, always specify the first screen, and </p>
+<p>never set screen offsets for both dual playfield screens to zero.</p>
+<p><b>DUAL PRIORITY</b></p>
+<p><i>instruction: reverse order of dual playfield screens</i></p>
+<p><b>Dual Priority</b> first screen, second screen</p>
+<p>Normally, the first screen of a dual playfield is displayed directly over the second screen. To reverse </p>
+<p>this order, so that the second screen appears in front of the first, use the DUAL PRIORITY command.  </p>
+<p>Please note that this instruction only changes the order of display, and has no effect on the screen </p>
+<p>organisation at all, so the first screen in the parameter list is still used for all colour assignments, and </p>
+<p>with the SCREEN DISPLAY command.</p>
+<p><b>Clearing, hiding and showing screens</b></p>
+<p>Screens can be removed from view by permanently erasing them, or by hiding them away for later  </p>
+<p>display.</p>
+<p><b>CLS</b></p>
+<p><i>instruction: clear current screen</i></p>
+<p><b>Cls</b></p>
+<p><b>Cls</b> <i>colour number</i></p>
+<p><b>Cls</b> <i>colour number,x1,y1 <b>To</b> x2,y2</i></p>
+<p>06.01.07</p>
+<p>S</p>
+<p>C</p>
+<p>R E</p>
+<p>E</p>
+<p>N S</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Setting up Screens</p>
+<p>The CLS command erases all or part of the <b>current</b> screen. Used on its own, the contents of the current </p>
+<p>screen are deleted and replaced by the current paper colour. Any windows that may have been set up </p>
+<p>will also be cleared in this way.</p>
+<p>By specifying the index number of a particular colour after the CLS command, the clearing operation </p>
+<p>will be carried out using that colour.</p>
+<p>A rectangular part of the current screen can also be cleared, leaving the rest of the screen intact. This is </p>
+<p>achieved by adding the coordinates of the block to be filed with the specified colour, from the top left-</p>
+<p>hand corner, to the bottom right. For example:</p>
+<p>Cls: Circle 100,98,98: Cls 0,50,50 To 150,150</p>
+<p><b>SCREEN HIDE</b></p>
+<p><i>instruction: hide a screen</i></p>
+<p><b>Screen Hide</b></p>
+<p><b>Screen Hide</b> <i>number</i></p>
+<p><b>SCREEN SHOW</b></p>
+<p><i>instruction: show a screen</i></p>
+<p><b>Screen Show</b></p>
+<p><b>Screen Show</b> <i>number</i></p>
+<p>Use the SCREEN HIDE command to remove the current screen from view. It can then be restored </p>
+<p>using a SCREEN SHOW instruction, like this:</p>
+<p>Cls : Print “I am the Current Screen” : Wait 100</p>
+<p>Screen Hide : Wait Key</p>
+<p>Screen Show</p>
+<p>Any screen  can  be  temporarily hidden,  by  including its index number  after  the SCREEN HIDE </p>
+<p>instruction. This screen is revealed with a similar request to SCREEN SHOW, followed by the relevant </p>
+<p>screen number.</p>
+<p><b>Screen priority</b></p>
+<p>Because screens may be of different sizes, and because they can be displayed at various positioned on </p>
+<p>the TV by offsets and overlaps, and because there can be up to eight electronic screens queuing up </p>
+<p>one behind the other, a method is needed to bring any one of these screens to the front of the display.</p>
+<p><b>SCREEN TO FRONT</b></p>
+<p><i>instruction: move screen to front of display</i></p>
+<p><b>Screen To Front</b></p>
+<p><b>Screen To Front</b> <i>number</i></p>
+<p>Use SCREEN TO FRONT to move the selected screen to the front of the display queue. If the screen  </p>
+<p>number is omitted after the command, then the current screen will be brought to the front.</p>
+<p>06.01.08</p>
+<p>S</p>
+<p>C</p>
+<p>R E</p>
+<p>E</p>
+<p>N S</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Setting up Screens</p>
+<p><b>SCREEN TO BACK</b></p>
+<p><i>instruction: move screen to back of display</i></p>
+<p><b>Screen To Back</b></p>
+<p><b>Screen To Back</b> <i>number</i></p>
+<p>This command is used to move a screen to the background of the display. If another screen is already </p>
+<p>there, it will be displayed in front of the chosen screen. Again, if the screen number is omitted after a </p>
+<p>SCREEN TO BACK command, the current screen will be relegated to the back of the display queue. </p>
+<p>Try this example:</p>
+<p>Centre “Hello again, Screen 0 here”</p>
+<p>Wait 100</p>
+<p>Screen Open 1,320,200,2,Lowres</p>
+<p>Centre “Excuse me, make way for Screen 1”</p>
+<p>Wait 100 : Screen To Front 0</p>
+<p>Screen 0</p>
+<p>Wait 100 : Screen To Back</p>
+<p><b>SCREEN</b></p>
+<p><i>instruction: set current screen</i></p>
+<p><b>Screen </b>number</p>
+<p>This command allows all graphical and text operations to be directed to the selected screen number, </p>
+<p>like this:</p>
+<p>Screen Open 2,320,32,16,Lowres</p>
+<p>Screen Display 2,,130,,</p>
+<p>Screen 0</p>
+<p>Plot 0,0: Draw To 320,200</p>
+<p>If the chosen screen is outside of the current display area or is hidden, there will be no visible effect. </p>
+<p>However, any graphics will be drawn in memory, waiting to be displayed whenever this screen comes </p>
+<p>into view, or out of hiding after a Screen Show command.</p>
+<p><b>Defining screen colours</b></p>
+<p><b>DEFAULT PALETTE</b></p>
+<p><i>instruction: define standard palette</i></p>
+<p><b>Default Palette</b> $1,$2,$3 ... $32</p>
+<p>It is often necessary to open several screens using the same palette. To simplify this process, the </p>
+<p>DEFAULT  PALETTE   instruction   is   used   to   define   a  standard  palette   which   will   be   used   by  all </p>
+<p>subsequent screens created by the SCREEN OPEN command. Colours are set using the $RGB values </p>
+<p>that are fully explained in the COLOUR section of Chapter 6.4. Up to 32 colours may be defined, </p>
+<p>depending on the screen mode, and any colours that are not re-set must have their appropriate </p>
+<p>commas in place. Here is an example line for eight colour screens:</p>
+<p>Default Palette $000,$111,$A69,,,,,$FFF</p>
+<p>06.01.09</p>
+<p>S</p>
+<p>C</p>
+<p>R E</p>
+<p>E</p>
+<p>N S</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Setting up Screens</p>
+<p><b>GET PALETTE</b></p>
+<p><i>instruction: copy palette from a screen</i></p>
+<p><b>Get Palette</b> number</p>
+<p><b>Get Palette</b> number,<i>mask</i></p>
+<p>This command copies the colours from a specified screen, and loads them into the current screen. This </p>
+<p>is useful when data is being moved from one screen to another with a SCREEN COPY command, and </p>
+<p>the same colour settings need to be shared for both screens. An optional mask can be added after the </p>
+<p>screen number, allowing only selected colours to be loaded. This works in exactly the same way as a </p>
+<p>mask for a GET SPRITE PALETTE command, and is explained in Chapter 7.1.</p>
+<p><b>Screen functions</b></p>
+<p>AMOS Professional provides a full range of screen functions, to monitor and exploit the current status </p>
+<p>of your screens.</p>
+<p><b>SCREEN</b></p>
+<p><i>function: give current screen number</i></p>
+<p>screen number=<b>Screen</b></p>
+<p>SCREEN can be used as a function to return the number of the screen which is currently active. This </p>
+<p>screen is used for all drawing operations, but it is <b>not</b> necessarily visible.</p>
+<p><b>SCREEN HEIGHT</b></p>
+<p><i>function: give current screen height</i></p>
+<p>height=<b>Screen Height</b></p>
+<p>height=<b>Screen Height</b> <i>number</i></p>
+<p><b>SCREEN WIDTH</b></p>
+<p><i>function: give current screen width</i></p>
+<p>height=<b>Screen Width</b></p>
+<p>height=<b>Screen Width</b> <i>(number)</i></p>
+<p>This pair of functions is used to return the height and the width of the current screen or a particular </p>
+<p>screen, if that screen number is specified. The dimensions of the current screen can be found like this:</p>
+<p>Print Screen Height</p>
+<p>Print Screen Width</p>
+<p><b>SCREEN COLOUR</b></p>
+<p><i>function: give maximum number of colours</i></p>
+<p>number=<b>Screen Colour</b></p>
+<p>06.01.10</p>
+<p>S</p>
+<p>C</p>
+<p>R E</p>
+<p>E</p>
+<p>N S</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Setting up Screens</p>
+<p>To find the maximum number of colours in the screen that is currently active, test the SCREEN </p>
+<p>COLOUR function now:</p>
+<p>Print Screen Colour</p>
+<p><b>SCIN</b></p>
+<p><i>function: give screen number at hardware coordinates</i></p>
+<p>number=<b>SCIN</b>(x,y)</p>
+<p>The SCIN function (short for SCreen In) is normally used with X MOUSE and Y MOUSE to check </p>
+<p>whether the mouse cursor has entered a particular screen. It returns the number of the screen which is </p>
+<p>underneath the selected <b>hardware</b> coordinates. If there is no screen there, a negative number will be </p>
+<p>returned.</p>
+<p><b>IFF screens</b></p>
+<p>IFF stands for Interchangeable File Format, commonly used to pass data between computers. IFF </p>
+<p>pictures from  <i>Dpaint</i>  are a classic example. As well as importing your own IFF drawings, AMOS </p>
+<p>Professional allows you to make use of legally available, ready-made pictures in the public domain, </p>
+<p>for your own programs.</p>
+<p><b>LOAD IFF</b></p>
+<p><i>instruction: load an IFF screen from disc</i></p>
+<p><b>Load Iff</b> “filename”</p>
+<p><b>Load Iff</b> “filename”,<i>screen number</i></p>
+<p>With the appropriate IFF picture files ready to be loaded on disc, this command is used to load the  </p>
+<p>selected filename to the current screen. There is an optional screen number parameter, which will </p>
+<p>open that screen for the picture. If this numbered screen already exists, its contents will be erased and </p>
+<p>replaced by the IFF data.</p>
+<p><b>SAVE IFF</b></p>
+<p><i>instruction: save an IFF screen to disc</i></p>
+<p><b>Save Iff</b> “filename”</p>
+<p><b>Save Iff</b> “filename”,<i>compression mode</i></p>
+<p>The SAVE IFF command saves the current screen as an IFF picture file with the selected filename onto </p>
+<p>disc. Certain data is automatically added to this IFF file, which stores the present screen settings, </p>
+<p>including any SCREEN DISPLAY, SCREEN OFFSET, SCREEN HIDE and SCREEN SHOW. This will </p>
+<p>be stored and recognised by AMOS Professional whenever this file is loaded again, so that the IFF  </p>
+<p>screen will be displayed exactly as it was saved. Please note that this data will be ignored by other </p>
+<p>graphics packages, such as Dpaint 3, also that it is not possible to save double buffered or dual </p>
+<p>playfield screens with this command.</p>
+<p>An optional parameter can be added after the filename, which selects whether or not the IFF file is to </p>
+<p>be   compacted   before   it   is   saved.   A  value   of   1   specifies   that   the   standard   AMOS   Professional </p>
+<p>compression system is to be used, whereas a zero saves the picture without any compression.</p>
+<p>06.01.11</p>
+<p>S</p>
+<p>C</p>
+<p>R E</p>
+<p>E</p>
+<p>N S</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Setting up Screens</p>
+<p><b>Extra Half Bright mode</b></p>
+<p>The colour of every point on the screen is governed by a value held in one of the Amiga's colour </p>
+<p>registers. Each register can be loaded from a selection of 4096 different colours.</p>
+<p>There is no point in wasting the computer's memory with dozens of available colours, if only two of </p>
+<p>them are going to be employed for some simple text. On the other hand, there is no point being </p>
+<p>restricted to 16 or 32 colours if images need to be as realistic as possible. There are two special screen </p>
+<p>modes that change the number of colours for use, Extra Half Bright mode (EHB), and Hold And </p>
+<p>Modify mode (HAM).</p>
+<p>Extra Half Bright mode doubles the number of available colours to 64. This is achieved by creating </p>
+<p>two colours from each of the Amiga's 32 colour registers. Colour numbers 0 to 31 are loaded straight </p>
+<p>from   one   of  the   colour   registers,   as  normal.   But   the   EHB   mode   creates   an   extra   set   of  colours </p>
+<p>alongside the originals, by looking at their values and dividing them in half. This makes the new set </p>
+<p>of colours exactly half as bright as the originals. The new set of colours uses index numbers from 32 to  </p>
+<p>63.</p>
+<p>Obviously, you can take full advantage of EHB by loading the 32 colour registers with the brightest </p>
+<p>colours available, so that pastel shades are generated automatically. Alternatively, if you needed to </p>
+<p>create specialised graphics, like an old-fashioned photograph for example, you might want to restrict </p>
+<p>the 32 colour registers to reds, greys and browns.</p>
+<p>Using EHB mode makes no difference at all to any other parts of your programming, and EHB </p>
+<p>screens are treated in exactly the same way as the default screen. It is also possible to create Bobs in </p>
+<p>this mode. Here is a simple example of EHB colours.</p>
+<p>Screen Close 0</p>
+<p>Screen Open 2,320,167,64,Lowres : Flash Off</p>
+<p>For C=1 To 32</p>
+<p>Ink C</p>
+<p>Bar 0,(C-1)*5 To 160,(2+C-1)*5</p>
+<p>Ink C+32</p>
+<p>Bar 160,(C-1)*5 To 319,(2+C-1)*5</p>
+<p>Next C</p>
+<p><b>Hold And Modify mode</b></p>
+<p>For an artist to carry around 4096 tubes of different coloured paint would be expensive and stupid, so </p>
+<p>an artist makes use of common colours, and mixes them together to create the exact shade needed. </p>
+<p>Computers use exactly the same process, allowing the programmer to hold on to an existing colour </p>
+<p>and modify it very slightly, time and time again. This is the theory behind the Amiga's Hold And </p>
+<p>Modify (HAM) mode.</p>
+<p>HAM mode splits up colour values into four separate groups. Colours 0 to 15 are normal, and the </p>
+<p>others exploit the way that all colours are made up from basic Red, Green and Blue components.</p>
+<p>06.01.12</p>
+<p>S</p>
+<p>C</p>
+<p>R E</p>
+<p>E</p>
+<p>N S</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Setting up Screens</p>
+<p>It must be stated that HAM mode is difficult to use, but AMOS Professional is able to exploit its full </p>
+<p>potential. This is valuable for displaying digitised colour pictures, either grabbed from video images </p>
+<p>or created using special packages such as Dpaint 4. To open a HAM screen ready to display all 4096  </p>
+<p>available colours, the following line could be used:</p>
+<p>Screen Open 0,320,256,4096,Lowres</p>
+<p>All text and graphics operations may be used directly with a HAM screen, and it can be manipulated  </p>
+<p>by the normal SCREEN DISPLAY and SCREEN OFFSET commands.</p>
+<p><b>Do</b> set the first point of each horizontal line to a colour numbered from 0 to 15, which will serve as the </p>
+<p>starting colour for all shades on the current line. To prevent unwanted fringe colours when SCREEN </p>
+<p>COPY is used, see that the screen's border zone also uses a colour from 0 to 15. This ensures that  </p>
+<p>HAM screens are re-drawn at a new position using their original colours.</p>
+<p><b>Do not</b> try to scroll a HAM screen horizontally, unless you wish to see fringes of spurious colour at </p>
+<p>the side of the picture. This problem does not occur with vertical scrolls.</p>
+<p><b>Interlaced screens</b></p>
+<p>Interlaced mode is perfect for displaying pictures, but is not recommended for much else.</p>
+<p><b>LACED</b></p>
+<p><i>reserved variable: return a value in conjunction with screen resolution</i></p>
+<p><b>Screen Open</b> number,width,height,colours,<b>Laced</b>+resolution</p>
+<p>LACED is a reserved variable which holds the value of 4. It is used in addition to either the Hires or </p>
+<p>Lowres parameters when opening a screen, like this:</p>
+<p>Screen Open 0,320,200,16,Laced+Lowres</p>
+<p>Interlaced screens have <b>double</b> the number of vertical lines, which is excellent for graphic displays. </p>
+<p>Unfortunately they take twice as long to update, which is no good at all for  fast-action games! </p>
+<p>Interlaced screens will only give flicker-free results if a “multi-sync” monitor is being used. Also </p>
+<p>certain TV sets and monitors do not take kindly to excessive switching between interlaced and normal </p>
+<p>screens.</p>
+<p>All of the usual operations may be used with interlaced screens, such as SCREEN DISPLAY, SCREEN </p>
+<p>OFFSET, and so on, but for technical reasons interlacing is not allowed during copper list calculations. </p>
+<p>As soon as the last interlaced screen has been closed, the entire display returns to normal mode.</p>
+<p><b>SCREEN MODE</b></p>
+<p><i>function: return screen mode</i></p>
+<p>value=<b>Screen Mode</b></p>
+<p>This simple function is used to report the mode of the current screen. If the screen is LACED, 4 or </p>
+<p>$8004 will be returned. If the screen is LOWRES, a value of $0 is given. For a HIRES screen, $8000 will  </p>
+<p>be returned.</p>
+<p>06.01.13</p>
+<p>S</p>
+<p>C</p>
+<p>R E</p>
+<p>E</p>
+<p>N S</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Using Screens</p>
+<p>IF you are familiar with the screen concepts set out in the last Chapter, this is where you make AMOS </p>
+<p>Professional screens come alive. This Chapter explains how to manipulate your screens, and we have </p>
+<p>provided ready-made demonstrations of the techniques on disc, complete with led notes in their </p>
+<p>listings.</p>
+<p><b>Copying screens</b></p>
+<p>Any rectangular part of a screen can be copied and moved on the current screen or to any other </p>
+<p>screen, time and time again, at great speed. Copying between the “physical” and “logical” screens is </p>
+<p>fully discussed in Chapter 7.2, along with detailed explanations of double buffering.</p>
+<p><b>SCREEN COPY</b></p>
+<p><i>instruction: copy an area of a screen</i></p>
+<p><b>Screen Copy</b> source number <b>To</b> destination number</p>
+<p><b>Screen Copy</b> source number,x1, y1, x2, y2 <b>To</b> <i>destination number</i>,x3,y3</p>
+<p><b>Screen Copy</b> source number,x1 ,y1 ,x2, y2 <b>To</b> <i>destination number</i>,x3,y3,<i>mode</i></p>
+<p>SCREEN COPY is the most important screen command of all. It can be used to achieve classic screen  </p>
+<p>techniques like “wiping” from one screen to another, as well as providing all sorts of special effects. </p>
+<p>At its simplest level, use this command to copy the whole contents of one screen to another screen. </p>
+<p>Simply give the number of the source screen that holds the image to be copied, which can be a logical  </p>
+<p>or physical screen. Then determine the number of the destination screen, which is where you want the </p>
+<p>image copied to. For example:</p>
+<p> Screen Copy 1 To 2</p>
+<p>Exact sections of screens can be copied by giving the coordinates of the top left-hand and bottom </p>
+<p>right-hand corners of the areas to be copied, followed by the number of the destination screen and the </p>
+<p>coordinates where the copy's top left-hand corner should be placed. If the destination screen number </p>
+<p>is omitted, the copied image will appear at the new coordinates on the current screen. For example:</p>
+<p>Circle 50,50,10 : Wait 50</p>
+<p>Screen Copy 0,20,20,70,70 To 0,100,100</p>
+<p>Note that there are no limits to these coordinates, and any parts of the image that fall outside of the </p>
+<p>current visible screen area will be clipped automatically.</p>
+<p>There is also an optional parameter which selects one of 255 possible blitter modes for the copying  </p>
+<p>operation. These modes affect how the source and destination areas are combined together on the </p>
+<p>screen, and are set using a bit-pattern in the following format:</p>
+<p><b>Mode Bit</b></p>
+<p><b>Source Bit</b></p>
+<p><b>Destination Bit</b></p>
+<p>4</p>
+<p>0</p>
+<p>0</p>
+<p>5</p>
+<p>0</p>
+<p>1</p>
+<p>6</p>
+<p>1</p>
+<p>0</p>
+<p>7</p>
+<p>1</p>
+<p>1</p>
+<p>06.02.01</p>
+<p>S</p>
+<p>C</p>
+<p>R E</p>
+<p>E</p>
+<p>N S</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Using Screens</p>
+<p>Please note that the bottom four bits in the pattern are not used by this instruction, and should always </p>
+<p>be set to zero. Also, that SCREEN COPY combines the source and destination graphics using blitter </p>
+<p>areas B and C, but not area A. To short-circuit the mass of all 255 options, here is a list of five of the  </p>
+<p>most common modes, along with their binary bit-map patterns, followed by a ready-made working </p>
+<p>example to examine:</p>
+<p><b>Mode</b></p>
+<p><b>Bit-pattern</b></p>
+<p><b>Effect</b></p>
+<p>REPLACE</p>
+<p>%11000000</p>
+<p>Replace   destination   graphics   with   a   copy   of   the </p>
+<p>source image. (Default mode.)</p>
+<p>INVERT</p>
+<p>%00110000</p>
+<p>Replace destination graphics with an inverse video </p>
+<p>image of the source.</p>
+<p>AND</p>
+<p>%10000000</p>
+<p>Combine together the source and destination images </p>
+<p>with a logical AND operation.</p>
+<p>OR</p>
+<p>%11100000</p>
+<p>Overlap   the   source   image   with   the   destination </p>
+<p>graphics.</p>
+<p>XOR</p>
+<p>%011000000</p>
+<p>Combine   together   an   inverse   source   image   and </p>
+<p>destination graphics with an Exclusive OR.</p>
+<p>Examine that demonstration program, and use the mouse pointer to copy the image anywhere on </p>
+<p>screen, with a single click of the left mouse button. Keep the button held down and move the mouse </p>
+<p>pointer to see the full potential of SCREEN COPY, then press any key to call up the next mask and </p>
+<p>repeat the process.</p>
+<p><b>Scrolling the screen</b></p>
+<p><b>DEF SCROLL</b></p>
+<p><i>instruction: define a scrolling screen zone</i></p>
+<p><b>Def Scroll</b> number,x1,y1 <b>To</b> x2,y2,horizontal value, vertical value</p>
+<p>Using the AMOS Professional system, you are able to define up to 16 different scrolling screen zones, </p>
+<p>and   each   one   can   have   an   individual   pattern   of   movement.   Simply   follow   your   DEF   SCROLL </p>
+<p>command with the number from 1 to 16 of the zone you are setting up. Then give the coordinates of </p>
+<p>the area of the zone to be scrolled, from the top left-hand corner to the diagonally opposite bottom </p>
+<p>right-hand corner. Finally, give this zone a scrolling pattern by setting the number of pixels to be  </p>
+<p>shifted horizontally, and the number of pixels to be shifted vertically during each scrolling operation. </p>
+<p>Positive horizontal values will cause a shift to the right whereas negative values will shift the zone </p>
+<p>towards the left of the screen. Similarly, positive vertical values will scroll downwards and negative </p>
+<p>values cause an upward scroll.</p>
+<p><b>SCROLL</b></p>
+<p><i>instruction: scroll a screen zone</i></p>
+<p><b>Scroll</b> zone number</p>
+<p>To scroll a screen zone already specified with a DEF SCROLL setting, use SCROLL followed by the  </p>
+<p>zone number you require.</p>
+<p>06.02.02</p>
+<p>S</p>
+<p>C</p>
+<p>R E</p>
+<p>E</p>
+<p>N S</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Using Screens</p>
+<p><b>Enlarging and reducing the screen</b></p>
+<p><b>ZOOM</b></p>
+<p><i>instruction: change size of part of screen</i></p>
+<p><b>Zoom</b> source number, x1 ,y1 ,x2,y2 <b>To</b> destination number,x3,y3,x4,y4</p>
+<p>This one command allows you to produce a range of remarkable effects that change the size of the </p>
+<p>image  in any  rectangular  area  of  the  screen.  Depending on the  relative  sizes of the source and  </p>
+<p>destination areas, images can be magnified, shrunk, squashed and stretched as you wish. ZOOM is </p>
+<p>qualified by the number of the screen from where your source picture will be taken, followed by the </p>
+<p>coordinates of the top left-hand corner and bottom right-hand corner of the area to be grabbed, After </p>
+<p>the TO structure, give the, number of the destination screen and the new coordinates of the area </p>
+<p>which is to hold the zoomed image. AMOS Professional will automatically re-size the image.</p>
+<p>The LOGIC function may be used to grab an image from the appropriate logical screen, instead of  </p>
+<p>specifying a physical screen number. In the same way, you are allowed to deposit a zoomed image to </p>
+<p>a logical screen. This is explained below.</p>
+<p><b>Physical and logical screens</b></p>
+<p>When you watch the moving images shown at the cinema or on video, you are watching an illusion. </p>
+<p>Graphical animation in the movies is created by a fast sequence of still pictures known as frames. </p>
+<p>Television screens do not display moving images either. They fool the brain and the eye by updating </p>
+<p>still images on the screen, fifty limes every second.</p>
+<p>In order to create really smooth moving graphics, your computer has to complete all new drawing </p>
+<p>operations in less than one fiftieth of a second. So the AMOS Professional programmer must achieve </p>
+<p>this speed, otherwise programs will suffer from an ugly flicker. The problem is solved by using a </p>
+<p>technique that switches between screens during drawing operations. This is how it works.</p>
+<p>Think of the actual area where images are displayed as the “physical” screen. Now imagine that there </p>
+<p>is  a second  screen  which  is completely  invisible  to  the  eye,   where  new  drawing  operations  are </p>
+<p>executed. Call that the “logical” screen. Flicker-free movement is achieved by switching between the </p>
+<p>physical and logical screen.</p>
+<p>The physical screen is displayed as usual, then once the new image has been drawn on the logical </p>
+<p>screen, they are swapped over. The old physical screen becomes the current logical screen, and is used </p>
+<p>to receive the drawing operations that will make up the next image. This process is completely </p>
+<p>automatic when using the DOUBLE BUFFER command, which is fully explained in Chapter 7.2.</p>
+<p><b>SCREEN SWAP</b></p>
+<p><i>instruction: swap over logical and, physical screens</i></p>
+<p><b>Screen Swap</b></p>
+<p><b>Screen Swap</b> number</p>
+<p>06.02.03</p>
+<p>S</p>
+<p>C</p>
+<p>R E</p>
+<p>E</p>
+<p>N S</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Using Screens</p>
+<p>This  is the  command that swaps over   the physical and  logical screens,  so  that  the  displays are </p>
+<p>instantly switched between the two of. them. If the DOUBLE BUFFER command has been engaged, </p>
+<p>this process is automatic.</p>
+<p><b>LOGBASE</b></p>
+<p><i>function: return the address of logical screen bit-plane</i></p>
+<p>address=<b>Logbase</b>(plane)</p>
+<p>The LOGBASE function allows expert programmers to access the Amiga's screen memory directly. </p>
+<p>The current screen is made up of six possible bit-planes, and after LOGBASE has been called, the </p>
+<p>address of the required plane is returned, or zero is given if it does not exist.</p>
+<p><b>PHYBASE</b></p>
+<p><i>function: return the address of the current screen</i></p>
+<p>address=<b>Phybase</b>(plane)</p>
+<p>PHYBASE returns the address in memory of the specified bit-plane number for the current screen. If </p>
+<p>this plane does not exist, a value of zero is given. For example:</p>
+<p>Loke Phybase(0),0 : Rem Poke a thin line directly onto screen</p>
+<p><b>PHYSIC</b></p>
+<p><i>function: return identification number for physical screen</i></p>
+<p>number=<b>Physic</b></p>
+<p>number=<b>Physic</b>(screen number)</p>
+<p>The PHYSIC function returns an identification number for the current physical screen. This number </p>
+<p>allows you to access the physical image being displayed by the automatic DOUBLE BUFFER system, </p>
+<p>and the result of this function can be substituted for the screen number in ZOOM, APPEAR and </p>
+<p>SCREEN COPY commands. The PHYSIC identification number of the current screen will be returned, </p>
+<p>unless an optional screen number is specified.</p>
+<p><b>LOGIC</b></p>
+<p><i>function: return identification number for logical screen</i></p>
+<p>number=<b>Logic</b></p>
+<p>number=<b>Logic</b>(screen number)</p>
+<p>Use the LOGIC function to get an identification number for the current logical screen, or use an </p>
+<p>optional   screen   number   to   specify   a   particular   logical   screen.   The   identification   number   that   is </p>
+<p>returned can now be used with the ZOOM, APPEAR and SCREEN COPY commands, to change </p>
+<p>images off screen, without affecting the current display.</p>
+<p><b>Screen synchronisation</b></p>
+<p>It has already been explained that the image on your screen is updated fifty times every second. A </p>
+<p>single update consists of an image drawn by an electron beam scanning across every line of the screen </p>
+<p>until   it   reaches   the   bottom   right-hand   corner,   at   which   point   the   beam   switches   off   and   starts</p>
+<p>06.02.04</p>
+<p>S</p>
+<p>C</p>
+<p>R E</p>
+<p>E</p>
+<p>N S</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Using Screens</p>
+<p>scanning again at the top left-hand corner of the screen. The period between the completion of one </p>
+<p>screen and the beginning of the next update is known as the “vertical blank period”, or VBL for short.  </p>
+<p>This is the period when AMOS Professional jumps in to perform important tasks like moving Bobs </p>
+<p>and swapping screens.</p>
+<p>AMOS Professional is so efficient, it considers a 50th of a second to be a huge waste of time, and is </p>
+<p>eager to get on with any other tasks that need doing. This means that your programs could get out of </p>
+<p>synchronisation with what is actually happening on screen, so there are situations when AMOS </p>
+<p>Professional must be instructed to wait for the next vertical blank period, in order keep in step.</p>
+<p><b>WAIT VBL</b></p>
+<p><i>instruction: wait for next vertical blank period</i></p>
+<p><b>Wait Vbl</b></p>
+<p>This simple command can be included to achieve perfect synchronisation, and is especially useful </p>
+<p>after a SCREEN SWAP.</p>
+<p><b>Screen compaction</b></p>
+<p>Naturally you will  want to  exploit the  most spectacular   images in your  programs,  but  the idea </p>
+<p>becomes less attractive because of the large amounts of program memory that get used when a </p>
+<p>graphical screen is used. With a single, 64colour, full-size screen consuming 60k of RAM, the AMOS </p>
+<p>Professional programmer needs to crunch the data that makes up screen graphics, pack it into an </p>
+<p>acceptable amount of memory and then unpack it when necessary.</p>
+<p><b>SPACK</b></p>
+<p><i>picture compactor extension: pack a screen</i></p>
+<p><b>Spack</b> screen number <b>To</b> bank number</p>
+<p><b>Spack</b> screen number <b>To</b> bank number <i>xl,y1,x2,y2</i></p>
+<p>This command stands for “screen pack”, and it supports all standard graphic modes, including HAM. </p>
+<p>Memory is crunched to a fraction of its original requirement, and in its simplest form you only need </p>
+<p>to define the screen number that holds the source of your image (from 0 to 7), and the number of the  </p>
+<p>memory bank where you want the packed image deposited (from 1 upwards), for example:</p>
+<p>Spack 7 To 20</p>
+<p>If the selected memory bank does not already exist, AMOS Professional will reserve it automatically </p>
+<p>before packing in the screen data, which includes everything about the image including its mode, size </p>
+<p>and any offsets or display settings. This means that when the data is unpacked, the image will be re-</p>
+<p>created in its original state. Your new memory bank will be stored in fast memory if available, and </p>
+<p>will be saved along with your Basic program. After SPACK has been called, you can determine the </p>
+<p>size of your crunched screen with the LENGTH function.</p>
+<p>06.02.05</p>
+<p>S</p>
+<p>C</p>
+<p>R E</p>
+<p>E</p>
+<p>N S</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Using Screens</p>
+<p>If you only want to pack a part of any screen and not bother about the remaining area, simply add the </p>
+<p>coordinates of the top left and bottom right-hand corners of the section to be packed. Note that all x-</p>
+<p>coordinates will be automatically rounded to the nearest 8 pixel boundary.</p>
+<p>To provide you with the maximum memory saving, AMOS Professional will try and SPACK your </p>
+<p>images using several alternative strategies. It will then choose the method that consumes the least </p>
+<p>amount of memory. You are requested to be patient during the five or six seconds that this process  </p>
+<p>takes, and are assured that unpacking takes less than a second, so your programs will run smoothly. If </p>
+<p>a one second delay is not acceptable to you, please see the alternative system that uses GET CBLOCK </p>
+<p>and PUT CBLOCK in Chapter 7.7.</p>
+<p><b>PACK</b></p>
+<p><i>picture compactor extension: pack screen data</i></p>
+<p><b>Pack</b> screen number <b>To</b> bank number</p>
+<p><b>Pack</b> screen number <b>To</b> bank number <i>xl,y1,x2,y2</i></p>
+<p>The PACK command is slightly different from SPACK, because it only compresses the image data. </p>
+<p>This means that the image must always be unpacked into an existing screen. Also there will be a </p>
+<p>slight flicker when the image is unpacked, unless the screens have been double buffered, so it is better </p>
+<p>to use single buffered screens here. Screen numbers, memory bank numbers and optional coordinates </p>
+<p>for smaller sections of the screen to be packed are used in exactly the same way as with the SPACK </p>
+<p>command, and x-coordinates are rounded to the nearest 8 pixel boundary too.</p>
+<p>SPACK is fully compatible with the standard AUTOBACK system explained in Chapter 7.2, so it is </p>
+<p>easy to combine compacted images with moving screens. Images can even be unpacked behind </p>
+<p>existing Bobs, so it is possible to exploit this command together with SCREEN OFFSET to create  </p>
+<p>superb scrolling backgrounds.</p>
+<p><b>UNPACK</b></p>
+<p><i>picture compactor extension: unpack a compacted screen</i></p>
+<p><b>Unpack</b> bank number</p>
+<p><b>Unpack</b> bank number,<i>x,y</i></p>
+<p><b>Unpack</b> bank number <b>To</b> screen number</p>
+<p>As you might expect, this is used to unpack crunched images. Using double buffered screens will give </p>
+<p>smooth results, otherwise unpacking may get messy, and always make sure that the destination </p>
+<p>screen is in exactly the same format as the packed picture or an error will be generated.</p>
+<p>To unpack screen data at its original position, state which memory bank is to be unpacked, like this:</p>
+<p>Unpack 15</p>
+<p>To re-draw the packed image starting from new top left-hand corner coordinates, include them after </p>
+<p>the bank number. If the new image does not fit into the current screen, the appropriate error message </p>
+<p>will appear.</p>
+<p>06.02.06</p>
+<p>S</p>
+<p>C</p>
+<p>R E</p>
+<p>E</p>
+<p>N S</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Using Screens</p>
+<p>The other form of the UNPACK command is open a screen and unpack the data held in the selected </p>
+<p>bank to that screen. For example:</p>
+<p>Unpack 15 To 1</p>
+<p>If the screen you select already exists, its image will be replaced by the newly unpacked picture </p>
+<p>within one second.</p>
+<p>06.02.07</p>
+<p>S</p>
+<p>C</p>
+<p>R E</p>
+<p>E</p>
+<p>N S</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Screen Effects</p>
+<p>The AMOS Professional programmer expects to achieve superb visual effects with simple, economic </p>
+<p>commands. Classic cinematic and video techniques are readily available, as well as more spectacular </p>
+<p>routines that are only made possible by the power of the computer.</p>
+<p>When the image of one screen dissolves and melts into the image of another screen, various “fade” </p>
+<p>effects are produced.</p>
+<p><b>APPEAR</b></p>
+<p><i>instruction: fade between two screens</i></p>
+<p><b>Appear</b> source screen <b>To</b> destination screen, pixels</p>
+<p><b>Appear</b> source screen <b>To</b> destination screen, number pixels, <i>range</i></p>
+<p>This command creates a fade between two pictures. Choose the number of the source screen where </p>
+<p>the original picture comes from, then the number of the destination screen whose picture it fades into. </p>
+<p>LOGIC and PHYSIC functions can be substituted for screen numbers, if required.</p>
+<p>Next determine a value that will cause the desired effect, by setting the number of pixel points on the </p>
+<p>screen, ranging from 1 pixel all the way up to every pixel in the display.</p>
+<p>Normally APPEAR affects the whole of your screen area, but there is an optional parameter that </p>
+<p>causes only part of the screen to be faded. Because screens are drawn from top to bottom, set the area </p>
+<p>to be faded by adding the range of the number of pixels from the top of the screen. For example:</p>
+<p>Load “AMOSPro_Tutorial:Objects/Bobs.Abk”</p>
+<p>Flash Off : Get Bob Palette</p>
+<p>Paste Bob 100,0,1</p>
+<p>Wait 100</p>
+<p>Screen Open 1,320,90,16,Lowres</p>
+<p>Flash Off : Get Bob Palette</p>
+<p>Appear 0 To 1,1,28800</p>
+<p>That example fades the top part of your default screen into the newly opened Screen 1. Obviously, the </p>
+<p>appearance of fades will vary, depending on the screen mode being used.</p>
+<p><b>FADE</b></p>
+<p><i>instruction: blend colours to new values</i></p>
+<p><b>Fade</b> speed</p>
+<p><b>Fade</b> speed,colour list</p>
+<p><b>Fade</b> speed <b>To</b> screen number</p>
+<p><b>Fade</b> speed <b>To</b> screen number,<i>mask</i></p>
+<p>The classic “fade to black” movie effect takes the current palette and gradually fades all values to </p>
+<p>zero. Set the speed of the fade by choosing the number of vertical blank periods between each colour </p>
+<p>change. Try this:</p>
+<p>Flash Off : Curs Off</p>
+<p>Centre “GOOD NIGHT”</p>
+<p>Fade 5</p>
+<p>06.03.01</p>
+<p>S</p>
+<p>C</p>
+<p>R</p>
+<p>E</p>
+<p>E</p>
+<p>N</p>
+<p> </p>
+<p>F</p>
+<p>X</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Screen Effects</p>
+<p>Fade effects are executed using interrupts, so it is sensible to wait until the fade has ended before </p>
+<p>going on to the next program instruction. The length of wait required can be calculated with this  </p>
+<p>formula:</p>
+<p>wait = fade speed * 15</p>
+<p>So that last example is sure to work with the rest of your program if the third line is changed to this:</p>
+<p>Fade 5 : Wait 75</p>
+<p>By adding a list of colour values, the fade effect will generate a new palette directly from your list,  </p>
+<p>and it is used like this:</p>
+<p>Flash Off : Curs Off</p>
+<p>Centre “RED SKY AT NIGHT”</p>
+<p>Fade 10,$100,$F00,$300</p>
+<p>Wait 150</p>
+<p>Any number of new colours can be set up like this, depending on the maximum number allowed in </p>
+<p>your   current   screen   mode.   Any   settings   that   are   omitted   will   leave   those   colours   completely </p>
+<p>unaffected by the fade, as long as you include the right number of commas. For example:</p>
+<p> Fade 5,,$100,,,$200,$300</p>
+<p>There is an even more powerful use of the FADE command, which takes the palette from another </p>
+<p>screen and fades it into the colours of the current screen. Set the speed of the fade as usual, then give </p>
+<p>the number of the screen whose palette is to be accessed. By using a negative number instead of a  </p>
+<p>screen number, the palette from the sprite bank will be loaded instead. There is one more parameter </p>
+<p>that can be added, and this creates a mask that only permits certain colours to be faded in. Each  </p>
+<p>colour is associated with a single bit in the pattern, numbered from 0 to 15, and any bit that is set to 1  </p>
+<p>will be affected by a colour change. For example:</p>
+<p>Load “AMOSPro_Tutorial:Objects/Bobs.Abk”</p>
+<p>Screen Open 1,320,90,16,Lowres</p>
+<p>Flash Off : Get Object Palette</p>
+<p>Paste Bob 100,0,1</p>
+<p>Wait 100</p>
+<p>Fade 1 To 0,%01111000011001010</p>
+<p>Wait 15</p>
+<p><b>Flashing colours</b></p>
+<p>You will already be aware that colour index number 3 is pre-set to flash on and off, and is the default  </p>
+<p>setting for the text cursor. By using interrupts, any colour index can be cycled through a series of </p>
+<p>colour changes, producing complex flashing effects.</p>
+<p>06.03.02</p>
+<p>S</p>
+<p>C</p>
+<p>R</p>
+<p>E</p>
+<p>E</p>
+<p>N</p>
+<p> </p>
+<p>F</p>
+<p>X</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Screen Effects</p>
+<p><b>FLASH</b></p>
+<p><i>instruction: set flashing colour sequence</i></p>
+<p><b>Flash</b> index number,“(colour,delay)(colour,delay)(colour,delay)...”</p>
+<p><b>Flash Off</b></p>
+<p>When FLASH is followed by the index number of any colour, that colour will display animated </p>
+<p>flashing every time it is used, until FLASH OFF is called. Up to 16 colours can be cycled to customise </p>
+<p>your flashing effects, and the rate of delay from one colour change to the next can be individually set. </p>
+<p>Try this:</p>
+<p>Flash 1,“(0A0,10)(F0F,40)”</p>
+<p>In that example, the colour to be affected is set to index number 1. After the comma, the set of </p>
+<p>quotation marks can contain up to 16 pairs of brackets, and each pair of brackets contains the colour </p>
+<p>that is next on the list to be flashed, and the time it will appear for. Colour is set in RGB component </p>
+<p>values, which are fully explained in the next Chapter. Delay time is set in units of a 50th of a second. </p>
+<p>So the last example has the effect of flashing colour number 1 between a green value and a violet </p>
+<p>value once every second. The next example is more subtle:</p>
+<p>Cls : Centre “SILENT MOVIES”</p>
+<p>Flash 1,”(111,4)(333,4)(555,4)(777,4)(555,7)(333,7)</p>
+<p>Curs Off : Wait 250 : Flash Off</p>
+<p><b>SHIFT UP</b></p>
+<p><i>instruction: rotate colour values upwards</i></p>
+<p><b>Shift Up</b> delay,first,last,flag</p>
+<p>This command takes the values held in the colour registers and shunts them forwards. The delay </p>
+<p>between colour shifts is set in 50ths of a second, similarly to the FADE command.</p>
+<p>Next the values of the colours to be affected are set, from the first colour to the last colour in the  </p>
+<p>sequence. The first  colour in the list will be copied to the second, the second to the third, and so on </p>
+<p>until the last colour in the series is reached.</p>
+<p>Finally, a flag is set to either 0 or 1. When this flag is set to zero, the last colour is discarded, and the </p>
+<p>rotation will cycle for the number of times it takes to replace all colours with the first colour in the list. </p>
+<p>Alternatively, if the flag is set to one, the last colour index in the list is copied into the first, causing the  </p>
+<p>colours to rotate continuously on screen.</p>
+<p>Each of your screens can have its own set of animated colour rotations, and because they are executed </p>
+<p>using interrupts they will not affect the running of your programs.</p>
+<p><b>SHIFT DOWN</b></p>
+<p><i>instruction: rotate colour values downwards</i></p>
+<p><b>Shift Down</b> delay,first,last,flag</p>
+<p>06.03.03</p>
+<p>S</p>
+<p>C</p>
+<p>R</p>
+<p>E</p>
+<p>E</p>
+<p>N</p>
+<p> </p>
+<p>F</p>
+<p>X</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Screen Effects</p>
+<p>This command is identical to SHIFT UP, except for the fact that colours are rotated in the opposite </p>
+<p>direction, so that the second colour is copied into the first, the third to the second, and so on. With the </p>
+<p>final flag set to zero, all colours are eventually replaced with the last colour in the list.</p>
+<p><b>SHIFT OFF</b></p>
+<p><i>instruction: turn off all colour shifts for current screen</i></p>
+<p><b>Shift Off</b></p>
+<p>Use this command to terminate all colour rotations previously set by the SHIFT UP and SHIFT </p>
+<p>DOWN instructions.</p>
+<p><b>Rainbow effects</b></p>
+<p>So far, most of the screen effects in this Chapter take a colour index and change its value over a set </p>
+<p>period of time. AMOS Professional offers an alternative system, where colour indexes are changed </p>
+<p>depending on specific screen locations. This means that a single colour index can be used to generate </p>
+<p>hundreds of colours in some spectacular rainbow effects. Before any rainbows can be conjured up, </p>
+<p>their parameters must first be set.</p>
+<p><b>SET RAINBOW</b></p>
+<p><i>instruction: define a rainbow</i></p>
+<p><b>Set Rainbow</b> number,index,height,red$,green$,blue$</p>
+<p>Try the next example before analysing how it works:</p>
+<p>Set Rainbow 0,1,16,“(1,1,15)”,“”,“”</p>
+<p>Rainbow 0,56,1,255</p>
+<p>Curs Off : Flash Off</p>
+<p>Locate ,12 : Centre “RED STRIPE”</p>
+<p>Up to four different rainbows may be set up for later use, and SET RAINBOW is followed by an </p>
+<p>identification number for this rainbow, from 0 to 3.</p>
+<p>The next parameter is the colour index that is to be changed, and only colours 0 to 15 can be affected.  </p>
+<p>In practice, this colour can be assigned a different value for  each horizontal screen scan line,  if </p>
+<p>necessary.</p>
+<p>Following this, the height parameter sets the size of the table to be used for colour storage, in other </p>
+<p>words, it sets the height of the rainbow in units, with each unit ready to hold one scan line of colour. </p>
+<p>The size of this table can range from 16 to 65500, but only the first 280 or so lines can be displayed on </p>
+<p>screen at once. So if your table is less than the physical height of your rainbow, the colour pattern will </p>
+<p>be repeated on the screen.</p>
+<p>Finally, the Red, Blue and Green components of the rainbow colours are set up as strings, each within </p>
+<p>their own brackets. The last example leaves out any reference to the Green and Blue components, </p>
+<p>which is why the resulting effect is completely in the Red. These strings will be cycled to produce the</p>
+<p>06.03.04</p>
+<p>S</p>
+<p>C</p>
+<p>R</p>
+<p>E</p>
+<p>E</p>
+<p>N</p>
+<p> </p>
+<p>F</p>
+<p>X</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Screen Effects</p>
+<p>final rainbow pattern, and their format comprises three values contained in each relevant pair of </p>
+<p>brackets, as follows:</p>
+<p>(number,step,count)</p>
+<p>Number refers to the number of scan lines assigned to one colour value. Think of it as controlling the </p>
+<p>”speed” of the sequence. Step is a value to be added to the colour, which controls the colour change. </p>
+<p>Count is simply the number of times this whole process is performed.</p>
+<p><b>RAINBOW</b></p>
+<p><i>instruction: display a rainbow</i></p>
+<p><b>Rainbow</b> number,offset,vertical position,height</p>
+<p>The last example also demonstrates the parameters of the RAINBOW command, which is used to </p>
+<p>display one of the rainbows created with SET RAINBOW.</p>
+<p>The rainbow number is obvious, and refers to one of the four possible rainbow patterns from 0 to 3. </p>
+<p>The offset sets the value for the first colour in the table created with SET RAINBOW, and it governs  </p>
+<p>the cycling or repetition of the rainbow on screen.</p>
+<p>The vertical position is a coordinate which must have a minimum value of 40, and it affects the </p>
+<p>starting point of the rainbow's vertical display on screen. If a lower coordinate is used, the rainbow </p>
+<p>will be displayed from line number 40 onwards.</p>
+<p>Finally, the height number sets the rainbow's vertical height in screen scan lines.</p>
+<p>Please note that normally only one rainbow at a time can be displayed at a particular scan line, and </p>
+<p>the   one   with   the   lowest   identification   number   will   be   drawn   in   front   of   any   others   However, </p>
+<p>experienced Amiga users will be able to start more than one rainbow at the same line, using the </p>
+<p>Copper. See Appendix F for an explanation of this technique.</p>
+<p><b>RAINBOW DEL</b></p>
+<p><i>instruction: delete a rainbow</i></p>
+<p><b>Rainbow Del</b></p>
+<p><b>Rainbow Del</b> <i>number</i></p>
+<p>Use this command on its own to get rid of all rainbows that have been set up. If a rainbow identity </p>
+<p>number is added, then only that particular rainbow will be deleted.</p>
+<p><b>RAIN</b></p>
+<p><i>function: change the colour of a rainbow line</i></p>
+<p><b>Rain</b>(number,line)=colour</p>
+<p>This powerful rainbow instruction allows you to change the colour of any rainbow line to value you </p>
+<p>choose. RAIN is followed by a pair of brackets containing the number of the rainbow to be changed </p>
+<p>and the scan line number that is to be affected.</p>
+<p>06.03.05</p>
+<p>S</p>
+<p>C</p>
+<p>R</p>
+<p>E</p>
+<p>E</p>
+<p>N</p>
+<p> </p>
+<p>F</p>
+<p>X</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Screen Effects</p>
+<p>The next example demonstrates the following technique. Rainbow number 1, with colour index 1, is </p>
+<p>given a colour table length of 4097, which is one entry for every colour value that will be displayed on  </p>
+<p>screen. The RGB values are left blank, to be set up by the first FOR...NEXT routine, that contains the </p>
+<p>RAIN command. The second FOR…NEXT routine uses RAINBOW to display a pattern 255 lines long, </p>
+<p>starting at scan line 40. The DO...LOOP structure is used to repeat the process.</p>
+<p>Curs Off : Centre “OVER THE RAINBOW”</p>
+<p>Set Rainbow 1,1,4097,“”,“”,“”</p>
+<p>For L=0 To 4095</p>
+<p>Rain(1,L)=L</p>
+<p>Next L</p>
+<p>Do</p>
+<p>For 0=0 To 4095-255 Step 4</p>
+<p>Rainbow 1,C,40,255</p>
+<p>Wait Vbl</p>
+<p>Next C</p>
+<p>Loop</p>
+<p><b>The copper list</b></p>
+<p>The appearance of every line displayed on your screen is controlled by the Amiga's co- processor, </p>
+<p>known   as   the   ”copper”.   The   copper   is   a   self-contained   processor   with   its   own   special   set   of </p>
+<p>instructions, and its own internal memory. A massive number of special effects can be created by </p>
+<p>programming   the   copper,   but   the   copper   list   is   notoriously   difficult   to   manipulate,   and   many </p>
+<p>competent programmers have failed to master its mysteries.</p>
+<p>A full discussion of the copper lists may be found in Appendix F of this User Guide.</p>
+<p>06.03.06</p>
+<p>S</p>
+<p>C</p>
+<p>R</p>
+<p>E</p>
+<p>E</p>
+<p>N</p>
+<p> </p>
+<p>F</p>
+<p>X</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Graphics</p>
+<p>In this Chapter, you will learn how to master the arts of form and colour.</p>
+<p>AMOS Professional allows the programmer to harness the Amiga's full graphic potential, and all </p>
+<p>aspects of design can be controlled simply, accurately and almost instantaneously. The computer-</p>
+<p>graphics artist is provided with a standard electronic canvas 320 pixels wide and 200 pixels high, and </p>
+<p>there are potentially 4096 different colours to exploit. In order to apply the chosen colour to the </p>
+<p>correct point, you will need to know the coordinates of each available pixel, and as long as these  </p>
+<p>graphic coordinates are not confused with the broader scale of text coordinates, all will be well.</p>
+<p><b>Graphic coordinates</b></p>
+<p><b>PLOT</b></p>
+<p><i>instruction: plot a single point</i></p>
+<p><b>Plot</b> x,y</p>
+<p><b>Plot</b> <i>x,y,colour</i></p>
+<p>This is the simplest drawing command of all, and plots a single pixel of ink colour between graphic </p>
+<p>coordinates 0,0 and 319,199. When followed by specific x,y-coordinates, the current ink colour will be </p>
+<p>plotted at this new position. You are allowed to omit either the x or the y- coordinate, provided the </p>
+<p>comma is left in the correct position. If an optional colour index number is added the new colour will </p>
+<p>be used for this and all subsequent drawing operations.</p>
+<p>For example:</p>
+<p>Cls: Curs Off</p>
+<p>Do</p>
+<p>Plot Rnd(319),Rnd(199),Rnd(15)</p>
+<p>Loop</p>
+<p><b>POINT</b></p>
+<p><i>function: return the colour of a point</i></p>
+<p>c=<b>Point</b>(x,y)</p>
+<p>Use this function to find the index number of the colour occupying your chosen coordinates, like this:</p>
+<p>Cls : Plot 160,100</p>
+<p>Print “The colour is ”;Point(160,100)</p>
+<p><b>Setting the graphics cursor</b></p>
+<p><b>GR LOCATE</b></p>
+<p><i>instruction: position the graphics cursor</i></p>
+<p><b>Gr Locate</b> x,y</p>
+<p>The graphics cursor sets the starting point for most drawing operations. To establish this point, use </p>
+<p>GR LOCATE to position the graphics cursor at your chosen coordinates.</p>
+<p>06.04.01</p>
+<p>G</p>
+<p>R</p>
+<p>A</p>
+<p>P</p>
+<p>H</p>
+<p>I</p>
+<p>C</p>
+<p>S</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Graphics</p>
+<p>For example:</p>
+<p>X=150 : Y=10</p>
+<p>For R=3 To 87 Step 3</p>
+<p>Gr Locate X,Y+R</p>
+<p>Circle ,,R</p>
+<p>Next R</p>
+<p><b>XGR</b></p>
+<p><b>YGR</b></p>
+<p><i>functions: return the relevant coordinate of the graphics cursor</i></p>
+<p>x=<b>Xgr</b></p>
+<p>y=<b>Ygr</b></p>
+<p>Use these functions to find the current coordinates of the graphics cursor, which is the default location </p>
+<p>for future drawing operations. For example:</p>
+<p>Cls : Circle 100,100,50</p>
+<p>Print Xgr,Ygr</p>
+<p><b>Drawing lines</b></p>
+<p><b>DRAW</b></p>
+<p><i>instruction: draw a line</i></p>
+<p><b>Draw</b> x1,y1 To x2,y2</p>
+<p><b>Draw To</b> x,y</p>
+<p>Line drawing is extremely simple. Pick two sets of graphic coordinates, and draw your line from one </p>
+<p>to the other. To draw a line from the current position of the graphics cursor, use DRAW TO followed </p>
+<p>by a single set of coordinates.</p>
+<p>For example:</p>
+<p>Cls: Ink 2</p>
+<p>Draw 50,50 To 250,150</p>
+<p>Draw To 275,175</p>
+<p><b>Line styles</b></p>
+<p>Changing the appearance of straight lines is very simple with AMOS Professional. Each line pattern is </p>
+<p>held in the form of a binary number made up of 16 bits, with zeros setting blank spaces in the current  </p>
+<p>background colour, and ones setting the solid parts of the pattern in the current ink colour. So a </p>
+<p>normal solid line can be imagined as having all its bits set to one, like this:</p>
+<p>%</p>
+<p>1111111111111111</p>
+<p>06.04.02</p>
+<p>G</p>
+<p>R</p>
+<p>A</p>
+<p>P</p>
+<p>H</p>
+<p>I</p>
+<p>C</p>
+<p>S</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Graphics</p>
+<p><b>SET LINE</b></p>
+<p><i>instruction: set a line style</i></p>
+<p><b>Set Line</b> binary mask</p>
+<p>This command sets the style of all straight lines that are subsequently drawn. Theoretically, the 16-bit </p>
+<p>mask can generate values for different patterns between 0 and 65535, but here is a more practical </p>
+<p>example:</p>
+<p>Cls : </p>
+<p>Ink 2</p>
+<p>Set Line $F0F0</p>
+<p>Box 50,100 To 150,140</p>
+<p>Set Line %1100110011001100</p>
+<p>Box 60,110 To 160,160</p>
+<p><b>Drawing outline shapes</b></p>
+<p>Here is a range of AMOS Professional short-cuts for drawing outline shapes on the screen.</p>
+<p><b>POLYLINE</b></p>
+<p><i>instruction: draw multiple line</i></p>
+<p><b>Polyline</b> x1 ,y1 <b>To</b> x2,y2 <b>To</b> x3,y3 ...</p>
+<p><b>Polyline</b> To x1 ,y1 <b>To</b> x2,y2 ...</p>
+<p>The POLYLINE is identical to DRAW except that it accepts multiple coordinate settings at the same  </p>
+<p>time.   In   this   way,   complex   many-sided   outlines   can   be   drawn   with   a   single   statement.   In   its </p>
+<p>POLYLINE TO form, drawing begins at the current graphic cursor position. For example:</p>
+<p>Circle 160,100,95</p>
+<p>Polyline 160,6 To 100,173 To 250,69 To 71,69 To 222,173 To 160,6</p>
+<p><b>BOX</b></p>
+<p><i>instruction: draw a rectangular outline</i></p>
+<p><b>Box</b> x1,y1 <b>To</b> x2,y2</p>
+<p>Boxed   outlines   are   drawn   at   settings   determined   by   the   top   left-hand   and   bottom   right-hand </p>
+<p>coordinates, as in the last example.</p>
+<p><b>CIRCLE</b></p>
+<p><i>instruction: draw a circular outline</i></p>
+<p><b>Circle</b> x,y,radius</p>
+<p>To draw circles, a pair of coordinates sets the position of the centre point around which the shape is to </p>
+<p>be   drawn,   followed   by   the   radius   of   the   circle   (the   distance   between   the   centre   point   and   the </p>
+<p>circumference or rim of the circle.) If the x,y-coordinates are omitted, the circle will be drawn from the </p>
+<p>current graphic cursor position.</p>
+<p>06.04.03</p>
+<p>G</p>
+<p>R</p>
+<p>A</p>
+<p>P</p>
+<p>H</p>
+<p>I</p>
+<p>C</p>
+<p>S</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Graphics</p>
+<p>For example:</p>
+<p>Cls : Curs Off : Ink 3</p>
+<p>Gr Locate 160,100</p>
+<p>Circle ,,45 : Wait 100: Flash Off</p>
+<p>Do</p>
+<p>Ink Rnd(15) : X=Rnd(250) : Y=Rnd(150) : R=Rnd(90)+1</p>
+<p>Circle X,Y,R</p>
+<p>Loop</p>
+<p><b>ELLIPSE</b></p>
+<p><i>instruction: draw an elliptical outline</i></p>
+<p><b>Ellipse</b> x,y,radius1,radius2</p>
+<p>An ellipse is drawn in a similar way. After the x,y-coordinates have set the centre location, two radii </p>
+<p>must   be  given,   one  to   set  the   horizontal  width  and   the   second  to   set  the  height   of  the   ellipse. </p>
+<p>Coordinates may be omitted as usual, providing the commas remain in place. For example:</p>
+<p>Ellipse 100,100,50,20</p>
+<p>Ellipse ,,20,50</p>
+<p><b>CLIP</b></p>
+<p><i>instruction: restrict drawing to a limited screen area</i></p>
+<p><b>Clip</b></p>
+<p><b>Clip</b> x1,y1 To x2,y2</p>
+<p>This command is used to set an invisible rectangular boundary on the screen, using the normal top </p>
+<p>left-hand corner to bottom right-hand corner coordinates. All subsequent drawing operations will be </p>
+<p>clipped off when they reach these boundaries. To toggle the command and restore the normal screen </p>
+<p>display area, use CLIP and omit the coordinates. Areas that are preserved outside of the clipped zone </p>
+<p>can be used for items such as borders and control panels.</p>
+<p>For example:</p>
+<p>Clip 150,5 To 280,199</p>
+<p>For R=4 To 96 Step 4</p>
+<p>Gr Locate 150,R+5</p>
+<p>Ellipse ,,R+9,R</p>
+<p>Next R</p>
+<p><b>Selecting colours</b></p>
+<p>The next part of this Chapter explains how the AMOS Professional programmer is free to exploit the </p>
+<p>Amiga's superb colour-handling features. Although the Amiga only provides 32 colour registers, </p>
+<p>AMOS Professional allows the use of colour numbers ranging from 0 to 63. This is in order to make </p>
+<p>full use of the extra colours available from the Half-Bright and HAM modes, as explained in Chapter </p>
+<p>6.1.</p>
+<p>06.04.04</p>
+<p>G</p>
+<p>R</p>
+<p>A</p>
+<p>P</p>
+<p>H</p>
+<p>I</p>
+<p>C</p>
+<p>S</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Graphics</p>
+<p><b>INK</b></p>
+<p><i>instruction: set drawing colour</i></p>
+<p><b>Ink</b> number</p>
+<p><b>Ink</b> number,<i>pattern,border</i></p>
+<p>You are not restricted to the pre-set colours that have been allocated for drawing operations. The INK </p>
+<p>command is used to specify which colour is to be used for subsequent drawing, and the number of </p>
+<p>the colour register is set like this:</p>
+<p>Cls: Ink 5</p>
+<p>Draw To 319,199</p>
+<p>The INK instruction can also be used to set patterns for filling shapes, as well as colours for borders </p>
+<p>around shapes, and this will be explained later. The next concept to understand is how different </p>
+<p>colours are mixed.</p>
+<p>Every shade of colour displayed on your television set or monitor is composed of various mixtures of </p>
+<p>the same three primary colours: Red, Green and Blue (RGB for short). There is a range of 16 intensities </p>
+<p>available for each of the RGB levels in every colour. A zero level is equivalent to “none” of that colour </p>
+<p>(black), and the maximum intensity of 16 is the equivalent of “all” of that colour. Because there are </p>
+<p>three separate components each with 16 possible strengths, the maximum range of available shades is </p>
+<p>16 times 16 times 16, in other words 4096 possible colours.</p>
+<p>The Amiga prefers to recognise colours by their RGB components, given in hexadecimal values, </p>
+<p>known as “hex”. The following table shows the equivalent decimal and hex values for the 16 numbers </p>
+<p>involved:</p>
+<p><b>Hex </b></p>
+<p>0</p>
+<p>1</p>
+<p>2</p>
+<p>3</p>
+<p>4</p>
+<p>5</p>
+<p>6</p>
+<p>7</p>
+<p>8</p>
+<p>9</p>
+<p>A</p>
+<p>B</p>
+<p>C</p>
+<p>D</p>
+<p>E</p>
+<p>F</p>
+<p><b>Decimal digit</b></p>
+<p>0</p>
+<p>1</p>
+<p>2</p>
+<p>3</p>
+<p>4</p>
+<p>5</p>
+<p>6</p>
+<p>7</p>
+<p>8</p>
+<p>9</p>
+<p>10</p>
+<p>11</p>
+<p>12</p>
+<p>13</p>
+<p>14</p>
+<p>15</p>
+<p><b>COLOUR</b></p>
+<p><i>function: read the colour assignment</i></p>
+<p>c=<b>Colour</b>(index)</p>
+<p>It is not difficult to find which colours are occupying the colour index, and analyse how much Red, </p>
+<p>Green and Blue is used to make up each shade. The COLOUR function can take an index number </p>
+<p>from 0 to 31, and returns the colour value assigned to that number. Hex$ is used for this purpose, as  </p>
+<p>follows:</p>
+<p>Curs Off : Flash Off</p>
+<p>For C=0 To 15: Ink C</p>
+<p>Print Hex$(Colour(C),3)</p>
+<p>Circle 160,75,(C+1)*4</p>
+<p>Next C</p>
+<p>06.04.05</p>
+<p>G</p>
+<p>R</p>
+<p>A</p>
+<p>P</p>
+<p>H</p>
+<p>I</p>
+<p>C</p>
+<p>S</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Graphics</p>
+<p>That example creates a lit of 16 colour values in hex code, alongside a ripple of circles in those colours. </p>
+<p>Note that the $ symbol is always used to introduce a hex number for the Amiga to recognise. The first  </p>
+<p>hex value in the example table should be $000, meaning no Red, no Green and no Blue component is </p>
+<p>present in colour index 0. Sure enough, the innermost circle is drawn in black ink.</p>
+<p>Here are some other examples in this form of notation:</p>
+<p><b>Colour</b></p>
+<p><b>Hex value</b></p>
+<p><b>RGB components</b></p>
+<p>White</p>
+<p>$FFF</p>
+<p>R=F G=F B=F</p>
+<p>Grey</p>
+<p>$666</p>
+<p>R=6 G=6 B=6</p>
+<p>Green</p>
+<p>$0F0</p>
+<p>R=0 G=F B=0</p>
+<p>Violet</p>
+<p>$FOF</p>
+<p>R=F G=0 B=F</p>
+<p>Ox blood</p>
+<p>$801</p>
+<p>R=8 G=0 B=1</p>
+<p>Pig foot</p>
+<p>$A74</p>
+<p>R=A G=7 B=4</p>
+<p><b>COLOUR</b></p>
+<p><i>instruction: assign a colour to an index</i></p>
+<p><b>Colour</b> number,$RGB</p>
+<p>Used as an instruction, COLOUR allows you to assign the RGB components of a colour to each of the </p>
+<p>Amiga's 32 colour registers. For example, if you wanted to load colour number 1 with a subtle shade  </p>
+<p>of pig's feet, you would use this:</p>
+<p>Cls: Colour 1,$A74</p>
+<p><b>COLOUR BACK</b></p>
+<p><i>instruction: assign a colour to the screen background</i></p>
+<p><b>Colour Back</b> $RGB</p>
+<p><b>Colour Back</b> (number)</p>
+<p>This command is used to assign your choice of RGB components for the screen's background colour, </p>
+<p>which fills unused areas at the top and bottom of the visible screen. Alternatively, existing colours  </p>
+<p>may also be specified when enclosed in brackets.</p>
+<p><b>Setting several colours</b></p>
+<p>Impressive effects can be programmed using multi-colour changes, but assigning individual colours </p>
+<p>to every colour index would be a tedious business. AMOS Professional handles all the donkey work </p>
+<p>as usual.</p>
+<p><b>PALETTE</b></p>
+<p><i>instruction: set the current screen colours</i></p>
+<p><b>Palette</b> colour list</p>
+<p>This is a much more powerful command than COLOUR, and it can be used to set as few or as many </p>
+<p>colours in your artist's palette as are needed. Your programs always begin using a list of default</p>
+<p>06.04.06</p>
+<p>G</p>
+<p>R</p>
+<p>A</p>
+<p>P</p>
+<p>H</p>
+<p>I</p>
+<p>C</p>
+<p>S</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Graphics</p>
+<p>colour values, and these values may be changed as in the next example.</p>
+<p>Remember that only the colours specifically set with this command will be affected, and any others </p>
+<p>will retain their original values.</p>
+<p>Palette $FFF : Rem set colour 0 to white</p>
+<p>Palette ,,,,$F00,$D00,$A00,$700,$400 : Rem colours 4 to 8 graded reds</p>
+<p>Palette $000,,$000: Rem colours 0 and 2 both black</p>
+<p>PALETTE can also be used to set the colours used by the Half-Bright and HAM modes, and some </p>
+<p>superb ready-made examples are available, care of Chapter 6.1. For a little light relief, try his routine, </p>
+<p>which changes the first five colours in the palette with a hexadecimal poem, and displays the result </p>
+<p>on screen. Feel free to change the values or the poetry.</p>
+<p>Palette $BAD,$0DD,$B0D,$FAB,$F1B</p>
+<p>Curs Off : Flash Off</p>
+<p>For C=0 To 4: Ink C</p>
+<p>Print Hex$(Colour(C,3)</p>
+<p>Bar 50,8*C To 150,8*C+8</p>
+<p>Next C</p>
+<p><b>Filled shapes</b></p>
+<p>You should now be familiar with drawing basic shapes and setting choices of colour. The next stage </p>
+<p>explains how to combine these skills. Re-set your colours now, by getting rid of any customised </p>
+<p>PALETTE commands, before continuing.</p>
+<p><b>PAINT</b></p>
+<p><i>instruction: fill a screen area with colour</i></p>
+<p><b>Paint</b> x,y</p>
+<p><b>Paint</b> x,y,<i>mode</i></p>
+<p>The PAINT command allows you to fill any section of your screen with a solid block of colour. You </p>
+<p>may also fill areas with various patterns previously selected with the SET PATTERN command, which </p>
+<p>is explained later. Decide which area is to be filled, and follow the PAINT command by a set of </p>
+<p>coordinates located anywhere inside the section of screen you want to paint with the current ink  </p>
+<p>colour. Try this, which if all goes well should result in the Japanese national flag:</p>
+<p>Palette 0,$F00</p>
+<p>Circle 160,100,50</p>
+<p>Paint 50,50</p>
+<p>The optional mode setting can be set to either zero or one. A value of 0 ends your PAINT operation at </p>
+<p>the first pixel encountered of the current border colour. A mode of 1 stops the painting operation at </p>
+<p>any colour which is different from the existing ink colour. If there are any gaps in the boundaries of  </p>
+<p>the sections you wish to fill, colour will leak out and stain the adjoining area.</p>
+<p>06.04.07</p>
+<p>G</p>
+<p>R</p>
+<p>A</p>
+<p>P</p>
+<p>H</p>
+<p>I</p>
+<p>C</p>
+<p>S</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Graphics</p>
+<p><b>BAR</b></p>
+<p><i>instruction: draw a filled rectangle</i></p>
+<p><b>Bar</b> x1,y1 To x2,y2</p>
+<p>This is used to draw solid bars of colour by the familiar method of setting the top left-hand and  </p>
+<p>bottom right-hand graphic coordinates.</p>
+<p><b>POLYGON</b></p>
+<p><i>instruction: draw a filled polygon</i></p>
+<p><b>Polygon</b> x1,y1 <b>To</b> x2,y2 <b>To</b> x3,y3 ...</p>
+<p><b>Polygon</b> To x1,y1, <b>To</b> x2,y2 ...</p>
+<p>This can be regarded as creating a solid version of the POLYLINE command, and your shape will  </p>
+<p>begin at the current graphic coordinates if you commence the command in its POLYGON TO form.  </p>
+<p>Provided   that   your   single   statement   does   not   exceed   the   maximum   allowed   line   length   of   255 </p>
+<p>characters, there is no limit to the number of pairs of coordinates you can use. Try this example:</p>
+<p>Do</p>
+<p>Ink Rnd(15)</p>
+<p>X1=Rnd(250) : Y1=Rnd(150) : H=Rnd(200) : W=Rnd(150)</p>
+<p>Polygon X1,Y1 To X1+W,Y1 To X1+W/2,Y1+H To X1,Y1</p>
+<p>Loop</p>
+<p><b>Alternative fill style</b></p>
+<p>Filling shapes with plain colours is a useful technique, but the AMOS Professional programmer has a </p>
+<p>much wider choice of fill effects.</p>
+<p><b>SET PATTERN</b></p>
+<p><i>instruction: select a fill pattern</i></p>
+<p><b>Set Pattern</b> number</p>
+<p>Use this command to select from a range of pattern styles. The default status fills shapes with the </p>
+<p>current ink colour, and is set with a zero, like this:</p>
+<p>Set Pattern 0</p>
+<p>If SET PATTERN is followed by a positive number from 1 to 34, shapes are filled from a ready- made </p>
+<p>selection of patterns.</p>
+<p>06.04.08</p>
+<p>G</p>
+<p>R</p>
+<p>A</p>
+<p>P</p>
+<p>H</p>
+<p>I</p>
+<p>C</p>
+<p>S</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Graphics</p>
+<p>View them now, by running this routine:</p>
+<p>Do</p>
+<p>For N=0 To 34</p>
+<p>Set Pattern N</p>
+<p>Ink 0,1,2: Set Paint 1</p>
+<p>Bar 50,50 To 150,150</p>
+<p>Locate 0,0: Print N ;“ ”</p>
+<p>Wait 50</p>
+<p>Next N</p>
+<p>Loop</p>
+<p>If SET PATTERN is followed by a negative number, shapes will be filled with a pattern grabbed from </p>
+<p>a Sprite or Bob image, taken from the Object Bank (memory bank 1). Because these patterns can be </p>
+<p>very complex, AMOS Professional will simplify them automatically, as follows.</p>
+<p>The width of the image is clipped to 16 pixels, and the height is rounded to the nearest power of two </p>
+<p>(2, 4, 8, 16, 32 and so on.)</p>
+<p>The original colours of the image are discarded, and the pattern is drawn using the current ink and </p>
+<p>paper colours. Two-colour patterns are drawn as monochrome images.</p>
+<p>If multi-coloured images are required using the original Object colours, the INK must first be set up, </p>
+<p>as follows:</p>
+<p>Ink 15,0</p>
+<p>Set Pattern -1</p>
+<p>Paint 100,100</p>
+<p>That example fills the screen area around the given coordinates with any of the Object colours, except  </p>
+<p>the transparent colour zero. The colour index number 15 acts as a mask, defining which colours are to </p>
+<p>be used, and sets the range from 1 to 15. If the INK command is changed to the following line, the </p>
+<p>Object will be drawn with the normally transparent colour filled by colour 1:</p>
+<p>Ink 15,1</p>
+<p>Before making use of sprite images as fill patterns, remember to use GET SPRITE PALETTE to avoid </p>
+<p>messy displays. Here is an example:</p>
+<p>Flash Off : Cls 0</p>
+<p>Load “AMOSPro_Tutorial:Objects/Pattern.Abk”</p>
+<p>Get Sprite Palette</p>
+<p>Box 1,1 To 319,199</p>
+<p>Ink 15,0</p>
+<p>Set Pattern -1</p>
+<p>Paint 102,102</p>
+<p>06.04.09</p>
+<p>G</p>
+<p>R</p>
+<p>A</p>
+<p>P</p>
+<p>H</p>
+<p>I</p>
+<p>C</p>
+<p>S</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Graphics</p>
+<p><b>SET PAINT</b></p>
+<p><i>instruction: toggle outline mode</i></p>
+<p><b>Set Paint</b> mode</p>
+<p>This is a simple command that toggles outlines off and on for any shapes drawn using the POLYGON </p>
+<p>and BAR instructions. Follow SET PAINT with a mode value of 1, and borders will appear in the  </p>
+<p>previous ink colour. If the mode is set by a zero, the default setting applies, with no borders shown.</p>
+<p>For example:</p>
+<p>Ink 0,1,2 : Set Paint 1</p>
+<p>Bar 5,5 To 200,100</p>
+<p>Set paint 0: Bar 210,75 To 310,190</p>
+<p>In the last example, the INK command carried additional parameters. These optional settings follow </p>
+<p>the usual colour number, and are used to determine paper and border colours. In other words, they </p>
+<p>can set the colours to be used for fill patterns and outlines of bars and polygons. Remember to include </p>
+<p>any commas for unused options, as follows:</p>
+<p>Ink 3: Rem Set ink colour</p>
+<p>Ink ,,5: Rem Set border outline only</p>
+<p>Ink 0,8,2: Rem Set ink, fill colour and border</p>
+<p>Ink 6,13: Rem Set ink and background fill colour</p>
+<p><b>Overwriting styles</b></p>
+<p>When graphics are drawn, they normally get “written” over what is already displayed on the screen.  </p>
+<p>There are four alternative drawing modes that change the way your graphics appear, and they may be </p>
+<p>used individually or combined to generate a whole range of effects.</p>
+<p><b>GR WRITING</b></p>
+<p><i>instruction: change graphic writing mode</i></p>
+<p><b>Gr Writing</b> bitpattern</p>
+<p>This command is used to set the various modes used for drawing lines, shapes, filled shapes and  </p>
+<p>graphical text. Settings are made using a bit pattern, whose values give the following results:</p>
+<p>Bit 0 = 0 only draw graphics using the current ink colour.</p>
+<p>Bit 0 = 1 replace any existing graphics with new graphics (default condition).</p>
+<p>Bit 1 = 1 change old graphics that overlap with new graphics, using XOR.</p>
+<p>Bit 2 = 1 reverse ink and paper colours, creating inverse video effect.</p>
+<p>The normal drawing state is where new graphics overwrite old graphics, like this:</p>
+<p>Ink 2,5 : Text 100,80, “NORMAL TEXT”</p>
+<p>Wait 100 : Gr Writing 1</p>
+<p>Text 100,80, “REPLACE”</p>
+<p>06.04.10</p>
+<p>G</p>
+<p>R</p>
+<p>A</p>
+<p>P</p>
+<p>H</p>
+<p>I</p>
+<p>C</p>
+<p>S</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Graphics</p>
+<p>Try the next example for some simple demonstrations of alternative settings:</p>
+<p>Ink 2,5 : Text 100,80,“NORMAL TEXT”</p>
+<p>Wait 100 : Gr Writing 0</p>
+<p>Text 100,80, “MERGED”</p>
+<p>Wait 100 : Gr Writing 4</p>
+<p>Text 100,90, “STENCIL”</p>
+<p>Wait 100 : Gr Writing 5</p>
+<p>Text 100,100, “REVERSE”</p>
+<p><b>Advanced techniques</b></p>
+<p>Whenever AMOS Professional performs a fill command, a special area of memory is reserved to hold </p>
+<p>the fill pattern. This memory is automatically returned to the system after the fill instruction has been </p>
+<p>performed. The size of the memory buffer is equivalent to a single bit plane in the current screen </p>
+<p>mode, so the default screen takes up a total of 8k.</p>
+<p><b>SET TEMPRAS</b></p>
+<p><i>instruction: set Temporary Raster</i></p>
+<p><b>Set Tempras</b></p>
+<p><b>Set Tempras</b> buffer address,buffer size</p>
+<p>This command allows the AMOS Professional programmer to adjust the amount of memory used by </p>
+<p>the various graphics operations. You are warned that improper usage can cause your computer to </p>
+<p>crash! The address and size of the graphics buffer can be changed as explained below.</p>
+<p>The buffer address can be either an address or a memory bank, and the memory reserved for this </p>
+<p>buffer should always be Chip RAM. After allocating the buffer area at the start of your program, there </p>
+<p>is no need to keep on reserving and restoring it, which means that the execution of your programs can </p>
+<p>be speeded up by up to 5%! The buffer size is the number of bytes you want to reserve for the buffer </p>
+<p>area, ranging from 256 to 65536. To calculate the amount of memory you need for a particular object, </p>
+<p>enclose the object in a rectangular box and apply the following formula:</p>
+<p>Memory area = Width/8*Height</p>
+<p>If you are intending to use the PAINT command, make sure that your shape is closed, otherwise </p>
+<p>additional memory may be called for, causing the system to crash. The buffer area can be restored to </p>
+<p>its original value by calling SET TEMPRAS with no parameters.</p>
+<p>06.04.11</p>
+<p>G</p>
+<p>R</p>
+<p>A</p>
+<p>P</p>
+<p>H</p>
+<p>I</p>
+<p>C</p>
+<p>S</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Menus</p>
+<p>In   this   Chapter,   the  AMOS   Professional   programmer   will   learn   how   to   create,   control   and   use </p>
+<p>powerful on-screen menus. These techniques allow you to customise your own menu designs and </p>
+<p>operations, and offer true interactivity.</p>
+<p>AMOS Professional menus can have as many as eight overlaid levels and any menu item can be </p>
+<p>repositioned anywhere on screen. There is no restriction to the inclusion of title styles and graphic </p>
+<p>images, and your own Bobs and icons can be used directly.</p>
+<p>When reading your menus, branching to user-selected points in your programs can be automatic, </p>
+<p>whether triggered by the mouse or directly from the keyboard. And if you cannot wait to see all this </p>
+<p>in   action,   the   Chapter   is   accompanied   by   a   full   range   of   ready-made   demonstration   programs </p>
+<p>available on the AMOSPro Tutorial disc.</p>
+<p><b>Using AMOS Professional menus</b></p>
+<p>SELECTING. All of these menus are activated by holding down the  <b>right</b>  mouse button. Once the </p>
+<p>relevant menu has appeared on screen, drag the mouse cursor over the option you wish to select and </p>
+<p>release the button. The selected option number is automatically returned to your program.</p>
+<p>REPOSITIONING. A menu can be repositioned on screen by placing the mouse cursor over its top </p>
+<p>left-hand corner and holding down the left mouse button. When a small box appears on the menu </p>
+<p>bar, drag it across the screen using the mouse. To freeze the current position of a menu, hold down  </p>
+<p>the [Shift] key as well. This allows you to explore the menu without activating any of its options.</p>
+<p>AMOS Professional menus can be created directly from within your programs, or you may prefer to </p>
+<p>use the menu defining program supplied on disc.</p>
+<p><b>Simple menus</b></p>
+<p><b>MENU$</b></p>
+<p><i>reserved variable: define a menu title or option</i></p>
+<p><b>Menu$</b>(number)=title$</p>
+<p><b>Menu$</b>(number,option)=option$</p>
+<p>To create a simple menu, its title line must first be defined. Each heading in a title line created with </p>
+<p>MENU$   must   be   assigned   its   own   number.   The   title   at   the   left-hand   edge   of   the   title   line   is </p>
+<p>represented by 1, the next title by 2, and so on, from left to right. The characters in your title string  </p>
+<p>hold the name of the numbered title. This example sets up a menu title line offering two titles, and </p>
+<p>you should note the use of the spaces to separate titles when they appear in the title line:</p>
+<p>Menu$(1),“ Action”</p>
+<p>Menu$(2),“ Mouse”</p>
+<p>06.05.01</p>
+<p>M</p>
+<p>E</p>
+<p>N</p>
+<p>U</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Menus</p>
+<p>The second type of usage of MENU$ defines a set of options that will be displayed in the vertical </p>
+<p>menu bar. The brackets after MENU$ contain two parameters, the first is the number of the menu </p>
+<p>heading that your option is to be displayed beneath, followed by the option number you want to </p>
+<p>install in the vertical menu bar. All options are numbered downwards from the top of the menu, </p>
+<p>starting from 1. The option string holds the name of your new option, and can consist of any text you </p>
+<p>choose. The following lines could be added to the last example above:</p>
+<p>Rem Action menu has one option</p>
+<p>Menu$(1,1)=“ Quit ” : Rem Ensure three spaces after Quit</p>
+<p>Rem Mouse menu has three options</p>
+<p>Menu$(2,1)=“Arrow ” : Rem Ensure five spaces after Arrow</p>
+<p>Menu$(2,2)=“Cross-hair”</p>
+<p>Menu$(2,3)=“Clock ” : Rem Ensure five spaces after Clock</p>
+<p>That specifies your list of alternatives for the “Action” and “Mouse” menus. Before this program can </p>
+<p>be run, it must first be activated.</p>
+<p><b>MENU ON</b></p>
+<p><i>instruction: activate a menu</i></p>
+<p><b>Menu On</b></p>
+<p>Use this command to initialise the menu previously defined by a MENU$, and the menu line will </p>
+<p>appear when the right mouse button is pressed. To activate the previous example, add the following </p>
+<p>lines:</p>
+<p>Menu On</p>
+<p>Wait Key</p>
+<p>Trigger the menu and its options now, and use the left mouse button to re-locate the title bar. Now </p>
+<p>that this simple menu has been activated, the selected options must be read and reported back to the </p>
+<p>system.</p>
+<p><b>Reading a simple menu</b></p>
+<p><b>CHOICE</b></p>
+<p><i>function: read a menu</i></p>
+<p>selection=<b>Choice</b></p>
+<p>title number=<b>Choice</b>(1)</p>
+<p>option number=<b>Choice</b>(2)</p>
+<p>CHOICE will return a value of -1 (true) if the menu has been highlighted by the user, otherwise a </p>
+<p>value of 0 (false) is returned. After the status of your menu is tested, the value held by CHOICE is </p>
+<p>automatically re-set to zero.</p>
+<p>CHOICE(1) will return the value of the title number which has been chosen.</p>
+<p>06.05.02</p>
+<p>M</p>
+<p>E</p>
+<p>N</p>
+<p>U</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Menus</p>
+<p>CHOICE(2) will return the value of the option number which has been selected.</p>
+<p>Now remove the Wait Key from the last example, and replace it with the following lines. This should </p>
+<p>change the shape of the mouse cursor, depending on the option selected from your menu. Note that </p>
+<p>Choice=-1 can be simplified to Choice.</p>
+<p>Do</p>
+<p>If Choice and Choice(1)=1 Then Exit</p>
+<p>If Choice(1)=2 and Choice(2)&lt;&gt;0 Then Change Mouse Choice(2)</p>
+<p>Loop</p>
+<p><b>Creating advanced menus</b></p>
+<p>The use of MENU$ and CHOICE is not limited to the creation of simple menus. In fact, their use can </p>
+<p>be extremely sophisticated.</p>
+<p>MENU$ is used to define the appearance of each individual item in one of your menus, whether it is a </p>
+<p>title, an option, a sub-option, all the way down to the eighth layer of options in the menu hierarchy. In </p>
+<p>this Chapter, when “single item parameters” is used it simply means those numbers separated by </p>
+<p>commas and held inside a single pair of brackets, that refer to the position of a single item somewhere </p>
+<p>in the menu. Up to eight parameters can be used, separated by commas. To make sure that is clear, </p>
+<p>here are some examples of parameters defining the position of a single item in the menu hierarchy:</p>
+<p>Menu$(1)=“Title1”</p>
+<p>Menu$(1 ,1)=“Title1 Option1”</p>
+<p>Menu$(2,3)=“Title2, Option2”</p>
+<p>Menu$(1,1,1,1)=“Title1, Option1, Sub-option1, Sub-sub-option1”</p>
+<p>Now look at these uses of MENU$, which are used to give a single item its own characteristics:</p>
+<p><b>MENU$</b></p>
+<p><i>instruction: define appearance of a single item in a menu</i></p>
+<p><b>Menu$</b>(single item parameters)=normal$</p>
+<p><b>Menu$</b>(single item parameters)=normal$,<i>selected$</i>,<i>inactive$</i>,<i>background$</i></p>
+<p><i>Normal$</i> is simply the string of characters that make up the normal appearance of an item when it is </p>
+<p>displayed on screen. The following strings are all optional.</p>
+<p>The  <i>selected$</i>  changes the appearance of the item when it is selected by the mouse. As a default, </p>
+<p>selected items are highlighted by printing the string in inverse text.</p>
+<p>The  <i>inactive$</i>  comes into effect when an item has been deactivated using the MENU INACTIVE </p>
+<p>command, which is explained later. It can be used to display alternative text or appearance, but if it is </p>
+<p>omitted, inactive items are automatically displayed in italics.</p>
+<p>The <i>background$</i> creates a background effect for menu items when they are initially drawn, such as a </p>
+<p>box or a border created by the internal BAR or line drawing commands.</p>
+<p>06.05.03</p>
+<p>M</p>
+<p>E</p>
+<p>N</p>
+<p>U</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Menus</p>
+<p>Similarly,   the   CHOICE  function   can   return   the   option   selected   at   a   required   level   in   the   menu </p>
+<p>hierarchy. For example:</p>
+<p>Menu$(1)=“Title”</p>
+<p>Menu$(1,1)=“Option 1”</p>
+<p>Menu$(1,2)=“Option 2”</p>
+<p>Menu$(1,2,1)=“Option 2.1”</p>
+<p>Menu On</p>
+<p>Do</p>
+<p>If Choice Then Print Choice(1),Choice(2),Choice(3)</p>
+<p>Loop</p>
+<p>For very large menus, the IF structure as used in the last example would become unwieldy, and cause </p>
+<p>delays while the menus were being read. AMOS Professional provides a method for handling the </p>
+<p>largest of menus.</p>
+<p><b>ON MENU PROC</b></p>
+<p><i>instruction: automatic menu selection</i></p>
+<p><b>On Menu Proc</b> procedure1</p>
+<p><b>On Menu Proc</b> procedure1,<i>procedure2 ...</i></p>
+<p>Each title in your menu can be assigned its own procedure which will be executed automatically </p>
+<p>when that option is selected by the user. Like the other ON MENU commands that are described next, </p>
+<p>ON MENU PROC uses interrupts, which means that it is performed 50 times a second. So your </p>
+<p>program can be engaged in other tasks while the menus are continually checked by the system.</p>
+<p>When automatic selection takes place as the result of ON MENU PROC, the procedure is executed </p>
+<p>and the program will be returned to the instruction immediately after the ON MENU call. Procedures </p>
+<p>can make use of the CHOICE function to monitor which option has been triggered, and to perform </p>
+<p>the appropriate action.</p>
+<p><b>ON MENU GOSUB</b></p>
+<p><i>instruction: automatic menu selection</i></p>
+<p><b>On Menu Gosub</b> label1</p>
+<p><b>On Menu Gosub</b> label1,<i>label2 ...</i></p>
+<p>Depending   on   which   option   has   been   selected   by   the   user,   ON   MENU   GOSUB   goes   to   the </p>
+<p>appropriate subroutine. Unlike Amiga Basic, each title on the menu title bar is handled by its own </p>
+<p>individual subroutine. After using this instruction, ON MENU should be used to activate the menu </p>
+<p>system before jumping back to the main program with a RETURN. Also note that the labels used with </p>
+<p>this command cannot be replaced by expressions, because the label will be evaluated once only when </p>
+<p>the program is run.</p>
+<p>06.05.04</p>
+<p>M</p>
+<p>E</p>
+<p>N</p>
+<p>U</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Menus</p>
+<p><b>ON MENU GOTO</b></p>
+<p><i>instruction: automatic menu selection</i></p>
+<p><b>On Menu Goto</b> label1</p>
+<p><b>On Menu Goto</b> label1, <i>labe12</i> ...</p>
+<p>Although this command is available for use, it has been superseded by the more powerful ON MENU </p>
+<p>PROC and ON MENU GOSUB instructions. It is retained to provide compatibility with programs </p>
+<p>written in STOS Basic.</p>
+<p><b>ON MENU ON/OFF</b></p>
+<p><i>instruction: toggle automatic menu selection</i></p>
+<p><b>On Menu On</b></p>
+<p><b>On Menu Off</b></p>
+<p>To   activate   the   automatic   menu   system   created   by   the   ON   MENU   PROC,   GOSUB   or   GOTO </p>
+<p>commands, simply give the ON MENU ON command. After a subroutine has been accessed in this </p>
+<p>way, the system is automatically disabled. Therefore you must reactivate the system with ON MENU </p>
+<p>ON before returning to the main program.</p>
+<p>To suspend the automatic menu system, ON MENU OFF is used. This can be vital if your program is </p>
+<p>executing a procedure which must be performed without interruptions, such as loading and saving </p>
+<p>information to disc. Menus are reactivated using ON MENU ON.</p>
+<p><b>ON MENU DEL</b></p>
+<p><i>instruction: delete labels and procedures used by ON MENU</i></p>
+<p><b>On Menu Del</b></p>
+<p>Use ON MENU DEL to erase the internal list of labels or procedures created by the range of ON </p>
+<p>MENU commands. You are warned that this command can only be used after menus have been </p>
+<p>deactivated by ON MENU OFF.</p>
+<p><b>The Menu control commands</b></p>
+<p><b>MENU ON</b></p>
+<p><i>instruction: activate a menu</i></p>
+<p><b>Menu On</b></p>
+<p><b>Menu On</b> <i>bank number</i></p>
+<p>The simple form of this command has already been dealt with at the beginning of this Chapter. After </p>
+<p>MENU ON, a menu is displayed when the user next presses the right mouse button. If an optional </p>
+<p>bank number is included after the command, the appropriate menu will be taken from the numbered </p>
+<p>memory bank. Please see MAKE MENU BANK, below.</p>
+<p><b>MENU OFF</b></p>
+<p><i>instruction: deactivate a menu</i></p>
+<p><b>Menu Off</b></p>
+<p>06.05.05</p>
+<p>M</p>
+<p>E</p>
+<p>N</p>
+<p>U</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Menus</p>
+<p>This command temporarily turns a menu off, making it inactive. The menu can be reactivated at any </p>
+<p>time with the MENU ON command.</p>
+<p><b>MENU DEL</b></p>
+<p><i>instruction: delete one or more menu items</i></p>
+<p><b>Menu Del</b></p>
+<p><b>Menu Del</b> (single item parameters)</p>
+<p>On its own, MENU DEL erases the whole menu. But be warned, once the menu has been deleted it </p>
+<p>cannot be retrieved!</p>
+<p>MENU DEL can also be qualified by up to eight parameters, separated by commas, and held in a </p>
+<p>single pair of brackets. These values represent the precise position of the item in the menu hierarchy </p>
+<p>to be deleted. For example:</p>
+<p>Menu Del(1) : Rem Delete title number 1</p>
+<p>Menu Del(1,2) : Rem Delete option 2 of title 1</p>
+<p>Menu Del(2,3,4) : Rem Delete sub-option 4 of option 3 of title 2</p>
+<p><b>MENU TO BANK</b></p>
+<p><i>instruction: save menu definitions into a memory bank</i></p>
+<p><b>Menu To Bank</b> number</p>
+<p>Use this command to save your menu along with its entire structure of branch definitions to the </p>
+<p>numbered bank. Once the menu has been stored in the selected memory bank, it will automatically be </p>
+<p>saved along with your Basic program. By storing your menu definitions in a memory bank, the size of </p>
+<p>your program listings are reduced significantly, freeing valuable space in the editor memory. If the </p>
+<p>bank number you select already exists, the appropriate error message will be given.</p>
+<p><b>BANK TO MENU</b></p>
+<p><i>instruction: restore a menu definition saved in a menu bank</i></p>
+<p><b>Bank To Menu</b> number</p>
+<p>Follow BANK TO MENU with the number of the memory bank where your menu data is stored. The </p>
+<p>menu will be restored to its exact state when originally saved, so the restoration process may take a </p>
+<p>few seconds. To activate the restored menu, call MENU ON.</p>
+<p><b>MENU CALC</b></p>
+<p><i>instruction: recalculate a menu</i></p>
+<p><b>Menu Calc</b></p>
+<p>Any item in an AMOS Professional menu can be changed during the course of a program. This is </p>
+<p>extremely useful for designing adventure games or creating self help programs, where individual </p>
+<p>menu options can be updated depending on the user's actions. After the menu has been defined, </p>
+<p>items   may   be   added   and   options   replaced   as   you   please,   and   everything   will   be   repositioned </p>
+<p>automatically as soon as the menu is called up with the right mouse button.</p>
+<p>06.05.06</p>
+<p>M</p>
+<p>E</p>
+<p>N</p>
+<p>U</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Menus</p>
+<p>This is process may take a few seconds, particularly with very large menus, and the MENU CALC </p>
+<p>command is designed to perform this recalculation at the most suitable point in the program, in order </p>
+<p>to minimise any delays.</p>
+<p>You are advised to freeze your menus with MENU OFF at the start of the recalculation procedure, to </p>
+<p>prevent the user calling the menu half way through an update. It may then be made active again </p>
+<p>using MENU ON after the updating process is over.</p>
+<p><b>Alternative menu styles</b></p>
+<p>The AMOS Professional programmer is free to change the display format of any level of any menu, </p>
+<p>and design a customised layout. As a default, all titles are displayed in a horizontal bar with their </p>
+<p>related options arranged below in a vertical block. Here are the alternatives:</p>
+<p><b>MENU LINE</b></p>
+<p><i>instruction: display menu options as a horizontal line</i></p>
+<p><b>Menu Line</b> level number</p>
+<p><b>Menu Line</b> (single item parameters)</p>
+<p>Use this command to change the display of options that relate to a particular title from a vertical block </p>
+<p>into a horizontal line. The line of options will now start from the left-hand corner of the first menu  </p>
+<p>title and stretch to the bottom right-hand corner of the last title. Follow MENU LINE with the number </p>
+<p>of the level you want to affect, and make sure that this command is only called during your menu </p>
+<p>definitions. The level number can range from 1 to 8, and it specifies the layer of the menu to be </p>
+<p>affected.</p>
+<p>It is perfectly legal to set individual items by this method, and with the following MENU TLINE and </p>
+<p>MENU BAR commands. This can result in some highly eccentric displays.</p>
+<p>Menu Line(1,1,1) : Rem Display sub-option 1,1,1 as a line</p>
+<p><b>MENU TLINE</b></p>
+<p><i>instruction: display a menu as a total line</i></p>
+<p><b>Menu Tline</b> level number</p>
+<p><b>Menu Tline</b>(single item parameters)</p>
+<p>MENU TLINE is used to display a section of your menu as a total line, stretching from the extreme  </p>
+<p>left to the extreme right of the screen. The complete line will be drawn even if the first item is centre </p>
+<p>screen. Use this instruction in the same way as MENU LINE during your menu definitions.</p>
+<p><b>MENU BAR</b></p>
+<p><i>instruction: display menu items as a vertical bar</i></p>
+<p><b>Menu Bar</b> level number</p>
+<p><b>Menu Bar</b>(single item parameters)</p>
+<p>06.05.07</p>
+<p>M</p>
+<p>E</p>
+<p>N</p>
+<p>U</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Menus</p>
+<p>This instruction displays the selected menu items as a vertical bar whose width is automatically set to </p>
+<p>the length of the largest item in the menu. As a default, this option is used for levels 2 to 8 of your </p>
+<p>menu, and it must be used during the program's initialisation. There will be no effect if it is called </p>
+<p>after the menu has been activated.</p>
+<p>When followed by a list of bracketed parameters, MENU BAR can also be used to change the style of  </p>
+<p>your menus once they have been installed. Here is an example of a customised menu layout:</p>
+<p>FLAG=0</p>
+<p>SET_MEN</p>
+<p>Do</p>
+<p>If Choice and Choice(1)=2 and Choice(2)=1 Then CHANGE</p>
+<p>Loop</p>
+<p>Procedure SET_MEN</p>
+<p>Menu$(1)=“Try me first ” : Menu$(2)=“Select me ” : Rem Four spaces</p>
+<p>Menu$(1,1)=“1 am useless ” : Rem Five spaces</p>
+<p>Menu$(2,1)=“Please select me!”</p>
+<p>Menu On</p>
+<p>End Proc</p>
+<p>Procedure CHANGE</p>
+<p>Shared FLAG</p>
+<p>Menu Del</p>
+<p>If FLAG=0 Then Menu Bar 1: FLAG=1 Else Menu Tline 1: Flag=0</p>
+<p>SET_MEN</p>
+<p>End Proc</p>
+<p><b>MENU INACTIVE</b></p>
+<p><i>instruction: turn off a menu item</i></p>
+<p><b>Menu Inactive</b> level number</p>
+<p><b>Menu Inactive</b>(single item parameters)</p>
+<p>Use this command to turn off options in your menu. By selecting the number of a level from 1 to 8, all  </p>
+<p>items in that level will be deactivated. If you define an individual item in brackets by giving its </p>
+<p>parameters, only that item will become inactive.</p>
+<p>If no inactive string has been defined when you originally set your menu up with MENU$, any menu </p>
+<p>options that have been made inactive will be shown in italics. Otherwise the special inactive string </p>
+<p>will appear.</p>
+<p><b>MENU ACTIVE</b></p>
+<p><i>instruction: activate a menu item</i></p>
+<p><b>Menu Active</b> level number</p>
+<p><b>Menu Active</b>(single item parameters)</p>
+<p>06.05.08</p>
+<p>M</p>
+<p>E</p>
+<p>N</p>
+<p>U</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Menus</p>
+<p>MENU ACTIVE reverses the effect of a previous MENU INACTIVE command. An entire level or </p>
+<p>single item specified by its parameters can be re-activated and the original appearance of their title </p>
+<p>strings will be re-displayed.</p>
+<p><b>Moving menu displays</b></p>
+<p>As has been explained, AMOS Professional menus can be displayed anywhere on your screen. The </p>
+<p>display positions can be moved either by the user or by your program.</p>
+<p><b>MENU MOVABLE</b></p>
+<p><i>instruction: activate automatic menu movement</i></p>
+<p><b>Menu Movable</b> level number</p>
+<p><b>Menu Movable</b>(single item parameters)</p>
+<p>The default condition is that the menu items at a particular level may be moved directly by the user. </p>
+<p>Any level can be repositioned by moving the mouse pointer over the first item in the menu and </p>
+<p>holding down the left mouse button. A rectangular box will appear around the selected menu item, </p>
+<p>and it can be dragged to its new screen position. When the left mouse button is released, the menu is </p>
+<p>re-drawn at this location, along with all of its associated items.</p>
+<p>Use MENU MOVABLE to set the status of entire menu levels, or selected items in a menu hierarchy, </p>
+<p>but please note that this command does not allow you to change the status of any items below the </p>
+<p>selected level.</p>
+<p><b>MENU STATIC</b></p>
+<p><i>instruction: fix a menu in static position</i></p>
+<p><b>Menu Static</b> level number</p>
+<p><b>Menu Static</b>(single item parameters)</p>
+<p>One characteristic of mobile menus is that the amount of memory they use changes during the course </p>
+<p>of the program. With large menus or programs that are on the boundary of available memory this can </p>
+<p>cause real problems. MENU STATIC can be used to avoid these difficulties by setting the level or item </p>
+<p>at which the entire menu becomes immovable by the user.</p>
+<p><b>MENU ITEM STATIC</b></p>
+<p><i>instruction: fix items in static positions</i></p>
+<p><b>Menu Item</b> Static level number</p>
+<p><b>Menu Item</b> Static(single item parameters)</p>
+<p>This command locks one or more menu items into place, and is the default setting.</p>
+<p><b>MENU ITEM MOVABLE</b></p>
+<p><i>instruction: move individual menu options</i></p>
+<p><b>Menu Item Movable</b> level number</p>
+<p><b>Menu Item Movable</b>(single item parameters)</p>
+<p>06.05.09</p>
+<p>M</p>
+<p>E</p>
+<p>N</p>
+<p>U</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Menus</p>
+<p>This   is   similar   to   MENU   MOVABLE,   but   it   allows   the   re-arrangement   of   various   options   in   a </p>
+<p>particular level. Normally it is not possible to move items outside of the current menu bar, but this </p>
+<p>can be overcome by the MENU SEPARATE command, which is explained below.</p>
+<p>To use MENU ITEM MOVABLE for changing the position of a menu item, the entire menu bar must </p>
+<p>itself be movable. So if MENU STATIC has been called, this command will have no effect. The first </p>
+<p>item in a menu bar can not be moved, because this would move the entire line. Furthermore, if the last </p>
+<p>item in a menu bar is moved, the size of that bar will be permanently reduced.</p>
+<p>This problem can be overcome either by setting the last item into place with a MENU ITEM STATIC </p>
+<p>command, or by enclosing the whole menu bar with a rectangular box, like this:</p>
+<p>Menu$(1,1)=,,,,“(Bar40,100)(Loc0,0)”</p>
+<p><b>MENU SEPARATE</b></p>
+<p><i>instruction: separate a list of menu items</i></p>
+<p><b>Menu Separate</b> level number</p>
+<p><b>Menu Separate</b>(single item parameters)</p>
+<p>This command is used to separate all the items in the numbered level of the menu. Each item will  </p>
+<p>then be treated independently. If no background string has been defined, every item is offset from the </p>
+<p>preceding item by two pixels, creating a stepped effect, which can be removed by editing from the </p>
+<p>Menu utility.</p>
+<p>By specifying the parameters of a single item after the MENU SEPARATE command, a menu bar can </p>
+<p>be split at any chosen point. Once an item has been separated it can be affected by the MENU </p>
+<p>MOVABLE command instead of the ITEM instructions.</p>
+<p><b>MENU LINK</b></p>
+<p><i>instruction: link a list of menu items</i></p>
+<p><b>Menu Link</b> level number</p>
+<p><b>Menu Link</b>(single item parameters)</p>
+<p>This is the exact opposite of MENU SEPARATE, and is used to link one or more items together.</p>
+<p><b>X MENU</b></p>
+<p><i>function: return the graphical x-coordinate of a menu item</i></p>
+<p>x=<b>X Menu</b>(single item parameters)</p>
+<p>The X MENU function allows you to get the position of a menu item, relative to the previous option </p>
+<p>on screen. This information can be used to set up very powerful menus.</p>
+<p><b>Y MENU</b></p>
+<p><i>function: return the graphical y-coordinate of a menu item</i></p>
+<p>y=<b>Y Menu</b>(single item parameters)</p>
+<p>06.05.10</p>
+<p>M</p>
+<p>E</p>
+<p>N</p>
+<p>U</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Menus</p>
+<p>Y MENU returns the y-coordinate of a menu option, measured relatively to the previous item on </p>
+<p>screen. Please refer to the demonstration program above.</p>
+<p><b>Moving a menu within a program</b></p>
+<p><b>MENU BASE</b></p>
+<p><i>instruction: move the starting position of a menu</i></p>
+<p><b>Menu Base</b> x,y</p>
+<p>Use this command to move the starting point of the first level in your menu hierarchy to the absolute  </p>
+<p>screen coordinates at x, y. All subordinate menu items will now be displayed relative to this starting </p>
+<p>point.</p>
+<p><b>SET MENU</b></p>
+<p><i>instruction: move a menu item</i></p>
+<p><b>Set Menu</b>(single item parameters) <b>To</b> x,y</p>
+<p>SET MENU sets the screen position of the top left-hand corner of the menu item whose parameters </p>
+<p>are given in brackets. These coordinates are measured relative to the previous level, so the starting </p>
+<p>point for the entire menu can be set by the MENU BASE command. All levels of the menu below this </p>
+<p>single item will also be moved by your SET MENU command. The coordinates can be negative as </p>
+<p>well as positive, so you are free to position items anywhere on screen.</p>
+<p><b>MENU MOUSE ON</b></p>
+<p><b>MENU MOUSE OFF</b></p>
+<p><i>instruction: display the menu at position of mouse cursor</i></p>
+<p><b>Menu Mouse On</b></p>
+<p><b>Menu Mouse Off</b></p>
+<p>Use these commands to toggle the display of all menus starting from the current position of the </p>
+<p>mouse cursor. The mouse coordinates are added to the MENU BASE to calculate the menu position, </p>
+<p>so it is possible to lace a menu at a fixed distance from the mouse pointer.</p>
+<p><b>Keyboard shortcuts</b></p>
+<p>Menus are an extremely useful system of selecting from a clear choice of options. They present the  </p>
+<p>user with a simple method of performing some complex operations, and they are particularly suitable </p>
+<p>for  the  less  experienced  or  younger   user.   But  the  AMOS Professional  programmer   can  be  more </p>
+<p>concerned with speed rather than simplicity, and menu operations can become a little tedious. This is </p>
+<p>why you may prefer to choose your options directly from the keyboard.</p>
+<p>AMOS Professional allows you to assign a keyboard shortcut to any of your menu items, and these </p>
+<p>key presses are interpreted as their exact equivalents. They can be used with any menu command,  </p>
+<p>including the ON MENU range.</p>
+<p>06.05.11</p>
+<p>M</p>
+<p>E</p>
+<p>N</p>
+<p>U</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Menus</p>
+<p><b>MENU KEY</b></p>
+<p><i>instruction: assign a key to a menu item</i></p>
+<p><b>Menu Key</b>(single item parameters) <b>To</b> c$</p>
+<p><b>Menu Key</b>(single item parameter) <b>To</b> scancode, <i>bitmap</i></p>
+<p>Any key can be assigned to an item in a previously defined menu, provided that the item specified is </p>
+<p>at the bottom level of the menu. In other words, keyboard shortcuts cannot be used to select sub-</p>
+<p>menus because each command must correspond to a single option in the menu.</p>
+<p>In its simplest form, define the single item parameters as usual, by giving their hierarchy numbers in </p>
+<p>brackets after  MENU KEY.  Then assign the item TO a string containing a single character. Any </p>
+<p>additional characters in this string will be ignored.</p>
+<p>Because each key on the Amiga keyboard is assigned its own scancode, this code can be made use of </p>
+<p>for those keys that have no ASCII equivalents, the so-called control keys. Here is a simple routine to </p>
+<p>print out scancodes:</p>
+<p>Do</p>
+<p>Repeat</p>
+<p>A$=Inkey$</p>
+<p>Until A$&lt;&gt;“”</p>
+<p>Z=Scancode</p>
+<p>Print Z</p>
+<p>Loop</p>
+<p>The following scancodes can also be used with the MENU KEY command, instead of a character </p>
+<p>string:</p>
+<p><b>Scancode</b></p>
+<p><b>Keys</b></p>
+<p>80 to 89</p>
+<p>Function keys [F1] to [F10]</p>
+<p>95</p>
+<p>[Help]</p>
+<p>69</p>
+<p>[Esc]</p>
+<p>An optional bitmap can also be added, to check for control key combinations such as [Ctrl] + [A]. </p>
+<p>Here are the alternatives:</p>
+<p><b>Bit</b></p>
+<p><b>Key Tested</b></p>
+<p><b>Notes</b></p>
+<p>0</p>
+<p>left [Shift])</p>
+<p>only one [Shift] key can be tested at a time</p>
+<p>1</p>
+<p>right [Shift]</p>
+<p>only one [Shift] key can be tested at a time</p>
+<p>2</p>
+<p>[Caps Lock]</p>
+<p>either ON or OFF</p>
+<p>3</p>
+<p>[Ctrl]</p>
+<p>4</p>
+<p>left [Alt]</p>
+<p>5</p>
+<p>right [Alt]</p>
+<p>this is the [Commodore] key on some keyboards</p>
+<p>6</p>
+<p>left [Amiga]</p>
+<p>7</p>
+<p>right [Amiga]</p>
+<p>06.05.12</p>
+<p>M</p>
+<p>E</p>
+<p>N</p>
+<p>U</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Menus</p>
+<p>If more than a single bit is set in this pattern, several keys must be pressed at the same time in order to </p>
+<p>call up the associated menu item. Any of these keyboard shortcuts can be erased by using MENU  </p>
+<p>KEY with no parameters.</p>
+<p>For example:</p>
+<p>Menu Key(1,10) : Rem Erase shortcut assigned to item (1,10)</p>
+<p>Here is an example that checks for key presses of the Amiga's ten function keys:</p>
+<p>Menu$(1)=“Function Keys”</p>
+<p>For A=1 To 10</p>
+<p>OPT$=“F”+Str$(A)+“ ”</p>
+<p>Menu$(1,A)=OPT$</p>
+<p>Menu Key(1,A) To 79+A</p>
+<p>Next A</p>
+<p>Menu On</p>
+<p>Do</p>
+<p>If Choice Then Print “You have pressed Function Key ”;Choice(2)</p>
+<p>Loop</p>
+<p><b>Embedded menu commands</b></p>
+<p>AMOS Professional menus offer complete freedom to make use of any text styles of graphics you </p>
+<p>want. The final part of this Chapter deals with the commands that make this possible.</p>
+<p>Any menu string can include a powerful set of optional embedded commands that allow you to </p>
+<p>customise the appearance of your menus. These embedded commands must be enclosed between sets </p>
+<p>of brackets, and individual commands must be separated by colons, like this:</p>
+<p>Menu$(1)“(LOcate 10,10: Ink 1,1)I am embedded”</p>
+<p>Each embedded command consists of only two characters, which can be in either upper or lower case. </p>
+<p>Any other characters will be ignored. So the following characters will be treated as “LO” when </p>
+<p>entered as an embedded command:</p>
+<p>LO</p>
+<p>lo</p>
+<p>locate</p>
+<p>Lonniedonegan</p>
+<p>Most embedded commands also require you to input one or more numbers. These numbers must </p>
+<p>never make use of expressions, because they will not be evaluated. </p>
+<p>In the listings for all of the following embedded commands, the two important characters that make </p>
+<p>up the command are in upper case bold type.</p>
+<p><b>LOCATE</b></p>
+<p><i>embedded command: move the graphics cursor</i></p>
+<p><b>LO</b>cate x,y</p>
+<p>06.05.13</p>
+<p>M</p>
+<p>E</p>
+<p>N</p>
+<p>U</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Menus</p>
+<p>The LOcate embedded command moves the graphics cursor to coordinates x, y measured relative to </p>
+<p>the top left-hand corner of the menu line. Please note that after this command, the graphics cursor </p>
+<p>will always be positioned at the bottom right of the object which has just be drawn. These coordinates </p>
+<p>will also be used to determine the location of any further items in your menu. For example:</p>
+<p>Menu$(1)=“Example ” : Menu$(1,1)=“Locate (LO 50,50) in action”</p>
+<p>Menu$(1,2)=“Please guess my coords”</p>
+<p>Menu On : Wait Key</p>
+<p><b>BOB</b></p>
+<p><i>embedded command: draw a bob</i></p>
+<p><b>BO</b>b number</p>
+<p>The   BOb  command   draws   the   specified   Bob  image   from   the   Object   Bank   at   the   current   cursor </p>
+<p>position. The existence of any hot spot will be ignored. Colour zero will normally be treated as </p>
+<p>transparent, but this can be changed with NO MASK. All coordinates will be measured relative to the </p>
+<p>top left-hand corner.</p>
+<p><b>ICON</b></p>
+<p><i>embedded command: draw an icon</i></p>
+<p><b>IC</b>on number</p>
+<p>ICon   draws   the   given   icon   number   at   the   current   cursor   position.   Colour   zero   is  not   normally </p>
+<p>transparent in this case, but transparency can be achieved with MAKE ICON MASK, as detailed in </p>
+<p>Chapter 7.7.</p>
+<p><b>INK</b></p>
+<p><i>embedded command: set pen, paper or outline colour</i></p>
+<p><b>IN</b>k mode,value</p>
+<p>The INk command assigns the colour index values to be used for the pen, paper and outline colours </p>
+<p>in your menu drawing. The numbers to be used for the various modes are as follows:</p>
+<p><b>Number</b></p>
+<p><b>Mode</b></p>
+<p>1</p>
+<p>Set text PEN colour</p>
+<p>2</p>
+<p>Set PAPER colour</p>
+<p>3</p>
+<p>Set OUTLINE colour</p>
+<p><b>SFONT</b></p>
+<p><i>embedded command: set font</i></p>
+<p><b>SF</b>ont number</p>
+<p>SFont sets the current menu font to the selected graphics font number. This font will now be used for </p>
+<p>all subsequent menu items. GET FONTS must be called before this instruction is executed.</p>
+<p>06.05.14</p>
+<p>M</p>
+<p>E</p>
+<p>N</p>
+<p>U</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Menus</p>
+<p><b>SSTYLE</b></p>
+<p><i>embedded command: set font style</i></p>
+<p><b>SS</b>tyle bit-pattern</p>
+<p>SStyle sets the style of the Current font to the selected bit-pattern. In the following table, a setting of 1 </p>
+<p>will have the listed effect, whereas a setting of zero will have no effect:</p>
+<p><b>Bit</b></p>
+<p><b>Effect</b></p>
+<p>0</p>
+<p>underline</p>
+<p>1</p>
+<p><b>bold</b></p>
+<p>2</p>
+<p><i>italic</i></p>
+<p><b>LINE</b></p>
+<p><i>embedded command: draw a line</i></p>
+<p><b>LI</b>ne x,y</p>
+<p>LIne draws a line from the current cursor position to the graphics coordinates x,y.</p>
+<p><b>SLINE</b></p>
+<p><i>embedded command: set line pattern</i></p>
+<p><b>SL</b>ine pattern</p>
+<p>SLine sets the line style to be used in all subsequent LIne commands to the selected bit-pattern. </p>
+<p>Because there is no evaluation of expressions, the bit-pattern must be converted into decimal notation </p>
+<p>before use.</p>
+<p><b>BAR</b></p>
+<p><i>embedded command: draw a bar</i></p>
+<p><b>BA</b>r x,y</p>
+<p>BAr draws a rectangular bar from the current cursor coordinates to x,y.</p>
+<p><b>PATTERN</b></p>
+<p><i>embedded command: draw a pattern</i></p>
+<p><b>PA</b>ttern number</p>
+<p>PAttern changes the fill pattern used by the BAr command to the numbered style.</p>
+<p><b>OUTLINE</b></p>
+<p><i>embedded command: enclose a bar with an outline</i></p>
+<p><b>OU</b>tline value</p>
+<p>OUtline draws a border in the current outline colour (set to ink colour 3) around all subsequent bars. </p>
+<p>A value of 1 activates the border and a value of 0 removes it.</p>
+<p>06.05.15</p>
+<p>M</p>
+<p>E</p>
+<p>N</p>
+<p>U</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Menus</p>
+<p><b>ELLIPSE</b></p>
+<p><i>embedded command: draw an ellipse</i></p>
+<p><b>EL</b>lipse radius1,radius2</p>
+<p>ELlipse draws an ellipse centred on the current coordinates, with the chosen radii. To draw a circle  </p>
+<p>centred at the current coordinates, simply make radius1 equal to radius2.</p>
+<p><b>PROC</b></p>
+<p><i>embedded command: call a procedure</i></p>
+<p><b>PR</b>oc NAME</p>
+<p>PRoc allows you to call any AMOS Professional procedure directly within a menu line. The called </p>
+<p>procedure cannot include any parameters, otherwise a syntax error will be generated.</p>
+<p>This is the command that allows you to customise your menu to your own needs and ignore the </p>
+<p>limitations of the available menu commands.</p>
+<p>At the start of your procedure, the following values are held in the Amiga's 68000 processor registers:</p>
+<p>DREG(0) holds the graphical x-coordinate of the top left-hand corner of the current menu item. Do </p>
+<p>not draw graphics to the left of this point on the screen unless you want to confuse the menu re-</p>
+<p>drawing process and generate bizarre effects.</p>
+<p>DREG(1) holds the y-coordinate of your menu item. Avoid drawing below this point on the screen to </p>
+<p>minimise possible errors.</p>
+<p>DREG(2) holds the current status of your menu drawing operations. It contains a value of 0 (false) </p>
+<p>while the menu item is being drawn, in which case you must load DREG(0) and DREG(1) with the </p>
+<p>x,y-coordinates of the bottom right-hand corner of your menu zone, and return from the procedure </p>
+<p>immediately.   If DREG(2) is -1 (true), you are free to perform the graphics operations used by the </p>
+<p>procedure. After completion, you should return the coordinates of the bottom right-hand corner of </p>
+<p>your item in DREG(0) and DREG(1) as above.</p>
+<p>DREG(3) holds a value of -1 if the menu is selected and the first menu string is on display, otherwise it </p>
+<p>will contain a value of 0.</p>
+<p>DREG(4) is set to TRUE when the menu branch is initially opened.</p>
+<p>AREG(1)   holds   the   address   of   the   zone   created   with   RESERVE.   It   is   used   to   allow   different </p>
+<p>procedures to communicate with one another.</p>
+<p>06.05.16</p>
+<p>M</p>
+<p>E</p>
+<p>N</p>
+<p>U</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Menus</p>
+<p>Here is the general structure of a menu procedure:</p>
+<p>Procedure ITEM</p>
+<p>If DREG(2)</p>
+<p>X=DREG(0) : Y=DREG(1)</p>
+<p>drawing instructions go here</p>
+<p>Endif</p>
+<p>DREG(0)=BX : Rem x coord of bottom right corner of menu item</p>
+<p>DREG(1)=BY : Rem y coord of bottom right corner of menu item</p>
+<p>Endproc</p>
+<p>The dimensions of the menu item as it is displayed on screen are set using the coordinates BX and BY. </p>
+<p>These must be loaded into registers DREG(0) and DREG(1) before leaving your procedure because </p>
+<p>they are needed to create the final menu bar.</p>
+<p>While inside your  procedure, most AMOS Professional instructions can be performed, including </p>
+<p>other procedures. However, the following rules must be observed to avoid your Amiga crashing!</p>
+<p>•</p>
+<p>Never change the current screen inside a menu.</p>
+<p>•</p>
+<p>Do not set or re-set a screen zone.</p>
+<p>•</p>
+<p>Avoid instructions that halt the action of your program (WAIT, INPUT, INKEY$, etc)</p>
+<p>•</p>
+<p>All disc operations are absolutely forbidden.</p>
+<p>•</p>
+<p>Errors will bypass any error trapping in the procedure, and the program will return to the </p>
+<p>editor after closing the procedure.</p>
+<p><b>RESERVE</b></p>
+<p><i>embedded command: reserve a local data area for a procedure</i></p>
+<p><b>RE</b>serve number of bytes</p>
+<p>REserve allocates the chosen number of bytes of memory for a menu item. This area can then be </p>
+<p>accessed from within your menu procedure using the address held in AREG(1). The data area that is </p>
+<p>reserved in this way is for the storage of variables. This area is local to the menu item that calls the  </p>
+<p>procedure.</p>
+<p><b>Automatic re-drawing of menus</b></p>
+<p>The last two commands in this Chapter affect the automatic process which re-draws the selected </p>
+<p>menu 50 times every second.</p>
+<p><b>MENU CALLED</b></p>
+<p><i>instruction: re-draw a menu item continually</i></p>
+<p><b>Menu Called</b>(single item parameters)</p>
+<p>MENU CALLED engages the automatic re-drawing process. This command is normally used with a </p>
+<p>menu procedure to generate animated menu items, often with spectacular moving graphic effects.</p>
+<p>06.05.17</p>
+<p>M</p>
+<p>E</p>
+<p>N</p>
+<p>U</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Menus</p>
+<p>To use this facility, a menu procedure should first be defined, as explained above. Next, add a call to  </p>
+<p>this procedure in the required title strings, using an embedded PRoc command. Finally, activate the </p>
+<p>updating process with MENU CALLED. When the user selects the chosen item, your procedure is </p>
+<p>repeatedly accessed by the menu system.</p>
+<p>Because menu items are not double buffered, bobs may flicker a little, but the use of computed sprites </p>
+<p>will present no such problems.</p>
+<p><b>MENU ONCE</b></p>
+<p><i>instruction: turn off automatic re-drawing</i></p>
+<p><b>Menu Once</b>(single item parameters)</p>
+<p>MENU ONCE turns off the automatic updating system instigated by MENU CALLED. After the </p>
+<p>command is given, each menu item will only be re-drawn once when the menu is called on the screen. </p>
+<p>It is used like this:</p>
+<p>Menu Once(1,1)</p>
+<p>06.05.18</p>
+<p>M</p>
+<p>E</p>
+<p>N</p>
+<p>U</p>
+</body>
+</html>
